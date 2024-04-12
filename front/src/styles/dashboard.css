@@ -1,0 +1,173 @@
+@media screen and (max-width: 1920px) {
+    
+    .Dashboard{
+        display: grid;
+        grid-template-columns: 160px 160px 160px 160px;
+        column-gap: 30px;
+    }
+    
+    .DashboardBox{
+        background-color: rgba(245,246,250,255);
+        width: 180px;
+        height: 90px;
+        border-radius: 10px;
+    }
+    
+    .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+        width: 44px;
+        height: 42px;
+        display: inline-flex;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    
+    .DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-left: 15px;
+        display: inline-flex;
+        font-size: 14px;
+    }
+    
+    .DashboardDone{
+        color: rgba(84,172,189,255);
+    }
+    
+    .DashboardInProgress{
+        color: rgba(185,71,127,255);
+    
+    }
+    
+    .DashboardOnHold{
+        color: rgba(151,151,151,255);
+    }
+    
+    .DashboardOverall{
+        color: rgba(82,139,214,255);
+    }
+    
+    .DashboardNumber{
+        color: rgba(86,86,86,255);
+        text-align: center;
+        margin-left: 10px;
+        margin-top: -30px;
+        font-size: 24px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    
+    .Dashboard{
+        display: grid;
+        grid-template-columns: 160px 160px 160px 160px;
+        column-gap: 30px;
+    }
+    
+    .DashboardBox{
+        background-color: rgba(245,246,250,255);
+        width: 180px;
+        height: 90px;
+        border-radius: 10px;
+    }
+    
+    .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+        width: 44px;
+        height: 42px;
+        display: inline-flex;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    
+    .DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-left: 15px;
+        display: inline-flex;
+        font-size: 14px;
+    }
+    
+    .DashboardDone{
+        color: rgba(84,172,189,255);
+    }
+    
+    .DashboardInProgress{
+        color: rgba(185,71,127,255);
+    
+    }
+    
+    .DashboardOnHold{
+        color: rgba(151,151,151,255);
+    }
+    
+    .DashboardOverall{
+        color: rgba(82,139,214,255);
+    }
+    
+    .DashboardNumber{
+        color: rgba(86,86,86,255);
+        text-align: center;
+        margin-left: 10px;
+        margin-top: -30px;
+        font-size: 24px;
+    }
+
+}
+
+@media screen and (max-width: 360px){
+
+.Dashboard{
+    display: grid;
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 160px 160px;
+}
+
+.DashboardBox{
+    background-color: rgba(245,246,250,255);
+    width: 150px;
+    height: 90px;
+    border-radius: 10px;
+}
+
+.CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+    width: 44px;
+    height: 42px;
+    display: inline-flex;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 8px;
+    display: inline-flex;
+    font-size: 12px;
+}
+
+.DashboardDone{
+    color: rgba(84,172,189,255);
+}
+
+.DashboardInProgress{
+    color: rgba(185,71,127,255);
+
+}
+
+.DashboardOnHold{
+    color: rgba(151,151,151,255);
+}
+
+.DashboardOverall{
+    color: rgba(82,139,214,255);
+}
+
+.DashboardNumber{
+    color: rgba(86,86,86,255);
+    text-align: center;
+    margin-left: -5px;
+    margin-top: -30px;
+    font-size: 24px;
+}
+
+}
