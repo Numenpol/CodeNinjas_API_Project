@@ -1,1 +1,98 @@
-
+.buttonthing {
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 2px solid #d8d8d8;
+  background: none;
+  color: #565656;
+  width: 360px;
+  margin-bottom: 10px;
+}
+.HouseIcon {
+  width: 24.9px;
+  height: 24px;
+  color: #565656;
+}
+.HouseIconText {
+  gap: 10px;
+  text-align: start;
+}
+.CloseButton {
+  width: 20px;
+  height: 20px;
+  color: #565656;
+}
+.closeButton {
+  border: none;
+  background: none;
+  position: absolute;
+  left: 320px;
+}
+.mb-3 {
+  width: 360px;
+}
+.SearchThing {
+  margin-left: 5px;
+  width: 340px;
+  border-radius: 5px;
+}
+.MenuThing {
+  border: none;
+  background: none;
+  color: #3fadbe;
+}
+.FolderIcon1 {
+  color: #3fadbe;
+}
+.ProjectThing {
+  margin: 15px;
+}
+.popup-content {
+  border-radius: 10px;
+  margin-left: -16px;
+  box-shadow: 2px 1px 20px rgb(165, 164, 164);
+  background-color: white;
+}
+.FolderText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -35px;
+}
+.FolderIcon2 {
+  color: #3fadbe;
+  margin-bottom: 64px;
+}
+.ProjectPopUp {
+  margin-top: 27px;
+}
+.popup-arrow {
+  opacity: 0;
+}
+.FolderTextThing {
+  display: flex;
+}
+.PlusIcon {
+  
+  display: flex;
+  border: none;
+}
+.AddProjectButton{
+  border: none;
+  background: none;
+  color: #3fadbe;
+  display: flex;
+  margin-left: 200px;
+}
+#inputGroup-sizing-sm{
+  background-color: White;
+  border-right: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.InputBoxCss{
+  border-left: none;
+}
+.mb-32{
+  margin-top: 10px;
+}
