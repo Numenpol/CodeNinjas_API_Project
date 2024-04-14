@@ -1,0 +1,30 @@
+.search-icon {
+    width: 0.93788rem;
+    height: 0.93794rem;
+    opacity: 0.5;
+    margin-bottom: 5px;
+}
+
+.searchbar .form-control, .rounded {
+    background: #F5F6FA !important;
+}
+
+.searchbar .rounded {
+    border: 0.6px solid #D5D5D5 !important;
+}
+.form-control::placeholder {
+    color: #202224 !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    font-family: "Nunito Sans" !important;
+    opacity: 0.5 !important;
+}
+
+.searchbar .form-control:focus {
+    box-shadow: none !important;
+}
+
+.searchbar .input-group input{
+    padding-left: 0;
+}
