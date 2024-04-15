@@ -1,4 +1,4 @@
-.search-icon {
+.search-icon, .sliders {
     width: 0.93788rem;
     height: 0.93794rem;
     opacity: 0.5;
@@ -27,4 +27,31 @@
 
 .searchbar .input-group input{
     padding-left: 0;
+}
+
+.modal-90w {
+  margin-right: 4rem !important;
+  width: 12.1875rem !important;
+  height: 5.5625rem !important;
+}
+
+.modal-title{
+  font-family: 'Inter' !important; 
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: #565656 !important;
+}
+
+.check-icon, .check-icon-empty{
+    color: #3FADBE !important;
+}
+
+@media screen and (max-width: 576px) {
+    .modal-90w {
+        margin-top: 2rem !important;
+        margin-left: 15rem !important;
+        width: 12.1875rem !important;
+        height: 5.5625rem !important;
+      }
+    
 }
