@@ -3,30 +3,30 @@
     .Dashboard{
         display: grid;
         grid-template-columns: 160px 160px 160px 160px;
-        column-gap: 30px;
+        column-gap: 225px;
     }
     
     .DashboardBox{
         background-color: rgba(245,246,250,255);
-        width: 180px;
-        height: 90px;
+        width: 370px;
+        height: 160px;
         border-radius: 10px;
     }
-    
+
     .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
-        width: 44px;
-        height: 42px;
+        width: 84px;
+        height: 80px;
         display: inline-flex;
-        margin-top: 20px;
-        margin-left: 20px;
+        margin-top: 35px;
+        margin-left: 40px;
     }
     
     .DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{
         text-transform: uppercase;
         font-weight: 700;
-        margin-left: 15px;
+        margin-left: 20px;
         display: inline-flex;
-        font-size: 14px;
+        font-size: 20px;
     }
     
     .DashboardDone{
@@ -49,9 +49,9 @@
     .DashboardNumber{
         color: rgba(86,86,86,255);
         text-align: center;
-        margin-left: 10px;
-        margin-top: -30px;
-        font-size: 24px;
+        margin-left: -15px;
+        margin-top: -68px;
+        font-size: 65px;
     }
 
 }
@@ -119,7 +119,7 @@
 .Dashboard{
     display: grid;
     grid-template-rows: 100px 100px;
-    grid-template-columns: 160px 160px;
+    grid-template-columns: 130px 130px;
 }
 
 .DashboardBox{
