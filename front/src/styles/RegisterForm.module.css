@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+
+.registerPage {
+    min-width: 22.5rem;
+}
+
+.registerPhoto {
+    background-image: url("../assets/registerFormMobilePhoto.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 47%;
+    min-height: 27.375rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.563rem;
+}
+
+.registerLogo {
+    margin: 2.5rem 0 auto;
+}
+
+.registerInfo {
+    margin-top: auto;
+    font-size: 1rem;
+    color: #7a7e81;
+    margin: 0 3.438rem 1rem;
+    text-align: center;
+    line-height: 1.875rem;
+    /* font-family: Inter; */
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #adb5bd;
+}
+
+.registerInput {
+    width: 18.75rem;
+    margin-bottom: 0.875rem;
+    /* font-family: Inter; */
+}
+
+.registerInputHolder {
+    padding: 0.625rem 1rem !important;
+    font-size: 1rem !important;
+}
+
+.registerButton {
+    width: 18.75rem;
+    margin: 1rem 0 1.563rem;
+    background-color: #3fadbe !important;
+    border-color: #3fadbe !important;
+    color: #fff !important;
+    padding: 0.625rem 1rem !important;
+}
+
+.registerButton:hover {
+    background-color: #3593a2 !important;
+    border-color: #3593a2 !important;
+}
+
+.registerForm input::placeholder {
+    color: #ADB5BD;
+}
+
+@media screen and (min-width: 768px) {
+    .registerPhoto {
+        background-image: url("../assets/registerFormTabletPhoto.svg");
+        background-position: 0 35%;
+        margin-bottom: 3.125rem;
+        min-height: 40rem;
+    }
+
+    .registerLogo {
+        align-self: flex-end;
+        margin-right: 3.125rem;
+    }
+
+    .registerInfo {
+        /* font-family: Inter; */
+        font-size: 1.625rem;
+        margin: 0 5.625rem 3.75rem;
+        line-height: 2.5rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .registerPage {
+        display: flex;
+        width: 100%;
+    }
+
+    .registerPhoto {
+        background-image: url("../assets/registerFormDesktopPhoto.svg");
+        margin-bottom: 0;
+        width: 70vw;
+        min-height: 100vh;
+        background-position: 20% 0;
+    }
+
+    .registerLogo {
+        align-self: flex-start;
+        margin: 6.25rem 5rem;
+    }
+
+    .registerInfo {
+        /* font-family: Inter; */
+        font-size: 2.25rem;
+        line-height: 3.75rem;
+        width: 39.375rem;
+        align-self: flex-end;
+        justify-self: end;
+        margin: auto 3.125rem 18vh;
+    }
+
+    .registerFormDiv {
+        display: flex;
+        align-items: center;
+    }
+
+    .registerForm {
+        width: 30vw;
+    }
+
+    .registerForm:after {
+        content: "";
+        width: 18.75rem;
+        border-bottom: 1px solid #D8D8D8;
+    }
+}
