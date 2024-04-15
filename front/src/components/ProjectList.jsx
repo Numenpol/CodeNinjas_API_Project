@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import CreateProjectpopUp from "../Popup/CreateProjectpopUp";
-import "../index.css";
+import "../styles/projectsList.css"
 
 function ProjectList() {
   return (
