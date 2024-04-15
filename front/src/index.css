@@ -73,26 +73,78 @@
   display: flex;
 }
 .PlusIcon {
-  
   display: flex;
   border: none;
 }
-.AddProjectButton{
+.AddProjectButton {
   border: none;
   background: none;
   color: #3fadbe;
   display: flex;
   margin-left: 200px;
 }
-#inputGroup-sizing-sm{
+#inputGroup-sizing-sm {
   background-color: White;
   border-right: none;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
-.InputBoxCss{
+.InputBoxCss {
   border-left: none;
 }
-.mb-32{
+.mb-32 {
   margin-top: 10px;
+}
+img.ChartIcon {
+  margin-top: 268px;
+  margin-left: 83px;
+  display: flex;
+  width: 194px;
+  height: 140.148px;
+  justify-content: center;
+  align-items: center;
+}
+.CreatePopUp-content {
+  margin-top: 170px;
+  height: 617px;
+  width: 347px;
+  display: flex;
+  justify-content: center;
+  margin-left: 0.5px;
+}
+.NewProjectName {
+  width: 240px;
+}
+.NewProjectDesc {
+  width: 240px;
+}
+.H12 {
+  margin-top: 30px;
+}
+.CreateButtons{
+  display: flex;
+  justify-content: end;
+  margin-right: 15px;
+  margin-top: 10px;
+
+}
+.Rocket{
+  width: 129px;
+  height: 134px;
+  margin-top: 23px;
+  margin-left: 60px;
+
+}
+.PopUpInsides{
+  margin-left: 20px;
+
+}
+.RocketSlogan{
+  background: linear-gradient(90deg, #3FADBE 0%, #4067F6 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 32px;
+font-weight: 800;
+
 }

@@ -2,6 +2,9 @@ import Popup from "reactjs-popup";
 import ProjectListPopUp from "../Popup/ProjectListPopUp";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+import CreateProjectpopUp from "../Popup/CreateProjectpopUp";
+import "../index.css";
 
 function ProjectList() {
   return (
@@ -46,25 +49,51 @@ function ProjectList() {
           My Projects
         </div>
         <InputGroup size="sm" className="mb-32">
-            <InputGroup.Text id="inputGroup-sizing-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-search"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-              </svg>
-            </InputGroup.Text>
-            <Form.Control
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-              className="InputBoxCss"
-              placeholder="Search"
-            />
-          </InputGroup>
+          <InputGroup.Text id="inputGroup-sizing-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </InputGroup.Text>
+          <Form.Control
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+            className="InputBoxCss"
+            placeholder="Search"
+          />
+        </InputGroup>
+      </div>
+      <div className="CreateProjectTHing">
+        <img src="src\assets\Group 54.svg" alt="" className="ChartIcon" />
+
+        <Popup
+          trigger={
+            <Button
+              variant="primary"
+              style={{
+                backgroundColor: "#3fadbe",
+                border: "#3fadbe",
+                width: "299px",
+                marginLeft: "30.5px",
+                marginTop:"20px"
+              }}
+            >
+              Create Your first project
+            </Button>
+          }
+          className="CreatePopUp"
+          position="top"
+        >
+          <div>
+            <CreateProjectpopUp />
+          </div>
+        </Popup>
       </div>
     </>
   );

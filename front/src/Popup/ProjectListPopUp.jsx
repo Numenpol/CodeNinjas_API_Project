@@ -1,5 +1,7 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Popup from "reactjs-popup";
+import CreateProjectpopUp from "./CreateProjectpopUp";
 
 function ProjectListPopUp() {
   return (
@@ -24,6 +26,7 @@ function ProjectListPopUp() {
             fill="currentColor"
             className="CloseButton"
             viewBox="0 0 16 16"
+            onClick={() => close()}
           >
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
           </svg>
@@ -61,20 +64,29 @@ function ProjectListPopUp() {
             <path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5" />
           </svg>
           <div className="MyProjectsText">My Projects</div>
-          <div className="PlusIcon">
-            <button className="AddProjectButton">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                fill="currentColor"
-                class="bi bi-plus-square-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0" />
-              </svg>
-            </button>
-          </div>
+          <Popup
+            target={
+              <div className="PlusIcon">
+                <button className="AddProjectButton">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    fill="currentColor"
+                    class="bi bi-plus-square-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0" />
+                  </svg>
+                </button>
+              </div>
+            }
+            position={top}
+          >
+            <div>
+              <CreateProjectpopUp />
+            </div>
+          </Popup>
         </div>
       </div>
     </>
