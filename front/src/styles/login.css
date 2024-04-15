@@ -1,0 +1,255 @@
+@media only screen and (min-width: 360px) {
+
+    .loginPhoto {
+        background-image: url("./../assets/projectLoginPhoto.png");
+        height: 29.5rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .projectPhotoBackground {
+        height: 20rem;
+        width: auto;
+        display: grid;
+        justify-content: center;
+        background-repeat: no-repeat;
+    }
+
+    .logoBox {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ninjaLogo {
+        height: 60.63px;
+        width: 247px;
+        margin-top: 2rem;
+    }
+
+    .textOnPhoto {
+        width: 18rem;
+        color: aliceblue;
+        text-align: center;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: baseline;
+        margin-top: 15rem;
+    }
+
+    #formBasicEmail {
+        display: flex;
+        width: 299px;
+        align-items: flex-start;
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.44rem;
+
+    }
+
+    .w-50 {
+        width: 100%;
+        display: grid;
+        justify-content: center;
+    }
+
+    .loginButton {
+        width: 18.6875rem;
+        height: 3.125rem;
+        border-radius: 0.3125rem;
+        background: #C1427F;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+        color: white;
+        border: none;
+        margin-bottom: 1rem;
+    }
+
+    .newAccountBtn {
+        width: 18.6875rem;
+        height: 3.125rem;
+        border-radius: 0.3125rem;
+        background: #3FADBE;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+        color: white;
+        border: none;
+        margin-top: 0.5rem;
+    }
+
+    .w-50 input::placeholder {
+        color: #999999a4;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .loginPhoto {
+        background-image: url("./../assets/projectLoginPhoto.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 38.375rem;
+    }
+
+    .projectPhotoBackground {
+        height: 20rem;
+        width: auto;
+        display: grid;
+        justify-content: center;
+        background-repeat: no-repeat;
+    }
+
+    .logoBox {
+        display: flex;
+        justify-content: left;
+    }
+
+    .ninjaLogo {
+        height: 60.63px;
+        width: 247px;
+        margin-top: 3rem;
+    }
+
+    .textOnPhoto {
+        color: #FFF;
+        text-align: center;
+        font-size: 26px;
+        line-height: 40px;
+        margin-top: 22rem;
+        width: 35rem;
+    }
+
+    #formBasicEmail {
+        display: flex;
+        width: 299px;
+        align-items: flex-start;
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+
+    }
+
+    .w-50 {
+        width: 100%;
+        display: grid;
+        justify-content: center;
+    }
+
+    .loginButton {
+        width: 18.6875rem;
+        height: 3.125rem;
+        border-radius: 0.3125rem;
+        background: #C1427F;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+        color: white;
+        border: none;
+        margin-top: 1rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .newAccountBtn {
+        width: 18.6875rem;
+        height: 3.125rem;
+        border-radius: 0.3125rem;
+        background: #3FADBE;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+        color: white;
+        margin-top: 1.5rem;
+    }
+
+    .w-50 input::placeholder {
+        color: #999999a4;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .allLoginPage {
+        display: flex;
+    }
+
+.loginPhoto {
+        background-image: url("./../assets/projectLoginPhoto.png");
+        height: 75rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 90%;
+    }
+
+    .projectPhotoBackground {
+        height: 20rem;
+        width: auto;
+        display: grid;
+        justify-content: center;
+        background-repeat: no-repeat;
+    }
+
+    .logoBox {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ninjaLogo {
+        height: 60.63px;
+        width: 247px;
+        margin-top: 10rem;
+        margin-right: 33rem;
+    }
+
+    .textOnPhoto {
+        width: 49.0625rem;
+        color: aliceblue;
+        text-align: center;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: baseline;
+        margin-top: 15rem;
+        font-size: 2.25rem;
+        margin-top: 40rem;
+    }
+
+    #formBasicEmail {
+        display: flex;
+        width: 299px;
+        align-items: flex-start;
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.44rem;
+
+    }
+
+    .w-50 {
+        width: 100%;
+        display: grid;
+        justify-content: center;
+    }
+
+    .loginButton {
+        width: 18.6875rem;
+        height: 3.125rem;
+        border-radius: 0.3125rem;
+        background: #C1427F;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+        color: white;
+        border: none;
+        margin-bottom: 1rem;
+    }
+
+    .newAccountBtn {
+        width: 18.6875rem;
+        height: 3.125rem;
+        border-radius: 0.3125rem;
+        background: #3FADBE;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+        color: white;
+        border: none;
+        margin-top: 0.5rem;
+    }
+
+    .w-50 input::placeholder {
+        color: #999999a4;
+    }
+
+}
