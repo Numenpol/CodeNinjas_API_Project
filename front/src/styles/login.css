@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 @media only screen and (min-width: 360px) {
 
     .loginPhoto {
@@ -6,38 +10,27 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-    }
-
-    .projectPhotoBackground {
-        height: 20rem;
-        width: auto;
-        display: grid;
-        justify-content: center;
-        background-repeat: no-repeat;
-    }
-
-    .logoBox {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .ninjaLogo {
         height: 60.63px;
         width: 247px;
-        margin-top: 2rem;
+        margin: 2.5rem 0 auto;
     }
 
     .textOnPhoto {
-        width: 18rem;
         color: aliceblue;
         text-align: center;
         font-size: 1.2rem;
-        display: flex;
-        justify-content: baseline;
-        margin-top: 15rem;
+        justify-self: baseline;
+        margin: auto 1.88rem 2.12rem;
+        line-height: 1.875rem
     }
 
-    #formBasicEmail {
+    .formBasicEmail {
         display: flex;
         width: 299px;
         align-items: flex-start;
@@ -84,41 +77,31 @@
 @media screen and (min-width: 768px) {
 
     .loginPhoto {
-        background-image: url("./../assets/projectLoginPhoto.png");
+        background-image: url("../assets/projectLoginPhoto.png");
         background-repeat: no-repeat;
         background-size: cover;
-        height: 38.375rem;
-    }
-
-    .projectPhotoBackground {
-        height: 20rem;
-        width: auto;
-        display: grid;
-        justify-content: center;
-        background-repeat: no-repeat;
-    }
-
-    .logoBox {
+        min-height: 38.375rem;
         display: flex;
-        justify-content: left;
+        flex-direction: column;
     }
 
     .ninjaLogo {
         height: 60.63px;
         width: 247px;
-        margin-top: 3rem;
+        margin-top: 3.5rem;
+        align-self: flex-start;
+        margin-left: 3.125rem;
     }
 
     .textOnPhoto {
         color: #FFF;
         text-align: center;
-        font-size: 26px;
+        font-size: 1.625rem;
         line-height: 40px;
-        margin-top: 22rem;
-        width: 35rem;
+        margin: 0 5.625rem 3.75rem;
     }
 
-    #formBasicEmail {
+    .formBasicEmail {
         display: flex;
         width: 299px;
         align-items: flex-start;
@@ -168,48 +151,35 @@
         display: flex;
     }
 
-.loginPhoto {
-        background-image: url("./../assets/projectLoginPhoto.png");
-        height: 75rem;
+    .loginPhoto {
+        background-image: url("./../assets/projectLoginDesktopPhoto.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
         width: 90%;
-    }
-
-    .projectPhotoBackground {
-        height: 20rem;
-        width: auto;
-        display: grid;
-        justify-content: center;
-        background-repeat: no-repeat;
-    }
-
-    .logoBox {
+        min-height: 100vh;
+        margin-bottom: 0;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .ninjaLogo {
         height: 60.63px;
         width: 247px;
-        margin-top: 10rem;
-        margin-right: 33rem;
+        margin-top: 5rem;
+        margin-left: 5rem;
     }
 
     .textOnPhoto {
-        width: 49.0625rem;
         color: aliceblue;
         text-align: center;
-        font-size: 1.2rem;
-        display: flex;
-        justify-content: baseline;
-        margin-top: 15rem;
         font-size: 2.25rem;
-        margin-top: 40rem;
+        margin-top: 0;
+        line-height: 3.75rem;
     }
 
-    #formBasicEmail {
+    .formBasicEmail {
         display: flex;
         width: 299px;
         align-items: flex-start;
@@ -251,5 +221,4 @@
     .w-50 input::placeholder {
         color: #999999a4;
     }
-
 }

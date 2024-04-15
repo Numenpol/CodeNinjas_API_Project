@@ -42,7 +42,6 @@ function RegisterForm() {
       <div className={registerFormDiv}>
       <Form className={registerForm} onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className={registerInput} controlId="formBasicEmail">
-          {/* <Form.Label>Enter your name</Form.Label> */}
           <Form.Control
           className={registerInputHolder}
             type="name"
@@ -59,7 +58,6 @@ function RegisterForm() {
         </Form.Group>
 
         <Form.Group className={registerInput} controlId="formBasicEmail">
-          {/* <Form.Label>Email address</Form.Label> */}
           <Form.Control
           className={registerInputHolder}
             type="email"
@@ -80,7 +78,6 @@ function RegisterForm() {
         </Form.Group>
 
         <Form.Group className={registerInput} controlId="formBasicPassword">
-          {/* <Form.Label>Password</Form.Label> */}
           <Form.Control
           className={registerInputHolder}
             type="password"
@@ -101,7 +98,6 @@ function RegisterForm() {
         </Form.Group>
 
         <Form.Group className={registerInput} controlId="formBasicPassword">
-          {/* <Form.Label>Confirm Password</Form.Label> */}
           <Form.Control
           className={registerInputHolder}
             type="password"

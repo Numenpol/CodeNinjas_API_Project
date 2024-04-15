@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { login } from "./../utils/auth/authenticate";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import "../styles/login.css";
 import ninjaLogo from "../assets/Group.svg";
@@ -29,21 +29,15 @@ function LoginForm() {
   return (
     <div className="allLoginPage">
       <div className="loginPhoto">
-        <div className="projectPhotoBackground">
-            <div className="logoBox">
-              <img className="ninjaLogo" src={ninjaLogo} alt="" />
-            </div>
-            <div className="textOnPhoto">
-              <p>
-                <strong>Empower</strong> your team to{" "}
-                <strong>crush deadlines </strong>with inituitive project
-                managment app!
-              </p>
-          </div>
-        </div>
+            <img className="ninjaLogo" src={ninjaLogo} alt="" />
+            <p className="textOnPhoto">
+              <strong>Empower</strong> your team to{" "}
+              <strong>crush deadlines </strong>with inituitive project
+              managment app!
+            </p>
       </div>
       <Form className="w-50 m-auto" onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3 formBasicEmail" controlId="formBasicEmail">
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -84,9 +78,11 @@ function LoginForm() {
           Log In
         </Button>
         <hr />
+        <Link to={"/register"}>
         <Button bsPrefix="newAccountBtn" type="submit" disabled={isSubmitting}>
           Create new account
         </Button>
+        </Link>
       </Form>
     </div>
   );
