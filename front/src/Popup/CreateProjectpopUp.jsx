@@ -5,8 +5,10 @@ function CreateProjectpopUp() {
       <div className="PopUpInsides">
         <h1 className="H12">Create a new project</h1>
         <CreateProjectForm />
-        <img src="src\assets\Rocket.png" className="Rocket" />
-        <h1 className="RocketSlogan">Ready? Launch!</h1>
+        <div className="RocketThing">
+          <img src="src\assets\Rocket.png" className="Rocket" />
+          <h1 className="RocketSlogan">Ready? Launch!</h1>
+        </div>
       </div>
     </>
   );

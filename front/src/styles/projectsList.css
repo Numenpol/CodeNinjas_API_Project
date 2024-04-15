@@ -8,6 +8,9 @@
   width: 360px;
   margin-bottom: 10px;
 }
+.SearcbarProjectList {
+  margin-top: 10px;
+}
 .HouseIcon {
   width: 24.9px;
   height: 24px;
@@ -60,7 +63,7 @@
   margin-top: -35px;
   font-size: 20px;
   font-weight: 300;
-  color: #7A7E81;
+  color: #7a7e81;
 }
 .FolderIcon2 {
   color: #3fadbe;
@@ -93,6 +96,7 @@
   border-bottom-left-radius: 20px;
 }
 .InputBoxCss {
+  border-top-right-radius: 20px;
   border-left: none;
 }
 .mb-32 {
@@ -146,4 +150,67 @@ img.ChartIcon {
   -webkit-text-fill-color: transparent;
   font-size: 32px;
   font-weight: 800;
+}
+@media screen and (min-width: 361px) {
+  .ProjectListHeader {
+    display: flex;
+    white-space: nowrap;
+  }
+  .FolderText {
+    margin-top: 10px;
+  }
+  .SearcbarProjectList {
+    width: 300px;
+    border-radius: 60px;
+  }
+  .CreateProjectTHing {
+    justify-content: center;
+    align-items: center;
+    margin-left: 27%;
+  }
+  .popup-content {
+    width: 248px;
+    height: 391px;
+  }
+  .buttonthing {
+    width: 248px;
+  }
+  .closeButton {
+    left: 220px;
+  }
+  .SearchThing {
+    margin-left: 10px;
+    width: 220px;
+  }
+  .FolderTextThing {
+    margin-left: 10px;
+  }
+  .Thing2 {
+    width: 300px;
+    height: 38px;
+  }
+  .CreatePopUp-content{
+    width: 750px;
+    height: 416px;
+  }
+  .PopUpInsides{
+    margin-left: -55%;
+  }
+  .CreateButtons{
+    display: flex;
+    justify-content: start;
+    margin-left: 4%;
+  }
+  .RocketSlogan{
+    margin-left: 65px;
+  }
+  .RocketThing{
+    position: absolute;
+    margin-top: -300px;
+    margin-left:350px;
+ }
+ .Rocket{
+    width: 242px;
+    height: 252px;
+ }
 }
