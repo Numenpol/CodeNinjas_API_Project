@@ -3,22 +3,53 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { postData } from "../services/post";
 function CreateProjectForm() {
+  const [error, setError] = useState("");
+
   const {
     register,
     handleSubmit,
-    formState: { error },
-    reset,
-    setValue,
-  } = useForm();
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      projectName: "",
+      description: "",
+    },
+  });
+
+  const formSubmitHandler = async (data) => {
+    try {
+      await postData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+
+
   return (
     <>
       <div>
-        <form>
+        <Form onSubmit={handleSubmit(formSubmitHandler)}>
           <div>
-            <Form.Group className="NewProjectName" controlId="exampleForm.ControlInput1">
+            <Form.Group
+              className="NewProjectName"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label>Project Name</Form.Label>
-              <Form.Control type="textarea" placeholder="New project" />
+              <Form.Control
+                type="textarea"
+                placeholder="New project"
+                autoComplete="projectName"
+                {...register("projectName", {
+                  required: "Project name is required",
+                })}
+                isInvalid={errors.projectName}
+              />
+              <Form.Control.Feedback type="invalid">
+            {errors.projectName && errors.projectName.message}
+          </Form.Control.Feedback>
             </Form.Group>
           </div>
           <div>Choose your project icon</div>
@@ -29,25 +60,27 @@ function CreateProjectForm() {
             >
               <Form.Label>Project description</Form.Label>
               <Form.Control
-                as="textarea"
-                rows={3}
+                type="textarea"
                 placeholder="Project description"
+                autoComplete="description"
+                {...register("description",
+                  {
+                    required: "Project description is required",
+                  })}
+                isInvalid={errors.description}
               />
+              <Form.Control.Feedback type="invalid">
+            {errors.description && errors.description.message}
+          </Form.Control.Feedback>
             </Form.Group>
           </div>
           <div className="CreateButtons">
             <Button
+              className="cancelBtn"
               variant="primary"
-              style={{
-                backgroundColor: "#FFFFFF",
-                width: "79px",
-                height: "32px",
-                marginLeft: "30.5px",
-                color: "#000000",
-                borderBlockColor: "#7A7E81",
-              }}
+              onClick={() => close()}
             >
-              Cancel
+              <div className="btnContent">Cancel</div>
             </Button>
             <Button
               variant="primary"
@@ -58,12 +91,14 @@ function CreateProjectForm() {
                 width: "79px",
                 height: "32px",
               }}
-              onClick={()=>close()}
+              className="createBtn"
+              type="submit"
+              disabled={isSubmitting}
             >
-              Create
+              <div className="btnContent">Create</div>
             </Button>
           </div>
-        </form>
+        </Form>
       </div>
     </>
   );
