@@ -16,9 +16,18 @@ function CreateProjectForm() {
       <div>
         <form>
           <div>
-            <Form.Group className="NewProjectName" controlId="exampleForm.ControlInput1">
+            <Form.Group
+              className="NewProjectName"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label>Project Name</Form.Label>
-              <Form.Control type="textarea" placeholder="New project" />
+              <Form.Control
+                type="textarea"
+                placeholder="New project"
+                {...register("projectName", {
+                  required: "Project name is required",
+                })}
+              />
             </Form.Group>
           </div>
           <div>Choose your project icon</div>
@@ -32,6 +41,7 @@ function CreateProjectForm() {
                 as="textarea"
                 rows={3}
                 placeholder="Project description"
+                {...register("projectDesc")}
               />
             </Form.Group>
           </div>
@@ -46,8 +56,10 @@ function CreateProjectForm() {
                 color: "#000000",
                 borderBlockColor: "#7A7E81",
               }}
+              onClick={() => close()}
+              className="cancelBtn"
             >
-              Cancel
+              <div className="btnContent">Cancel</div>
             </Button>
             <Button
               variant="primary"
@@ -58,9 +70,9 @@ function CreateProjectForm() {
                 width: "79px",
                 height: "32px",
               }}
-              onClick={()=>close()}
+              className="createBtn"
             >
-              Create
+              <div className="btnContent">Create</div>
             </Button>
           </div>
         </form>
