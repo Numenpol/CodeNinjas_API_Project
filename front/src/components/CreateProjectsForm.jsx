@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { postData } from "../services/post";
+import IconList from "../components/IconList";
+import "../styles/projectsList.css";
+
 function CreateProjectForm() {
   const [error, setError] = useState("");
 
@@ -53,6 +56,7 @@ function CreateProjectForm() {
             </Form.Group>
           </div>
           <div>Choose your project icon</div>
+          <IconList/>
           <div>
             <Form.Group
               className="NewProjectDesc"

@@ -1,3 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.project-list--menu{
+  display: none;
+}
+
+.project-list {
+  min-width: 360px;
+  background-color: #F5F6FA;
+  padding-top: 1.12rem;
+  height: 100vh;
+}
+
+.profect-list--card {
+  background-color: #FFF;
+  border-radius: 0.625rem 0.625rem 0rem 0rem;
+  height: 100vh;
+}
+
 .buttonthing {
   border-top: 0px;
   border-right: 0px;
@@ -8,80 +30,125 @@
   width: 360px;
   margin-bottom: 10px;
 }
+
 .SearcbarProjectList {
   margin-top: 10px;
+  min-width: 21.125rem;
+  /* text-align: center; */
+  /* justify-content: center; */
+  max-width: 30rem;
+  /* display: flex; */
+  /* justify-self: center; */
 }
+
+.SearcbarProjectList input::placeholder {
+  color: #202224;
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+.SearcbarProjectList svg {
+  color: #202224;
+  opacity: 0.5;
+}
+
+.searchbar-group {
+  display: flex;
+  justify-content: center;
+  /* margin-left: ; */
+}
+
 .HouseIcon {
   width: 24.9px;
   height: 24px;
   color: #565656;
 }
+
 .HouseIconText {
   gap: 10px;
   text-align: start;
 }
+
 .CloseButton {
   width: 20px;
   height: 20px;
   color: #565656;
 }
+
 .closeButton {
   border: none;
   background: none;
   position: absolute;
   left: 320px;
 }
+
 .mb-3 {
   width: 360px;
 }
+
 .SearchThing {
   margin-left: 5px;
   width: 340px;
   border-radius: 5px;
 }
+
 .MenuThing {
   border: none;
   background: none;
   color: #3fadbe;
 }
+
 .FolderIcon1 {
   color: #3fadbe;
+  width: 1.875rem;
+  margin-right: 1rem;
 }
+
 .ProjectThing {
-  margin: 15px;
+  padding: 15px;
 }
+
 .popup-content {
   border-radius: 10px;
   margin-left: -16px;
   box-shadow: 2px 1px 20px rgb(165, 164, 164);
   background-color: white;
 }
+
 .FolderText {
   display: flex;
   justify-content: center;
+  /* margin-left: 3.5rem; */
   align-items: center;
   margin-top: -35px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 300;
   color: #7a7e81;
+  margin-bottom: 1.88rem;
 }
+
 .FolderIcon2 {
   color: #3fadbe;
   margin-bottom: 64px;
 }
+
 .ProjectPopUp {
   margin-top: 27px;
 }
+
 .popup-arrow {
   opacity: 0;
 }
+
 .FolderTextThing {
   display: flex;
 }
+
 .PlusIcon {
   display: flex;
   border: none;
 }
+
 .AddProjectButton {
   border: none;
   background: none;
@@ -89,28 +156,29 @@
   display: flex;
   margin-left: 200px;
 }
+
 #inputGroup-sizing-sm {
   background-color: White;
   border-right: none;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
+
 .InputBoxCss {
-  border-top-right-radius: 20px;
+  border-top-right-radius: 19px !important;
+  border-bottom-right-radius: 20px !important;
   border-left: none;
 }
+
 .mb-32 {
   margin-top: 10px;
 }
+
 img.ChartIcon {
-  margin-top: 268px;
-  margin-left: 83px;
-  display: flex;
   width: 194px;
   height: 140.148px;
-  justify-content: center;
-  align-items: center;
 }
+
 .CreatePopUp-content {
   margin-top: 170px;
   height: 617px;
@@ -119,30 +187,37 @@ img.ChartIcon {
   justify-content: center;
   margin-left: 0.5px;
 }
+
 .NewProjectName {
   width: 240px;
 }
+
 .NewProjectDesc {
   width: 240px;
 }
+
 .H12 {
   margin-top: 30px;
 }
+
 .CreateButtons {
   display: flex;
   justify-content: end;
   margin-right: 15px;
   margin-top: 10px;
 }
+
 .Rocket {
   width: 129px;
   height: 134px;
   margin-top: 23px;
   margin-left: 60px;
 }
+
 .PopUpInsides {
   margin-left: 20px;
 }
+
 .RocketSlogan {
   background: linear-gradient(90deg, #3fadbe 0%, #4067f6 100%);
   background-clip: text;
@@ -151,66 +226,133 @@ img.ChartIcon {
   font-size: 32px;
   font-weight: 800;
 }
-@media screen and (min-width: 361px) {
+
+.CreateProjectTHing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9.69rem;
+}
+
+@media screen and (min-width: 768px) {
   .ProjectListHeader {
     display: flex;
-    white-space: nowrap;
+    /* margin-top: 1rem; */
+    /* align-content: end; */
+    justify-content: space-between;
+    margin-bottom: 15.44rem;
   }
-  .FolderText {
-    margin-top: 10px;
-  }
+
   .SearcbarProjectList {
-    width: 300px;
-    border-radius: 60px;
+    max-width: 18rem;
   }
-  .CreateProjectTHing {
-    justify-content: center;
-    align-items: center;
-    margin-left: 27%;
+
+  .FolderText {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.375rem;
+    /* margin-left: 0; */
   }
+
+  .MyProjectsText {
+    margin-left: 10px;
+  }
+
+  .FolderIcon1 {
+    width: 2.25rem;
+    margin-right: 0.7rem;
+  }
+
   .popup-content {
     width: 248px;
     height: 391px;
   }
+
   .buttonthing {
     width: 248px;
   }
-  .closeButton {
-    left: 220px;
-  }
+
   .SearchThing {
     margin-left: 10px;
     width: 220px;
   }
+
   .FolderTextThing {
     margin-left: 10px;
   }
-  .Thing2 {
-    width: 300px;
-    height: 38px;
-  }
-  .CreatePopUp-content{
+
+  .CreatePopUp-content {
     width: 750px;
     height: 416px;
   }
-  .PopUpInsides{
+
+  .PopUpInsides {
     margin-left: -55%;
   }
-  .CreateButtons{
+
+  .CreateButtons {
     display: flex;
     justify-content: start;
     margin-left: 4%;
   }
-  .RocketSlogan{
+
+  .RocketSlogan {
     margin-left: 65px;
   }
-  .RocketThing{
+
+  .RocketThing {
     position: absolute;
     margin-top: -300px;
-    margin-left:350px;
- }
- .Rocket{
+    margin-left: 350px;
+  }
+
+  .Rocket {
     width: 242px;
     height: 252px;
- }
+  }
+
+  .searchbar-group {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .SearcbarProjectList {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .MenuThing {
+    display: none;
+  }
+
+  .project-list {
+    display: flex;
+    width: 100%;
+    gap: 1.06rem;
+  }
+
+  .project-list--menu {
+    display: block;
+    width: 30%;
+    background-color: #FFF;
+    border-radius: 0rem 0.625rem 0rem 0rem;
+  }
+
+  .profect-list--card {
+    width: 70%;
+  }
+
+  .FolderIcon1 {
+    width: 3.5rem;
+  }
+
+  .FolderText {
+    font-size: 1.875rem;
+  }
+
+  .searchbar-group {
+    display: none;
+  }
 }

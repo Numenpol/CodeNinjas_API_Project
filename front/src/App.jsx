@@ -6,10 +6,12 @@ import ProjectList from "./components/ProjectList";
 import ProjectListPopUp from "./Popup/ProjectListPopUp";
 import CreateProjectFormMob from "./components/CreateProjectsForm";
 import "./index.css";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
+    <Header />
       <Routes>
         <Route index element={<LoginForm />}></Route>
         <Route path="/register" element={<RegisterForm />}></Route>
