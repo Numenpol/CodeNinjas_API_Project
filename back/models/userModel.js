@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema({
       message: "Passwords are not the same",
     },
   },
+  avatar: {
+      type: String,
+      default: "avatars/avatar.svg"
+    }
 });
 
 //hashing password
