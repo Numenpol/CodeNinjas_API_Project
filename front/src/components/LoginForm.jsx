@@ -20,7 +20,7 @@ function LoginForm() {
       async function onSubmit(values) {
         try {
           await login(values);
-          navigate("/profile");
+          navigate("/register");
         } catch (error) {
           setError(error.resposnse.data.message);
         }

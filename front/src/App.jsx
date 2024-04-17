@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
 import { useState, useEffect } from "react";
 import RegisterForm from "./components/RegisterForm";
 import ProjectList from "./components/ProjectList";
@@ -8,6 +7,7 @@ import CreateProjectFormMob from "./components/CreateProjectsForm";
 import "./index.css";
 import Header from "./components/Header";
 import { getAllUsers } from "./services/get";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -28,9 +28,9 @@ function App() {
 
   return (
     <>
-    <Header users={users}/>
+      <Header users={users}/>    
       <Routes>
-        <Route index element={<LoginForm />}></Route>
+        <Route index element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterForm />}></Route>
         <Route path="/Projects" element={<ProjectList />}></Route>
         <Route path="/Popup" element={<ProjectListPopUp />}></Route>
