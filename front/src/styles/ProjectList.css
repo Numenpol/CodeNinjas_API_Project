@@ -1,0 +1,79 @@
+.table-box {
+    background: #F5F6FA;
+    width: 100%;
+    border: 10px solid white;
+    border-radius: 3rem;
+}
+
+.project-title {
+    display: flex;
+    justify-content: center;
+    gap: 4.2rem;
+    margin-bottom: 1rem;
+    margin-right: 3rem;
+
+}
+
+
+.name {
+    color: #565656;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.status {
+    color: #565656;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.tasks {
+    color: #565656;
+    text-align: center;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.project-list {
+    border-bottom: 1px solid #565656;
+}
+
+@media only screen and (min-width: 768px) {
+    .table-box {
+        width: 100%;
+    }
+
+    .project-title {
+       justify-content: space-evenly;
+    }
+
+.invinsible {
+
+}
+
+    .name {
+        width: 70rem;
+        margin-left: 0.8rem;
+
+    }
+    
+
+    .status {
+    
+    }
+
+    .tasks {
+    margin-right: 0.5rem;
+    }
+    .project-list{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {}

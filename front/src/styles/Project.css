@@ -1,0 +1,135 @@
+.project-list-box {
+    display: flex;
+    justify-content: center;
+    background: #F5F6FA;
+}
+
+.project-list {
+    display: flex;
+    list-style-type: none;
+    height: 3rem;
+}
+
+.project-icon {
+    width: 5rem;
+    height: 0.95238rem;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+}
+
+.project-name {
+    width: 7.5625rem;
+    height: 1.4375rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    margin-right: 1rem;
+    color: #565656;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0.6rem;
+}
+
+.project-status {
+    display: flex;
+    width: 5.25rem;
+    height: 1.1875rem;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.project-overall {
+    width: 5.375rem;
+    height: 1.13725rem;
+    flex-shrink: 0;
+    margin-left: 3rem;
+    color: #565656;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0.6rem;
+}
+
+p {
+    height: 2rem;
+}
+
+
+.project-done {
+    color: #3FADBE;
+    border: 2px solid;
+    border-radius: 1rem;
+    width: 7rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: white;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+}
+
+.project-inProgress {
+    color: #C0417F;
+    border: 2px solid;
+    border-radius: 1rem;
+    width: 7rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: white;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+}
+
+.project-onHold {
+    color: #979797;
+    border: 2px solid;
+    border-radius: 1rem;
+    width: 7rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: white;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .project-icon {
+        max-width: 5%;
+    }
+    .project-name {}
+
+    .project-list-box {}
+
+    .project-list {
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .project-name {
+        width: 70rem;
+    }
+
+    .project-status {}
+
+    .project-overall {}
+
+    .project-done {
+        max-width: 10rem;
+        min-width: 8rem;
+
+    }
+
+    .project-inProgress {
+        max-width: 10rem;
+        min-width: 8rem;
+
+    }
+
+    .project-onHold {
+        max-width: 10rem;
+        min-width: 8rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {}
