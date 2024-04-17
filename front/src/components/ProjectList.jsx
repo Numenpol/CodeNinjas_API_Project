@@ -12,7 +12,7 @@ function ProjectList() {
       <div className="project-list--menu">
       <ProjectListPopUp  />
       </div>
-      <div className="profect-list--card">
+      <div className="project-list--card">
         <div className="ProjectThing">
           <div className="ProjectListHeader">
             <Popup

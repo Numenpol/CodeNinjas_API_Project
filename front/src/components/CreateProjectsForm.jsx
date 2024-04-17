@@ -6,9 +6,11 @@ import Button from "react-bootstrap/Button";
 import { postData } from "../services/post";
 import IconList from "../components/IconList";
 import "../styles/projectsList.css";
+import "../styles/createProjectsForm.css"
 
 function CreateProjectForm() {
   const [error, setError] = useState("");
+  const [icon, setIcon] = useState("")
 
   const {
     register,
@@ -23,18 +25,19 @@ function CreateProjectForm() {
 
   const formSubmitHandler = async (data) => {
     try {
-      await postData(data);
+      await postData({ ...data, icon: icon });
     } catch (error) {
       console.log(error);
     }
   }
-  
+
 
 
   return (
     <>
-      <div>
-        <Form onSubmit={handleSubmit(formSubmitHandler)}>
+      <div className="create-project">
+        <h1 className="H12">Create a new project</h1>
+        <Form onSubmit={handleSubmit(formSubmitHandler)} className="create-project--form">
           <div>
             <Form.Group
               className="NewProjectName"
@@ -51,12 +54,14 @@ function CreateProjectForm() {
                 isInvalid={errors.projectName}
               />
               <Form.Control.Feedback type="invalid">
-            {errors.projectName && errors.projectName.message}
-          </Form.Control.Feedback>
+                {errors.projectName && errors.projectName.message}
+              </Form.Control.Feedback>
             </Form.Group>
           </div>
-          <div>Choose your project icon</div>
-          <IconList/>
+          <div>
+            <p className="create-choose--icon">Choose your project icon</p>
+            <IconList setIcon={setIcon} />
+          </div>
           <div>
             <Form.Group
               className="NewProjectDesc"
@@ -74,8 +79,8 @@ function CreateProjectForm() {
                 isInvalid={errors.description}
               />
               <Form.Control.Feedback type="invalid">
-            {errors.description && errors.description.message}
-          </Form.Control.Feedback>
+                {errors.description && errors.description.message}
+              </Form.Control.Feedback>
             </Form.Group>
           </div>
           <div className="CreateButtons">
@@ -84,22 +89,22 @@ function CreateProjectForm() {
               variant="primary"
               onClick={() => close()}
             >
-              <div className="btnContent">Cancel</div>
+              <div className="cancelBtnContent">Cancel</div>
             </Button>
             <Button
               variant="primary"
-              style={{
-                backgroundColor: "#3fadbe",
-                border: "#3fadbe",
-                marginLeft: "30.5px",
-                width: "79px",
-                height: "32px",
-              }}
+              // style={{
+              //   backgroundColor: "#3fadbe",
+              //   border: "#3fadbe",
+              //   marginLeft: "30.5px",
+              //   width: "79px",
+              //   height: "32px",
+              // }}
               className="createBtn"
               type="submit"
               disabled={isSubmitting}
             >
-              <div className="btnContent">Create</div>
+              <div className="createBtnContent">Create</div>
             </Button>
           </div>
         </Form>

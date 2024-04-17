@@ -1,16 +1,16 @@
 import icons from "../services/icons";
-import { v4 as uuidv4 } from "uuid";
+import styles from "../styles/IconList.module.css";
 
-function IconList() {
-    const uniqueKey = uuidv4();
-
+function IconList({ setIcon }) {
+    const {projectIcons, createProjectIcons } = styles;
     return (
-    <>
-    {console.log(icons)}
-    {icons.map((icon) => 
-        <img src={icon} alt="icon" key={uniqueKey}/>
-    )}
-        </>
+        <div className={projectIcons}>
+            {icons.map((icon, key) =>
+                <img src={icon} alt="icon" key={key} className={createProjectIcons} onClick={() => {
+                    setIcon(icon);
+                }} />
+            )}
+        </div>
     );
 }
 
