@@ -1,26 +1,21 @@
 @media screen and (min-width: 360px) {
+
+.bob {overflow: hidden;}
+
     .project-list-icon {
         display: flex;
         justify-content: center;
         margin-left: 1rem;
         margin-right: 1rem;
     }
-
-
-    .project-icon {
-        width: 20px;
-    }
-
     .project-name {
         width: 100%;
-        overflow: hidden;
         color: #565656;
         font-family: Montserrat;
         font-size: 1rem;
         font-style: normal;
         font-weight: 400;
-        line-height: normal;
-    }
+      }
 
 
     .project-status {
@@ -29,6 +24,7 @@
         justify-content: center;
         flex-shrink: 0;
     }
+
 
     .project-overall {
         width: 5.375rem;
@@ -59,6 +55,8 @@
         margin-top: 0.6rem;
     }
 
+ 
+
     .project-inProgress {
         color: #C0417F;
         border: 2px solid;
@@ -87,6 +85,12 @@
 
     .overall-box {
         width: 5rem;
+    }
+    .overall-box {
+        margin-top: 0.6rem;
+    }
+    .bob {
+        overflow: hidden;
     }
 }
 

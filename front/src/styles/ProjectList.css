@@ -4,14 +4,21 @@
         background: #F5F6FA;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        width: 100%;
+
     }
 
     .name {
+        min-width: 18rem;
+        width: 100%;
         color: #565656;
         font-size: 0.875rem;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+        overflow: hidden;
     }
 
     .status {
@@ -33,6 +40,36 @@
     }
 
     .project-list {
+        padding-left: 1rem;
+        padding-right: 1rem;
         border-bottom: 1px solid #565656;
+    }
+
+    .corner-gaps {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .project-list-box {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .bob {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .project-list-box {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .project-list-box {
+        padding-left: 7rem;
+        padding-right: 7rem;
     }
 }

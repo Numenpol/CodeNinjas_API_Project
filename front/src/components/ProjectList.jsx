@@ -5,6 +5,7 @@ function ProjectList({ projects, error }) {
   return (
     <div className="corner-gaps">
       <table className="table-box">
+        <div className="project-list-box">
         <thead>
           <tr className="project-title">
             <th className="invinsible"></th>
@@ -24,7 +25,9 @@ function ProjectList({ projects, error }) {
             );
           })}
           {error}{" "}
+         
         </tbody>
+        </div>
       </table>
     </div>
   );

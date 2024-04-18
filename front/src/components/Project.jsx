@@ -15,17 +15,17 @@ function Project({ project }) {
       <th className="project-icon">
         <img className="project-list-icon" src={icon} alt="" />
       </th>
-      <td className="project-name">{projectName}</td>
+      <td overclassName="project-name"> {projectName}</td>
       <td className="project-list-status">
         <p
           className={
             statusCheck == "done"
               ? "project-done"
               : statusCheck == "on hold"
-              ? "project-onHold"
-              : statusCheck == "in progress"
-              ? "project-inProgress"
-              : ""
+                ? "project-onHold"
+                : statusCheck == "in progress"
+                  ? "project-inProgress"
+                  : ""
           }
         >
           {status}
