@@ -20,12 +20,15 @@ function LoginForm() {
   async function onSubmit(values) {
     try {
       await login(values);
-      navigate("/profile");
+      navigate("/projects");
     } catch (error) {
-      setError(error.resposnse.data.message);
+      if (error.message == "Request failed with status code 401") {
+        setError("Incorrect email or password");
+      } else { 
+        setError(error.message);
+      }
     }
   }
-
   return (
     <div className="allLoginPage">
       <div className="loginPhoto">
@@ -37,7 +40,7 @@ function LoginForm() {
             </p>
       </div>
       <Form className="w-50 m-auto" onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3 formBasicEmail" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -74,9 +77,10 @@ function LoginForm() {
             {errors.password && errors.password.message}
           </Form.Control.Feedback>
         </Form.Group>
+        <div className="loginFormError">{error}</div>       
         <Button bsPrefix="loginButton" type="submit" disabled={isSubmitting}>
           Log In
-        </Button>
+        </Button>      
         <hr />
         <Link to={"/register"}>
         <Button bsPrefix="newAccountBtn" type="submit" disabled={isSubmitting}>

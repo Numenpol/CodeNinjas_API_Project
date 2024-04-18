@@ -2,7 +2,26 @@
     box-sizing: border-box;
 }
 
-@media only screen and (min-width: 360px) {
+.loginFormError{
+    color: red;
+    font-weight: bold;
+}
+
+.loginButton:hover{
+    background-color: rgba(165, 56, 109, 1);
+}
+
+.newAccountBtn:hover{
+    background-color: rgba(53, 147, 162, 1);
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+    .loginFormError{
+        padding-bottom: 15px;
+    }
+}
+
+@media screen and (min-width: 100px) {
 
     .loginPhoto {
         background-image: url("./../assets/projectLoginPhoto.png");
@@ -45,6 +64,7 @@
         width: 100%;
         display: grid;
         justify-content: center;
+        padding-top: 20px;
     }
 
     .loginButton {
