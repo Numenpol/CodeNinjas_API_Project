@@ -82,6 +82,7 @@ function ProjectList() {
           <Popup
             trigger={
               <Button
+              className="create-first--project"
                 variant="primary"
                 style={{
                   backgroundColor: "#3fadbe",

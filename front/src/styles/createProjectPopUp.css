@@ -3,8 +3,10 @@
 }
 
 .CreatePopUp-content {
-  margin-top: 170px;
+  margin-top: 16rem;
   width: 350px;
+  /* min-width: 350px;
+  max-width: 90%; */
   display: flex;
   justify-content: center;
   /* margin: auto 0; */
@@ -23,6 +25,8 @@
     flex-direction: column;
     width: 360px;
 } */
+
+
 
 .create-close--button {
   text-align: end;
@@ -87,6 +91,10 @@
         height: 252px;
       } */
 
+      .CreatePopUp-content {
+        margin-top: 2rem;
+      }
+
   .PopUpInsides {
     display: flex;
     flex-direction: row;
@@ -106,6 +114,7 @@
     background-color: #FFF;
     margin: 0;
     padding: 0;
+    border-radius: 0 10px 10px 0;
     /* display: flex; */
     /* justify-self: end; */
     /* justify-self: flex-end; */
@@ -124,6 +133,12 @@
   .Rocket {
     width: 15.125rem;
     height: 15.75rem;
-    margin-bottom: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .CreatePopUp-content {
+    /* margin-top: 2rem; */
   }
 }

@@ -98,6 +98,14 @@
     color: #fff;
 }
 
+.cancelBtn:hover {
+    background-color: #F5F6FA !important;
+}
+
+.createBtn:hover {
+    background-color: #3593A2 !important;
+}
+
 /* .CreatePopUp-content {
     margin-top: 170px; */
 /* margin-left: -50px; */
@@ -122,7 +130,7 @@
 
       .create-project {
         /* width: 21.69rem; */
-        padding: 3.22rem 2rem;
+        padding: 3rem 2.22rem 3rem 3.8rem;
         border-radius: 10px 0 0 10px;
       }
 
@@ -133,4 +141,13 @@
       .NewProjectName {
         width: 15rem;
       }
+
+      .CreateButtons {
+        margin-right: 1.8rem;
+      }
+
+      /* .create-choose--icon {
+        margin-bottom: ;
+      } */
+
 }

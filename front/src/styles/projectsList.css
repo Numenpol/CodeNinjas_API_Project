@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 .project-list--menu {
   display: none;
 }
@@ -103,6 +102,10 @@ img.ChartIcon {
   height: 140.148px;
 }
 
+.create-first--project:hover {
+  background-color: #3593A2 !important;
+}
+
 @media screen and (min-width: 768px) {
   .ProjectListHeader {
     display: flex;
@@ -136,41 +139,7 @@ img.ChartIcon {
  .searchbar-group {
     display: flex;
     justify-content: flex-end;
-  }
-
-  /* .CreatePopUp-content {
-    width: 750px;
-    height: 416px;
-  } */
-
-  /* .PopUpInsides {
-    margin-left: -55%;
-  } */
-
-  /* .CreateButtons {
-    display: flex;
-    justify-content: start;
-    margin-left: 4%;
-  } */
-
-  /* .RocketSlogan {
-    margin-left: 65px;
-  } */
-
-  /* .RocketThing {
-    position: absolute;
-    margin-top: -300px;
-    margin-left: 350px;
-  }
-
-  .Rocket {
-    width: 242px;
-    height: 252px;
-  } */
-
- 
-
- 
+  } 
 }
 
 @media screen and (min-width: 1440px) {

@@ -70,6 +70,8 @@ function CreateProjectForm() {
               <Form.Label>Project description</Form.Label>
               <Form.Control
                 type="textarea"
+                as="textarea"
+                rows={3}
                 placeholder="Project description"
                 autoComplete="description"
                 {...register("description",

@@ -28,7 +28,7 @@
     border: none;
     padding: 3px 10px;
     width: 60px;
-    background-color: #F5F6FA;
+    background-color: #FFF;
     height: 38px;
 }
 
@@ -49,6 +49,14 @@
     font-size: 14px;
     color: #565656;
     /* font-family: Inter; */
+}
+
+.headerThemeButton:hover {
+    background-color: #F5F6FA;
+}
+
+.headerLogOutButton:hover {
+    background-color: #D5D5D5;
 }
 
 @media(min-width: 768px) {
