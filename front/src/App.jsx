@@ -1,14 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import RegisterForm from "./components/RegisterForm";
-import ProjectList from "./components/ProjectList";
-import ProjectListPopUp from "./Popup/ProjectListPopUp";
-import CreateProjectFormMob from "./components/CreateProjectsForm";
 import "./index.css";
 import Header from "./components/Header";
 import { getAllUsers } from "./services/get";
-import LoginPage from "./pages/LoginPage";
 import { getAllData } from './services/get'
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage"
+import ProjectPage from "./pages/ProjectPage";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -44,14 +42,9 @@ function App() {
       <Header users={users}/>    
       <Routes>
         <Route index element={<LoginPage />}></Route>
-        <Route path="/register" element={<RegisterForm />}></Route>
-        <Route path="/Projects" element={<ProjectList />}></Route>
-        <Route path="/Popup" element={<ProjectListPopUp />}></Route>
-        {/* menu pop up */}
-        <Route path="/Popup1" element={<CreateProjectFormMob />}></Route>
-        {/* Create project popup */}
+        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/projects" element={<ProjectPage projects={projects} error={error}/>}></Route>
       </Routes>
-    <ProjectLists projects={projects} error={error}/>
     </>
   );
 }

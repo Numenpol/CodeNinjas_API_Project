@@ -5,6 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import CreateProjectpopUp from "../Popup/CreateProjectpopUp";
 import "../styles/projectsList.css";
+import ProjectLists from "../components/ProjectLists"
 
 function ProjectList() {
   return (

@@ -25,7 +25,6 @@ function ProjectList({ projects, error }) {
             );
           })}
           {error}{" "}
-         
         </tbody>
         </div>
       </table>
