@@ -11,7 +11,7 @@ function Project({ project }) {
   }, []);
 
   return (
-    <tr className="project-list">
+    <tr className="project-list" title={description}>
       <th className="project-icon">
         <img className="project-list-icon" src={icon} alt="" />
       </th>
@@ -34,6 +34,9 @@ function Project({ project }) {
       <td className="project-overall">
         <p className="overall-box">{overall}</p>
       </td>
+
+{/* <div className="myDIV">Hover over me.</div>
+<div className="hide">I am shown when someone hovers over the div above.</div> */}
     </tr>
   );
 }
