@@ -6,7 +6,9 @@
     min-width: 360px;
     background-color: #F5F6FA;
     padding-top: 1.12rem;
-    height: 100vh;
+    /* height: 100%; */
+    /* height: 100vh; */
+    /* overflow-y: hidden; */
 }
 
 .ProjectListMenu {
@@ -63,6 +65,14 @@
     border-left: none;
   }
 
+  .CreateProjectThing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 9.69rem; */
+  }
+
 #inputGroup-sizing-sm {
     background-color: White;
     border-right: none;
@@ -79,6 +89,10 @@
 .SearcbarProjectList svg {
     color: #202224;
     opacity: 0.5;
+}
+
+.createFirstProject:hover {
+  background-color: #3593A2 !important;
 }
 
 @media screen and (min-width: 768px) {

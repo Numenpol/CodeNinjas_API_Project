@@ -6,8 +6,8 @@ function ProjectList({ projects, error }) {
     // <div>
       <div className="corner-gaps">
         <table className="table-box">
-          <div className="project-list-box">
-            <thead>
+          {/* <div className="project-list-box"> */}
+            <thead className="table-header">
               <tr className="project-title">
                 <th className="invinsible"></th>
                 <th className="name">PROJECT NAME</th>
@@ -15,7 +15,7 @@ function ProjectList({ projects, error }) {
                 <th className="tasks">TASKS</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="table-body">
               {projects.map((project) => {
                 return (
                   <Project
@@ -27,10 +27,10 @@ function ProjectList({ projects, error }) {
               })}
               {error}{" "}
             </tbody>
-          </div>
+          {/* </div> */}
         </table>
       </div>
-    // </div>
+    /* </div>  */
   );
 }
 

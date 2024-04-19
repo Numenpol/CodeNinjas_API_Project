@@ -6,14 +6,18 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../styles/ProjectWithList.module.css";
 import ProjectList from "./ProjectList"
 import Dashboard from "./Dashboard"
+import Button from "react-bootstrap/esm/Button";
+import CreateProjectpopUp from "./CreateProjectpopUp";
 
 function ProjectWithList({ projects, error }) {
 
-  const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderIcon1, searchbarGroup, SearcbarProjectList, InputBoxCss } = styles;
+  const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderIcon1, searchbarGroup, SearcbarProjectList, InputBoxCss, CreateProjectThing, createFirstProject, 
+    // CreatePopUp
+   } = styles;
   return (
     <div className={projectList}>
       <div className={ProjectListMenu}>
-        <ProjectListPopUp />
+        <ProjectListPopUp projects={projects}/>
       </div>
       <div className={projectListCard}>
         <div className={ProjectThing}>
@@ -79,6 +83,35 @@ function ProjectWithList({ projects, error }) {
           </div>
         </div>
         <Dashboard />
+        <div className={CreateProjectThing}>
+          <Popup
+            trigger={
+              <Button
+              className={createFirstProject}
+                variant="primary"
+                style={{
+                  backgroundColor: "#3fadbe",
+                  border: "#3fadbe",
+                  width: "299px",
+                  height: "3.125rem",
+                  marginLeft: "30.5px",
+                  marginTop: "20px",
+                  marginBottom: "1rem"
+                }}
+              >
+                Create Your first project
+              </Button>
+            }
+            className="CreatePopUp"
+            // style={{marginTop:"100px"}}
+            position="top"
+          >
+            <div>
+              <CreateProjectpopUp />
+            </div>
+          </Popup>
+        </div>
+        
         <ProjectList projects={projects} error={error} />
       </div>
     </div>
