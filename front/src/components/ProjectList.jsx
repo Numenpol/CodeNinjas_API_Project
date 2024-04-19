@@ -1,7 +1,7 @@
 import Project from "./Project";
 import "../styles/ProjectList.css";
 
-function ProjectList({ projects, error }) {
+function ProjectList({projects, error}) {
   return (
     // <div>
       <div className="corner-gaps">
