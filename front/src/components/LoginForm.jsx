@@ -77,7 +77,9 @@ function LoginForm() {
             {errors.password && errors.password.message}
           </Form.Control.Feedback>
         </Form.Group>
-        <div className="loginFormError">{error}</div>       
+
+        <div className="loginFormError">{error}</div>      
+         
         <Button bsPrefix="loginButton" type="submit" disabled={isSubmitting}>
           Log In
         </Button>      

@@ -49,6 +49,12 @@
     font-size: 1rem !important;
 }
 
+.registerEmailError {
+    color: #ff0000;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
 .registerButton {
     width: 18.75rem;
     margin: 1rem 0 1.563rem;
