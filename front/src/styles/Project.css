@@ -1,0 +1,101 @@
+@media screen and (min-width: 360px) {
+
+.bob {overflow: hidden;}
+
+    .project-list-icon {
+        display: flex;
+        justify-content: center;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .project-name {
+        width: 100%;
+        color: #565656;
+        font-family: Montserrat;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+      }
+
+
+    .project-status {
+        display: flex;
+        height: 1.1875rem;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+
+    .project-overall {
+        width: 5.375rem;
+        height: 1.13725rem;
+        flex-shrink: 0;
+        margin-left: 3rem;
+        color: #565656;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+    }
+
+    .project-list-status {
+        display: flex;
+        justify-content: center;
+    }
+
+    .project-done {
+        color: #3FADBE;
+        border: 2px solid;
+        border-radius: 1rem;
+        width: 7rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: white;
+        height: 1.9rem;
+        margin-top: 0.6rem;
+    }
+
+ 
+
+    .project-inProgress {
+        color: #C0417F;
+        border: 2px solid;
+        border-radius: 1rem;
+        width: 7rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: white;
+        height: 1.9rem;
+        margin-top: 0.6rem;
+    }
+
+    .project-onHold {
+        color: #979797;
+        border: 2px solid;
+        border-radius: 1rem;
+        width: 7rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: white;
+        height: 1.9rem;
+        margin-top: 0.6rem;
+    }
+
+    .overall-box {
+        width: 5rem;
+    }
+    .overall-box {
+        margin-top: 0.6rem;
+    }
+    .bob {
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 768px) {
+    .project-list-status {
+        width: 15rem;
+    }
+}

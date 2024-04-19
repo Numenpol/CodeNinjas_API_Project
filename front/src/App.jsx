@@ -8,10 +8,13 @@ import "./index.css";
 import Header from "./components/Header";
 import { getAllUsers } from "./services/get";
 import LoginPage from "./pages/LoginPage";
+import { getAllData } from './services/get'
 
 function App() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
+  const [projects, setProjects] = useState([]);
+  
   const fetchUserData = async () => {
     try {
       const data = await getAllUsers();
@@ -22,8 +25,18 @@ function App() {
     }
   }
 
+  const fetchData = async () => {
+    try {
+      const { data: {projects}} = await getAllData();
+      setProjects(projects);
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
   useEffect(() => {
     fetchUserData();
+    fetchData()
   }, [])
 
   return (
@@ -38,6 +51,7 @@ function App() {
         <Route path="/Popup1" element={<CreateProjectFormMob />}></Route>
         {/* Create project popup */}
       </Routes>
+    <ProjectLists projects={projects} error={error}/>
     </>
   );
 }
