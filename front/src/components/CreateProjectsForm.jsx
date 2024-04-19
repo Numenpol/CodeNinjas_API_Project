@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { postData } from "../services/post";
 import IconList from "../components/IconList";
-import "../styles/projectsList.css";
+import "../styles/projectWithoutList.css";
 import "../styles/createProjectsForm.css"
 
 function CreateProjectForm() {
@@ -95,13 +94,6 @@ function CreateProjectForm() {
             </Button>
             <Button
               variant="primary"
-              // style={{
-              //   backgroundColor: "#3fadbe",
-              //   border: "#3fadbe",
-              //   marginLeft: "30.5px",
-              //   width: "79px",
-              //   height: "32px",
-              // }}
               className="createBtn"
               type="submit"
               disabled={isSubmitting}

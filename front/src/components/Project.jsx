@@ -15,7 +15,7 @@ function Project({ project }) {
       <th className="project-icon">
         <img className="project-list-icon" src={icon} alt="" />
       </th>
-      <td overclassName="project-name"> {projectName}</td>
+      <td overclassname="project-name"> {projectName}</td>
       <td className="project-list-status">
         <p
           className={
@@ -34,9 +34,6 @@ function Project({ project }) {
       <td className="project-overall">
         <p className="overall-box">{overall}</p>
       </td>
-
-{/* <div className="myDIV">Hover over me.</div>
-<div className="hide">I am shown when someone hovers over the div above.</div> */}
     </tr>
   );
 }

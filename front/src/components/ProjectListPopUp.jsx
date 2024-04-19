@@ -2,7 +2,6 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Popup from "reactjs-popup";
 import CreateProjectpopUp from "./CreateProjectpopUp";
-// import "../styles/projectsList.css";
 import "../styles/projectListPopUp.css";
 
 
@@ -90,7 +89,6 @@ function ProjectListPopUp() {
             }
             position={top}
           >
-
             <div>
               <CreateProjectpopUp />
             </div>

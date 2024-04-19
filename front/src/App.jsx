@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./index.css";
-import Header from "./components/Header";
 import { getAllUsers } from "./services/get";
 import { getAllData } from './services/get'
 import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage"
+import RegisterPage from "./pages/RegisterPage";
 import ProjectPage from "./pages/ProjectPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -17,7 +17,6 @@ function App() {
     try {
       const data = await getAllUsers();
       setUsers(data);
-      console.log(data);
     } catch (error) {
       setError(error.message);
     }
@@ -38,12 +37,12 @@ function App() {
   }, [])
 
   return (
-    <>
-      <Header users={users}/>    
+    <>  
       <Routes>
         <Route index element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/projects" element={<ProjectPage projects={projects} error={error}/>}></Route>
+        <Route path="*" element={<NotFoundPage/>}></Route>
       </Routes>
     </>
   );

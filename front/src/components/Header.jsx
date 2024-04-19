@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../utils/auth/authenticate";
 import { useEffect, useState } from "react";
 
-function Header({ users }) {
+function Header() {
     const navigate = useNavigate();
     const [user, setUser] = useState("");
 

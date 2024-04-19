@@ -1,4 +1,4 @@
-import CreateProjectForm from "../components/CreateProjectsForm";
+import CreateProjectForm from "./CreateProjectsForm";
 import "../styles/createProjectPopUp.css";
 
 function CreateProjectpopUp() {
