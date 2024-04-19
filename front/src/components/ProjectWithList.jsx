@@ -95,7 +95,7 @@ function ProjectWithList({ projects, error }) {
                   width: "299px",
                   height: "3.125rem",
                   marginLeft: "30.5px",
-                  marginTop: "20px",
+                  marginTop: "1rem",
                   marginBottom: "1rem"
                 }}
               >
