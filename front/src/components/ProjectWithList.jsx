@@ -6,11 +6,11 @@ import "../styles/projectWithoutList.css";
 import ProjectList from "./ProjectList"
 import Dashboard from "./Dashboard"
 
-function ProjectWithList({projects ,error}) {
+function ProjectWithList({projects , error}) {
     return (
       <div className="project-list">
         <div className="project-list--menu">
-        <ProjectListPopUp/>
+        <ProjectListPopUp projects={projects}/>
         </div>
         <div className="project-list--card">
           <div className="ProjectThing">

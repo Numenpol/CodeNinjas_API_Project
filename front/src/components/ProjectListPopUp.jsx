@@ -3,9 +3,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Popup from "reactjs-popup";
 import CreateProjectpopUp from "./CreateProjectpopUp";
 import "../styles/projectListPopUp.css";
+import MenuProjectList from "./MenuProjectList"
 
-
-function ProjectListPopUp() {
+function ProjectListPopUp({projects}) {
   return (
     <>
       <div className="ProjectPopUp">
@@ -94,6 +94,7 @@ function ProjectListPopUp() {
             </div>
           </Popup>
         </div>
+            <MenuProjectList projects={projects}/>
       </div>
     </>
   );

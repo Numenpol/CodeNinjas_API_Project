@@ -7,7 +7,7 @@ function ProjectPage({projects, error}) {
     return ( 
         <>
         <Header/>  
-        <ProjectWithoutList/>
+        <ProjectWithoutList projects={projects}/>
         </>
      );        
     } else {
