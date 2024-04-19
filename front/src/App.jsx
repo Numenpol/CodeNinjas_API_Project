@@ -37,7 +37,7 @@ function App() {
   }, [])
 
   return (
-    <>  
+    <>      
       <Routes>
         <Route index element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>

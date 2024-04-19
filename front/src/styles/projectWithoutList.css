@@ -106,6 +106,10 @@ img.ChartIcon {
   background-color: #3593A2 !important;
 }
 
+.hidden{
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .ProjectListHeader {
     display: flex;

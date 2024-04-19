@@ -88,7 +88,6 @@ function CreateProjectForm() {
             <Button
               className="cancelBtn"
               variant="primary"
-              onClick={() => close()}
             >
               <div className="cancelBtnContent">Cancel</div>
             </Button>
