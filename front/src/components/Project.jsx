@@ -15,7 +15,7 @@ function Project({ project }) {
       <th className="project-icon">
         <img className="project-list-icon" src={icon} alt="" />
       </th>
-      <td overclassname="project-name"> {projectName}</td>
+      <td className="project-name"> {projectName}</td>
       <td className="project-list-status">
         <p
           className={

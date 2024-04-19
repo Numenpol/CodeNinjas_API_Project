@@ -1,7 +1,10 @@
-@media screen and (min-width: 360px) {
+
 
 .bob {overflow: hidden;}
-
+.project-list {
+    min-width: 360px;
+    /* max-width: 400px; */
+}
     .project-list-icon {
         display: flex;
         justify-content: center;
@@ -92,7 +95,6 @@
     .bob {
         overflow: hidden;
     }
-}
 
 @media (min-width: 768px) {
     .project-list-status {

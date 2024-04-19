@@ -8,7 +8,7 @@ import "../styles/projectWithoutList.css";
 
 function ProjectWithoutList() {
   return (
-    <div className="project-list">
+    <div className="project-without--list">
       <div className="project-list--menu">
       <ProjectListPopUp  />
       </div>
