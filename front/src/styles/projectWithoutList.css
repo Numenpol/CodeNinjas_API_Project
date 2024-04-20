@@ -144,6 +144,10 @@ img.ChartIcon {
     display: flex;
     justify-content: flex-end;
   } 
+
+  .CreateProjectTHing {
+    margin-top: 0;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -151,10 +155,11 @@ img.ChartIcon {
     display: none;
   }
 
-  .project-list {
+  .project-without--list {
     display: flex;
     width: 100%;
     gap: 1.06rem;
+    height: 100vh;
   }
 
   .project-list--menu {

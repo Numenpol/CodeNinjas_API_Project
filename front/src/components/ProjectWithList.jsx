@@ -1,18 +1,16 @@
 import Popup from "reactjs-popup";
-import ProjectListPopUp from "./ProjectListPopUp";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-// import "../styles/projectWithoutList.css";
-import styles from "../styles/ProjectWithList.module.css";
+import Button from "react-bootstrap/esm/Button";
+import ProjectListPopUp from "./ProjectListPopUp";
 import ProjectList from "./ProjectList"
 import Dashboard from "./Dashboard"
-import Button from "react-bootstrap/esm/Button";
 import CreateProjectpopUp from "./CreateProjectpopUp";
+import styles from "../styles/ProjectWithList.module.css";
 
 function ProjectWithList({ projects, error }) {
 
   const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderIcon1, searchbarGroup, SearcbarProjectList, InputBoxCss, CreateProjectThing, createFirstProject, 
-    // CreatePopUp
    } = styles;
   return (
     <div className={projectList}>
@@ -94,12 +92,12 @@ function ProjectWithList({ projects, error }) {
                   border: "#3fadbe",
                   width: "299px",
                   height: "3.125rem",
-                  marginLeft: "30.5px",
+                  // marginLeft: "30.5px",
                   marginTop: "1rem",
                   marginBottom: "1rem"
                 }}
               >
-                Create Your first project
+                Create Your project
               </Button>
             }
             className="CreatePopUp"

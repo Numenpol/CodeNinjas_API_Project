@@ -19,7 +19,7 @@ function ProjectList({projects, error}) {
               {projects.map((project) => {
                 return (
                   <Project
-                    className="project-list"
+                    className="project-list--list"
                     project={project}
                     key={project._id}
                   />

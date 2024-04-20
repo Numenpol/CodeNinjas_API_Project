@@ -11,7 +11,7 @@ function Project({ project }) {
   }, []);
 
   return (
-    <tr className="project-list" title={description}>
+    <tr className="project-list--project" title={description}>
       <th className="project-icon">
         <img className="project-list-icon" src={icon} alt="" />
       </th>

@@ -1,114 +1,161 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .bob {
-    overflow: hidden;
+  overflow: hidden;
 }
 
-.project-list {
-    min-width: 360px;
-    /* max-width: 400px; */
+.project-list--project {
+  min-width: 360px;
+  /* border-bottom: 1px solid #565656; */
+  /* width: 90%; */
+  /* max-width: 400px; */
 }
 
 .project-list-icon {
-    display: flex;
-    justify-content: center;
-    margin-left: 1rem;
-    margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 1rem;
 }
 
 .project-name {
-    /* width: 100%; */
-    color: #565656;
-    font-family: Montserrat;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    /* overflow: hidden;
+  /* width: 100%; */
+  color: #565656;
+  /* font-family: Montserrat; */
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  /* overflow: hidden;
         height: 2rem; */
-    /* width: 100px; */
+  /* width: 100px; */
 }
 
 .project-status {
-    display: flex;
-    height: 1.1875rem;
-    justify-content: center;
-    flex-shrink: 0;
+  /* display: flex; */
+  height: 1.1875rem;
+  /* justify-content: center; */
+  flex-shrink: 0;
+  text-align: center;
 }
 
-
 .project-overall {
-    width: 5.375rem;
-    height: 1.13725rem;
-    flex-shrink: 0;
-    margin-left: 3rem;
-    color: #565656;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
+  width: 5.375rem;
+  height: 1.13725rem;
+  flex-shrink: 0;
+  margin-left: 3rem;
+  color: #565656;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
 }
 
 .project-list-status {
-    display: flex;
-    justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* text-align: center; */
+  /* width: 100%; */
 }
 
 .project-done {
-    color: #3FADBE;
-    border: 2px solid;
-    border-radius: 1rem;
-    width: 7rem;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
-    background-color: white;
-    height: 1.9rem;
-    margin-top: 0.6rem;
+  color: #3fadbe;
+  border: 2px solid;
+  border-radius: 1rem;
+  /* width: 7rem; */
+  width: 5.25rem;
+  text-align: center;
+  /* font-size: 1rem; */
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.2rem;
 }
 
-
-
 .project-inProgress {
-    color: #C0417F;
-    border: 2px solid;
-    border-radius: 1rem;
-    width: 7rem;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
-    background-color: white;
-    height: 1.9rem;
-    margin-top: 0.6rem;
+  color: #c0417f;
+  border: 2px solid;
+  border-radius: 1rem;
+  /* width: 7rem; */
+  width: 5.25rem;
+  text-align: center;
+  /* font-size: 1rem; */
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.2rem;
 }
 
 .project-onHold {
-    color: #979797;
-    border: 2px solid;
-    border-radius: 1rem;
-    width: 7rem;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
-    background-color: white;
-    height: 1.9rem;
-    margin-top: 0.6rem;
+  color: #979797;
+  border: 2px solid;
+  border-radius: 1rem;
+  /* width: 7rem; */
+  width: 5.25rem;
+  text-align: center;
+  /* font-size: 1rem; */
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.2rem;
 }
 
 .overall-box {
-    width: 5rem;
+  width: 5rem;
 }
 
 .overall-box {
-    margin-top: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 .bob {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
-    .project-list-status {
-        width: 15rem;
-    }
+  .project-list-status {
+    width: 15rem;
+  }
+
+  .project-list-icon {
+    width: 1.3125rem;
+    margin-left: 2rem;
+  }
+
+  .project-icon {
+    padding-left: 2rem;
+  }
+
+  .project-done,
+  .project-inProgress,
+  .project-onHold {
+    width: 6.6875rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .project-list-icon {
+    width: 1.5rem;
+    /* margin-left: 5rem; */
+  }
+
+  .project-name {
+    font-size: 1rem;
+  }
+
+  .project-done,
+  .project-inProgress,
+  .project-onHold {
+    width: 7.25rem;
+    height: 2.2745rem;
+    font-size: 1rem;
+  }
 }

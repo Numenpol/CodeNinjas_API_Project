@@ -6,7 +6,7 @@ import rocket from "../assets/rocket.svg"
 
 function CreateProjectpopUp() {
   return (
-    <>
+    <div className="create-project--popUp">
       <div className="PopUpInsides">
         <div className="create-close--button">
           <button className="create-project--close">
@@ -21,7 +21,7 @@ function CreateProjectpopUp() {
           <h1 className="RocketSlogan">Ready? Launch!</h1>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

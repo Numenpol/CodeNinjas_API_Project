@@ -5,35 +5,14 @@
 .CreatePopUp-content {
   margin-top: 16rem;
   width: 350px;
-  /* min-width: 350px;
-  max-width: 90%; */
   display: flex;
   justify-content: center;
-  /* margin: auto 0; */
-  /* margin-left: -20px; */
-  /* margin-left: -50px; */
-  /* height: 617px; */
-  /* width: 347px; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* margin-left: 0.5px; */
 }
-
-/* .PopUpInsides {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 360px;
-} */
-
-
 
 .create-close--button {
   text-align: end;
-  /* margin: 0.75rem 0.75rem 0; */
   padding: 0.75rem 0.75rem 0;
-  background-color: #F5F6FA;
-  ;
+  background-color: #f5f6fa;
   border-radius: 0.625rem 0.625rem 0 0;
 }
 
@@ -72,6 +51,7 @@
         height: 416px;
       } */
 
+
   /* .PopUpInsides {
         margin-left: -55%;
       } */
@@ -91,9 +71,13 @@
         height: 252px;
       } */
 
-      .CreatePopUp-content {
-        margin-top: 2rem;
-      }
+      /* .create-project--popUp {
+        margin-top: 30rem;
+      } */
+
+  .CreatePopUp-content {
+    margin-top: 2rem;
+  }
 
   .PopUpInsides {
     display: flex;
@@ -111,7 +95,7 @@
 
   .create-close--button {
     order: 1;
-    background-color: #FFF;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     border-radius: 0 10px 10px 0;
