@@ -4,6 +4,7 @@ import { login } from "./../utils/auth/authenticate";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from 'react-bootstrap';
 
+
 function LoginForm() {
 
     const [error, setError] = useState("");
@@ -19,7 +20,7 @@ function LoginForm() {
       async function onSubmit(values) {
         try {
           await login(values);
-          navigate("/profile");
+          navigate("/register");
         } catch (error) {
           setError(error.resposnse.data.message);
         }

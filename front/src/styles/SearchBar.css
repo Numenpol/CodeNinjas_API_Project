@@ -1,0 +1,57 @@
+.search-icon, .sliders {
+    width: 0.93788rem;
+    height: 0.93794rem;
+    opacity: 0.5;
+    margin-bottom: 5px;
+}
+
+.searchbar .form-control, .rounded {
+    background: #F5F6FA !important;
+}
+
+.searchbar .rounded {
+    border: 0.6px solid #D5D5D5 !important;
+}
+.form-control::placeholder {
+    color: #202224 !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    font-family: "Nunito Sans" !important;
+    opacity: 0.5 !important;
+}
+
+.searchbar .form-control:focus {
+    box-shadow: none !important;
+}
+
+.searchbar .input-group input{
+    padding-left: 0;
+}
+
+.modal-90w {
+  margin-right: 4rem !important;
+  width: 12.1875rem !important;
+  height: 5.5625rem !important;
+}
+
+.modal-title{
+  font-family: 'Inter' !important; 
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: #565656 !important;
+}
+
+.check-icon, .check-icon-empty{
+    color: #3FADBE !important;
+}
+
+@media screen and (max-width: 576px) {
+    .modal-90w {
+        margin-top: 2rem !important;
+        margin-left: 15rem !important;
+        width: 12.1875rem !important;
+        height: 5.5625rem !important;
+      }
+    
+}

@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+.CreatePopUp-content {
+  margin-top: 16rem;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+.create-close--button {
+  text-align: end;
+  padding: 0.75rem 0.75rem 0;
+  background-color: #f5f6fa;
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+
+.create-project--close {
+  margin-right: auto;
+  border: none;
+  background: none;
+}
+
+.RocketThing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.Rocket {
+  width: 8.0625rem;
+  height: 8.375rem;
+  margin: 1rem auto;
+}
+
+.RocketSlogan {
+  background: linear-gradient(90deg, #3fadbe 0%, #4067f6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  /* .CreatePopUp-content {
+        width: 750px;
+        height: 416px;
+      } */
+
+
+  /* .PopUpInsides {
+        margin-left: -55%;
+      } */
+  /* 
+      .RocketSlogan {
+        margin-left: 65px;
+      } */
+
+  /* .RocketThing {
+        position: absolute;
+        margin-top: -300px;
+        margin-left: 350px;
+      } */
+
+  /* .Rocket {
+        width: 242px;
+        height: 252px;
+      } */
+
+      /* .create-project--popUp {
+        margin-top: 30rem;
+      } */
+
+  .CreatePopUp-content {
+    margin-top: 2rem;
+  }
+
+  .PopUpInsides {
+    display: flex;
+    flex-direction: row;
+    /* width: 25.1875rem; */
+    /* flex-wrap: wrap; */
+    /* width: 750px; */
+  }
+
+  .CreatePopUp-content {
+    /* display: flex; */
+    /* flex-direction: row; */
+    width: 750px;
+  }
+
+  .create-close--button {
+    order: 1;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 10px 10px 0;
+    /* display: flex; */
+    /* justify-self: end; */
+    /* justify-self: flex-end; */
+    /* align-self: flex-end; */
+    /* margin: 0 auto !important; */
+  }
+
+  .create-project--close {
+    /* display: flex; */
+  }
+
+  .RocketThing {
+    margin: 4.12rem 2.8rem 3.44rem 4.2rem;
+  }
+
+  .Rocket {
+    width: 15.125rem;
+    height: 15.75rem;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .CreatePopUp-content {
+    /* margin-top: 2rem; */
+  }
+}

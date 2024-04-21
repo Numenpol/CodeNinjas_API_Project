@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+.Dashboard{
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.DashboardTopBoxes, .DashboardBottomBoxes {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.DashboardBox{
+    background-color: rgba(245,246,250,255);
+    min-width: 9.375rem;
+    height: 90px;
+    border-radius: 10px;
+}
+
+.CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+    width: 44px;
+    height: 42px;
+    display: inline-flex;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 8px;
+    display: inline-flex;
+    font-size: 12px;
+}
+
+.DashboardDone{
+    color: rgba(84,172,189,255);
+}
+
+.DashboardInProgress{
+    color: rgba(185,71,127,255);
+
+}
+
+.DashboardOnHold{
+    color: rgba(151,151,151,255);
+}
+
+.DashboardOverall{
+    color: rgba(82,139,214,255);
+}
+
+.DashboardNumber{
+    color: #565656;
+    text-align: center;
+    margin-left: -5px;
+    margin-top: -30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+@media screen and (min-width: 768px) {
+    
+    .Dashboard{
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .DashboardTopBoxes, .DashboardBottomBoxes {
+        gap: 1rem;
+    }
+
+    
+    .DashboardBox{
+        width: 180px;
+    }
+    
+    .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+        margin-left: 20px;
+    }
+    
+    .DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{ 
+        margin-left: 15px;
+        font-size: 14px;
+    }
+    
+    .DashboardNumber{
+        margin-left: 10px;
+    }
+
+}
+
+@media screen and (min-width: 1440px) { 
+.Dashboard {
+    margin-bottom: 2rem;
+}
+
+    .DashboardBox{
+        width: 240px;
+        height: 110px;
+    }
+
+    .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+        width: 74px;
+        height: 70px;
+    }
+    
+    .DashboardDone, .DashboardOnHold, .DashboardOverall{
+        margin-left: 20px;
+        margin-top: -80px;
+        font-size: 20px;
+    }
+
+    .DashboardInProgress {
+        margin-top: -80px;
+        font-size: 20px;
+    }
+    
+    .DashboardNumber{
+        margin-top: -53px;
+        font-size: 45px;
+    }
+
+}
+
+
+

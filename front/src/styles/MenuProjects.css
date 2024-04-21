@@ -1,0 +1,39 @@
+.myModal .modal-content {
+    width: 130px !important;
+}
+
+.myModal .modal-dialog {
+    margin-top: 18.5rem !important;
+    margin-left: 13rem !important;
+}
+
+.mySecondModal .modal-dialog {
+    
+}
+
+.mySecondModal .modal-content {
+   
+}
+
+.myDeleteModal .modal-footer {
+    justify-content: center !important;
+}
+
+.myDeleteModal .modal-body {
+    text-align: center !important;
+}
+
+.myDeleteModal .modal-content {
+    width: 22.875rem !important;
+}
+
+/* ----  edit icon --- */
+
+.editIcon {
+    width: 1rem;
+    height: 1rem;
+    color :#7a7e8133;
+    cursor: pointer;
+    background-color:  #D5D5D5;
+    margin-right: 1.6rem;
+}
