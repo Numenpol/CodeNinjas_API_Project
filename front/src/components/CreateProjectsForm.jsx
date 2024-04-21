@@ -7,13 +7,14 @@ import IconList from "../components/IconList";
 import "../styles/projectWithoutList.css";
 import "../styles/createProjectsForm.css"
 
-function CreateProjectForm() {
+function CreateProjectForm({setUpdate}) {
   const [error, setError] = useState("");
   const [icon, setIcon] = useState("")
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -22,9 +23,12 @@ function CreateProjectForm() {
     },
   });
 
+
   const formSubmitHandler = async (data) => {
     try {
       await postData({ ...data, icon: icon });
+      setUpdate((update) => update + 1);
+      reset();
     } catch (error) {
       console.log(error);
     }

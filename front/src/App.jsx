@@ -12,6 +12,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [projects, setProjects] = useState([]);
+  const [update, setUpdate] = useState(0);
   
   const fetchUserData = async () => {
     try {
@@ -34,14 +35,14 @@ function App() {
   useEffect(() => {
     fetchUserData();
     fetchData()
-  }, [])
+  }, [update])
 
   return (
     <>      
       <Routes>
         <Route index element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
-        <Route path="/projects" element={<ProjectPage projects={projects} error={error}/>}></Route>
+        <Route path="/projects" element={<ProjectPage setUpdate={setUpdate} projects={projects} error={error}/>}></Route>
         <Route path="*" element={<NotFoundPage/>}></Route>
       </Routes>
     </>
