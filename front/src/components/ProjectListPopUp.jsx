@@ -11,8 +11,7 @@ import plusSquareFillIcon from "../assets/plusSquareFillIcon.svg";
 import searchIcon from "../assets/searchIcon.svg";
 import houseIcon from "../assets/houseIcon.svg";
 
-function ProjectListPopUp({projects, setUpdate}) {
-
+function ProjectListPopUp() {
 
   return (
     <>
@@ -58,7 +57,7 @@ function ProjectListPopUp({projects, setUpdate}) {
             </div>
           </Popup>
         </div>
-            <MenuProjectList projects={projects} setUpdate={setUpdate}/>
+            <MenuProjectList/>
       </div>
     </>
   );

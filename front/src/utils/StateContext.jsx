@@ -1,12 +1,16 @@
 import { createContext, useState, useEffect } from 'react';
+import { getAllData } from '../services/get';
+import { getAllUsers } from '../services/get';
 
 export const StateContext = createContext();
 
-export const StateProvider = ({ child }) => {
+export const StateProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState("");
     const [projects, setProjects] = useState([]);
-    
+    const [icon, setIcon] = useState("")
+    const [update, setUpdate] = useState(0);
+
     const fetchUserData = async () => {
       try {
         const data = await getAllUsers();
@@ -28,9 +32,9 @@ export const StateProvider = ({ child }) => {
     useEffect(() => {
       fetchUserData();
       fetchData()
-    }, []);
+    }, [update]);
 
     return (
-        <StateContext.Provider value={{users, error, projects}}>{child}</StateContext.Provider>
+        <StateContext.Provider value={{users, error, projects, setUpdate, setIcon, icon}}>{children}</StateContext.Provider>
     );
 };

@@ -8,14 +8,14 @@ import Dashboard from "./Dashboard"
 import CreateProjectpopUp from "./CreateProjectpopUp";
 import styles from "../styles/ProjectWithList.module.css";
 
-function ProjectWithList({ projects, error }) {
+function ProjectWithList() {
 
   const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderIcon1, searchbarGroup, SearcbarProjectList, InputBoxCss, CreateProjectThing, createFirstProject, 
    } = styles;
   return (
     <div className={projectList}>
       <div className={ProjectListMenu}>
-        <ProjectListPopUp projects={projects}/>
+        <ProjectListPopUp/>
       </div>
       <div className={projectListCard}>
         <div className={ProjectThing}>
@@ -109,8 +109,7 @@ function ProjectWithList({ projects, error }) {
             </div>
           </Popup>
         </div>
-        
-        <ProjectList projects={projects} error={error} />
+        <ProjectList/>
       </div>
     </div>
   );

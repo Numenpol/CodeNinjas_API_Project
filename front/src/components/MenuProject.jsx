@@ -12,8 +12,12 @@ import { useForm } from "react-hook-form";
 import { postData } from "../services/post";
 import { updateData } from "../services/update";
 import { deleteData } from "../services/delete";
+import { StateContext } from "../utils/StateContext";
+import { useContext } from "react";
 
 function MenuProject({ project }) {
+  const { setUpdate } = useContext(StateContext)
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -58,6 +62,7 @@ function MenuProject({ project }) {
       } else {
         await postData({ ...data, icon: icon });
       }
+      setUpdate((update) => update + 1);
       reset();
       handleSmClose();
     } catch (error) {
@@ -68,6 +73,7 @@ function MenuProject({ project }) {
   const handleDelete = async (id) => {
     try {
       await deleteData(id);
+      setUpdate((update) => update + 1);
       handleClose();
     } catch (error) {
       console.log(error);

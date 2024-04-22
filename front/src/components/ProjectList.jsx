@@ -1,7 +1,11 @@
 import Project from "./Project";
 import "../styles/ProjectList.css";
+import { StateContext } from "../utils/StateContext";
+import { useContext } from "react";
 
-function ProjectList({projects, error}) {
+function ProjectList() {
+  const { projects, error } = useContext(StateContext);
+
   return (
     // <div>
       <div className="corner-gaps">

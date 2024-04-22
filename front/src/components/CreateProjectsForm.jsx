@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { postData } from "../services/post";
 import IconList from "../components/IconList";
 import "../styles/projectWithoutList.css";
 import "../styles/createProjectsForm.css"
+import { useContext } from "react";
+import { StateContext } from "../utils/StateContext";
 
-function CreateProjectForm({setUpdate}) {
-  const [error, setError] = useState("");
-  const [icon, setIcon] = useState("")
+function CreateProjectForm() {
+  const {setUpdate, icon} = useContext(StateContext)
 
   const {
     register,
@@ -63,7 +63,7 @@ function CreateProjectForm({setUpdate}) {
           </div>
           <div>
             <p className="create-choose--icon">Choose your project icon</p>
-            <IconList setIcon={setIcon} />
+            <IconList/>
           </div>
           <div>
             <Form.Group

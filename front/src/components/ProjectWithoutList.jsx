@@ -6,11 +6,12 @@ import Button from "react-bootstrap/Button";
 import CreateProjectpopUp from "./CreateProjectpopUp";
 import "../styles/projectWithoutList.css";
 
-function ProjectWithoutList({projects}) {
+function ProjectWithoutList() {
+
   return (
     <div className="project-without--list">
       <div className="project-list--menu">
-      <ProjectListPopUp  projects={projects}/>
+      <ProjectListPopUp/>
       </div>
       <div className="project-list--card">
         <div className="ProjectThing">
