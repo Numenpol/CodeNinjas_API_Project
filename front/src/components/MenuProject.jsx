@@ -32,7 +32,7 @@ function MenuProject({ project }) {
 
 
   const { projectName, icon } = project;
-  const { MenuProjectList, MenuProjectIcon, MenuProjectName } = styles;
+  const { MenuProjectList, MenuProjectIcon, MenuProjectName, MenuProjectListantras } = styles;
 
 
   const {
@@ -82,20 +82,20 @@ function MenuProject({ project }) {
 
   return (
     <>
-      <div className={MenuProjectList}>
+      <div className={`${MenuProjectList} ${MenuProjectListantras}`}>
         <div className={MenuProjectList}>
         <img src={icon} alt="icon" className={MenuProjectIcon} />
         <p className={MenuProjectName}>{projectName}</p>
         </div>
         <div>
-
         <DashSquare className="editIcon"
           onClick={handleShow}
         />
+
         </div>
         <Modal className="myModal" show={show} onHide={handleClose}>
-          <div>
-            <PencilSquare onClick={handleSmShow} /> Edit project
+        <div className="menu-edit" onClick={handleSmShow}>
+            <PencilSquare className="menu-pencilsquare" onClick={handleSmShow} /> Edit project
           </div>
           <Modal className="mySecondModal" show={smShow} onHide={handleSmClose}>
             <div className="create-project">
@@ -175,7 +175,9 @@ function MenuProject({ project }) {
             </div>
           </Modal>
           <div>
-            <Trash onClick={handleDelShow} /> Delete project
+          <div className="menu-edit" onClick={handleDelShow}>
+              <Trash className="menu-trash"  onClick={handleDelShow} /> Delete project
+            </div>
             <Modal
               className="myDeleteModal"
               show={delShow}

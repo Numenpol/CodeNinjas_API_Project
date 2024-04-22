@@ -1,5 +1,9 @@
 .myModal .modal-content {
-    width: 130px !important;
+    padding-left: 0.8rem;
+    padding-top: 0.4rem;
+    padding-right: 0.8rem;
+    width: 10rem !important;
+    height: 4rem !important;
 }
 
 .myModal .modal-dialog {
@@ -36,4 +40,18 @@
     cursor: pointer;
     background-color:  #D5D5D5;
     margin-right: 1.6rem;
+}
+
+.menu-trash, .menu-pencilsquare{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.menu-edit:hover, .menu-pencilsquare:hover{
+    background-color: #C7D7FA;
+    border-radius: 0.3rem;
+}
+
+.menu-edit, .menu-trash{
+    cursor: pointer;
 }

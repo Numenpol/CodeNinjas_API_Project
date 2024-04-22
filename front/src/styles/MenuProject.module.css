@@ -7,6 +7,12 @@
   justify-content: space-between;
 }
 
+.MenuProjectListantras:hover{
+  background-color: #C7D7FA;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 .MenuProjectIcon {
   width: 1.125rem;
   margin-left: 2rem;
