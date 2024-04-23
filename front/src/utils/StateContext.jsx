@@ -10,6 +10,10 @@ export const StateProvider = ({ children }) => {
     const [projects, setProjects] = useState([]);
     const [icon, setIcon] = useState("")
     const [update, setUpdate] = useState(0);
+    const [show, setShow] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+
+    const handleShow = () => setShow(true);
 
     const fetchUserData = async () => {
       try {
@@ -35,6 +39,9 @@ export const StateProvider = ({ children }) => {
     }, [update]);
 
     return (
-        <StateContext.Provider value={{users, error, projects, setUpdate, setIcon, icon}}>{children}</StateContext.Provider>
+        <StateContext.Provider value={{users, error, projects, setUpdate, setIcon, icon, show, setShow, 
+          showMenu, setShowMenu, handleShow}}>
+            {children}
+            </StateContext.Provider>
     );
 };

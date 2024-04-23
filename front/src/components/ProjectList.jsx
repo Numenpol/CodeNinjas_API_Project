@@ -29,7 +29,7 @@ function ProjectList() {
                   />
                 );
               })}
-              {error}{" "}
+              {error}{""}
             </tbody>
           {/* </div> */}
         </table>

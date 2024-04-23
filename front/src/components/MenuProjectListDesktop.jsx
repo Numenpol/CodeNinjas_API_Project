@@ -1,27 +1,31 @@
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import Popup from "reactjs-popup";
-import CreateProjectpopUp from "./CreateProjectpopUp";
-import "../styles/projectListPopUp.css";
-import MenuProjectList from "./MenuProjectList"
-import "../styles/projectWithoutList.css";
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useContext } from "react";
+import { StateContext } from "../utils/StateContext";
 import xIcon from "../assets/xIcon.svg";
 import folderPlusIcon from "../assets/folderPlusIcon.svg";
 import plusSquareFillIcon from "../assets/plusSquareFillIcon.svg";
 import searchIcon from "../assets/searchIcon.svg";
 import houseIcon from "../assets/houseIcon.svg";
+import "../styles/projectWithoutList.css";
+import "../styles/projectListPopUp.css";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import MenuProjectList from "./MenuProjectList"
 
-function ProjectListPopUp() {
+function MenuProjectListDesktop() {
+    const {setShowMenu, handleShow} = useContext(StateContext)
+
+  const handleClose = () => setShowMenu(false);
 
   return (
     <>
-      <div className="ProjectPopUp">
+        <div className="ProjectPopUp">
         <div className="home-icon">
           <div className="HouseIconText">
           <img src={houseIcon} alt="HouseIcon" className="HouseIcon"/>
             <span className="buttonthing">Home</span>
           </div>
-          <button className="closeButton">
+          <button className="closeButton" onClick={handleClose}>
           <img src={xIcon} alt="X" />
           </button>
         </div>
@@ -42,25 +46,16 @@ function ProjectListPopUp() {
             <img src={folderPlusIcon} alt="folderIcon" className="FolderIcon2"/>
             <p className="my-projects--text">My Projects</p>
           </div>
-          <Popup
-            trigger={
               <div className="PlusIcon">
-                <button className="AddProjectButton">
+                <button className="AddProjectButton" onClick={handleShow}>
                 <img src={plusSquareFillIcon} alt="squareIcon" />
                 </button>
               </div>
-            }
-            position="bottom left"
-          >
-            <div>
-              <CreateProjectpopUp/>
-            </div>
-          </Popup>
         </div>
-            <MenuProjectList/>
+        <MenuProjectList/>
       </div>
     </>
   );
 }
 
-export default ProjectListPopUp;
+export default MenuProjectListDesktop;

@@ -1,7 +1,4 @@
-import styles from "../styles/MenuProject.module.css";
 import "../styles/MenuProjects.css";
-import "../styles/projectWithoutList.css";
-import "../styles/createProjectsForm.css";
 import IconList from "../components/IconList";
 import { DashSquare, Trash, PencilSquare } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
@@ -32,8 +29,6 @@ function MenuProject({ project }) {
 
 
   const { projectName, icon } = project;
-  const { MenuProjectList, MenuProjectIcon, MenuProjectName, MenuProjectListantras } = styles;
-
 
   const {
     register,
@@ -82,10 +77,10 @@ function MenuProject({ project }) {
 
   return (
     <>
-      <div className={`${MenuProjectList} ${MenuProjectListantras}`}>
-        <div className={MenuProjectList}>
-        <img src={icon} alt="icon" className={MenuProjectIcon} />
-        <p className={MenuProjectName}>{projectName}</p>
+      <div className="MenuProjectList">
+        <div className="MenuProjectList">
+        <img src={icon} alt="icon" className="MenuProjectIcon" />
+        <p className="MenuProjectName">{projectName}</p>
         </div>
         <div>
         <DashSquare className="editIcon"
@@ -93,11 +88,11 @@ function MenuProject({ project }) {
         />
 
         </div>
-        <Modal className="myModal" show={show} onHide={handleClose}>
+        <Modal className="myModal" show={show} onHide={handleClose} backdropClassName="menuProjectModalBackDrop">
         <div className="menu-edit" onClick={handleSmShow}>
             <PencilSquare className="menu-pencilsquare" onClick={handleSmShow} /> Edit project
           </div>
-          <Modal className="mySecondModal" show={smShow} onHide={handleSmClose}>
+          <Modal className="mySecondModal" show={smShow} >
             <div className="create-project">
               <h1 className="H12">Edit your project</h1>
               <Form
@@ -181,7 +176,6 @@ function MenuProject({ project }) {
             <Modal
               className="myDeleteModal"
               show={delShow}
-              onHide={handleDelClose}
             >
               <Modal.Body>
                 Are You sure You want to delete this project?
