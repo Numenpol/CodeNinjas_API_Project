@@ -81,7 +81,7 @@
   border-left: none;
 }
 
-.CreateProjectTHing {
+.CreateProjectBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,7 +102,18 @@ img.ChartIcon {
   height: 140.148px;
 }
 
-.create-first--project:hover {
+.createFirstProjectButton{
+  background-color: #3fadbe;
+  color: white;  
+  border: #3fadbe;
+  height: 50px;
+  width: 299px;
+  margin-left: 30.5px;
+  margin-top: 40px;
+  border-radius: 5px;
+}
+
+.createFirstProjectButton:hover {
   background-color: #3593A2 !important;
 }
 
@@ -145,7 +156,7 @@ img.ChartIcon {
     justify-content: flex-end;
   } 
 
-  .CreateProjectTHing {
+  .CreateProjectBox {
     margin-top: 0;
   }
 }

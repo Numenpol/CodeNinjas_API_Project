@@ -65,12 +65,11 @@
     border-left: none;
   }
 
-  .CreateProjectThing {
+  .CreateProjectButtonPosition {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin-top: 9.69rem; */
   }
 
 #inputGroup-sizing-sm {
@@ -91,7 +90,18 @@
     opacity: 0.5;
 }
 
-.createFirstProject:hover {
+.createFirstProjectButton {
+  background-color: #3fadbe;
+  color: white;
+  border: #3fadbe;
+  border-radius: 5px;
+  width: 299px;
+  height: 3.125rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.createFirstProjectButton:hover {
   background-color: #3593A2 !important;
 }
 
@@ -116,7 +126,7 @@
         margin-left: 10px;
       }
 
-      .FolderIcon1 {
+      .FolderPlusIcon {
         width: 2.25rem;
         margin-right: 0.7rem;
       }
@@ -158,7 +168,7 @@
         width: 100%;
       }
 
-      .FolderIcon1 {
+      .FolderPlusIcon {
         width: 3.5rem;
       }
     

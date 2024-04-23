@@ -1,15 +1,17 @@
-import { useForm } from "react-hook-form";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { postData } from "../services/post";
-import IconList from "../components/IconList";
-import "../styles/projectWithoutList.css";
-import "../styles/createProjectsForm.css"
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
+import { useForm } from "react-hook-form";
+import Form from "react-bootstrap/Form";
+import { postData } from "../services/post";
+import IconList from "../components/IconList";
+import "../styles/createProjectForm.css"
+import xIcon from "../assets/xIcon.svg";
+import rocket from "../assets/rocket.svg";
 
 function CreateProjectForm() {
-  const {setUpdate, icon} = useContext(StateContext)
+  const {show, setShow, icon} = useContext(StateContext)
 
   const {
     register,
@@ -34,11 +36,24 @@ function CreateProjectForm() {
     }
   }
 
+  const handleClose = () => {
+    setShow(false)
+    reset();
+    };
 
-
+  
   return (
     <>
-      <div className="create-project">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <div className="create-project">
+        <button className="xIconButton" onClick={handleClose}>
+            <img src={xIcon} alt="xIcon" />
+        </button>    
         <h1 className="H12">Create a new project</h1>
         <Form onSubmit={handleSubmit(formSubmitHandler)} className="create-project--form">
           <div>
@@ -92,8 +107,9 @@ function CreateProjectForm() {
             <Button
               className="cancelBtn"
               variant="primary"
+              onClick={handleClose}
             >
-              <div className="cancelBtnContent">Cancel</div>
+              <div className="cancelBtnContent" >Cancel</div>
             </Button>
             <Button
               variant="primary"
@@ -105,7 +121,12 @@ function CreateProjectForm() {
             </Button>
           </div>
         </Form>
+        <div className="rocketPicture">
+        <img src={rocket} alt="rocketPicture" className="rocket"/>
+        <h1 className='rocketSlogan'>Ready? Launch!</h1>
+        </div>
       </div>
+      </Modal>
     </>
   );
 }

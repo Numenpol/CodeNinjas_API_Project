@@ -1,7 +1,7 @@
 import styles from "../styles/MenuProject.module.css";
 import "../styles/MenuProjects.css";
 import "../styles/projectWithoutList.css";
-import "../styles/createProjectsForm.css";
+import "../styles/createProjectForm.css";
 import IconList from "../components/IconList";
 import { DashSquare, Trash, PencilSquare } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";

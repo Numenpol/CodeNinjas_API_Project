@@ -116,6 +116,37 @@
 /* margin-left: 0.5px; */
 /* } */
 
+.xIconButton{
+    width: 35px;
+    height: 30px;
+    border: none;
+    background-color: #F5F6FA;
+    margin-left: 400px;
+}
+
+.rocketPicture{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.rocket{
+    width: 8.0625rem;
+    height: 8.375rem;
+    margin: 1rem auto;
+}
+
+.rocketSlogan{
+    background: linear-gradient(90deg, #3fadbe 0%, #4067f6 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
 @media screen and (min-width: 768px) {
     /* .CreateButtons {
         display: flex;
