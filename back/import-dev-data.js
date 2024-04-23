@@ -2,6 +2,7 @@ const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const Project = require("./models/projectModel");
+const projectTaskListModel = require("./models/projectTaskListModel");
 
 const dbURI = process.env.DATABASE_URL;
 
@@ -12,12 +13,12 @@ async function main() {
 
 main().catch((err) => console.log(err));
 
-const projects =
-  fs.readFileSync("./dev-data/projects.json", "utf-8");
+const tasks =
+  fs.readFileSync("./dev-data/tasks.json", "utf-8");
 
 const importData = async () => {
   try {
-    await Project.create(JSON.parse(projects));
+    await projectTaskListModel.create(JSON.parse(tasks));
     console.log("Data successfully loaded");
     process.exit();
   } catch (err) {
