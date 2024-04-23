@@ -1,16 +1,17 @@
 import Popup from "reactjs-popup";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+// import Form from "react-bootstrap/Form";
+// import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/esm/Button";
 import ProjectListPopUp from "./ProjectListPopUp";
 import ProjectList from "./ProjectList"
 import Dashboard from "./Dashboard"
 import CreateProjectpopUp from "./CreateProjectpopUp";
 import styles from "../styles/ProjectWithList.module.css";
+import SearchBar from "./SearchBar";
 
 function ProjectWithList() {
 
-  const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderIcon1, searchbarGroup, SearcbarProjectList, InputBoxCss, CreateProjectThing, createFirstProject, 
+  const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderIcon1, CreateProjectThing, createFirstProject, projectListSearchBar, 
    } = styles;
   return (
     <div className={projectList}>
@@ -56,7 +57,7 @@ function ProjectWithList() {
               </svg>
               <div className="MyProjectsText">My Projects</div>
             </div>
-            <div className={searchbarGroup}>
+            {/* <div className={searchbarGroup}>
               <InputGroup className={SearcbarProjectList}>
                 <InputGroup.Text id="inputGroup-sizing-sm">
                   <svg
@@ -77,6 +78,9 @@ function ProjectWithList() {
                   placeholder="Search"
                 />
               </InputGroup>
+            </div> */}
+             <div className={projectListSearchBar}>
+            <SearchBar />
             </div>
           </div>
         </div>

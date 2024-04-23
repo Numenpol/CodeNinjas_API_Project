@@ -6,26 +6,19 @@
   background: #f5f6fa;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  /* padding-left: 3rem; */
-  /* padding-right: 3rem; */
   min-width: 360px;
-  /* height: 100vh; */
   width: 100%;
-  /* width: 50%; */
-  /* padding-bottom: 3rem; */
-  /* padding-top: 2rem; */
-  /* border-spacing: 30px; */
-  /* overflow-x: auto; */
+  overflow-x: auto;
+  margin-top: 0.7rem;
 }
 
 .table-header {
   min-width: 360px;
-  /* padding-bottom: 1.12rem; */
-  /* width: 400px; */
 }
 
 .table-body {
-  /* width: 400px; */
+  border-left: #f5f6fa 20px solid;
+  border-right: #f5f6fa 20px solid;
 }
 
 .name {
@@ -35,9 +28,7 @@
   font-weight: 600;
   line-height: normal;
   overflow: hidden;
-  padding: 0.5rem 0 0.8rem;
-  /* min-width: 18rem; */
-  /* width: 100px; */
+  padding-top: 0.5rem;
 }
 
 .status{
@@ -47,57 +38,41 @@
   font-weight: 600;
   line-height: normal;
   text-align: start;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
   padding-left: 1rem;
 }
 
 .tasks {
-    color: #565656;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    text-align: center;
-    padding-bottom: 1rem;
+  color: #565656;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: start;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+    
   }
 
 .project-list--list {
   padding-left: 1rem;
-  /* padding-right: 1rem; */
   border-bottom: 1px solid #565656;
 }
 
 .corner-gaps {
-  /* padding-left: 1rem; */
-  /* padding-right: 1rem; */
-  /* width: 360px; */
-  /* min-width: 300px; */
   overflow-x: auto;
   background-color: #f5f6fa;
-  /* width: 100%; */
-  /* height: 100%; */
   padding-bottom: 3rem;
   border-radius: 0.625rem 0.625rem 0rem 0rem;
-  height: 100vh;
 }
 
 .project-list-box {
   padding-left: 1rem;
   padding-right: 1rem;
-  /* width: 360px; */
-
-  /* max-width: 400px; */
 }
 
-.bob {
-  overflow: hidden;
-}
-
-.project-title {
-  /* min-width: 360px; */
-  /* max-width: 400px; */
-  /* padding-bottom: 1.12rem; */
-  /* margin-bottom: 1.12rem; */
+.invinsible {
+  width: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -128,12 +103,9 @@
     margin: 0 1rem;
   }
 
-  .status {
-    padding-left: 2rem;
-  }
-
-  .invinsible {
-    width: 1rem;
+  .status, .tasks {
+    text-align: center;
+    padding-left: 0;
   }
 }
 
@@ -143,20 +115,17 @@
     padding-right: 7rem;
   }
 
-  .invinsible {
-    width: 1rem;
-    /* display: none; */
-    /* padding-left: 1rem; */
-  }
-
   .name, .tasks {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   .status {
-    font-size: 1.125rem;
-    padding-left: 1.5rem;
+    font-size: 1rem;
+    text-align: start;
+    padding-left: 2rem;
   }
 
-
+  .corner-gaps {
+    min-height: 72.5vh;
+  }
 }
