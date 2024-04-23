@@ -1,3 +1,31 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .MenuProjectList {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .MenuProjectList:hover{
+    background-color: #C7D7FA;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .MenuProjectIcon {
+    width: 1.125rem;
+    margin-left: 2rem;
+  }
+  
+  .MenuProjectName {
+    margin-bottom: 0;
+    margin-left: 0.81rem;
+    color: #565656;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
 .myModal .modal-content {
     padding-left: 0.8rem;
     padding-top: 0.4rem;
@@ -9,14 +37,6 @@
 .myModal .modal-dialog {
     margin-top: 18.5rem !important;
     margin-left: 13rem !important;
-}
-
-.mySecondModal .modal-dialog {
-    
-}
-
-.mySecondModal .modal-content {
-   
 }
 
 .myDeleteModal .modal-footer {
@@ -37,9 +57,12 @@
     width: 1rem;
     height: 1rem;
     color :#7a7e8133;
+    margin-right: 1.6rem;
+}
+
+.editIcon:hover{
     cursor: pointer;
     background-color:  #D5D5D5;
-    margin-right: 1.6rem;
 }
 
 .menu-trash, .menu-pencilsquare{

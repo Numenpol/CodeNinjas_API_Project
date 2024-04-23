@@ -12,15 +12,13 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import MenuProjectList from "./MenuProjectList"
 
-function MenuProjectListPopUp() {
-    const {showMenu, setShowMenu, handleShow} = useContext(StateContext)
+function MenuProjectListDesktop() {
+    const {setShowMenu, handleShow} = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
 
   return (
     <>
-      <Offcanvas show={showMenu} onHide={handleClose} backdrop={false}>
-        <Offcanvas.Body>
         <div className="ProjectPopUp">
         <div className="home-icon">
           <div className="HouseIconText">
@@ -56,10 +54,8 @@ function MenuProjectListPopUp() {
         </div>
         <MenuProjectList/>
       </div>
-        </Offcanvas.Body>
-      </Offcanvas>
     </>
   );
 }
 
-export default MenuProjectListPopUp;
+export default MenuProjectListDesktop;

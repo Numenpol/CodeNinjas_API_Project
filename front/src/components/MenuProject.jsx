@@ -1,7 +1,4 @@
-import styles from "../styles/MenuProject.module.css";
 import "../styles/MenuProjects.css";
-import "../styles/projectWithoutList.css";
-import "../styles/createProjectForm.css";
 import IconList from "../components/IconList";
 import { DashSquare, Trash, PencilSquare } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
@@ -32,8 +29,6 @@ function MenuProject({ project }) {
 
 
   const { projectName, icon } = project;
-  const { MenuProjectList, MenuProjectIcon, MenuProjectName, MenuProjectListantras } = styles;
-
 
   const {
     register,
@@ -82,10 +77,10 @@ function MenuProject({ project }) {
 
   return (
     <>
-      <div className={`${MenuProjectList} ${MenuProjectListantras}`}>
-        <div className={MenuProjectList}>
-        <img src={icon} alt="icon" className={MenuProjectIcon} />
-        <p className={MenuProjectName}>{projectName}</p>
+      <div className="MenuProjectList">
+        <div className="MenuProjectList">
+        <img src={icon} alt="icon" className="MenuProjectIcon" />
+        <p className="MenuProjectName">{projectName}</p>
         </div>
         <div>
         <DashSquare className="editIcon"

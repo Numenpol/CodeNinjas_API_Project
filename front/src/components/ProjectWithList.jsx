@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPopUp from "./MenuProjectListPopUp";
 import SearchBar from "./SearchBar";
+import MenuProjectListDesktop from "./MenuProjectListDesktop"
 
 function ProjectWithList() {
   const {setShowMenu, handleShow} = useContext(StateContext)
@@ -18,9 +19,8 @@ function ProjectWithList() {
     createFirstProjectButton,} = styles;
   return (
     <div className={projectList}>
-      {/* greiciausiai project list menu yra useless, kai kuriuos css klases nieko nedaro. */}
       <div className={ProjectListMenu}>
-
+      <MenuProjectListDesktop/>
       </div>          
       <div className={projectListCard}>
         <div className={ProjectThing}>
