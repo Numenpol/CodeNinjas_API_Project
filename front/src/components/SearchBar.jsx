@@ -15,7 +15,7 @@ function SearchBar() {
   return (
     <>
       <form className="searchbar" action="">
-        <div className="rounded border rounded-pill mb-5">
+        <div className="rounded border rounded-pill searchbar-div">
           <div className="input-group">
             <button id="button-addon" type="submit" className="btn">
               <Search className="search-icon" />
