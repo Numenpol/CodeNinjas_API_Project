@@ -88,11 +88,11 @@ function MenuProject({ project }) {
         />
 
         </div>
-        <Modal className="myModal" show={show} onHide={handleClose}>
+        <Modal className="myModal" show={show} onHide={handleClose} backdropClassName="menuProjectModalBackDrop">
         <div className="menu-edit" onClick={handleSmShow}>
             <PencilSquare className="menu-pencilsquare" onClick={handleSmShow} /> Edit project
           </div>
-          <Modal className="mySecondModal" show={smShow} onHide={handleSmClose}>
+          <Modal className="mySecondModal" show={smShow} >
             <div className="create-project">
               <h1 className="H12">Edit your project</h1>
               <Form
@@ -176,7 +176,6 @@ function MenuProject({ project }) {
             <Modal
               className="myDeleteModal"
               show={delShow}
-              onHide={handleDelClose}
             >
               <Modal.Body>
                 Are You sure You want to delete this project?

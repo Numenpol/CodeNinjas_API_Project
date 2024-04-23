@@ -6,7 +6,7 @@ import { StateContext } from "../utils/StateContext";
 
 function ProjectPage() {
     const {projects} = useContext(StateContext)
-    if (projects.length==0) {
+    if (projects.length==10) {
     return ( 
         <>
         <Header/>  

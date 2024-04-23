@@ -51,6 +51,10 @@
     width: 22.875rem !important;
 }
 
+.menuProjectModalBackDrop{
+    display: none;
+}
+
 /* ----  edit icon --- */
 
 .editIcon {

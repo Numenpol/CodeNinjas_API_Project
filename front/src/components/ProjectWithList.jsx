@@ -25,7 +25,6 @@ function ProjectWithList() {
       <div className={projectListCard}>
         <div className={ProjectThing}>
           <div className={ProjectListHeader}>
-
                 <button className={MenuThing} onClick={toggleShow}>
                   <img src={burgerIcon} alt="burgerIcon" />
                 </button>

@@ -12,10 +12,9 @@ import MenuProjectListPopUp from "./MenuProjectListPopUp";
 function ProjectWithoutList() {
   const {setShowMenu, handleShow} = useContext(StateContext)
 
-
   return (
     <div className="project-without--list">
-
+      {/* <MenuProjectListDesktop/> */}
       <div className="project-list--card">
         <div className="ProjectThing">
           <div className="ProjectListHeader">

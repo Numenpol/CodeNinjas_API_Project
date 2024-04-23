@@ -15,7 +15,7 @@ import MenuProjectList from "./MenuProjectList"
 function MenuProjectListPopUp() {
     const {showMenu, setShowMenu, handleShow} = useContext(StateContext)
 
-  const handleClose = () => setShowMenu(false);
+    const handleClose = () => setShowMenu(false);
 
   return (
     <>
