@@ -3,10 +3,26 @@
 }
 
 .create-project {
+    width: 21.6875rem;
+    height: 38.5625rem;
+    border-radius: 0.625rem 0.625rem 0.625rem 0.625rem;
     display: flex;
     flex-direction: column;
     padding: 0 3rem 1rem;
     background-color: #F5F6FA;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    
+    
+}
+.create-project-modal{
+    position: absolute;
+    z-index: 999;
+    top: 70px;
+    width: 21.6875rem;
+    height: 38.5625rem;
+    margin-left: 0.40625rem;
+    filter: drop-shadow(0px 8px 35px rgba(0, 0, 0, 0.16));
+
 }
 
 .create-project--form {
@@ -54,24 +70,20 @@
 }
 
 .H12 {
-    /* margin-top: 30px; */
+    margin-top: 2rem;
     font-size: 1.5rem;
     color: #565656;
     font-weight: 500;
     line-height: 1.25rem;
     margin-bottom: 1rem;
-    /* margin-top: 1rem; */
 }
 
 .CreateButtons {
-    /* display: flex;
-    justify-content: end;
-    margin-right: 15px;
-    margin-top: 10px; */
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
-    margin-top: 1rem
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .cancelBtn {
@@ -106,22 +118,15 @@
     background-color: #3593A2 !important;
 }
 
-/* .CreatePopUp-content {
-    margin-top: 170px; */
-/* margin-left: -50px; */
-/* height: 617px; */
-/* width: 347px; */
-/* display: flex; */
-/* justify-content: center; */
-/* margin-left: 0.5px; */
-/* } */
-
 .xIconButton{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
     width: 35px;
     height: 30px;
     border: none;
     background-color: #F5F6FA;
-    margin-left: 400px;
 }
 
 .rocketPicture{
@@ -146,21 +151,17 @@
     font-weight: 800;
     margin-bottom: 1rem;
 }
+.RocketThing{
+    background-color: white;
+    min-width:  21.6875rem;
+    margin-bottom: 10px;
+    margin-left: -48px;
+    border-radius: 0rem 0rem 0.625rem 0.625rem;
+}
 
 @media screen and (min-width: 768px) {
-    /* .CreateButtons {
-        display: flex;
-        justify-content: start;
-        margin-left: 4%;
-      } */
-
-      /* .CreatePopUp-content {
-        width: 750px;
-        height: 416px;
-      } */
 
       .create-project {
-        /* width: 21.69rem; */
         padding: 3rem 2.22rem 3rem 3.8rem;
         border-radius: 10px 0 0 10px;
       }
@@ -176,9 +177,8 @@
       .CreateButtons {
         margin-right: 1.8rem;
       }
+      .RocketThing{
 
-      /* .create-choose--icon {
-        margin-bottom: ;
-      } */
 
+      }
 }

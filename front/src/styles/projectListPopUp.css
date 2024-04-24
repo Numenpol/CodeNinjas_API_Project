@@ -3,11 +3,18 @@
 }
 
 .ProjectPopUp {
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    top: 125px;
+    box-shadow: 0px 8px 35px 0px rgba(0, 0, 0, 0.16);
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+.popup-content{
     min-width: 22.5rem;
     display: flex;
     flex-direction: column;
-    min-height: 15rem;
-    /* justify-content: center; */
 }
 
 .buttonthing {
@@ -15,11 +22,13 @@
 }
 
 .home-icon {
+
     border-bottom: 1px solid #d8d8d8;
     color: #565656;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.12rem;
+    margin-top: 27px;
     /* width: 100%; */
 }
 
@@ -48,16 +57,38 @@
 .closeButton {
     border: none;
     background: none;
-    margin-top: -3rem;
+    margin-top: -2rem;
+}
+.PopupHeader{
+    height: 300px;
+}
+.SearchPopUp{
+    background-color: #F5F6FA;
+    border: 0.6px solid #D5D5D5;
+    border-left: none;
+    height: 35px;
+    width: 297px;
+    
+}
+.SearchIcon{
+    border: 0.6px solid #D5D5D5;
+}
+#inputGroup-sizing-sm{
+    background-color: #F5F6FA;
+}
+
+.Searchicon{
+    margin-left: 10px;
+    margin-top: 7px;
+    margin-right: 10px;
+}
+.PlusIcon{
+    display: flex;
+    justify-content: end;
 }
 
 .SearchThing {
-    /* margin-left: 5px; */
-    /* width: 340px; */
-    /* text-align: center; */
-    /* justify-self: center; */
-    /* border-radius: 1.1875rem; */
-    margin: 0 1rem;
+    margin-left: 10px;
 }
 
 .SearchThing input {
@@ -75,9 +106,10 @@
     opacity: 0.5;
 }
 
+
 .popup-content {
-    border-radius: 10px;
-    margin-left: -16px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     box-shadow: 2px 1px 20px #a5a4a4;
     background-color: #ffffff;
 }
@@ -87,8 +119,8 @@
     width: 1.55606rem;
     height: 1.5rem;
     margin-right: 0.65rem;
-    /* margin: 1rem; */
-    /* margin-bottom: 64px; */
+    margin-top: 10px;
+    margin-left:-3px;
 }
 
 .ProjectPopUp {
@@ -105,43 +137,26 @@
     margin: 0.5rem 1.23rem;
 }
 
-/* .PlusIcon {
-    display: flex;
-    border: none;
-    width: 50px;
-    height: 50px;
-  }
-  
-  .AddProjectButton {
-    border: none;
-    background: none;
-    color: #3fadbe;
-    display: flex;
-    margin-left: 200px;
-  } */
-
 .menu-my--projects {
     display: flex;
 }
 
-/* .PlusIcon {
-    border: none;
-    width: 50px;
-    width: 1.42638rem
-    color: #202224;
-} */
-
 .AddProjectButton {
+    display: flex;
+    justify-content: end;
+margin-top: 1rem;
     border: none;
     background: none;
     color: #3fadbe;
     display: flex;
+    width: 5rem;
 }
 
 .my-projects--text {
     color: #7A7E81;
     font-size: 1rem;
     font-weight: 700;
+    margin-top: 10px;
 }
 
 .AddProjectButton:hover {
@@ -149,27 +164,17 @@
 }
 
 @media screen and (min-width: 768px) {
-    /* .popup-content {
-        width: 248px;
-        height: 391px;
-      }
+    .ProjectPopUp{
+        width: 15.5rem;
+    }
+    .popup-content{
+        min-width: 15.5rem;
+        min-height: 25rem;
+    }
+    .SearchPopUp{
+        width:11.75rem;
+    }
 
-      .buttonthing {
-        width: 248px;
-      }
-
-      .SearchThing {
-        margin-left: 10px;
-        width: 220px;
-      }
-
-      .FolderTextThing {
-        margin-left: 10px;
-      } */
-
-      .ProjectPopUp {
-        min-height: 20rem;
-      }
 }
 
 @media screen and (min-width: 1440px) {
