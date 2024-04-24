@@ -9,9 +9,11 @@ import IconList from "../components/IconList";
 import "../styles/createProjectForm.css"
 import xIcon from "../assets/xIcon.svg";
 import rocket from "../assets/rocket.svg";
+import { useState } from 'react';
 
 function CreateProjectForm() {
-  const {show, setShow, icon} = useContext(StateContext)
+  const {show, setShow, icon, setUpdate, setIcon} = useContext(StateContext)
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -28,11 +30,25 @@ function CreateProjectForm() {
 
   const formSubmitHandler = async (data) => {
     try {
+      if (icon == "") {
+        setIcon("icons/projectIcon1.svg");
+      }
       await postData({ ...data, icon: icon });
       setUpdate((update) => update + 1);
       reset();
+      handleClose();
     } catch (error) {
       console.log(error);
+      if (error.message == "Request failed with status code 400") {
+        setError("A project with this name already exists");
+        setTimeout(() => {
+        setError("");
+        }, 2500)
+      } else 
+      setError(error.message);
+      setTimeout(() => {
+      setError("");
+      }, 2500)
     }
   }
 
@@ -71,6 +87,7 @@ function CreateProjectForm() {
                 })}
                 isInvalid={errors.projectName}
               />
+                <div className='createProjectFormError'>{error}</div>
               <Form.Control.Feedback type="invalid">
                 {errors.projectName && errors.projectName.message}
               </Form.Control.Feedback>

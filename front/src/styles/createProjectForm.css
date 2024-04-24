@@ -147,6 +147,10 @@
     margin-bottom: 1rem;
 }
 
+.createProjectFormError{
+    color: rgba(209, 61, 72, 1);
+}
+
 @media screen and (min-width: 768px) {
     /* .CreateButtons {
         display: flex;

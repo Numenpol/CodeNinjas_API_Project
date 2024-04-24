@@ -70,6 +70,7 @@ function MenuProject({ project }) {
       await deleteData(id);
       setUpdate((update) => update + 1);
       handleClose();
+      handleDelClose();
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +91,7 @@ function MenuProject({ project }) {
         </div>
         <Modal className="myModal" show={show} onHide={handleClose} backdropClassName="menuProjectModalBackDrop">
         <div className="menu-edit" onClick={handleSmShow}>
-            <PencilSquare className="menu-pencilsquare" onClick={handleSmShow} /> Edit project
+            <PencilSquare className="menu-pencilsquare" /> Edit project
           </div>
           <Modal className="mySecondModal" show={smShow} >
             <div className="create-project">
@@ -171,7 +172,7 @@ function MenuProject({ project }) {
           </Modal>
           <div>
           <div className="menu-edit" onClick={handleDelShow}>
-              <Trash className="menu-trash"  onClick={handleDelShow} /> Delete project
+              <Trash className="menu-trash" /> Delete project
             </div>
             <Modal
               className="myDeleteModal"
