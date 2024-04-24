@@ -173,7 +173,7 @@ function MenuProject({ project }) {
                     disabled={isSubmitting}
                   >
                     <div className="createBtnContent">
-                      Create
+                      Edit
                     </div>
                   </Button>
                 </div>
