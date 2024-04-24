@@ -10,6 +10,8 @@ function TaskList() {
     const { taskList, taskListMenu, taskListCard, taskListHeader, taskListHeaderTop, taskListMenuButton, taskListStatus, taskListAddMember, taskListNameIcon, taskListProjectIcon, taskListProjectName, taskListHeaderBottom, taskListNewTask, taskListSearch
     } = styles;
 
+
+
     return (
         <div className={taskList}>
             <div className={taskListMenu}>
