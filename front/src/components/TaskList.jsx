@@ -5,6 +5,7 @@ import ProjectListPopUp from "./ProjectListPopUp";
 import SearchBar from "./SearchBar";
 
 import styles from "../styles/TaskList.module.css";
+import TaskListTable from "./TaskListTable";
 
 function TaskList() {
 
@@ -72,6 +73,7 @@ function TaskList() {
                     </div>
                 </div>
             </div>
+            <TaskListTable />
         </div>
     );
 }

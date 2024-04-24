@@ -1,0 +1,56 @@
+@media screen and (min-width: 1440px) {
+
+    Table {
+        border-color: rgba(229, 229, 229, 255);
+    }
+
+    .table tr th {
+        background-color: rgba(245, 246, 250, 255);
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .tasks-key {
+        width: 3.1875rem;
+        height: auto;
+        text-align: center;
+    }
+
+    .task {
+        width: 33.625rem;
+        text-align: center;
+    }
+
+    .owner {
+        width: 3.5rem;
+        text-align: center;
+    }
+
+    .tasks-status {
+        width: 6rem;
+        text-align: center;
+    }
+
+    .priority {
+        width: 5.25rem;
+        text-align: center;
+    }
+
+    .timeline {
+        width: 17.5rem;
+        text-align: center;
+    }
+
+    .creation-date {
+        width: 8rem;
+        text-align: center;
+    }
+
+    .completion-date {
+        width: 9rem;
+        text-align: center;
+    }
+
+}
