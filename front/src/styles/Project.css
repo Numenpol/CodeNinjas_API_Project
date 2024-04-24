@@ -8,9 +8,7 @@
 
 .project-list--project {
   min-width: 360px;
-  /* border-bottom: 1px solid #565656; */
-  /* width: 90%; */
-  /* max-width: 400px; */
+  border-bottom: 1px solid #565656 ;
 }
 
 .project-list-icon {
@@ -22,21 +20,15 @@
 }
 
 .project-name {
-  /* width: 100%; */
+  width: 100%;
   color: #565656;
-  /* font-family: Montserrat; */
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
-  /* overflow: hidden;
-        height: 2rem; */
-  /* width: 100px; */
 }
 
 .project-status {
-  /* display: flex; */
   height: 1.1875rem;
-  /* justify-content: center; */
   flex-shrink: 0;
   text-align: center;
 }
@@ -53,20 +45,16 @@
 }
 
 .project-list-status {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* text-align: center; */
-  /* width: 100%; */
+  justify-content: end;
+  vertical-align: middle;
 }
 
 .project-done {
   color: #3fadbe;
   border: 2px solid;
   border-radius: 1rem;
-  /* width: 7rem; */
   width: 5.25rem;
   text-align: center;
-  /* font-size: 1rem; */
   font-size: 0.75rem;
   font-weight: 700;
   background-color: white;
@@ -79,10 +67,8 @@
   color: #c0417f;
   border: 2px solid;
   border-radius: 1rem;
-  /* width: 7rem; */
   width: 5.25rem;
   text-align: center;
-  /* font-size: 1rem; */
   font-size: 0.75rem;
   font-weight: 700;
   background-color: white;
@@ -95,10 +81,8 @@
   color: #979797;
   border: 2px solid;
   border-radius: 1rem;
-  /* width: 7rem; */
   width: 5.25rem;
   text-align: center;
-  /* font-size: 1rem; */
   font-size: 0.75rem;
   font-weight: 700;
   background-color: white;
@@ -122,6 +106,7 @@
 @media (min-width: 768px) {
   .project-list-status {
     width: 15rem;
+    justify-content: center;
   }
 
   .project-list-icon {
@@ -129,9 +114,6 @@
     margin-left: 2rem;
   }
 
-  .project-icon {
-    padding-left: 2rem;
-  }
 
   .project-done,
   .project-inProgress,
@@ -144,11 +126,11 @@
 @media (min-width: 1440px) {
   .project-list-icon {
     width: 1.5rem;
-    /* margin-left: 5rem; */
   }
 
   .project-name {
     font-size: 1rem;
+    width: 80%;
   }
 
   .project-done,
@@ -157,5 +139,9 @@
     width: 7.25rem;
     height: 2.2745rem;
     font-size: 1rem;
+  }
+
+  .project-list-status {
+    justify-content: start;
   }
 }

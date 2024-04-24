@@ -18,16 +18,21 @@ const projectSchema = new mongoose.Schema({
     trim: true,
   },
   status: {
-      type: String,
-      enum: ["on hold", "in progress", "done"],
-      default: "on hold",
+    type: String,
+    enum: ["on hold", "in progress", "done"],
+    default: "on hold",
   },
   overall: {
     type: Number,
     default: 0,
-  }
+  },
+  tasks: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "ProjectTaskList",
+    },
+  ],
 });
-
 
 const Project = mongoose.model("Project", projectSchema);
 

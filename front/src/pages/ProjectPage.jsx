@@ -5,21 +5,21 @@ import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 
 function ProjectPage() {
-    const {projects} = useContext(StateContext)
-    if (projects.length==0) {
-    return ( 
-        <>
-        <Header/>  
-        <ProjectWithoutList/>
-        </>
-     );        
-    } else {
-        return ( 
+    const { projects } = useContext(StateContext)
+    if (projects.length == 0) {
+        return (
             <>
-            <Header/>  
-            <ProjectWithList/>
+                <Header />
+                <ProjectWithoutList />
             </>
-         );      
+        );
+    } else {
+        return (
+            <>
+                <Header />
+                <ProjectWithList />
+            </>
+        );
     }
 
 }
