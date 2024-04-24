@@ -159,6 +159,10 @@
     border-radius: 0rem 0rem 0.625rem 0.625rem;
 }
 
+.createProjectFormError{
+    color: rgba(209, 61, 72, 1);
+}
+
 @media screen and (min-width: 768px) {
 
       .create-project {

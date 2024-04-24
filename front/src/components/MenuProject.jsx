@@ -27,6 +27,9 @@ function MenuProject({ project }) {
   const handleDelClose = () => setDelShow(false);
   const handleDelShow = () => setDelShow(true);
 
+  const handleSmAllClose = () => {handleSmShow(), handleClose()};
+  const handleDelAllClose = () => {handleDelShow(), handleClose()};
+
 
   const { projectName, icon } = project;
 
@@ -60,6 +63,7 @@ function MenuProject({ project }) {
       setUpdate((update) => update + 1);
       reset();
       handleSmClose();
+      handleClose();
     } catch (error) {
       console.log(error);
     }
@@ -70,6 +74,7 @@ function MenuProject({ project }) {
       await deleteData(id);
       setUpdate((update) => update + 1);
       handleClose();
+      handleDelClose();
     } catch (error) {
       console.log(error);
     }
@@ -89,9 +94,15 @@ function MenuProject({ project }) {
 
         </div>
         <Modal className="myModal" show={show} onHide={handleClose} backdropClassName="menuProjectModalBackDrop">
-        <div className="menu-edit" onClick={handleSmShow}>
-            <PencilSquare className="menu-pencilsquare" onClick={handleSmShow} /> Edit project
+        <div className="menu-edit" onClick={handleSmAllClose} >
+            <PencilSquare className="menu-pencilsquare" /> Edit project
           </div>
+
+          <div className="menu-edit" onClick={handleDelAllClose}>
+              <Trash className="menu-trash" /> Delete project
+            </div>
+        </Modal>
+
           <Modal className="mySecondModal" show={smShow} >
             <div className="create-project">
               <h1 className="H12">Edit your project</h1>
@@ -162,17 +173,15 @@ function MenuProject({ project }) {
                     disabled={isSubmitting}
                   >
                     <div className="createBtnContent">
-                      Create
+                      Edit
                     </div>
                   </Button>
                 </div>
               </Form>
             </div>
           </Modal>
-          <div>
-          <div className="menu-edit" onClick={handleDelShow}>
-              <Trash className="menu-trash"  onClick={handleDelShow} /> Delete project
-            </div>
+
+
             <Modal
               className="myDeleteModal"
               show={delShow}
@@ -189,9 +198,9 @@ function MenuProject({ project }) {
                 </Button>
               </Modal.Footer>
             </Modal>
+
+
           </div>
-        </Modal>
-      </div>
     </>
   );
 }
