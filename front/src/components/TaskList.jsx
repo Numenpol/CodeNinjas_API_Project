@@ -1,9 +1,7 @@
 import Popup from "reactjs-popup";
 import Button from "react-bootstrap/esm/Button";
-
-import ProjectListPopUp from "./ProjectListPopUp";
+import MenuProjectListPopUp from "./MenuProjectListPopUp";
 import SearchBar from "./SearchBar";
-
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
 
@@ -15,7 +13,7 @@ function TaskList() {
     return (
         <div className={taskList}>
             <div className={taskListMenu}>
-                <ProjectListPopUp />
+                <MenuProjectListPopUp />
             </div>
             <div className={taskListCard}>
                 <div className={taskListHeader}>
@@ -41,7 +39,7 @@ function TaskList() {
                             position="bottom left"
                         >
                             <div>
-                                <ProjectListPopUp />
+                                <MenuProjectListPopUp />
                             </div>
                         </Popup>
                         <p className={taskListStatus}>STATUS</p>
