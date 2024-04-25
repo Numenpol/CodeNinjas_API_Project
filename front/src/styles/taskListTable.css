@@ -4,14 +4,14 @@ Table {
     overflow-x: scroll !important;
     margin-top: 1rem;
 }
-
+/* 
 th:nth-child(n+4) {
     display: none !important;
 }
 
 td:nth-child(n+4) {
     display: none !important;
-}
+} */
 
 
     

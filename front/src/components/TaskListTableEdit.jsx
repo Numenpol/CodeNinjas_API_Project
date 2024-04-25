@@ -16,6 +16,10 @@ function TaskListTable() {
   const {
     register,
     handleSubmit,
+    reset,
+    setValue,
+    control,
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
       key: "",
@@ -31,7 +35,8 @@ function TaskListTable() {
 
   const formSubmitHandler = async (data) => {
     try {
-      await postDataTask(data);
+      await postDataTask({ ...data });
+      reset();
     } catch (error) {
       console.log(error);
     }
@@ -53,18 +58,16 @@ function TaskListTable() {
           </tr>
         </thead>
         <tbody>
-          <form onSubmit={handleSubmit(formSubmitHandler)}>
-            <tr>
-              <td><input id="key" name="key" type="text" {...register("key")} /></td>
-              <td><input id="task" name="task" type="text" {...register("task")} /></td>
-              <td><input id="owner" name="owner" type="text" {...register("owner")} /></td>
-              <td><input id="status" name="status" type="text" {...register("status")} /></td>
-              <td><input id="priority" name="priority" type="text" {...register("priority")} /></td>
-              <td><input id="timeline" name="timeline" type="text" {...register("timeline")} /></td>
-              <td><input id="creationdate" name="creationdate" type="text" {...register("creationdate")} /></td>
-              <td><input id="completiondate" name="completiondate" type="text" {...register("completiondate")} /></td>
-            </tr>
-          </form>
+          <tr onSubmit={handleSubmit(formSubmitHandler)}>
+            <td {...register("key")}>1</td>
+            <td {...register("task")}>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </Table>
       <button type="submit">New task</button>
