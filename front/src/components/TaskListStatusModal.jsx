@@ -14,8 +14,8 @@ function TaskListStatusModal({ show, handleClose }) {
           </thead>
           <tbody>
             <tr>
-              <td>Labas</td>
-              <td>Vakaras</td>
+              <td>To do</td>
+              <td>Low</td>
             </tr>
           </tbody>
           <thead>
