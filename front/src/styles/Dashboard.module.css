@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.Dashboard{
+.dashboard {
     min-width: 350px;
     display: flex;
     flex-direction: column;
@@ -11,20 +11,24 @@
     align-items: center;
 }
 
-.DashboardTopBoxes, .DashboardBottomBoxes {
+.dashboardTopBoxes,
+.dashboardBottomBoxes {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
-.DashboardBox{
-    background-color: rgba(245,246,250,255);
+.dashboardBox {
+    background-color: #F5F6FA;
     min-width: 9.375rem;
     height: 90px;
     border-radius: 10px;
 }
 
-.CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+.checkmarkIcon,
+.penandpaperIcon,
+.calendarIcon,
+.statisticIcon {
     width: 44px;
     height: 42px;
     display: inline-flex;
@@ -32,7 +36,10 @@
     margin-left: 15px;
 }
 
-.DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{
+.dashboardDone,
+.dashboardInProgress,
+.dashboardOnHold,
+.dashboardOverall {
     text-transform: uppercase;
     font-weight: 700;
     margin-left: 8px;
@@ -40,24 +47,23 @@
     font-size: 12px;
 }
 
-.DashboardDone{
-    color: rgba(84,172,189,255);
+.dashboardDone {
+    color: #3FADBE;
 }
 
-.DashboardInProgress{
-    color: rgba(185,71,127,255);
-
+.dashboardInProgress {
+    color: #C0417F;
 }
 
-.DashboardOnHold{
-    color: rgba(151,151,151,255);
+.dashboardOnHold {
+    color: #979797;
 }
 
-.DashboardOverall{
-    color: rgba(82,139,214,255);
+.dashboardOverall {
+    color: #408CD9;
 }
 
-.DashboardNumber{
+.dashboardNumber {
     color: #565656;
     text-align: center;
     margin-left: -5px;
@@ -66,71 +72,75 @@
     font-weight: 700;
 }
 
-
 @media screen and (min-width: 768px) {
-    
-    .Dashboard{
+    .dashboard {
         flex-direction: row;
         justify-content: center;
         margin-top: 1rem;
     }
 
-    .DashboardTopBoxes, .DashboardBottomBoxes {
+    .dashboardTopBoxes,
+    .dashboardBottomBoxes {
         gap: 1rem;
     }
 
-    
-    .DashboardBox{
+    .dashboardBox {
         width: 180px;
     }
-    
-    .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+
+    .checkmarkIcon,
+    .penandpaperIcon,
+    .calendarIcon,
+    .statisticIcon {
         margin-left: 20px;
     }
-    
-    .DashboardDone, .DashboardInProgress, .DashboardOnHold, .DashboardOverall{ 
+
+    .dashboardDone,
+    .dashboardInProgress,
+    .dashboardOnHold,
+    .dashboardOverall {
         margin-left: 15px;
         font-size: 14px;
     }
-    
-    .DashboardNumber{
+
+    .dashboardNumber {
         margin-left: 10px;
     }
-
 }
 
-@media screen and (min-width: 1440px) { 
-.Dashboard {
-    margin-bottom: 2rem;
-}
+@media screen and (min-width: 1440px) {
+    .dashboard {
+        margin-bottom: 2rem;
+    }
 
-    .DashboardBox{
-        width: 16.1rem;
+    .dashboardBox {
+        width: 15.5rem;
         height: 110px;
     }
 
-    .CalendarIcon, .CheckmarkIcon, .PenandpaperIcon, .StatisticIcon{
+    .checkmarkIcon,
+    .penandpaperIcon,
+    .calendarIcon,
+    .statisticIcon {
         width: 74px;
         height: 70px;
     }
-    
-    .DashboardDone, .DashboardOnHold, .DashboardOverall{
+
+    .dashboardDone,
+    .dashboardOnHold,
+    .dashboardOverall {
         margin-left: 20px;
         margin-top: -80px;
         font-size: 20px;
     }
 
-    .DashboardInProgress {
+    .dashboardInProgress {
         margin-top: -80px;
         font-size: 20px;
     }
-    
-    .DashboardNumber{
+
+  .dashboardNumber {
         margin-top: -53px;
         font-size: 45px;
     }
-
 }
-
-
-

@@ -133,6 +133,11 @@ img.ChartIcon {
   }
 
   .FolderText {
+    /* justify-content: flex-start; */
+    /* margin-right: 3rem; */
+    /* left: 50px; */
+    /* width: 5rem; */
+    /* margin-left: -13rem; */
     margin-top: 0;
     margin-bottom: 0;
     font-size: 1.375rem;
@@ -162,6 +167,10 @@ img.ChartIcon {
 }
 
 @media screen and (min-width: 1440px) {
+.ProjectListHeader {
+  justify-content: start;
+}
+
   .MenuThing {
     display: none;
   }
@@ -190,6 +199,8 @@ img.ChartIcon {
 
   .FolderText {
     font-size: 1.875rem;
+    /* justify-content: start; */
+    /* text-align: left; */
   }
 
   .searchbar-group {
