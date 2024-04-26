@@ -4,7 +4,7 @@ const projectTaskListSchema = new mongoose.Schema({
   key: {
     type: String,
   },
-  task: {
+  taskname: {
     type: String,
     required: [true, "Please enter project name"],
     unique: true,
@@ -18,13 +18,13 @@ const projectTaskListSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["To do", "In progress", "Done"],
-    default: "To do",
+    // enum: ["To do", "In progress", "Done"],
+    // default: "To do",
   },
   priority: {
     type: String,
-    enum: ["Low", "Medium", "High"],
-    default: "Low",
+    // enum: ["Low", "Medium", "High"],
+    // default: "Low",
   },
   timeline: {
     type: Date,

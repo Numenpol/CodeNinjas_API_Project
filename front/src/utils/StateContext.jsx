@@ -34,8 +34,6 @@ export const StateProvider = ({ children }) => {
         setError(error.message);
       }
     }
-
-    console.log(tasks);
   
     const fetchData = async () => {
       try {
@@ -53,7 +51,7 @@ export const StateProvider = ({ children }) => {
     }, [update]);
 
     return (
-        <StateContext.Provider value={{users, error, projects, setUpdate, setIcon, icon, show, setShow, 
+        <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
           showMenu, setShowMenu, handleShow}}>
             {children}
             </StateContext.Provider>
