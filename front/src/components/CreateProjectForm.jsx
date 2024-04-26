@@ -27,7 +27,6 @@ function CreateProjectForm() {
     },
   });
 
-
   const formSubmitHandler = async (data) => {
     try {
       if (icon == "") {
@@ -50,10 +49,10 @@ function CreateProjectForm() {
         setError("");
       }, 2500)
     }
-  }
+  };
 
   const handleClose = () => {
-    setShow(false)
+    setShow(false);
     reset();
   };
 
@@ -64,7 +63,6 @@ function CreateProjectForm() {
       <Modal
         show={show}
         onHide={handleClose}
-        backdrop="static"
         keyboard={false}
         dialogClassName={modalDialog}
       >

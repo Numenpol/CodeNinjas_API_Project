@@ -1,4 +1,4 @@
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import Offcanvas from "react-bootstrap/Offcanvas";
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import xIcon from "../assets/xIcon.svg";
