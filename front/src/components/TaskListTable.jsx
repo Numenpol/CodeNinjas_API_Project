@@ -38,12 +38,7 @@ function TaskListTable() {
       completiondate: new Date()
     },
   });
-  // useEffect(() => {
-  //   if(task) {
-  //     setValue("ta", task.task);
-  //   }
-  // }, [task]);
- 
+
  
 
   const formSubmitHandler = async (data) => {
@@ -51,6 +46,16 @@ function TaskListTable() {
       await postDataTask(data);
       setUpdate((update) => update + 1);
       reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdate = async (id, newTask) => {
+    try {
+      const data = { task: newTask }; 
+      await updateDataTask(id, data);
+      setUpdate((update) => update + 1); 
     } catch (error) {
       console.log(error);
     }
@@ -160,6 +165,7 @@ function TaskListTable() {
                     type="text"
                     defaultValue={task.task}
                     {...register(`task-${index}`)}
+                    onChange={(e) => handleUpdate(task._id, e.target.value)}
                   />
                   <PencilSquare />
                 </td>

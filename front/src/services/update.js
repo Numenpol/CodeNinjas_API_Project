@@ -14,5 +14,3 @@ export const updateData = async (id, data) => {
     const response = await axios.patch(`${API_URLT}/${id}`, data);
     return response.data;
   }
-
-  console.log(updateDataTask);
