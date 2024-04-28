@@ -2,7 +2,7 @@ const Project = require("../models/projectModel");
 const Task = require("../models/projectTaskListModel");
 
 
-exports.getTaskList = async (req, res) => {
+exports.getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
     res.status(200).json({
@@ -15,6 +15,23 @@ exports.getTaskList = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       status: "error",
+      message: err.message,
+    });
+  }
+};
+
+exports.getTasks = async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    res.status(200).json({
+      status: "success",
+      data: {
+        task,
+      },
+    })
+}catch (err) {
+    res.status(404).json({
+      status: "fail",
       message: err.message,
     });
   }

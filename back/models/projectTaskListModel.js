@@ -4,7 +4,7 @@ const projectTaskListSchema = new mongoose.Schema({
   key: {
     type: String,
   },
-  taskname: {
+  task: {
     type: String,
     required: [true, "Please enter project name"],
     unique: true,

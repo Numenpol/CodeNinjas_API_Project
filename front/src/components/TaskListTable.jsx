@@ -6,16 +6,14 @@ import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext } from "react";
+import { useContext, useEffect,  } from "react";
 import { StateContext } from "../utils/StateContext";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { PencilSquare } from "react-bootstrap-icons";
-function TaskListTable({task}) {
+function TaskListTable() {
   const { tasks, setUpdate } = useContext(StateContext);
+  // const [tasks, setTasks] = useState([]);
   
-
-
-
   
   // const [error, setError] = useState(null);
 
@@ -31,7 +29,7 @@ function TaskListTable({task}) {
   } = useForm({
     defaultValues: {
       key: "",
-      taskname: "",
+      task: "",
       owner: "",
       status: "",
       priority: "",
@@ -40,19 +38,17 @@ function TaskListTable({task}) {
       completiondate: new Date()
     },
   });
-  useEffect(() => {
-    if(task) {
-      setValue("taskname", task.taskname);
-    }
-  }, [task]);
+  // useEffect(() => {
+  //   if(task) {
+  //     setValue("ta", task.task);
+  //   }
+  // }, [task]);
+ 
+ 
 
   const formSubmitHandler = async (data) => {
     try {
-      if (task) {
-        await updateDataTask(task._id, data);
-      } else {
-        await postDataTask(data);
-      }
+      await postDataTask(data);
       setUpdate((update) => update + 1);
       reset();
     } catch (error) {
@@ -90,10 +86,10 @@ function TaskListTable({task}) {
               </td>
               <td>
                 <input
-                  id="taskname"
+                  id="task"
                   name="task"
                   type="text"
-                  {...register("taskname")}
+                  {...register("task")}
                 />
               </td>
               <td>
@@ -159,11 +155,11 @@ function TaskListTable({task}) {
                 </td>
                 <td>
                   <input
-                    id={`taskname-${index}`}
-                    name={`taskname-${index}`}
+                    id={`task-${index}`}
+                    name={`task-${index}`}
                     type="text"
                     defaultValue={task.task}
-                    {...register(`taskname-${index}`)}
+                    {...register(`task-${index}`)}
                   />
                   <PencilSquare />
                 </td>
