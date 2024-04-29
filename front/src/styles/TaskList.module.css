@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box;
+}
+
+.taskList {
+    min-width: 360px;
+    background-color: #F5F6FA;
+    padding-top: 1.12rem;
+    /* height: 100vh; */
+    /* overflow-y: hidden; */
+}
+
+.taskListMenu {
+    display: none;
+}
+
+.taskListCard {
+    background-color: #FFF;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    /* height: 100vh; */
+}
+
+.taskListHeader {
+    padding: 1rem;
+}
+
+.taskListHeaderTop {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.taskListMenuButton {
+    border: none;
+    background: none;
+    color: #3fadbe;
+    padding-left: 1rem;
+}
+
+.taskListStatus {
+    margin: 0 0 0 4rem;
+    align-self: center;
+    align-items: end;
+    /* width: 5.25rem; */
+    /* height: 1.5625rem; */
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.taskListAddMember {
+    margin-right: 1rem;
+}
+
+.taskListNameIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #7a7e81;
+    margin: 1rem 0 1.88rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #56565657;
+    flex-basis: 100%
+}
+
+.taskListProjectIcon {
+    color: #3FADBE;
+    /* width: 1.5rem; */
+}
+
+.taskListProjectName {
+    color: #7A7E81;
+    /* font-family: Montserrat; */
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.375rem;
+    margin-bottom: 0;
+}
+
+.taskListHeaderBottom {
+    display: flex;
+}
+
+.taskListNewTask {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    /* padding: 0.625rem 1rem !important; */
+}
+
+.taskListSearch {
+    margin-left: 1rem;
+    /* min-width: 10rem; */
+    /* max-width: 30rem; */
+    width: 70%;
+}
+
+
+/* #inputGroup-sizing-sm {
+    background-color: White;
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+} */
+
+/* .SearcbarProjectList input::placeholder {
+    color: #202224;
+    opacity: 0.5;
+    font-size: 0.875rem;
+} */
+
+/* .SearcbarProjectList svg {
+    color: #202224;
+    opacity: 0.5;
+} */
+
+.createFirstProject:hover {
+    background-color: #3593A2 !important;
+}
+
+@media screen and (min-width: 768px) {
+    .taskListHeader {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .taskListHeaderTop {
+        margin-bottom: 1.88rem;
+        border-bottom: 1px solid #56565657;
+        padding: 0 1rem 1rem 0.5rem;
+    }
+
+    .taskListMenuButton {
+        order: -1;
+    }
+
+    .taskListNameIcon {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 1.375rem;
+        flex-basis: auto;
+        order: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .taskListProjectIcon {
+        /* width: 2.0625rem; */
+    }
+
+    .taskListProjectName {
+        font-size: 1.375rem;
+    }
+
+    .taskListStatus {
+        order: 1;
+        margin-left: 0;
+        /* width: 7.17188rem; */
+        /* height: 2.11181rem; */
+        font-size: 0.875rem;
+    }
+
+    .taskListAddMember {
+        order: 2;
+    }
+
+    .taskListHeaderBottom {
+        padding-left: 1rem;
+    }
+
+    .taskListNewTask {
+        width: 6.5625rem;
+        height: 2.375rem;
+        padding: 0.625rem 1rem;
+    }
+
+    .taskListSearch {
+        width: 19.4375rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .taskList {
+        display: flex;
+        width: 100%;
+        gap: 1.06rem;
+        /* height: 100vh; */
+    }
+
+    .taskListMenu {
+        display: block;
+        max-width: 30%;
+        background-color: #FFF;
+        border-radius: 0rem 0.625rem 0rem 0rem;
+    }
+
+    .taskListCard {
+        width: 100%;
+        height: 95vh;
+    }
+
+    .taskListHeaderTop {
+        padding-left: 1.2rem;
+    }
+
+    .taskListMenuButton {
+        display: none;
+    }
+
+    .taskListNameIcon {
+        font-size: 1.875rem;
+    }
+
+    .taskListProjectIcon {
+        /* width: 2.25rem; */
+    }
+
+    .taskListProjectName {
+        font-size: 1.5rem;
+        color: #565656;
+    }
+
+    .taskListStatus {
+        /* width: 7.25rem; */
+        /* height: 2.2745rem; */
+        /* border-radius: 1.1875rem; */
+    }
+}

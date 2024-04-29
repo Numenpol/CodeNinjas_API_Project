@@ -12,6 +12,7 @@ const projectSchema = new mongoose.Schema({
   },
   icon: {
     type: String,
+
   },
   description: {
     type: String,

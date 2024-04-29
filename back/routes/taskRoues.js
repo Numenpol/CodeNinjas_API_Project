@@ -1,15 +1,15 @@
 const express = require("express");
 const taskController = require("../controlers/taskListController");
 
-const {getTaskList, createTaskList, updateTaskList, deleteTaskList} = taskController;
+const {getAllTasks, getTasks, createTaskList, updateTaskList, deleteTaskList} = taskController;
 
 const router = express.Router();
 
 
+router.route("/").get(getAllTasks).post(createTaskList);
 
-router.route("/")
-.get(getTaskList)
-.post(createTaskList)
+router.route("/:id")
+.get(getTasks)
 .patch(updateTaskList)
 .delete(deleteTaskList);
 

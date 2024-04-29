@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProjectPage from "./pages/ProjectPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import TaskListPage from "./pages/TaskListPage";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route index element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/projects" element={<ProjectPage/>}></Route>
+        {/* <Route path="/projects/:name" element={<TaskListPage />}></Route> */}
+        <Route path="/tasklist" element={<TaskListPage />}></Route>
         <Route path="*" element={<NotFoundPage/>}></Route>
       </Routes>
     </>
