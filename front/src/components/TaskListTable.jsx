@@ -53,6 +53,7 @@ function TaskListTable() {
       await postDataTask({ ...data, status: selectedStatus });
       setUpdate((update) => update + 1);
       reset();
+      setSelectedStatus("");
     } catch (error) {
       console.log(error);
     }
@@ -115,6 +116,7 @@ function TaskListTable() {
                 /> */}
                   <div>
                     <button
+                      type="button"
                       onClick={() => setOpen(!open)}
                       className={`${statusBtn} ${selectedStatus && selected}`}
                       style={{
@@ -223,6 +225,7 @@ function TaskListTable() {
                   <td>
                     <div>
                       <button
+                        type="button"
                         onClick={() =>
                           setIsOpen((prevState) => ({
                             ...prevState,
