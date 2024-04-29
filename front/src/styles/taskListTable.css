@@ -6,7 +6,7 @@
     }
 
     Table {
-        min-width: 360px !important;
+        /* min-width: 360px !important; */
         overflow-x: scroll !important;
         margin-top: 1rem;
     }
@@ -45,10 +45,6 @@
 
     .table tr th {
         background-color: rgba(245, 246, 250, 255);
-    }
-
-    table {
-
     }
 
     .tasks-key {
