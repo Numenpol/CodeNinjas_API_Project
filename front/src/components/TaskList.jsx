@@ -39,7 +39,7 @@ function TaskList() {
       <div className={taskListCard}>
         <div className={taskListHeader}>
           <div className={taskListHeaderTop}>
-            <Popup
+            {/* <Popup
               trigger={
                 <button className={taskListMenuButton}>
                   <svg
@@ -62,7 +62,7 @@ function TaskList() {
               <div>
                 <MenuProjectListPopUp />
               </div>
-            </Popup>
+            </Popup> */}
             <p className={taskListStatus}>STATUS</p>
             <button className={taskListAddMember} onClick={handleShow}>
               {" "}
