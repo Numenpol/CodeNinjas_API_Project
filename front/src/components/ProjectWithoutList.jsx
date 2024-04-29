@@ -7,24 +7,27 @@ import CreateProjectForm from "./CreateProjectForm";
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPopUp from "./MenuProjectListPopUp";
+import MenuProjectListDesktop from "./MenuProjectListDesktop";
 
 
 function ProjectWithoutList() {
-  const {setShowMenu, handleShow} = useContext(StateContext)
+  const { setShowMenu, handleShow } = useContext(StateContext)
 
   return (
     <div className="project-without--list">
-      {/* <MenuProjectListDesktop/> */}
+      <div className="project-list--menu">
+        <MenuProjectListDesktop />
+      </div>
       <div className="project-list--card">
         <div className="ProjectThing">
           <div className="ProjectListHeader">
 
-                <button className="MenuThing" onClick={setShowMenu}>
-                  <img src={burgerIcon} alt="burgerIcon" />
-                </button>
-                <MenuProjectListPopUp/>
+            <button className="MenuThing" onClick={setShowMenu}>
+              <img src={burgerIcon} alt="burgerIcon" />
+            </button>
+            <MenuProjectListPopUp />
             <div className="FolderText">
-              <img src={folderPlusIcon} alt="folderPlusIcon" className="FolderIcon1"/>
+              <img src={folderPlusIcon} alt="folderPlusIcon" className="FolderIcon1" />
               <div className="MyProjectsText">My Projects</div>
             </div>
             <div className="searchbar-group">
@@ -53,9 +56,9 @@ function ProjectWithoutList() {
         </div>
         <div className="CreateProjectBox">
           <img src="src\assets\Group 54.svg" alt="" className="ChartIcon" />
-              <button className="createFirstProjectButton" onClick={handleShow}>Create Your first project</button>
+          <button className="createFirstProjectButton" onClick={handleShow}>Create Your first project</button>
         </div>
-        <CreateProjectForm/>
+        <CreateProjectForm />
       </div>
     </div>
   );

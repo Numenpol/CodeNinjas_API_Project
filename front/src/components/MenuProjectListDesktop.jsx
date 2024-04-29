@@ -1,16 +1,13 @@
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import xIcon from "../assets/xIcon.svg";
 import folderPlusIcon from "../assets/folderPlusIcon.svg";
 import plusSquareFillIcon from "../assets/plusSquareFillIcon.svg";
-import searchIcon from "../assets/searchIcon.svg";
 import houseIcon from "../assets/houseIcon.svg";
-import "../styles/projectWithoutList.css";
+// import "../styles/projectWithoutList.css";
 import "../styles/projectListPopUp.css";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import MenuProjectList from "./MenuProjectList"
+import MenuProjectList from "./MenuProjectList";
+import SearchBar from "./SearchBar";
 
 function MenuProjectListDesktop() {
     const {setShowMenu, handleShow} = useContext(StateContext)
@@ -30,16 +27,7 @@ function MenuProjectListDesktop() {
           </button>
         </div>
         <div className="SearchThing">
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-sm">
-            <img src={searchIcon} alt="searchIcon" />
-            </InputGroup.Text>
-            <Form.Control
-              aria-label="Small"
-              placeholder="Search"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </InputGroup>
+          <SearchBar />
         </div>
         <div className="FolderTextThing">
           <div className="menu-my--projects">

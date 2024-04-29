@@ -166,6 +166,17 @@
 
       .projectListCard {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ProjectListHeader {
+        /* padding-right: 0; */
+        justify-content: start;
+      }
+
+      .ProjectThing {
+        padding-right: 0;
       }
 
       .FolderPlusIcon {
@@ -174,14 +185,36 @@
     
       .FolderText {
         font-size: 1.875rem;
+        /* justify-content: flex-start; */
       }
       
-      .searchbarGroup {
+      .projectListSearchBar {
         display: none;
       }
 
       .CreateProjectThing {
         display: none;
+      }
+
+      .CreateProjectButtonPosition {
+        /* display: none; */
+        order: 0;
+        align-items: end;
+        margin-right: 1.5rem;
+        margin-top: -5rem;
+      }
+
+      .ProjectThing {
+        order: 0;
+      }
+
+      .ProjectListDashboard {
+        flex-basis: auto;
+        order: 1;
+      }
+
+      .projectListList{
+        order: 2;
       }
 }
 

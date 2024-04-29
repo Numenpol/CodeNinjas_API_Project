@@ -11,39 +11,43 @@ import SearchBar from "./SearchBar";
 import MenuProjectListDesktop from "./MenuProjectListDesktop"
 
 function ProjectWithList() {
-  const {setShowMenu, handleShow} = useContext(StateContext)
+  const { setShowMenu, handleShow } = useContext(StateContext)
 
   const toggleShow = () => setShowMenu((s) => !s);
 
-  const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderPlusIcon, projectListSearchBar, CreateProjectButtonPosition, 
-    createFirstProjectButton,} = styles;
+  const { projectList, ProjectListMenu, projectListCard, ProjectThing, ProjectListHeader, MenuThing, FolderText, FolderPlusIcon, projectListSearchBar, ProjectListDashboard, CreateProjectButtonPosition,
+    createFirstProjectButton, projectListList} = styles;
   return (
     <div className={projectList}>
       <div className={ProjectListMenu}>
-      <MenuProjectListDesktop/>
-      </div>          
+        <MenuProjectListDesktop />
+      </div>
       <div className={projectListCard}>
         <div className={ProjectThing}>
           <div className={ProjectListHeader}>
-                <button className={MenuThing} onClick={toggleShow}>
-                  <img src={burgerIcon} alt="burgerIcon" />
-                </button>
-                <MenuProjectListPopUp/>
+            <button className={MenuThing} onClick={toggleShow}>
+              <img src={burgerIcon} alt="burgerIcon" />
+            </button>
+            <MenuProjectListPopUp />
             <div className={FolderText}>
-              <img src={folderPlusIcon} alt="folderPlusIcon" className={FolderPlusIcon}/>
+              <img src={folderPlusIcon} alt="folderPlusIcon" className={FolderPlusIcon} />
               <div className="MyProjectsText">My Projects</div>
             </div>
-             <div className={projectListSearchBar}>
-            <SearchBar />
+            <div className={projectListSearchBar}>
+              <SearchBar />
             </div>
           </div>
         </div>
-        <Dashboard />
-        <div className={CreateProjectButtonPosition}>
-              <button className={createFirstProjectButton} onClick={handleShow}> Create Your project </button>
-              <CreateProjectForm/>
+        <div className={ProjectListDashboard}>
+          <Dashboard />
         </div>
-        <ProjectList/>
+        <div className={CreateProjectButtonPosition}>
+          <button className={createFirstProjectButton} onClick={handleShow}> Create Your project </button>
+          <CreateProjectForm />
+        </div>
+        <div className={projectListList}>
+        <ProjectList />
+        </div>
       </div>
     </div>
   );

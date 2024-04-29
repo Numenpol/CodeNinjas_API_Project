@@ -1,9 +1,9 @@
-import "../styles/dashboard.css";
 import { useState } from "react";
-import calendaricon from "../assets/CalendarIcon.png";
 import checkmarkicon from "../assets/CheckmarkIcon.png";
 import penandpapericon from "../assets/PenandpaperIcon.png";
+import calendaricon from "../assets/CalendarIcon.png";
 import statisticicon from "../assets/StatisticIcon.png";
+import styles from "../styles/Dashboard.module.css";
 
 function Dashboard() {
   const [done, setDone] = useState(0);
@@ -11,48 +11,50 @@ function Dashboard() {
   const [onhold, setOnHold] = useState(0);
   const [overall, setOverall] = useState(0);
 
+  const {dashboard, dashboardTopBoxes, dashboardBox, checkmarkIcon, dashboardDone, dashboardNumber, penandpaperIcon, dashboardInProgress, dashboardBottomBoxes, calendarIcon, dashboardOnHold, statisticIcon, dashboardOverall} = styles;
+
   return (
     <>
-      <div className="Dashboard">
-        <div className="DashboardTopBoxes">
-          <div className="DashboardBox">
+      <div className={dashboard}>
+        <div className={dashboardTopBoxes}>
+          <div className={dashboardBox}>
             <img
               src={checkmarkicon}
               alt="Checkmark icon"
-              className="CheckmarkIcon"
+              className={checkmarkIcon}
             />
-            <p className="DashboardDone">Done</p>
-            <div className="DashboardNumber">{done}</div>
+            <p className={dashboardDone}>Done</p>
+            <div className={dashboardNumber}>{done}</div>
           </div>
-          <div className="DashboardBox">
+          <div className={dashboardBox}>
             <img
               src={penandpapericon}
               alt="Pen and paper icon"
-              className="PenandpaperIcon"
+              className={penandpaperIcon}
             />
-            <p className="DashboardInProgress">In Progress</p>
-            <div className="DashboardNumber">{inprogress}</div>
+            <p className={dashboardInProgress}>In Progress</p>
+            <div className={dashboardNumber}>{inprogress}</div>
           </div>
         </div>
-        <div className="DashboardBottomBoxes">
-          <div className="DashboardBox">
+        <div className={dashboardBottomBoxes}>
+          <div className={dashboardBox}>
             <img
               src={calendaricon}
               alt="Calendar icon"
-              className="CalendarIcon"
+              className={calendarIcon}
             />
 
-            <p className="DashboardOnHold">On Hold</p>
-            <div className="DashboardNumber">{onhold}</div>
+            <p className={dashboardOnHold}>On Hold</p>
+            <div className={dashboardNumber}>{onhold}</div>
           </div>
-          <div className="DashboardBox">
+          <div className={dashboardBox}>
             <img
               src={statisticicon}
               alt="Statistic icon"
-              className="StatisticIcon"
+              className={statisticIcon}
             />
-            <p className="DashboardOverall">Overall</p>
-            <div className="DashboardNumber">{overall}</div>
+            <p className={dashboardOverall}>Overall</p>
+            <div className={dashboardNumber}>{overall}</div>
           </div>
         </div>
       </div>
