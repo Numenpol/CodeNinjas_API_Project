@@ -1,5 +1,5 @@
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+// import Form from "react-bootstrap/Form";
+// import InputGroup from "react-bootstrap/InputGroup";
 import "../styles/projectWithoutList.css";
 import burgerIcon from "../assets/burgerIcon.svg";
 import folderPlusIcon from "../assets/folderPlusIcon.svg";
@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPopUp from "./MenuProjectListPopUp";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
+import SearchBar from "./SearchBar";
 
 
 function ProjectWithoutList() {
@@ -30,8 +31,8 @@ function ProjectWithoutList() {
               <img src={folderPlusIcon} alt="folderPlusIcon" className="FolderIcon1" />
               <div className="MyProjectsText">My Projects</div>
             </div>
-            <div className="searchbar-group">
-              <InputGroup className="SearcbarProjectList">
+            <div className="">
+              {/* <InputGroup className="SearcbarProjectList">
                 <InputGroup.Text id="inputGroup-sizing-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +51,8 @@ function ProjectWithoutList() {
                   className="InputBoxCss"
                   placeholder="Search"
                 />
-              </InputGroup>
+              </InputGroup> */}
+              <SearchBar />
             </div>
           </div>
         </div>

@@ -8,11 +8,14 @@ import houseIcon from "../assets/houseIcon.svg";
 import "../styles/projectListPopUp.css";
 import MenuProjectList from "./MenuProjectList";
 import SearchBar from "./SearchBar";
+import styles from "../styles/MenuProjectListDesktop.module.css";
 
 function MenuProjectListDesktop() {
     const {setShowMenu, handleShow} = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
+
+  const {} = styles;
 
   return (
     <>
