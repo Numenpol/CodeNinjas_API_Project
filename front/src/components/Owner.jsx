@@ -1,50 +1,84 @@
-import React, { useState } from 'react';
-import styles from '../styles/Owner.module.css';
-import { PersonCircle, CircleFill } from 'react-bootstrap-icons';
-import owner from '../assets/owner.svg';
-// import ownerEmpty from '../assets/ownerEmpty.svg';
+import React, { useState, useEffect } from "react";
+import styles from "../styles/Owner.module.css";
+import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 
 function Owner() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpeno, setIsOpeno] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
-  const [selectedOwnerColor, setSelectedOwnerColor] = useState("ownerIconWater");
+  const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
+  const [ownerColors, setOwnerColors] = useState([]);
+
+  useEffect(() => {
+   
+    const generateOwnerColors = () => {
+      const colors = [
+        styles.ownerIconWater,
+        styles.ownerIconOrange,
+        styles.ownerIconGrape,
+        styles.ownerIconBlue,
+        styles.ownerIconPink
+      ];
+      let index = 0;
+      return (ownerList) => {
+        return ownerList.map(() => {
+          const color = colors[index];
+          index = (index + 1) % colors.length; 
+          return color;
+        });
+      };
+    };
+
+    const owners = ["Peter Pan", "Alice Wonderland", "Tom Sawyer", "Mirabel Madrigal", "John Doe"];
+    const assignColor = generateOwnerColors();
+    setOwnerColors(assignColor(owners));
+  }, []);
 
   const handleOwnerClick = (owner, color) => {
     setSelectedOwner(owner);
-    setSelectedOwnerColor(`${color} ${styles.selected}`); 
-    setIsOpen(false);
+    setSelectedOwnerColor(color);
+    setIsOpeno(false);
   };
 
   const getInitials = (name) => {
     const initials = name
-      .split(' ')
+      .split(" ")
       .map((word) => word[0])
-      .join('');
+      .join("");
     return initials.toUpperCase();
   };
 
-  const { ownerBtn, ownerMenu, ownerList, ownerIconWater, ownerIconOrange, ownerIconGrape, ownerIconBlue, ownerIconEmpty, initials } = styles;
+  const {
+    ownerBtn,
+    ownerMenu,
+    ownerList: ownerListStyle,
+    initials: initialsStyle,
+    initialsList,
+  } = styles;
 
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)} className={ownerBtn}>
+      <button onClick={() => setIsOpeno(!isOpeno)} className={ownerBtn}>
         {selectedOwner ? (
-          <div className={initials}>
+          <div className={initialsStyle}>
             <CircleFill className={selectedOwnerColor} />
             <div>{getInitials(selectedOwner)}</div>
           </div>
         ) : (
-          <PersonCircle className={ownerIconEmpty}/>
+          <PersonCircle className={styles.ownerIconEmpty} />
         )}
       </button>
-      {isOpen && (
+      {isOpeno && (
         <div className={ownerMenu}>
-          <div className={ownerList}>
-            <p onClick={() => handleOwnerClick("Peter Pan", ownerIconWater)}><CircleFill className={ownerIconWater}/> Peter Pan</p>
-            <p onClick={() => handleOwnerClick("Alice Wonderland", ownerIconOrange)}><CircleFill className={ownerIconOrange}/> Alice Wonderland</p>
-            <p onClick={() => handleOwnerClick("Tom Sawyer", ownerIconGrape)}><CircleFill className={ownerIconGrape}/> Tom Sawyer</p>
-            <p onClick={() => handleOwnerClick("Mirabel Madrigal", ownerIconBlue)}><CircleFill className={ownerIconBlue}/> Mirabel Madrigal</p>
-            <p onClick={() => handleOwnerClick("Alice Wonderland", ownerIconOrange)}><CircleFill className={ownerIconOrange}/> Alice Wonderland</p>
+          <div className={ownerListStyle}>
+            {["Peter Pan", "Alice Wonderland", "Tom Sawyer", "Mirabel Madrigal", "John Doe"].map((owner, index) => (
+              <p key={index} onClick={() => handleOwnerClick(owner, ownerColors[index])}>
+                <div className={initialsList}>
+                  <CircleFill className={ownerColors[index]} />
+                  <div>{getInitials(owner)}</div>
+                  <span>{owner}</span>
+                </div>
+              </p>
+            ))}
           </div>
         </div>
       )}
