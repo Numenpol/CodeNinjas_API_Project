@@ -15,6 +15,7 @@ const projectTaskListSchema = new mongoose.Schema({
 
   owner: {
     type: String,
+    
   },
   status: {
     type: String,
@@ -38,6 +39,7 @@ const projectTaskListSchema = new mongoose.Schema({
     type: Date,
     
   },
+
   projectId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",

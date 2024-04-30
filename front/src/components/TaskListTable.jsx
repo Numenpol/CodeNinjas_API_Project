@@ -5,24 +5,61 @@ import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
 import { PencilSquare } from "react-bootstrap-icons";
 import styles from "../styles/StatusDropdown.module.css";
-import styles2 from '../styles2/PriorityDropdown.module.css';
+import styles2 from '../Prioritystyles/PriorityDropdown.module.css';
+import Ownerstyles from '../Ownerstyles/Owner.module.css';
+import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 function TaskListTable() {
   const { tasks, setUpdate } = useContext(StateContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
-  const [selectedStatusEdit, setSelectedStatusEdit] = useState("");
   const [open, setOpen] = useState(false);
 
-  //
+  //Priority
 
   const [isOpens, setIsOpens] = useState({});
   const [opens, setOpens] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("");
-  const [selectedPriorityEdit, setSelectedPriorityEdit] = useState("");
+
+
+  // Owner
+  const [isOpeno, setIsOpeno] = useState(false);
+  const [selectedOwner, setSelectedOwner] = useState("");
+  const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
+  const [ownerColors, setOwnerColors] = useState([]);
+
+  useEffect(() => {
+    const generateOwnerColors = () => {
+      const colors = [
+        Ownerstyles.ownerIconWater,
+        Ownerstyles.ownerIconOrange,
+        Ownerstyles.ownerIconGrape,
+        Ownerstyles.ownerIconBlue,
+        Ownerstyles.ownerIconPink
+      ];
+      let index = 0;
+      return (ownerList) => {
+        return ownerList.map(() => {
+          const color = colors[index];
+          index = (index + 1) % colors.length; 
+          return color;
+        });
+      };
+    };
+
+    const owners = ["Peter Pan", "Alice Wonderland", "Tom Sawyer", "Mirabel Madrigal", "John Doe"];
+    const assignColor = generateOwnerColors();
+    setOwnerColors(assignColor(owners));
+  }, []);
+
+  const handleOwnerClick = (owner, color) => {
+    setSelectedOwner(owner);
+    setSelectedOwnerColor(color);
+    setIsOpeno(false);
+  };
 
   const {
     statusBtn,
@@ -35,7 +72,24 @@ function TaskListTable() {
     statusDoneSelected,
   } = styles;
 
+  const getInitials = (name) => {
+    const initials = name
+      .split(" ")
+      .map((word) => word[0])
+      .join("");
+    return initials.toUpperCase();
+  };
+
   const { priorityBtn, priorityMenu, priorityLow, priorityMedium, priorityHigh, selectedPrioLow, selectedPrioMed, selectedPrioHi } = styles2;
+
+  const {
+    ownerBtn,
+    ownerMenu,
+    ownerList: ownerListStyle,
+    initials: initialsStyle,
+    initialsList,
+  } = Ownerstyles;
+
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
@@ -77,7 +131,7 @@ function TaskListTable() {
     }
   };
 
-  const handleUpdate = async (id, newTask) => {
+  const handleUpdate = async (id, newTask,) => {
     try {
       const data = { task: newTask };
       await updateDataTask(id, data);
@@ -86,6 +140,28 @@ function TaskListTable() {
       console.log(error);
     }
   };
+
+  const handlePriorityUpdate = async (id, newPriority) => {
+    try {
+      const data = { priority: newPriority };
+      await updateDataTask(id, data);
+      setUpdate((update) => update + 1);
+      setIsOpens(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleStatusUpdate = async (id, newStatus) => {
+    try {
+      const data = { status: newStatus };
+      await updateDataTask(id, data);
+      setUpdate((update) => update + 1);
+      setIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -118,20 +194,35 @@ function TaskListTable() {
                   />
                 </td>
                 <td>
-                  <input
-                    id="owner"
-                    name="owner"
-                    type="text"
-                    {...register("owner")}
-                  />
+                <div>
+      <button onClick={() => setIsOpeno(!isOpeno)} className={ownerBtn}>
+        {selectedOwner ? (
+          <div className={initialsStyle}>
+            <CircleFill className={selectedOwnerColor} />
+            <div>{getInitials(selectedOwner)}</div>
+          </div>
+        ) : (
+          <PersonCircle className={Ownerstyles.ownerIconEmpty} />
+        )}
+      </button>
+      {isOpeno && (
+        <div className={ownerMenu}>
+          <div className={ownerListStyle}>
+            {["Peter Pan", "Alice Wonderland", "Tom Sawyer", "Mirabel Madrigal", "John Doe"].map((owner, index) => (
+              <p key={index} onClick={() => handleOwnerClick(owner, ownerColors[index])}>
+                <div className={initialsList}>
+                  <CircleFill className={ownerColors[index]} />
+                  <div>{getInitials(owner)}</div>
+                  <span>{owner}</span>
+                </div>
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
                 </td>
                 <td>
-                  {/* <input
-                  id="status"
-                  name="status"
-                  type="text"
-                  {...register("status")}
-                /> */}
                   <div>
                     <button
                       type="button"
@@ -274,19 +365,19 @@ function TaskListTable() {
                         <div className={statusMenu}>
                           <p
                             className={statusDo}
-                            onClick={() => handleStatusClick("To do")}
+                            onClick={() => handleStatusUpdate(task._id,"To do")}
                           >
                             To do
                           </p>
                           <p
                             className={statusProgress}
-                            onClick={() => handleStatusClick("In progress")}
+                            onClick={() => handleStatusUpdate(task._id,"In progress")}
                           >
                             In progress
                           </p>
                           <p
                             className={statusDone}
-                            onClick={() => handleStatusClick("Done")}
+                            onClick={() => handleStatusUpdate(task._id,"Done")}
                           >
                             Done
                           </p>
@@ -296,22 +387,30 @@ function TaskListTable() {
                   </td>
                   <td>
                     <div>
-                      <button type="button"
+                      <button
+                        type="button"
                         onClick={() =>
                           setIsOpens((prevState) => ({
                             ...prevState,
                             [task._id]: !prevState[task._id],
                           }))
                         }
-                        className={priorityBtn + (selectedPriority ? ' ' + selectedPrioLow : '')}
-                        style={{ backgroundColor: task.priority === "Low" ? '#40ADBE' : task.priority === "Medium" ? '#FDAB3D' : task.priority === "High" ? '#C0417F' : '' }}>
+                        className={`${priorityBtn} ${isOpens[task._id] ? selectedPrioLow : ''}`}
+                        style={{
+                          backgroundColor:
+                            task.priority === "Low" ? '#40ADBE' :
+                              task.priority === "Medium" ? '#FDAB3D' :
+                                task.priority === "High" ? '#C0417F' : ''
+                        }}
+                      >
                         {task.priority || String.fromCharCode(9662)}
                       </button>
                       {isOpens[task._id] && (
                         <div className={priorityMenu}>
-                          <p className={priorityLow} onClick={() => handlePriorityClick("Low")}>Low</p>
-                          <p className={priorityMedium} onClick={() => handlePriorityClick("Medium")}>Medium</p>
-                          <p className={priorityHigh} onClick={() => handlePriorityClick("High")}>High</p>
+                          <p className={priorityLow} onClick={() => handlePriorityUpdate(task._id, "Low")}>Low</p>
+                          <p className={priorityMedium} onClick={() => handlePriorityUpdate(task._id, "Medium")}>Medium</p>
+                          <p className={priorityHigh} onClick={() => handlePriorityUpdate(task._id, "High")}>High</p>
+
                         </div>
                       )}
                     </div>
