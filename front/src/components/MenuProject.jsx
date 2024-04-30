@@ -1,4 +1,3 @@
-import "../styles/MenuProjects.css";
 import IconList from "../components/IconList";
 import { DashSquare, Trash, PencilSquare } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
@@ -12,13 +11,22 @@ import { deleteData } from "../services/delete";
 import { StateContext } from "../utils/StateContext";
 import { useContext } from "react";
 import styles from "../styles/MenuProject.module.css";
-
+import "../styles/MenuProjects.css";
 function MenuProject({ project }) {
-  const { setUpdate } = useContext(StateContext)
+  const { setUpdate } = useContext(StateContext);
+  const [clickX, setClickX] = useState(null);
+  const [clickY, setClickY] = useState(null);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (event) => {
+    if (show) {
+      setShow(false);
+    }
+    setShow(true);
+    setClickX(event.clientX);
+    setClickY(event.clientY);
+  };
 
   const [smShow, setSmShow] = useState(false);
   const handleSmClose = () => setSmShow(false);
@@ -28,9 +36,12 @@ function MenuProject({ project }) {
   const handleDelClose = () => setDelShow(false);
   const handleDelShow = () => setDelShow(true);
 
-  const handleSmAllClose = () => { handleSmShow(), handleClose() };
-  const handleDelAllClose = () => { handleDelShow(), handleClose() };
-
+  const handleSmAllClose = () => {
+    handleSmShow(), handleClose();
+  };
+  const handleDelAllClose = () => {
+    handleDelShow(), handleClose();
+  };
 
   const { projectName, icon } = project;
 
@@ -79,9 +90,18 @@ function MenuProject({ project }) {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const {menuProjectList, menuProjectIcon, menuProjectName, editIcon, menuProjectModalBackDrop, menuEdit, menuPencilsquare, menuTrash} = styles;
+  const {
+    menuProjectList,
+    menuProjectIcon,
+    menuProjectName,
+    editIcon,
+    menuProjectModalBackDrop,
+    menuEdit,
+    menuPencilsquare,
+    menuTrash,
+  } = styles;
 
   return (
     <>
@@ -90,27 +110,34 @@ function MenuProject({ project }) {
           <img src={icon} alt="icon" className={menuProjectIcon} />
           <p className={menuProjectName}>{projectName}</p>
         </div>
-        <div>
-          <DashSquare className={editIcon}
-            onClick={handleShow}
-          />
+        <div className="Thing">
+          <div>
+            <DashSquare className={editIcon} onClick={handleShow} />
+          </div>
+          {show && (
+            <Modal
+              className="myModal"
+              // dialogClassName={`${myModal} modal-content`}
+              show={show}
+              onHide={handleClose}
+              backdropClassName={menuProjectModalBackDrop}
+              style={{
+                top: `${clickY + -1000}px`,
+              }}
+              backdrop="true"
+            >
+              <div className={menuEdit} onClick={handleSmAllClose}>
+                <PencilSquare className={menuPencilsquare} /> Edit project
+              </div>
 
+              <div className="menu-edit" onClick={handleDelAllClose}>
+                <Trash className={menuTrash} /> Delete project
+              </div>
+            </Modal>
+          )}
         </div>
-        <Modal
-        className="myModal"
-        // className={myModal}
-        // dialogClassName={`${myModal} modal-content`}
-        show={show} onHide={handleClose} backdropClassName={menuProjectModalBackDrop}>
-          <div className={menuEdit} onClick={handleSmAllClose} >
-            <PencilSquare className={menuPencilsquare} /> Edit project
-          </div>
 
-          <div className="menu-edit" onClick={handleDelAllClose}>
-            <Trash className={menuTrash} /> Delete project
-          </div>
-        </Modal>
-
-        <Modal className="mySecondModal" show={smShow} >
+        <Modal className="mySecondModal" show={smShow}>
           <div className="create-project">
             <h1 className="H12">Edit your project</h1>
             <Form
@@ -139,9 +166,7 @@ function MenuProject({ project }) {
                 </Form.Group>
               </div>
               <div>
-                <p className="create-choose--icon">
-                  Choose your project icon
-                </p>
+                <p className="create-choose--icon">Choose your project icon</p>
                 <IconList />
               </div>
               <div>
@@ -179,34 +204,27 @@ function MenuProject({ project }) {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  <div className="createBtnContent">
-                    Edit
-                  </div>
+                  <div className="createBtnContent">Edit</div>
                 </Button>
               </div>
             </Form>
           </div>
         </Modal>
 
-
-        <Modal
-          className="myDeleteModal"
-          show={delShow}
-        >
-          <Modal.Body>
-            Are You sure You want to delete this project?
-          </Modal.Body>
+        <Modal className="myDeleteModal" show={delShow}>
+          <Modal.Body>Are You sure You want to delete this project?</Modal.Body>
           <Modal.Footer>
             <Button className="cancelBtn" onClick={handleDelClose}>
               <div className="cancelBtnContent">Cancel</div>
             </Button>
-            <Button className="createBtn" onClick={() => handleDelete(project._id)}>
+            <Button
+              className="createBtn"
+              onClick={() => handleDelete(project._id)}
+            >
               Delete
             </Button>
           </Modal.Footer>
         </Modal>
-
-
       </div>
     </>
   );
