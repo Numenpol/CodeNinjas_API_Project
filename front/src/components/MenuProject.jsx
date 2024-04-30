@@ -122,7 +122,8 @@ function MenuProject({ project }) {
               onHide={handleClose}
               backdropClassName={menuProjectModalBackDrop}
               style={{
-                top: `${clickY + -1000}px`,
+                top: `${clickY + -500}px`,
+                left: `${clickX + -300}px`,
               }}
               backdrop="true"
             >

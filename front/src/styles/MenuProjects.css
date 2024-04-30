@@ -8,8 +8,8 @@
 
 .myModal .modal-dialog {
   position: fixed;
-  left: 30%;
-  margin-top: 1000px;
+  left: 300px;
+  margin-top: 500px;
 }
 div [class="fade myModal modal show"] {
   display: none !important;
