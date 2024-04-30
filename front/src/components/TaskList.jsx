@@ -11,7 +11,6 @@ import burgerIcon from "../assets/burgerIcon.svg";
 import styles1 from "../styles/ProjectWithList.module.css";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
-import { StateContext } from "../utils/StateContext";
 import addMemberStyles from "../styles/AddMemberPopUp.module.css";
 
 function TaskList() {
