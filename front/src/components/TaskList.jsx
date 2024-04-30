@@ -7,12 +7,25 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 import "../styles/AddMemberPopUp.css";
+import { useContext } from "react";
+import { StateContext } from "../utils/StateContext";
+import styles1 from "../styles/ProjectWithList.module.css";
+import burgerIcon from "../assets/burgerIcon.svg";
+import MenuProjectListDesktop from "./MenuProjectListDesktop";
 
 function TaskList() {
+  const { setShowTask, setShowMenu} = useContext(StateContext);
+
+  const toggleShow = () => setShowMenu((s) => !s);
+
   const [showAddMember, setShowAddMember] = useState(false);
 
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
+
+  const handleShowTask = () => {
+    setShowTask(showTask => !showTask);
+  }
 
   const {
     taskList,
@@ -31,38 +44,20 @@ function TaskList() {
     taskListSearch,
   } = styles;
 
+  const {MenuThing} = styles1;
+
   return (
     <div className={taskList}>
       <div className={taskListMenu}>
-        <MenuProjectListPopUp />
+         <MenuProjectListDesktop/>
       </div>
       <div className={taskListCard}>
         <div className={taskListHeader}>
           <div className={taskListHeaderTop}>
-            <Popup
-              trigger={
-                <button className={taskListMenuButton}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="36"
-                    height="36"
-                    fill="currentColor"
-                    className="MenuIcon"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-                    />
-                  </svg>
-                </button>
-              }
-              position="bottom left"
-            >
-              <div>
-                <MenuProjectListPopUp />
-              </div>
-            </Popup>
+          <button className={MenuThing} onClick={toggleShow}>
+              <img src={burgerIcon} alt="burgerIcon" />
+            </button>
+            <MenuProjectListPopUp />
             <p className={taskListStatus}>STATUS</p>
             <button className={taskListAddMember} onClick={handleShow}>
               {" "}
@@ -121,14 +116,10 @@ function TaskList() {
             <Button
               className={taskListNewTask}
               variant="primary"
+              onClick={handleShowTask}
               style={{
                 backgroundColor: "#3fadbe",
                 border: "#3fadbe",
-                //   width: "299px",
-                //   height: "3.125rem",
-                //   marginLeft: "30.5px",
-                //   marginTop: "1rem",
-                //   marginBottom: "1rem"
               }}
             >
               New task
@@ -137,10 +128,11 @@ function TaskList() {
               <SearchBar />
             </div>
           </div>
+      <TaskListTable />
         </div>
       </div>
-      <TaskListTable />
     </div>
+
   );
 }
 

@@ -14,6 +14,8 @@ export const StateProvider = ({ children }) => {
     const [update, setUpdate] = useState(0);
     const [show, setShow] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const [showTask, setShowTask] = useState(false);
+
 
     const handleShow = () => setShow(true);
 
@@ -52,7 +54,7 @@ export const StateProvider = ({ children }) => {
 
     return (
         <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
-          showMenu, setShowMenu, handleShow}}>
+          showMenu, setShowMenu, handleShow, setShowTask, showTask}}>
             {children}
             </StateContext.Provider>
     );
