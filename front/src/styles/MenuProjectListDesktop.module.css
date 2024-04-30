@@ -2,3 +2,111 @@
     box-sizing: border-box;
 }
 
+.menuProjectPopUp{
+    border-radius: 50px;
+    /* min-width: 360px; */
+}
+
+.projectPopUp {
+    min-width: 22.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 15rem;
+    height: 80vh;
+    margin-top: 27px;
+    /* justify-content: center; */
+}
+
+.homeIcon {
+    border-bottom: 1px solid #d8d8d8;
+    color: #565656;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.12rem;
+    /* width: 100%; */
+}
+
+.houseIconText {
+    gap: 10px;
+    text-align: start;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #7A7E81;
+}
+
+.houseIcon {
+    width: 24.9px;
+    height: 24px;
+    color: #565656;
+    margin-left: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.buttonthing {
+    padding-left: 1rem;
+}
+
+.closeButton {
+    border: none;
+    background: none;
+    margin-top: -4.5rem;
+    color: #565656;
+}
+
+.searchThing {
+    /* margin-left: 5px; */
+    /* width: 340px; */
+    /* text-align: center; */
+    /* justify-self: center; */
+    /* border-radius: 1.1875rem; */
+    margin: 0 1rem 1rem;
+}
+
+.folderTextThing {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1.23rem 0.5rem;
+}
+
+.menuMyProjects {
+    display: flex;
+}
+
+.folderIcon2 {
+    color: #3fadbe;
+    width: 1.55606rem;
+    height: 1.5rem;
+    margin-right: 0.65rem;
+    /* margin: 1rem; */
+    /* margin-bottom: 64px; */
+}
+
+.myProjectsText {
+    color: #7A7E81;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.addProjectButton {
+    border: none;
+    background: none;
+    color: #3fadbe;
+    display: flex;
+}
+
+.addProjectButton:hover {
+    color: #3593A2 !important;
+}
+
+@media screen and (min-width: 768px) {
+    .projectPopUp {
+        min-height: 20rem;
+        min-width: 22.5rem; 
+      }
+}
+
+@media screen and (min-width: 1440px) {
+    .closeButton {
+        display: none;
+    }
+}

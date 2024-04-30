@@ -1,55 +1,55 @@
-* {
+/* * {
     box-sizing: border-box;
-}
+} */
 
-.MenuProjectPopUp{
-    border-radius: 50px;
+/* .MenuProjectPopUp{ */
+    /* border-radius: 50px; */
     /* min-width: 360px; */
-}
+/* } */
 
-.offcanvas {
+/* .offcanvas { */
     /* background-color: #3fadbe !important; */
     /* margin-top: 10rem !important; */
     /* min-width: 360px !important; */
-}
+/* } */
 
-.ProjectPopUp {
+/* .ProjectPopUp {
     min-width: 22.5rem;
     display: flex;
     flex-direction: column;
     min-height: 15rem;
-    height: 80vh;
+    height: 80vh; */
     /* justify-content: center; */
-}
+/* } */
 
-.buttonthing {
+/* .buttonthing {
     padding-left: 1rem;
-}
+} */
 
-.home-icon {
+/* .home-icon {
     border-bottom: 1px solid #d8d8d8;
     color: #565656;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.12rem;
+    margin-bottom: 1.12rem; */
     /* width: 100%; */
-}
+/* } */
 
-.HouseIcon {
+/* .HouseIcon {
     width: 24.9px;
     height: 24px;
     color: #565656;
     margin-left: 1rem;
     margin-bottom: 0.6rem;
-}
+} */
 
-.HouseIconText {
+/* .HouseIconText {
     gap: 10px;
     text-align: start;
     font-weight: 500;
     font-size: 1rem;
     color: #7A7E81;
-}
+} */
 
 .CloseButton {
     width: 20px;
@@ -57,20 +57,21 @@
     color: #565656;
 }
 
-.closeButton {
+/* .closeButton {
     border: none;
     background: none;
     margin-top: -3rem;
-}
+    color: #565656;
+} */
 
-.SearchThing {
+/* .SearchThing { */
     /* margin-left: 5px; */
     /* width: 340px; */
     /* text-align: center; */
     /* justify-self: center; */
     /* border-radius: 1.1875rem; */
-    margin: 0 1rem;
-}
+    /* margin: 0 1rem;
+} */
 
 .SearchThing input {
     border-radius: 0 1.1875rem 1.1875rem 0 !important;
@@ -94,28 +95,32 @@
     background-color: #ffffff;
 }
 
-.FolderIcon2 {
+/* .FolderIcon2 {
     color: #3fadbe;
     width: 1.55606rem;
     height: 1.5rem;
-    margin-right: 0.65rem;
+    margin-right: 0.65rem; */
     /* margin: 1rem; */
     /* margin-bottom: 64px; */
-}
+/* } */
 
-.ProjectPopUp {
+/* .ProjectPopUp {
     margin-top: 27px;
-}
+} */
 
 .popup-arrow {
     opacity: 0;
 }
 
-.FolderTextThing {
+/* .FolderTextThing {
     display: flex;
     justify-content: space-between;
     margin: 0 1.23rem 0.5rem;
-}
+} */
+
+
+
+
 
 /* .PlusIcon {
     display: flex;
@@ -132,9 +137,12 @@
     margin-left: 200px;
   } */
 
-.menu-my--projects {
+/* .menu-my--projects {
     display: flex;
-}
+} */
+
+
+
 
 /* .PlusIcon {
     border: none;
@@ -143,24 +151,24 @@
     color: #202224;
 } */
 
-.AddProjectButton {
+/* .AddProjectButton {
     border: none;
     background: none;
     color: #3fadbe;
     display: flex;
-}
+} */
 
-.my-projects--text {
+/* .my-projects--text {
     color: #7A7E81;
     font-size: 1rem;
     font-weight: 700;
-}
+} */
 
-.AddProjectButton:hover {
+/* .AddProjectButton:hover {
     color: #3593A2;
-}
+} */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) { */
     /* .popup-content {
         width: 248px;
         height: 391px;
@@ -179,14 +187,14 @@
         margin-left: 10px;
       } */
 
-      .ProjectPopUp {
+      /* .ProjectPopUp {
         min-height: 20rem;
         min-width: 22.5rem; 
       }
-}
+} */
 
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
     .closeButton {
         display: none;
     }
-}
+} */
