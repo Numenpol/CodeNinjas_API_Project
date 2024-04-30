@@ -5,44 +5,47 @@ import xIcon from "../assets/xIcon.svg";
 import folderPlusIcon from "../assets/folderPlusIcon.svg";
 import plusSquareFillIcon from "../assets/plusSquareFillIcon.svg";
 // import searchIcon from "../assets/searchIcon.svg";
-import houseIcon from "../assets/houseIcon.svg";
-import "../styles/projectWithoutList.css";
+import houseIconPic from "../assets/houseIcon.svg";
+// import "../styles/projectWithoutList.css";
 // import "../styles/projectListPopUp.css";
 // import Form from "react-bootstrap/Form";
 // import InputGroup from "react-bootstrap/InputGroup";
 import MenuProjectList from "./MenuProjectList"
 import SearchBar from './SearchBar';
+import styles from "../styles/MenuProjectListDesktop.module.css";
 
 function MenuProjectListPhone() {
   const { showMenu, setShowMenu, handleShow } = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
 
+  const {menuProjectPopUp, projectPopUp, homeIcon, houseIconText, houseIcon, buttonthing, closeButton, searchThing, folderTextThing, menuMyProjects, folderIcon2, myProjectsText, plusIcon, addProjectButton, bob} = styles;
+
   return (
-    <div className='MenuProjectPopUp'>
+    <div className={menuProjectPopUp}>
       <Offcanvas show={showMenu} onHide={handleClose} backdrop={false} className="mt-5 mb-5 rounded-3 shadow border-0">
         <Offcanvas.Body>
-          <div className="ProjectPopUp">
-            <div className="home-icon">
-              <div className="HouseIconText">
-                <img src={houseIcon} alt="HouseIcon" className="HouseIcon" />
-                <span className="buttonthing">Home</span>
+          <div className={projectPopUp}>
+            <div className={homeIcon}>
+              <div className={houseIconText}>
+                <img src={houseIconPic} alt="HouseIcon" className={houseIcon} />
+                <span className={buttonthing}>Home</span>
               </div>
-              <button className="closeButton" onClick={handleClose}>
+              <button className={closeButton} onClick={handleClose}>
                 <img src={xIcon} alt="X" />
               </button>
             </div>
-            <div className="SearchThing">
-            <SearchBar />
+            <div className={searchThing}>
+              <SearchBar />
             </div>
-            <div className="FolderTextThing">
-              <div className="menu-my--projects">
-                <img src={folderPlusIcon} alt="folderIcon" className="FolderIcon2" />
-                <p className="my-projects--text">My Projects</p>
+            <div className={folderTextThing}>
+              <div className={menuMyProjects}>
+                <img src={folderPlusIcon} alt="folderIcon" className={folderIcon2} />
+                <p className={myProjectsText}>My Projects</p>
               </div>
-              <div className="PlusIcon">
-                <button className="AddProjectButton" onClick={handleShow}>
-                  <img src={plusSquareFillIcon} alt="squareIcon" />
+              <div className={plusIcon}>
+                <button className={addProjectButton} onClick={handleShow}>
+                  <img src={plusSquareFillIcon} className={bob} alt="squareIcon" />
                 </button>
               </div>
             </div>

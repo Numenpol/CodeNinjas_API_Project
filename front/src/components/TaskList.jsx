@@ -4,14 +4,14 @@ import SearchBar from "./SearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 import "../styles/AddMemberPopUp.css";
 import burgerIcon from "../assets/burgerIcon.svg";
 import styles1 from "../styles/ProjectWithList.module.css";
-import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
+import CreateProjectForm from "./CreateProjectForm"
 
 function TaskList() {
   const { setShowMenu } = useContext(StateContext)
@@ -21,6 +21,8 @@ function TaskList() {
 
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
+
+  const toggleShow = () => setShowMenu((s) => !s);
 
   const {
     taskList,
@@ -37,11 +39,10 @@ function TaskList() {
     taskListHeaderBottom,
     taskListNewTask,
     taskListSearch,
+    taskListTable
   } = styles;
 
   const {MenuThing} = styles1;
-
-  const toggleShow = () => setShowMenu((s) => !s);
 
   return (
     <div className={taskList}>
@@ -54,7 +55,7 @@ function TaskList() {
         <button className={MenuThing} onClick={toggleShow}>
               <img src={burgerIcon} alt="burgerIcon" />
             </button>
-        <MenuProjectListPhone />
+            <MenuProjectListPhone />
             <p className={taskListStatus}>STATUS</p>
             <button className={taskListAddMember} onClick={handleShow}>
               {" "}
@@ -130,7 +131,9 @@ function TaskList() {
             </div>
           </div>
         </div>
-      <TaskListTable />
+        <div className={taskListTable}>
+        <TaskListTable />
+        </div>
       </div>
     </div>
   );

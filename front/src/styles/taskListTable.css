@@ -15,17 +15,17 @@
         background-color: rgba(245, 246, 250, 255) !important;
     }
 
-    th:nth-child(n+4) {
+    /* th:nth-child(n+4) {
         display: none !important;
-    }
+    } */
 
-    td:nth-child(n+4) {
+    /* td:nth-child(n+4) {
         display: none !important;
-    }
-
+    } */
+/* 
     td:nth-child(2) {
         text-align: start;
-    }
+    } */
 }
 
 
@@ -38,9 +38,9 @@
         margin-right: 1rem;
     }
 
-    td:nth-child(2) {
-        /* display: none !important; */
-    }
+    /* td:nth-child(2) {
+        display: none !important;
+    } */
 
 
     .table tr th {
