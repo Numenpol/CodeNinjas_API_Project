@@ -6,7 +6,7 @@ import folderPlusIcon from "../assets/folderPlusIcon.svg";
 import CreateProjectForm from "./CreateProjectForm";
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
-import MenuProjectListPopUp from "./MenuProjectListPopUp";
+import MenuProjectListPhone from "./MenuProjectListPhone";
 import SearchBar from "./SearchBar";
 import MenuProjectListDesktop from "./MenuProjectListDesktop"
 
@@ -28,7 +28,7 @@ function ProjectWithList() {
             <button className={MenuThing} onClick={toggleShow}>
               <img src={burgerIcon} alt="burgerIcon" />
             </button>
-            <MenuProjectListPopUp />
+            <MenuProjectListPhone />
             <div className={FolderText}>
               <img src={folderPlusIcon} alt="folderPlusIcon" className={FolderPlusIcon} />
               <div className="MyProjectsText">My Projects</div>

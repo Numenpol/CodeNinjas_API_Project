@@ -14,6 +14,8 @@ export const StateProvider = ({ children }) => {
     const [update, setUpdate] = useState(0);
     const [show, setShow] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const [projectId, setprojectId] = useState("");
+    const [showEdit, setShowEdit] = useState(false);
 
     const handleShow = () => setShow(true);
 
@@ -43,16 +45,26 @@ export const StateProvider = ({ children }) => {
         setError(error.message);
       }
     };
-  
+
+  const handleResize = () => {
+      if (window.innerWidth > 1440) {
+          setShowMenu(false);
+      }
+  };
+
     useEffect(() => {
       fetchUserData();
-      fetchData()
-      fetchTasks()
+      fetchData();
+      fetchTasks();
+      window.addEventListener('resize', handleResize);
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
     }, [update]);
 
     return (
         <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
-          showMenu, setShowMenu, handleShow}}>
+          showMenu, setShowMenu, handleShow, setprojectId, projectId, setShowEdit, showEdit}}>
             {children}
             </StateContext.Provider>
     );

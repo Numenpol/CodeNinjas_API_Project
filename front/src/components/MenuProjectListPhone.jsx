@@ -13,7 +13,7 @@ import "../styles/projectWithoutList.css";
 import MenuProjectList from "./MenuProjectList"
 import SearchBar from './SearchBar';
 
-function MenuProjectListPopUp() {
+function MenuProjectListPhone() {
   const { showMenu, setShowMenu, handleShow } = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
@@ -54,4 +54,4 @@ function MenuProjectListPopUp() {
   );
 }
 
-export default MenuProjectListPopUp;
+export default MenuProjectListPhone;

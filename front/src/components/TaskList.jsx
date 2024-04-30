@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/esm/Button";
-import MenuProjectListPopUp from "./MenuProjectListPopUp";
+import MenuProjectListPhone from "./MenuProjectListPhone";
 import SearchBar from "./SearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
@@ -7,9 +7,17 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 import "../styles/AddMemberPopUp.css";
+import burgerIcon from "../assets/burgerIcon.svg";
+import styles1 from "../styles/ProjectWithList.module.css";
+import { useContext } from "react";
+import { StateContext } from "../utils/StateContext";
+import MenuProjectListDesktop from "./MenuProjectListDesktop";
 
 function TaskList() {
-  const [showAddMember, setShowAddMember] = useState(false);
+  const { setShowMenu } = useContext(StateContext)
+  
+  const [showAddMember, setShowAddMember,] = useState(false);
+
 
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
@@ -31,38 +39,22 @@ function TaskList() {
     taskListSearch,
   } = styles;
 
+  const {MenuThing} = styles1;
+
+  const toggleShow = () => setShowMenu((s) => !s);
+
   return (
     <div className={taskList}>
       <div className={taskListMenu}>
-        <MenuProjectListPopUp />
+          <MenuProjectListDesktop/>
       </div>
       <div className={taskListCard}>
         <div className={taskListHeader}>
           <div className={taskListHeaderTop}>
-            <Popup
-              trigger={
-                <button className={taskListMenuButton}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="36"
-                    height="36"
-                    fill="currentColor"
-                    className="MenuIcon"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-                    />
-                  </svg>
-                </button>
-              }
-              position="bottom left"
-            >
-              <div>
-                <MenuProjectListPopUp />
-              </div>
-            </Popup>
+        <button className={MenuThing} onClick={toggleShow}>
+              <img src={burgerIcon} alt="burgerIcon" />
+            </button>
+        <MenuProjectListPhone />
             <p className={taskListStatus}>STATUS</p>
             <button className={taskListAddMember} onClick={handleShow}>
               {" "}
@@ -138,8 +130,8 @@ function TaskList() {
             </div>
           </div>
         </div>
-      </div>
       <TaskListTable />
+      </div>
     </div>
   );
 }
