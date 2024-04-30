@@ -4,15 +4,22 @@ import SearchBar from "./SearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 import "../styles/AddMemberPopUp.css";
+import burgerIcon from "../assets/burgerIcon.svg";
+import MenuProjectListDesktop from "./MenuProjectListDesktop";
+import { StateContext } from "../utils/StateContext";
 
 function TaskList() {
   const [showAddMember, setShowAddMember] = useState(false);
 
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
+
+  const { setShowMenu } = useContext(StateContext);
+
+  const toggleShow = () => setShowMenu((s) => !s);
 
   const {
     taskList,
@@ -29,34 +36,21 @@ function TaskList() {
     taskListHeaderBottom,
     taskListNewTask,
     taskListSearch,
+    taskListTable
   } = styles;
 
   return (
     <div className={taskList}>
       <div className={taskListMenu}>
-        <MenuProjectListPopUp />
+        <MenuProjectListDesktop />
       </div>
       <div className={taskListCard}>
         <div className={taskListHeader}>
           <div className={taskListHeaderTop}>
-            <button className={taskListMenuButton}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="36"
-                height="36"
-                fill="currentColor"
-                className="MenuIcon"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-                />
-              </svg>
+            <button className={taskListMenuButton} onClick={toggleShow}>
+              <img src={burgerIcon} alt="burgerIcon" />
             </button>
-            <div>
-              <MenuProjectListPopUp />
-            </div>
+            <MenuProjectListPopUp />
             <p className={taskListStatus}>STATUS</p>
             <button className={taskListAddMember} onClick={handleShow}>
               {" "}
@@ -132,8 +126,10 @@ function TaskList() {
             </div>
           </div>
         </div>
+        <div className={taskListTable}>
+        <TaskListTable />
+        </div>
       </div>
-      <TaskListTable />
     </div>
   );
 }
