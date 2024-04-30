@@ -49,6 +49,15 @@
 
 .taskListAddMember {
     margin-right: 1rem;
+    border: #97979779 1px solid;
+    /* width: 4.75rem; */
+    border-radius: 0.3125rem;
+    background-color: #FFF;
+    padding: 0.3rem 1rem;
+}
+
+.taskListAdd {
+    margin-right: 0.5rem;
 }
 
 .taskListNameIcon {
@@ -120,7 +129,7 @@
 }
 
 .taskListTable {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -200,7 +209,7 @@
     }
 
     .taskListCard {
-        width: 100%;
+        width:  100%;
         height: 95vh;
     }
 

@@ -1,5 +1,6 @@
-import "../styles/Project.css";
+// import "../styles/Project.css";
 import { useState, useEffect } from "react";
+import styles from "../styles/Project.module.css";
 
 function Project({ project }) {
   const [statusCheck, setStatusCheck] = useState("");
@@ -10,29 +11,31 @@ function Project({ project }) {
     setStatusCheck(status);
   }, []);
 
+  const {projectListProject, projectIcon, projectListIcon, projectListName, projectListStatus, projectDone, projectOnHold,projectInProgress, projectOverall, overallBox} = styles;
+
   return (
-    <tr className="project-list--project" title={description}>
-      <th className="project-icon">
-        <img className="project-list-icon" src={icon} alt="" />
+    <tr className={projectListProject} title={description}>
+      <th className={projectIcon}>
+        <img className={projectListIcon} src={icon} alt="icon" />
       </th>
-      <td className="project-name"> {projectName}</td>
-      <td className="project-list-status">
+        <td className={projectListName}> {projectName}</td>
+      <td className={projectListStatus}>
         <p
           className={
             statusCheck == "done"
-              ? "project-done"
+              ? projectDone
               : statusCheck == "on hold"
-                ? "project-onHold"
+                ? projectOnHold
                 : statusCheck == "in progress"
-                  ? "project-inProgress"
+                  ? projectInProgress
                   : ""
           }
         >
           {status}
         </p>
       </td>
-      <td className="project-overall">
-        <p className="overall-box">{overall}</p>
+      <td className={projectOverall}>
+        <p className={overallBox}>{overall}</p>
       </td>
     </tr>
   );

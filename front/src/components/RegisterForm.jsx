@@ -44,11 +44,11 @@ function RegisterForm() {
       </div>
       <div className={registerFormDiv}>
         <Form className={registerForm} onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className={registerInput} controlId="formBasicEmail">
+          <Form.Group className={registerInput} controlId="formBasicName">
             <Form.Control
               className={registerInputHolder}
               type="name"
-              placeholder="Enter your user name"
+              placeholder="Enter your name & surname"
               autoComplete="name"
               {...register("name", {
                 required: "name is required",
@@ -101,7 +101,7 @@ function RegisterForm() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className={registerInput} controlId="formBasicPassword">
+          <Form.Group className={registerInput} controlId="formBasicConfirmPassword">
             <Form.Control
               className={registerInputHolder}
               type="password"

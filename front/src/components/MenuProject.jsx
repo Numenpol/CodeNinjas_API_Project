@@ -91,10 +91,10 @@ function MenuProject({ project }) {
   return (
     <>
       <div className={menuProjectList}>
-        <div className={menuProjectList}>
-          <img src={icon} alt="icon" className={menuProjectIcon} />
-          <p className={menuProjectName}>{projectName}</p>
-        </div>
+          <div className={menuProjectList}>
+            <img src={icon} alt="icon" className={menuProjectIcon} />
+            <p className={menuProjectName}>{projectName}</p>
+          </div>
         <div>
           <DashSquare className={editIcon}
             onClick={handleShow}

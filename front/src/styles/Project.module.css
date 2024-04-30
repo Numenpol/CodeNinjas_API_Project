@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+.projectListProject {
+    min-width: 360px;
+    border-bottom: 1px solid #565656;
+}
+
+.projectListIcon {
+    display: flex;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 1rem;
+}
+
+.projectListName {
+    width: 100%;
+    color: #565656;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.projectListStatus {
+    justify-content: end;
+    vertical-align: middle;
+}
+
+.projectDone {
+    color: #3fadbe;
+    border: 1px solid;
+    border-radius: 1rem;
+    width: 5.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: white;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+    padding-top: 0.2rem;
+}
+
+.projectOnHold {
+    color: #979797;
+    border: 1px solid;
+    border-radius: 1rem;
+    width: 5.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: white;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+    padding-top: 0.2rem;
+}
+
+.projectInProgress {
+    color: #c0417f;
+    border: 1px solid;
+    border-radius: 1rem;
+    width: 5.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: white;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+    padding-top: 0.2rem;
+}
+
+.projectOverall {
+    width: 5.375rem;
+    height: 1.13725rem;
+    flex-shrink: 0;
+    margin-left: 3rem;
+    color: #565656;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.overallBox {
+    margin-top: 0.6rem;
+    width: 5rem;
+}
+
+@media (min-width: 768px) {
+    .projectListStatus {
+        width: 15rem;
+        justify-content: center;
+    }
+
+    .projectListIcon {
+        width: 1.3125rem;
+        margin-left: 2rem;
+    }
+
+    .projectDone,
+    .projectInProgress,
+    .projectOnHold {
+        width: 6.6875rem;
+        font-size: 0.8125rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .projectListIcon {
+        width: 1.5rem;
+    }
+
+    .projectListName {
+        font-size: 1rem;
+        width: 80%;
+    }
+
+    .projectDone,
+    .projectInProgress,
+    .projectOnHold {
+        width: 7.25rem;
+        height: 2.2745rem;
+        font-size: 1rem;
+    }
+
+    .projectListStatus {
+        justify-content: start;
+    }
+
+}
