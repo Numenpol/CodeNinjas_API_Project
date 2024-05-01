@@ -15,7 +15,7 @@ const projectTaskListSchema = new mongoose.Schema({
 
   owner: {
     type: String,
-    
+        
   },
   status: {
     type: String,

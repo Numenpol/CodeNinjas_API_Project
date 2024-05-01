@@ -21,8 +21,8 @@ export const StateProvider = ({ children }) => {
 
     const fetchUserData = async () => {
       try {
-        const data = await getAllUsers();
-        setUsers(data);
+        const {data: {users}} = await getAllUsers();
+        setUsers(users);
       } catch (error) {
         setError(error.message);
       }
