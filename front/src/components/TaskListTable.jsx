@@ -15,6 +15,7 @@ import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableForm from "./TaskListTableForm";
 function TaskListTable() {
   const { tasks, setUpdate, showTask } = useContext(StateContext);
+  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
   const [open, setOpen] = useState(false);
@@ -27,6 +28,7 @@ function TaskListTable() {
 
   // Owner
   const [isOpeno, setIsOpeno] = useState(false);
+  const [isOpenos, setIsOpenos] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
@@ -65,6 +67,18 @@ function TaskListTable() {
     setSelectedOwner(owner);
     setSelectedOwnerColor(color);
     setIsOpeno(false);
+    setIsOpenos(false);
+  };
+
+  const handleOwnerUpdate = async (id, newOwner) => {
+    try {
+      const data = { owner: newOwner };
+      await updateDataTask(id, data);
+      setUpdate((update) => update + 1);
+      setIsOpenos(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
@@ -140,11 +154,13 @@ function TaskListTable() {
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
+        owner: selectedOwner,
       });
       setUpdate((update) => update + 1);
       reset();
       setSelectedStatus("");
       setSelectedPriority("");
+      setSelectedOwner("");
     } catch (error) {
       console.log(error);
     }
@@ -202,11 +218,17 @@ function TaskListTable() {
             <tbody className="table-body">
               <tr>
                 <td>
-                  <input className="key-name" id="key" name="key" type="text" {...register("key")} />
+                  <input
+                    className="key-name"
+                    id="key"
+                    name="key"
+                    type="text"
+                    {...register("key")}
+                  />
                 </td>
                 <td className="task-td">
                   <input
-                  className="task-name"
+                    className="task-name"
                     id="task"
                     name="task"
                     type="text"
@@ -214,8 +236,9 @@ function TaskListTable() {
                   />
                 </td>
                 <td>
-                  <div >
+                  <div>
                     <button
+                      type="button"
                       onClick={() => setIsOpeno(!isOpeno)}
                       className={ownerBtn}
                       // className="task-owner"
@@ -401,13 +424,58 @@ function TaskListTable() {
                     <PencilSquare />
                   </td>
                   <td>
-                    <input
-                      id={`owner-${index}`}
-                      name={`owner-${index}`}
-                      type="text"
-                      defaultValue={task.owner}
-                      {...register(`owner-${index}`)}
-                    />
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setIsOpenos((prevState) => ({
+                            ...prevState,
+                            [task._id]: !prevState[task._id],
+                          }))
+                        }
+                        className={ownerBtn}
+                      >
+                        {selectedOwner ? (
+                          <div className={initialsStyle}>
+                            <CircleFill className={selectedOwnerColor} />
+                            <div>{getInitials(selectedOwner)}</div>
+                          </div>
+                        ) : (
+                          <PersonCircle
+                            className={Ownerstyles.ownerIconEmpty}
+                          />
+                        )}
+                      </button>
+                      {isOpenos[task._id] && (
+                        <div className={ownerMenu}>
+                          <div className={ownerListStyle}>
+                            {[
+                              "Peter Pan",
+                              "Alice Wonderland",
+                              "Tom Sawyer",
+                              "Mirabel Madrigal",
+                              "John Doe",
+                            ].map((owner, index) => (
+                              <div key={index}>
+                                <p
+                                  onClick={() =>
+                                    handleOwnerClick(owner, ownerColors[index])
+                                  }
+                                >
+                                  <div className={initialsList}>
+                                    <CircleFill
+                                      className={ownerColors[index]}
+                                    />
+                                    <div>{getInitials(owner)}</div>
+                                    <span>{owner}</span>
+                                  </div>
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </td>
                   <td>
                     <div>
