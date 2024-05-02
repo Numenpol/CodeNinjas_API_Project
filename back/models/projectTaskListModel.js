@@ -44,6 +44,9 @@ const projectTaskListSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
   },
+   members: {
+      
+   }
 });
 
 const Task = mongoose.model("Task", projectTaskListSchema);
