@@ -152,7 +152,7 @@ function TaskListTable() {
     try {
       await postDataTask({
         ...data,
-        status: selectedStatus,
+        status: statusBtn,
         priority: selectedPriority,
         owner: selectedOwner,
       });
@@ -253,7 +253,7 @@ function TaskListTable() {
                         {selectedOwner ? (
                           <div className={initialsStyle}>
                             <CircleFill className={selectedOwnerColor} />
-                            <div>{getInitials(selectedOwner)}</div>
+                            <div>{getInitials(task.owner)}</div>
                           </div>
                         ) : (
                           <PersonCircle
@@ -281,8 +281,8 @@ function TaskListTable() {
                                     <CircleFill
                                       className={ownerColors[index]}
                                     />
-                                    <div>{getInitials(owner)}</div>
-                                    <span>{owner}</span>
+                                    <div>{getInitials(task.owner)}</div>
+                                    <span>{task.owner}</span>
                                   </div>
                                 </p>
                               </div>
@@ -312,7 +312,16 @@ function TaskListTable() {
                               : task.status === "Done"
                               ? "#00a167"
                               : "",
+                          color:
+                            task.status === "To do"
+                              ? "white"
+                              : task.status === "In progress"
+                              ? "white"
+                              : task.status === "Done"
+                              ? "white"
+                              : "black",
                         }}
+                        
                       >
                         {task.status || String.fromCharCode(9662)}
                       </button>
@@ -366,6 +375,14 @@ function TaskListTable() {
                               : task.priority === "High"
                               ? "#C0417F"
                               : "",
+                              color:
+                              task.priority === "Low"
+                              ? "white"
+                              : task.priority === "Medium"
+                              ? "white"
+                              : task.priority === "High"
+                              ? "white"
+                              : "black",
                         }}
                       >
                         {task.priority || String.fromCharCode(9662)}

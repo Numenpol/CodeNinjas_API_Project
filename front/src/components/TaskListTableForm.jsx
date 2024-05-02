@@ -70,16 +70,7 @@ function TaskListTableForm() {
     setIsOpenos(false);
   };
 
-  const handleOwnerUpdate = async (id, newOwner) => {
-    try {
-      const data = { owner: newOwner };
-      await updateDataTask(id, data);
-      setUpdate((update) => update + 1);
-      setIsOpenos(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
 
   const {
     statusBtn,
@@ -161,38 +152,6 @@ function TaskListTableForm() {
       setSelectedStatus("");
       setSelectedPriority("");
       setSelectedOwner("");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleUpdate = async (id, newTask) => {
-    try {
-      const data = { task: newTask };
-      await updateDataTask(id, data);
-      setUpdate((update) => update + 1);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handlePriorityUpdate = async (id, newPriority) => {
-    try {
-      const data = { priority: newPriority };
-      await updateDataTask(id, data);
-      setUpdate((update) => update + 1);
-      setIsOpens(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleStatusUpdate = async (id, newStatus) => {
-    try {
-      const data = { status: newStatus };
-      await updateDataTask(id, data);
-      setUpdate((update) => update + 1);
-      setIsOpen(false);
     } catch (error) {
       console.log(error);
     }
