@@ -14,7 +14,7 @@ import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import addMemberStyles from "../styles/AddMemberPopUp.module.css";
 
 function TaskList() {
-  const { setShowTask, setShowMenu} = useContext(StateContext);
+  const { setShowTask, setShowMenu } = useContext(StateContext);
 
   const toggleShow = () => setShowMenu((s) => !s);
   
