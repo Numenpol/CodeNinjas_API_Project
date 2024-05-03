@@ -28,8 +28,6 @@ function TaskList() {
     setShowTask(showTask => !showTask);
   }
 
-  const toggleShow = () => setShowMenu((s) => !s);
-
   const {
     taskList,
     taskListMenu,
