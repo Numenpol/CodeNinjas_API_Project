@@ -2,27 +2,32 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 // import "../styles/AddMemberPopUp.css";
 import styles from "../styles/AddMemberPopUp.module.css";
+import { useContext } from "react";
+import { StateContext } from "../utils/StateContext";
 
 function AddMemberPopUp() {
+  const { users } = useContext(StateContext);
+
 
   const {AddMemberPopUpheadertexts, AddMemberInput} = styles;
   
   return (
-    <>
-      <div className="AddMemberPopUpCont">
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label className={AddMemberPopUpheadertexts}>
-            {" "}
-            User email:
-          </Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Email"
-            bsPrefix={AddMemberInput}
-          />
-        </Form.Group>
-      </div>
-    </>
+    <div className="AddMemberPopUpCont">
+      <Form.Group controlId="formBasicEmail">
+        <Form.Label className={AddMemberPopUpheadertexts}>
+          User email:
+          <Form.Select aria-label="Default select example">
+            <option>Open this select menu</option>
+            {users.map((user, key) => (
+              <option key={key} value={user.email}>
+                {user.email}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Label>
+        <Form.Control bsPrefix={AddMemberInput} />
+      </Form.Group>
+    </div>
   );
 }
 

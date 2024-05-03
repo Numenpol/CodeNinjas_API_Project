@@ -1,0 +1,70 @@
+.statusBtn {
+    border: 1px solid #b9b9b9; /* sita reikes nuimti */
+    width: 7rem;
+    text-align: center;
+    color: #565656;
+    background-color: #ffffff;
+    height: 1.9rem;
+    margin-top: 1rem; /* sita reikes nuimti */
+    margin-left: 1rem; /* sita reikes nuimti */
+  }
+  
+  .statusMenu {
+    border: 1px solid #d8d8d8;
+    background-color: #ffffff;
+    border-radius: 0.625rem;
+    width: 7rem;
+    margin-left: 1rem;
+  }
+  .statusDo {
+    background-color: #3372b2;
+    text-align: center;
+    margin: 0.3rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+  }
+  .statusDo:hover {
+    background-color: #3372b2;
+    cursor: pointer;
+  }
+  .statusProgress {
+    background-color: #7f5db6;
+    text-align: center;
+    margin: 0.3rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+  }
+  .statusProgress:hover {
+    background-color: #6a4d98;
+    cursor: pointer;
+  }
+  
+  .statusDone {
+    background-color: #00a167;
+    text-align: center;
+    margin: 0.3rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+  }
+  .statusDone:hover {
+    background-color: #008453;
+    cursor: pointer;
+  }
+  .selected {
+    background-color: #3372b2;
+    color: #fff;
+  }
+  
+  .statusInProgress {
+    background-color: #7f5db6;
+    color: #fff;
+  }
+  
+  .statusDoneSelected {
+    background-color: #00a167;
+    color: #fff;
+  }
+  

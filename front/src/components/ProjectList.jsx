@@ -19,7 +19,7 @@ function ProjectList() {
                 <th className="tasks">TASKS</th>
               </tr>
             </thead>
-            <tbody className="table-body">
+            <tbody className="table-body-box">
               {projects.map((project) => {
                 return (
                   <Project

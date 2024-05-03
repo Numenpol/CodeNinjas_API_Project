@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const projectTaskListSchema = new mongoose.Schema({
   key: {
-    type: String,
+    type: Number,
+    unique: true,
+   
   },
   task: {
     type: String,
@@ -15,6 +17,7 @@ const projectTaskListSchema = new mongoose.Schema({
 
   owner: {
     type: String,
+        
   },
   status: {
     type: String,
@@ -38,10 +41,21 @@ const projectTaskListSchema = new mongoose.Schema({
     type: Date,
     
   },
+
   projectId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
   },
+   members: {
+      
+   }
+});
+projectTaskListSchema.pre('save', async function(next) {
+  if (!this.key) {
+    const count = await this.constructor.countDocuments();
+    this.key = count + 1;
+  }
+  next();
 });
 
 const Task = mongoose.model("Task", projectTaskListSchema);

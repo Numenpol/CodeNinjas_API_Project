@@ -1,0 +1,87 @@
+.ownerBtn {
+  border: 1px solid #b9b9b9; /* sita reikes nuimti */
+  width: 5rem;
+  text-align: center;
+  color: #565656;
+  background-color: #ffffff;
+  height: 1.9rem;
+  margin-top: 1rem;
+  /* sita reikes nuimti */
+  margin-left: 1rem;
+  /* sita reikes nuimti */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ownerMenu {
+  border: 1px solid #d8d8d8;
+  border-radius: 0.625rem;
+  background-color: #ffffff;
+  width: 15rem;
+  margin-left: 1rem;
+}
+.ownerList {
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.ownerIconWater {
+  color: #40adbe;
+  font-size: 1.7rem;
+}
+.ownerIconOrange {
+  color: #fdab3d;
+  font-size: 1.7rem;
+}
+
+.ownerIconGrape {
+  color: #7f5db6;
+  font-size: 1.7rem;
+ 
+}
+
+.ownerIconBlue {
+  color: #3372b2;
+  font-size: 1.7rem;
+}
+.ownerIconPink {
+  color: #C1427F;
+  font-size: 1.7rem;
+}
+
+
+.ownerIconEmpty {
+  color: #ececec;
+  font-size: 1.7rem;
+ 
+}
+
+.initials {
+  position: relative;
+}
+
+.initials div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+.initialsList {
+  position: relative;
+}
+
+.initialsList div {
+  position: absolute;
+  top: 50%;
+  left:6%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+span {
+  margin-left: 0.5rem;
+}

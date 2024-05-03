@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import checkmarkicon from "../assets/CheckmarkIcon.png";
 import penandpapericon from "../assets/PenandpaperIcon.png";
 import calendaricon from "../assets/CalendarIcon.png";
 import statisticicon from "../assets/StatisticIcon.png";
 import styles from "../styles/Dashboard.module.css";
+import { StateContext } from "../utils/StateContext";
 
 function Dashboard() {
   const [done, setDone] = useState(0);
@@ -11,7 +12,28 @@ function Dashboard() {
   const [onhold, setOnHold] = useState(0);
   const [overall, setOverall] = useState(0);
 
+  const { tasks } = useContext(StateContext)
+
+
+  useEffect(() => {
+  tasks.map((task) =>  {
+    if(task.status == "Done") {
+      setDone((count) => count + 1 / 2);
+    } else if (task.status == "In progress") {
+      setInProgress((count) => count + 1 / 2);
+    } else if (task.status == "To do") {
+      setOnHold((count) => count + 1 / 2);
+    }
+    setOverall(tasks.length);
+  })
+  }, []);
+
+
   const {dashboard, dashboardTopBoxes, dashboardBox, checkmarkIcon, dashboardDone, dashboardNumber, penandpaperIcon, dashboardInProgress, dashboardBottomBoxes, calendarIcon, dashboardOnHold, statisticIcon, dashboardOverall} = styles;
+
+
+
+
 
   return (
     <>

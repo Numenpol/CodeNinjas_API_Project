@@ -7,20 +7,26 @@ import Modal from "react-bootstrap/Modal";
 import { useContext, useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 // import "../styles/AddMemberPopUp.css";
-import burgerIcon from "../assets/burgerIcon.svg";
-import styles1 from "../styles/ProjectWithList.module.css";
 import { StateContext } from "../utils/StateContext";
+import styles1 from "../styles/ProjectWithList.module.css";
+import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import addMemberStyles from "../styles/AddMemberPopUp.module.css";
 
 function TaskList() {
-  const { setShowMenu } = useContext(StateContext)
+  const { setShowTask, setShowMenu} = useContext(StateContext);
+
+  const toggleShow = () => setShowMenu((s) => !s);
   
   const [showAddMember, setShowAddMember,] = useState(false);
 
 
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
+
+  const handleShowTask = () => {
+    setShowTask(showTask => !showTask);
+  }
 
   const toggleShow = () => setShowMenu((s) => !s);
 
@@ -118,14 +124,10 @@ function TaskList() {
             <Button
               className={taskListNewTask}
               variant="primary"
+              onClick={handleShowTask}
               style={{
                 backgroundColor: "#3fadbe",
                 border: "#3fadbe",
-                //   width: "299px",
-                //   height: "3.125rem",
-                //   marginLeft: "30.5px",
-                //   marginTop: "1rem",
-                //   marginBottom: "1rem"
               }}
             >
               New task
@@ -140,6 +142,7 @@ function TaskList() {
         </div>
       </div>
     </div>
+
   );
 }
 
