@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 
-function Owner() {
+function TaskListTableOwner({task}) {
   const [isOpeno, setIsOpeno] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
@@ -39,6 +39,9 @@ function Owner() {
     setIsOpeno(false);
   };
 
+
+
+  
   const getInitials = (name) => {
     const initials = name
       .split(" ")
@@ -57,33 +60,58 @@ function Owner() {
 
   return (
     <div>
-      <button onClick={() => setIsOpeno(!isOpeno)} className={ownerBtn}>
-        {selectedOwner ? (
-          <div className={initialsStyle}>
-            <CircleFill className={selectedOwnerColor} />
-            <div>{getInitials(selectedOwner)}</div>
-          </div>
-        ) : (
-          <PersonCircle className={styles.ownerIconEmpty} />
-        )}
-      </button>
-      {isOpeno && (
-        <div className={ownerMenu}>
-          <div className={ownerListStyle}>
-            {["Peter Pan", "Alice Wonderland", "Tom Sawyer", "Mirabel Madrigal", "John Doe"].map((owner, index) => (
-              <p key={index} onClick={() => handleOwnerClick(owner, ownerColors[index])}>
+    <button
+      type="button"
+      onClick={() =>
+        setIsOpeno((prevState) => ({
+          ...prevState,
+          [task._id]: !prevState[task._id],
+        }))
+      }
+      className={ownerBtn}
+    >
+      {selectedOwner ? (
+        <div className={initialsStyle}>
+          <CircleFill className={selectedOwnerColor} />
+          <div>{getInitials(task.owner)}</div>
+        </div>
+      ) : (
+        <PersonCircle
+          className={styles.ownerIconEmpty}
+        />
+      )}
+    </button>
+    {isOpeno[task._id] && (
+      <div className={ownerMenu}>
+        <div className={ownerListStyle}>
+          {[
+            "Peter Pan",
+            "Alice Wonderland",
+            "Tom Sawyer",
+            "Mirabel Madrigal",
+            "John Doe",
+          ].map((owner, index) => (
+            <div key={index}>
+              <p
+                onClick={() =>
+                  handleOwnerClick(owner, ownerColors[index])
+                }
+              >
                 <div className={initialsList}>
-                  <CircleFill className={ownerColors[index]} />
-                  <div>{getInitials(owner)}</div>
-                  <span>{owner}</span>
+                  <CircleFill
+                    className={ownerColors[index]}
+                  />
+                  <div>{getInitials(task.owner)}</div>
+                  <span>{task.owner}</span>
                 </div>
               </p>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      )}
-    </div>
+      </div>
+    )}
+  </div>
   );
 }
 
-export default Owner;
+export default TaskListTableOwner;

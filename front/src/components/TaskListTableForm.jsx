@@ -9,8 +9,8 @@ import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
 import { PencilSquare } from "react-bootstrap-icons";
 import styles from "../styles/StatusDropdown.module.css";
-import styles2 from "../Prioritystyles/PriorityDropdown.module.css";
-import Ownerstyles from "../Ownerstyles/Owner.module.css";
+import styles2 from "../styles/PriorityDropdown.module.css";
+import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 
 function TaskListTableForm() {
