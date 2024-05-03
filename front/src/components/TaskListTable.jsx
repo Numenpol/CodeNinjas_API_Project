@@ -19,7 +19,7 @@ import { deleteDataTask } from "../services/delete";
 
 function TaskListTable() {
   const { tasks, setUpdate, showTask } = useContext(StateContext);
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -31,10 +31,10 @@ function TaskListTable() {
   // Owner
   const [selectedOwner, setSelectedOwner] = useState("");
 
-   // Delete Task
+  // Delete Task
 
-   const [show, setShow] = useState(false);
-   const handleClose = () => setShow(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
 
   // const handleOwnerUpdate = async (id, newOwner) => {
   //   try {
@@ -105,7 +105,7 @@ function TaskListTable() {
       await deleteDataTask(id);
       setUpdate((update) => update + 1);
       handleClose();
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   }
@@ -149,7 +149,7 @@ function TaskListTable() {
                       {...register(`task-${index}`)}
                       onChange={(e) => handleUpdate(task._id, e.target.value)}
                     />
-                     <span>
+                    <span>
                       <PencilSquare />
                     </span>
                     <span onClick={() => setShow(true)}>
@@ -157,13 +157,13 @@ function TaskListTable() {
                     </span>
                   </td>
                   <td>
-                <TaskListTableOwner task={task}/>
+                    <TaskListTableOwner task={task} />
                   </td>
                   <td>
-                  <TaskListTableStatus selectedStatus={selectedStatus} isOpen={isOpen} setIsOpen={setIsOpen} task={task} updateDataTask={updateDataTask}/>
+                    <TaskListTableStatus selectedStatus={selectedStatus} isOpen={isOpen} setIsOpen={setIsOpen} task={task} updateDataTask={updateDataTask} />
                   </td>
                   <td>
-                  <TaskListTablePriority isOpens={isOpens} setIsOpens={setIsOpens} task={task} updateDataTask={updateDataTask}/>
+                    <TaskListTablePriority isOpens={isOpens} setIsOpens={setIsOpens} task={task} updateDataTask={updateDataTask} />
                   </td>
                   <td>
                     <input
@@ -193,32 +193,33 @@ function TaskListTable() {
                       {...register(`completiondate-${index}`)}
                     />
                   </td>
+                  <Modal
+                    className="myDeleteModal"
+                    show={show}
+                  >
+                    <Modal.Body>
+                      Are You sure You want to delete this task?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button className="cancelBtn" onClick={handleClose}>
+                        <div className="cancelBtnContent">Cancel</div>
+                      </Button>
+                      <Button className="createBtn" onClick={() => handleDeleteTask(task._id)}>
+                        Delete
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </tr>
+
               ))}
             </tbody>
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>
         <div className={showTask == true ? "" : "hidden"}>
-                    <TaskListTableForm />
-                      </div>
+          <TaskListTableForm />
+        </div>
       </div>
-      <Modal
-        className="myDeleteModal"
-        show={show}
-      >
-        <Modal.Body>
-          Are You sure You want to delete this task?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="cancelBtn" onClick={handleClose}>
-            <div className="cancelBtnContent">Cancel</div>
-          </Button>
-          <Button className="createBtn" onClick={() => handleDeleteTask(tasks._id)}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
       {/* <Button onClick={handleShow}>Mark</Button>
                 <TaskListStatusModal show={show} handleClose={handleClose} /> */}
     </>
