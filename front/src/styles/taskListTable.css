@@ -1,7 +1,7 @@
 .allTaskList {
     margin-top: 2rem;
     max-width: 46rem;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 
@@ -75,7 +75,10 @@
     width: 9.5rem;
 }
 
-
+.tasklist-task-field {
+    display: flex;
+    align-items: center;
+}
 
 @media screen and (min-width: 768px) {
 
@@ -127,11 +130,11 @@
     }
 }
 
-@media screen and (min-width: 1290px) {
+/* @media screen and (min-width: 1290px) {
     .allTaskList {
         overflow-x: hidden;
     }
-}
+} */
 
 @media screen and (min-width: 1440px) {
 
@@ -139,9 +142,9 @@
         min-width: 73%;
     }
 
-    .allTaskList {
+    /* .allTaskList {
         overflow-x: hidden;
-    }
+    } */
 
     .key-name {
         width: 2rem;

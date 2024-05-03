@@ -7,13 +7,15 @@ import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
-import { PencilSquare } from "react-bootstrap-icons";
+import { PencilSquare, Trash } from "react-bootstrap-icons";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableForm from "./TaskListTableForm";
 import TaskListTableOwner from "./TaskListTableOwner";
 import TaskListTableStatus from "./TaskListTableStatus";
 import TaskListTablePriority from "./TaskListTablePriority";
-
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { deleteDataTask } from "../services/delete";
 
 function TaskListTable() {
   const { tasks, setUpdate, showTask } = useContext(StateContext);
@@ -28,6 +30,11 @@ function TaskListTable() {
 
   // Owner
   const [selectedOwner, setSelectedOwner] = useState("");
+
+   // Delete Task
+
+   const [show, setShow] = useState(false);
+   const handleClose = () => setShow(false);
 
   // const handleOwnerUpdate = async (id, newOwner) => {
   //   try {
@@ -93,6 +100,16 @@ function TaskListTable() {
     }
   };
 
+  const handleDeleteTask = async (id) => {
+    try {
+      await deleteDataTask(id);
+      setUpdate((update) => update + 1);
+      handleClose();
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <>
@@ -123,7 +140,7 @@ function TaskListTable() {
                       {...register(`key-${index}`)}
                     />
                   </td>
-                  <td>
+                  <td className="tasklist-task-field">
                     <input
                       id={`task-${index}`}
                       name={`task-${index}`}
@@ -132,7 +149,12 @@ function TaskListTable() {
                       {...register(`task-${index}`)}
                       onChange={(e) => handleUpdate(task._id, e.target.value)}
                     />
-                    <PencilSquare />
+                     <span>
+                      <PencilSquare />
+                    </span>
+                    <span onClick={() => setShow(true)}>
+                      <Trash />
+                    </span>
                   </td>
                   <td>
                 <TaskListTableOwner task={task}/>
@@ -181,6 +203,22 @@ function TaskListTable() {
                     <TaskListTableForm />
                       </div>
       </div>
+      <Modal
+        className="myDeleteModal"
+        show={show}
+      >
+        <Modal.Body>
+          Are You sure You want to delete this task?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="cancelBtn" onClick={handleClose}>
+            <div className="cancelBtnContent">Cancel</div>
+          </Button>
+          <Button className="createBtn" onClick={() => handleDeleteTask(tasks._id)}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {/* <Button onClick={handleShow}>Mark</Button>
                 <TaskListStatusModal show={show} handleClose={handleClose} /> */}
     </>
