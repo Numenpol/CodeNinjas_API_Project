@@ -74,7 +74,7 @@ function TaskListTable() {
     try {
       await postDataTask({
         ...data,
-        status: statusBtn,
+        status: selectedStatus,
         priority: selectedPriority,
         owner: selectedOwner,
       });
@@ -105,6 +105,18 @@ function TaskListTable() {
       handleClose();
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handlePencilClick = (index) => {
+    document.getElementById(`task-${index}`).focus();
+  };
+
+  const handleKeyPress = async (event, id) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      await handleUpdate(id, event.target.value);
+      event.target.blur();
     }
   };
 
@@ -146,10 +158,10 @@ function TaskListTable() {
                       type="text"
                       defaultValue={task.task}
                       {...register(`task-${index}`)}
-                      onChange={(e) => handleUpdate(task._id, e.target.value)}
+                      onKeyDown={(e) => handleKeyPress(e, task._id)}
                     />
                     <span>
-                      <PencilSquare />
+                      <PencilSquare onClick={() => handlePencilClick(index)}/>
                     </span>
                     <span onClick={() => setShow(true)}>
                       <Trash />

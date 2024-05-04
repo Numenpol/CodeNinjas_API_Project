@@ -14,7 +14,7 @@ import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 
 function TaskListTableForm() {
-  const { tasks, setUpdate, showTask } = useContext(StateContext);
+  const { tasks, setUpdate, showTask, setShowTask } = useContext(StateContext);
   
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -148,6 +148,7 @@ function TaskListTableForm() {
         owner: selectedOwner,
       });
       setUpdate((update) => update + 1);
+      setShowTask(false);
       reset();
       setSelectedStatus("");
       setSelectedPriority("");

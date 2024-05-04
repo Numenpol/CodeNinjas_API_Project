@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const projectTaskListSchema = new mongoose.Schema({
   key: {
     type: Number,
-    unique: true,
-   
   },
   task: {
     type: String,
