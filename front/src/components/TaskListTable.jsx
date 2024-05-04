@@ -51,8 +51,6 @@ function TaskListTable() {
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
 
-
-
   // const handlePriorityClick = (prioritys) => {
   //   setSelectedPriority(prioritys);
   //   setIsOpens(false);
@@ -108,8 +106,7 @@ function TaskListTable() {
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
 
   return (
     <>
@@ -121,18 +118,19 @@ function TaskListTable() {
                 <th>Key</th>
                 <th>Task</th>
                 <th>Owner</th>
-                <th>Status</th>
-                <th>Priority</th>
+                <th className="table-headerStatus">Status</th>
+                <th className="table-headerPriority">Priority</th>
                 <th>Timeline</th>
-                <th>Creation date</th>
-                <th>Completion date</th>
+                <th className="table-headerCreationdate">Creation date</th>
+                <th className="table-headerCompletiondate">Completion date</th>
               </tr>
             </thead>
             <tbody className="table-body">
               {tasks.map((task, index) => (
                 <tr key={index}>
-                  <td>
+                  <td className="table-headerKey">
                     <input
+                      className="key-name"
                       id={`key-${index}`}
                       name={`key-${index}`}
                       type="text"
@@ -142,6 +140,7 @@ function TaskListTable() {
                   </td>
                   <td className="tasklist-task-field">
                     <input
+                      className="task-name"
                       id={`task-${index}`}
                       name={`task-${index}`}
                       type="text"
@@ -156,17 +155,29 @@ function TaskListTable() {
                       <Trash />
                     </span>
                   </td>
-                  <td>
+                  <td className="table-headerOwner">
                     <TaskListTableOwner task={task} />
                   </td>
                   <td>
-                    <TaskListTableStatus selectedStatus={selectedStatus} isOpen={isOpen} setIsOpen={setIsOpen} task={task} updateDataTask={updateDataTask} />
+                    <TaskListTableStatus
+                      selectedStatus={selectedStatus}
+                      isOpen={isOpen}
+                      setIsOpen={setIsOpen}
+                      task={task}
+                      updateDataTask={updateDataTask}
+                    />
                   </td>
                   <td>
-                    <TaskListTablePriority isOpens={isOpens} setIsOpens={setIsOpens} task={task} updateDataTask={updateDataTask} />
+                    <TaskListTablePriority
+                      isOpens={isOpens}
+                      setIsOpens={setIsOpens}
+                      task={task}
+                      updateDataTask={updateDataTask}
+                    />
                   </td>
-                  <td>
+                  <td className="table-headerTimeline">
                     <input
+                    className="task-timeline"
                       id={`timeline-${index}`}
                       name={`timeline-${index}`}
                       type="text"
@@ -174,8 +185,9 @@ function TaskListTable() {
                       {...register(`timeline-${index}`)}
                     />
                   </td>
-                  <td>
+                  <td className="table-headerCreationdate">
                     <input
+                    className="task-creationdate"
                       style={{ border: "none" }}
                       id={`creationdate-${index}`}
                       name={`creationdate-${index}`}
@@ -184,8 +196,9 @@ function TaskListTable() {
                       {...register(`creationdate-${index}`)}
                     />
                   </td>
-                  <td>
+                  <td className="table-headerCompletiondate">
                     <input
+                    className="task-completiondate"
                       id={`completiondate-${index}`}
                       name={`completiondate-${index}`}
                       type="text"
@@ -193,10 +206,7 @@ function TaskListTable() {
                       {...register(`completiondate-${index}`)}
                     />
                   </td>
-                  <Modal
-                    className="myDeleteModal"
-                    show={show}
-                  >
+                  <Modal className="myDeleteModal" show={show}>
                     <Modal.Body>
                       Are You sure You want to delete this task?
                     </Modal.Body>
@@ -204,13 +214,15 @@ function TaskListTable() {
                       <Button className="cancelBtn" onClick={handleClose}>
                         <div className="cancelBtnContent">Cancel</div>
                       </Button>
-                      <Button className="createBtn" onClick={() => handleDeleteTask(task._id)}>
+                      <Button
+                        className="createBtn"
+                        onClick={() => handleDeleteTask(task._id)}
+                      >
                         Delete
                       </Button>
                     </Modal.Footer>
                   </Modal>
                 </tr>
-
               ))}
             </tbody>
           </Table>

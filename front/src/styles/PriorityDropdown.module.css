@@ -1,71 +1,73 @@
 .priorityBtn {
-    border: 1px solid #b9b9b9; /* sita reikes nuimti */
-    border-radius: 0rem;
-    width: 7rem;
-    text-align: center;
-    color: #565656;
-    background-color: #ffffff;
-    height: 1.9rem;
-    margin-top: 1rem; /* sita reikes nuimti */
-    margin-left: 1rem; /* sita reikes nuimti */
-  }
-  
-  .priorityMenu {
-    border: 1px solid #d8d8d8;
-    background-color: #ffffff;
-    border-radius: 0.625rem;
-    width: 7rem;
-    margin-left: 1rem;
-  }
-  .priorityLow {
-    background-color: #40adbe;
-    text-align: center;
-    margin: 0.3rem;
-    color: #fff;
-    border: none;
-    border-radius: 0.3rem;
-  }
-  .priorityLow:hover {
-    background-color: #3794a2;
-    cursor: pointer;
-  }
-  .priorityMedium {
-    background-color: #fdab3d;
-    text-align: center;
-    margin: 0.3rem;
-    color: #fff;
-    border: none;
-    border-radius: 0.3rem;
-  }
-  .priorityMedium:hover {
-    background-color: #df9636;
-    cursor: pointer;
-  }
-  
-  .priorityHigh {
-    background-color: #c0417f;
-    text-align: center;
-    margin: 0.3rem;
-    color: #fff;
-    border: none;
-    border-radius: 0.3rem;
-  }
-  .priorityHigh:hover {
-    background-color: #a2376b;
-    cursor: pointer;
-  }
-  .selectedPrioLow {
-    background-color: #3372b2;
-    color: #fff;
-  }
-  
-  .selectedPrioMed {
-    background-color: #7f5db6;
-    color: #fff;
-  }
-  
-  .selectedPrioHi {
-    background-color: #00a167;
-    color: #fff;
-  }
-  
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  border-radius: 0rem;
+  width: 100%;
+  text-align: center;
+  color: #565656;
+  background-color: #ffffff;
+  height: 2.6rem;
+}
+
+.priorityMenu {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #d8d8d8;
+  background-color: #ffffff;
+  border-radius: 0.625rem;
+  width: 7rem;
+}
+.priorityLow {
+  background-color: #40adbe;
+  text-align: center;
+  margin: 0.3rem;
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+}
+.priorityLow:hover {
+  background-color: #3794a2;
+  cursor: pointer;
+}
+.priorityMedium {
+  background-color: #fdab3d;
+  text-align: center;
+  margin: 0.3rem;
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+}
+.priorityMedium:hover {
+  background-color: #df9636;
+  cursor: pointer;
+}
+
+.priorityHigh {
+  background-color: #c0417f;
+  text-align: center;
+  margin: 0.3rem;
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+}
+.priorityHigh:hover {
+  background-color: #a2376b;
+  cursor: pointer;
+}
+.selectedPrioLow {
+  background-color: #3372b2;
+  color: #fff;
+}
+
+.selectedPrioMed {
+  background-color: #7f5db6;
+  color: #fff;
+}
+
+.selectedPrioHi {
+  background-color: #00a167;
+  color: #fff;
+}
