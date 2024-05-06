@@ -1,23 +1,18 @@
 import Table from "react-bootstrap/Table";
-// import Button from "react-bootstrap/Button";
 import "../styles/taskListTable.css";
-// import TaskListStatusModal from "./TaskListStatusModal";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { StateContext } from "../utils/StateContext";
-import { Pencil, Trash } from "react-bootstrap-icons";
-// import { PersonCircle, CircleFill } from "react-bootstrap-icons";
+import { PencilSquare, Trash } from "react-bootstrap-icons";
+import { deleteDataTask } from "../services/delete";
 import TaskListTableForm from "./TaskListTableForm";
 import TaskListTableOwner from "./TaskListTableOwner";
 import TaskListTableStatus from "./TaskListTableStatus";
 import TaskListTablePriority from "./TaskListTablePriority";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { deleteDataTask } from "../services/delete";
-import Delete from "../assets/Delete.svg";
-import Edit from "../assets/Edit.svg";
 
 function TaskListTable() {
   const { tasks, setUpdate, showTask } = useContext(StateContext);
@@ -25,39 +20,12 @@ function TaskListTable() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
 
-  //Priority
-
   const [isOpens, setIsOpens] = useState({});
   const [selectedPriority, setSelectedPriority] = useState("");
 
-  // Owner
   const [selectedOwner, setSelectedOwner] = useState("");
-
-  // Delete Task
-
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-
-  // const handleOwnerUpdate = async (id, newOwner) => {
-  //   try {
-  //     const data = { owner: newOwner };
-  //     await updateDataTask(id, data);
-  //     setUpdate((update) => update + 1);
-  //     setIsOpenos(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
-  // const handlePriorityClick = (prioritys) => {
-  //   setSelectedPriority(prioritys);
-  //   setIsOpens(false);
-  //   setOpens(false);
-  // };
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -100,26 +68,36 @@ function TaskListTable() {
     }
   };
 
-  const handleDeleteTask = async (id) => {
+  const handlePencilClick = (taskId) => {
+    document.getElementById(`task-${taskId}`).focus();
+  };
+
+  const handleKeyPress = async (event, taskId) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      await handleUpdate(taskId, event.target.value);
+      event.target.blur();
+    }
+  };
+
+  const handleDeleteButtonClick = (taskId) => {
+    setTaskIdToDelete(taskId);
+    setDeleteModalShow(true);
+  };
+
+  const handleDeleteTask = async () => {
     try {
-      await deleteDataTask(id);
+      await deleteDataTask(taskIdToDelete);
       setUpdate((update) => update + 1);
-      handleClose();
+      handleCloseDeleteModal();
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handlePencilClick = (index) => {
-    document.getElementById(`task-${index}`).focus();
-  };
-
-  const handleKeyPress = async (event, id) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      await handleUpdate(id, event.target.value);
-      event.target.blur();
-    }
+  const handleCloseDeleteModal = () => {
+    setDeleteModalShow(false);
+    setTaskIdToDelete(null);
   };
 
   return (
@@ -140,36 +118,35 @@ function TaskListTable() {
               </tr>
             </thead>
             <tbody className="table-body">
-              {tasks.map((task, index) => (
-                <tr key={index}>
+              {tasks.map((task) => (
+                <tr key={task._id}>
                   <td className="table-headerKey">
                     <input
                       className="key-name"
-                      id={`key-${index}`}
-                      name={`key-${index}`}
+                      id={`key-${task._id}`}
+                      name={`key-${task._id}`}
                       type="text"
                       defaultValue={task.key}
-                      {...register(`key-${index}`)}
+                      {...register(`key-${task._id}`)}
                     />
                   </td>
                   <td className="tasklist-task-field">
                     <input
                       className="task-name"
-                      id={`task-${index}`}
-                      name={`task-${index}`}
+                      id={`task-${task._id}`}
+                      name={`task-${task._id}`}
                       type="text"
                       defaultValue={task.task}
-                      {...register(`task-${index}`)}
+                      {...register(`task-${task._id}`)}
                       onKeyDown={(e) => handleKeyPress(e, task._id)}
                     />
                     <span>
-                      <img
-                        src={Edit}
-                        onClick={() => handlePencilClick(index)}
+                      <PencilSquare
+                        onClick={() => handlePencilClick(task._id)}
                       />
                     </span>
-                    <span onClick={() => setShow(true)}>
-                      <img src={Delete} />
+                    <span onClick={() => handleDeleteButtonClick(task._id)}>
+                      <Trash />
                     </span>
                   </td>
                   <td className="table-headerOwner">
@@ -195,62 +172,59 @@ function TaskListTable() {
                   <td className="table-headerTimeline">
                     <input
                       className="task-timeline"
-                      id={`timeline-${index}`}
-                      name={`timeline-${index}`}
+                      id={`timeline-${task._id}`}
+                      name={`timeline-${task._id}`}
                       type="text"
                       defaultValue={task.timeline}
-                      {...register(`timeline-${index}`)}
+                      {...register(`timeline-${task._id}`)}
                     />
                   </td>
                   <td className="table-headerCreationdate">
                     <input
                       className="task-creationdate"
                       style={{ border: "none" }}
-                      id={`creationdate-${index}`}
-                      name={`creationdate-${index}`}
+                      id={`creationdate-${task._id}`}
+                      name={`creationdate-${task._id}`}
                       type="text"
                       defaultValue={task.creationdate}
-                      {...register(`creationdate-${index}`)}
+                      {...register(`creationdate-${task._id}`)}
                     />
                   </td>
                   <td className="table-headerCompletiondate">
                     <input
                       className="task-completiondate"
-                      id={`completiondate-${index}`}
-                      name={`completiondate-${index}`}
+                      id={`completiondate-${task._id}`}
+                      name={`completiondate-${task._id}`}
                       type="text"
                       defaultValue={task.completiondate}
-                      {...register(`completiondate-${index}`)}
+                      {...register(`completiondate-${task._id}`)}
                     />
                   </td>
-                  <Modal className="myDeleteModal" show={show}>
-                    <Modal.Body>
-                      Are You sure You want to delete this task?
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button className="cancelBtn" onClick={handleClose}>
-                        <div className="cancelBtnContent">Cancel</div>
-                      </Button>
-                      <Button
-                        className="createBtn"
-                        onClick={() => handleDeleteTask(task._id)}
-                      >
-                        Delete
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
                 </tr>
               ))}
             </tbody>
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>
-        <div className={showTask == true ? "" : "hidden"}>
+        <div className={showTask === true ? "" : "hidden"}>
           <TaskListTableForm />
         </div>
       </div>
-      {/* <Button onClick={handleShow}>Mark</Button>
-                <TaskListStatusModal show={show} handleClose={handleClose} /> */}
+      <Modal
+        className="myDeleteModal"
+        show={deleteModalShow}
+        onHide={handleCloseDeleteModal}
+      >
+        <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
+        <Modal.Footer>
+          <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
+            Cancel
+          </Button>
+          <Button className="createBtn" onClick={handleDeleteTask}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
