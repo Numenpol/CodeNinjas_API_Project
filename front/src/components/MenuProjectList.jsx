@@ -1,5 +1,5 @@
 import MenuProject from "./MenuProject";
-import "../styles/ProjectList.css";
+// import "../styles/ProjectList.css";
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 

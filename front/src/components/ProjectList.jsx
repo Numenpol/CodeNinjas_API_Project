@@ -1,29 +1,32 @@
 import Project from "./Project";
-import "../styles/ProjectList.css";
+// import "../styles/ProjectList.css";
 import { StateContext } from "../utils/StateContext";
 import { useContext } from "react";
+import styles from "../styles/ProjectList.module.css";
 
 function ProjectList() {
   const { projects, error } = useContext(StateContext);
 
+const {cornerGaps, tableBox, tableHeader, projectTitle, invinsible, projectListName, projectListStatus, projectListTasks, tableBodyBox, projectListList} = styles;
+
   return (
     // <div>
-      <div className="corner-gaps">
-        <table className="table-box">
+      <div className={cornerGaps}>
+        <table className={tableBox}>
           {/* <div className="project-list-box"> */}
-            <thead className="table-header">
-              <tr className="project-title">
-                <th className="invinsible"></th>
-                <th className="name">PROJECT NAME</th>
-                <th className="status">STATUS</th>
-                <th className="tasks">TASKS</th>
+            <thead className={tableHeader}>
+              <tr className={projectTitle}>
+                <th className={invinsible}></th>
+                <th className={projectListName}>PROJECT NAME</th>
+                <th className={projectListStatus}>STATUS</th>
+                <th className={projectListTasks}>TASKS</th>
               </tr>
             </thead>
-            <tbody className="table-body-box">
+            <tbody className={tableBodyBox}>
               {projects.map((project) => {
                 return (
                   <Project
-                    className="project-list--list"
+                    className={projectListList}
                     project={project}
                     key={project._id}
                   />

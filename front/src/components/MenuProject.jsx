@@ -192,6 +192,7 @@ function MenuProject({ project }) {
                   >
                     <Form.Label>Project description</Form.Label>
                     <Form.Control
+                    style={{ resize: "none" }}
                       type="textarea"
                       as="textarea"
                       rows={3}
