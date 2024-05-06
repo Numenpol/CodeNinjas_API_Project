@@ -13,6 +13,7 @@ import TaskListTableForm from "./TaskListTableForm";
 import TaskListTableOwner from "./TaskListTableOwner";
 import TaskListTableStatus from "./TaskListTableStatus";
 import TaskListTablePriority from "./TaskListTablePriority";
+import TaskListTableTimeLine from "./TaskListTableTimeLine";
 
 
 function TaskListTable() {
@@ -144,13 +145,7 @@ function TaskListTable() {
                   <TaskListTablePriority isOpens={isOpens} setIsOpens={setIsOpens} task={task} updateDataTask={updateDataTask}/>
                   </td>
                   <td>
-                    <input
-                      id={`timeline-${index}`}
-                      name={`timeline-${index}`}
-                      type="text"
-                      defaultValue={task.timeline}
-                      {...register(`timeline-${index}`)}
-                    />
+                  <TaskListTableTimeLine/>
                   </td>
                   <td>
                     <input
