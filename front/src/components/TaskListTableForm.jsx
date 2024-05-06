@@ -12,8 +12,9 @@ import styles from "../styles/StatusDropdown.module.css";
 import styles2 from "../styles/PriorityDropdown.module.css";
 import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
+import TaskListTableTimeLine from "./TaskListTableTimeLine";
 
-function TaskListTableForm() {
+function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCreationDay, selectedCreationDay, selectedCompletionDay, setSelectedCompletionDay}) {
   const { tasks, setUpdate, showTask, setShowTask } = useContext(StateContext);
   
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,7 @@ function TaskListTableForm() {
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
+
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -126,6 +128,8 @@ function TaskListTableForm() {
     setOpens(false);
   };
 
+
+
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       key: "",
@@ -133,9 +137,9 @@ function TaskListTableForm() {
       owner: "",
       status: "",
       priority: "",
-      timeline: new Date(),
-      creationdate: new Date(),
-      completiondate: new Date(),
+      timeline: "",
+      creationdate: "",
+      completiondate: "",
     },
   });
 
@@ -146,6 +150,9 @@ function TaskListTableForm() {
         status: selectedStatus,
         priority: selectedPriority,
         owner: selectedOwner,
+        timeline: selectedTimeLine,
+        creationdate: selectedCreationDay,
+        completiondate: selectedCompletionDay,
       });
       setUpdate((update) => update + 1);
       setShowTask(false);
@@ -320,14 +327,8 @@ function TaskListTableForm() {
                   </div>
                 </td>
                 <td className="table-headerTimeline">
-                  <input
-                    className="task-timeline"
-                    id="timeline"
-                    name="timeline"
-                    type="text"
-                    {...register("timeline")}
-                  />
-                  {}
+                      <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} 
+                      setSelectedCompletionDay={setSelectedCompletionDay}/>
                 </td>
                 <td className="table-headerCreationdate">
                   <input

@@ -1,0 +1,8 @@
+.progress{
+--bs-progress-bg: rgba(86,86,86,255) !important;
+--bs-progress-height: 20px !important;
+--bs-progress-border-radius: 20px !important;
+}
+.taskListProgressBar{
+    width: 120px;
+}

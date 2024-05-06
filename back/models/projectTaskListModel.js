@@ -28,16 +28,15 @@ const projectTaskListSchema = new mongoose.Schema({
     // default: "Low",
   },
   timeline: {
-    type: Date,
+    type: String,
     
   },
   creationdate: {
-    type: Date,
+    type: String,
     
   },
   completiondate: {
-    type: Date,
-    
+    type: String,
   },
 
   projectId: {

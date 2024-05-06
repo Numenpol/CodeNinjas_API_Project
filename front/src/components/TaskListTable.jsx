@@ -28,6 +28,10 @@ function TaskListTable() {
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
+  const [selectedTimeLine, setSelectedTimeLine] = useState();
+  const [selectedCreationDay, setSelectedCreationDay] = useState();
+  const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       key: "",
@@ -35,9 +39,9 @@ function TaskListTable() {
       owner: "",
       status: "",
       priority: "",
-      timeline: new Date(),
-      creationdate: new Date(),
-      completiondate: new Date(),
+      timeline: "",
+      creationdate: "",
+      completiondate: "",
     },
   });
 
@@ -48,6 +52,9 @@ function TaskListTable() {
         status: selectedStatus,
         priority: selectedPriority,
         owner: selectedOwner,
+        timeline: selectedTimeLine,
+        creationdate: selectedCreationDay,
+        completiondate: selectedCompletionDay,
       });
       setUpdate((update) => update + 1);
       reset();
@@ -171,7 +178,7 @@ function TaskListTable() {
                     />
                   </td>
                   <td>
-                  <TaskListTableTimeLine/>
+                  <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}/>
                   </td>
                   <td className="table-headerCreationdate">
                     <input
@@ -201,7 +208,8 @@ function TaskListTable() {
           <input style={{ display: "none" }} type="submit" />
         </form>
         <div className={showTask === true ? "" : "hidden"}>
-          <TaskListTableForm />
+          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay} 
+          setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay}/>
         </div>
       </div>
       <Modal
