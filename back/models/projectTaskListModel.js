@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const projectTaskListSchema = new mongoose.Schema({
   key: {
     type: Number,
-    unique: true,
-   
   },
   task: {
     type: String,
@@ -30,16 +28,15 @@ const projectTaskListSchema = new mongoose.Schema({
     // default: "Low",
   },
   timeline: {
-    type: Date,
+    type: String,
     
   },
   creationdate: {
-    type: Date,
+    type: String,
     
   },
   completiondate: {
-    type: Date,
-    
+    type: String,
   },
 
   projectId: {
@@ -52,11 +49,24 @@ const projectTaskListSchema = new mongoose.Schema({
 });
 projectTaskListSchema.pre('save', async function(next) {
   if (!this.key) {
-    const count = await this.constructor.countDocuments();
-    this.key = count + 1;
+    const latestTask = await this.constructor.findOne().sort({ key: -1 });
+    const latestKey = latestTask ? latestTask.key : 0;
+    this.key = latestKey + 1;
   }
   next();
 });
+
+projectTaskListSchema.pre('remove', async function(next) {
+  const remainingTasks = await this.constructor.find().sort({ key: 1 });
+
+  for (let i = 0; i < remainingTasks.length; i++) {
+    remainingTasks[i].key = i + 1;
+    await remainingTasks[i].save();
+  }
+
+  next();
+});
+
 
 const Task = mongoose.model("Task", projectTaskListSchema);
 

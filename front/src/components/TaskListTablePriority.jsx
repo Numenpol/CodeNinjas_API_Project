@@ -30,7 +30,7 @@ function TaskListTablePriority({isOpens, setIsOpens, task, updateDataTask}) {
 
 
     return(
-    <div>
+    <div className="task-priority">
     <button
       type="button"
       onClick={() =>

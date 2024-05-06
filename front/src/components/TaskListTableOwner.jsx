@@ -59,7 +59,7 @@ function TaskListTableOwner({task}) {
   } = styles;
 
   return (
-    <div>
+    <div className="task-owner">
     <button
       type="button"
       onClick={() =>

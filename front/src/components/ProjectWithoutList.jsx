@@ -30,9 +30,9 @@ function ProjectWithoutList() {
               <img src={burgerIcon} alt="burgerIcon" />
             </button>
             <MenuProjectListPhone />
-            <div className="FolderText">
-              <img src={folderPlusIcon} alt="folderPlusIcon" className="FolderIcon1" />
-              <div className="MyProjectsText">My Projects</div>
+            <div className={folderText}>
+              <img src={folderPlusIcon} alt="folderPlusIcon" className={folderIcon1} />
+              <div className={myProjectsText}>My Projects</div>
             </div>
             <div className={projectListSearchBar}>
               <SearchBar />

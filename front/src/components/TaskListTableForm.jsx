@@ -12,9 +12,10 @@ import styles from "../styles/StatusDropdown.module.css";
 import styles2 from "../styles/PriorityDropdown.module.css";
 import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
+import TaskListTableTimeLine from "./TaskListTableTimeLine";
 
-function TaskListTableForm() {
-  const { tasks, setUpdate, showTask } = useContext(StateContext);
+function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCreationDay, selectedCreationDay, selectedCompletionDay, setSelectedCompletionDay}) {
+  const { tasks, setUpdate, showTask, setShowTask } = useContext(StateContext);
   
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -32,6 +33,7 @@ function TaskListTableForm() {
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
+
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -126,6 +128,8 @@ function TaskListTableForm() {
     setOpens(false);
   };
 
+
+
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       key: "",
@@ -133,9 +137,9 @@ function TaskListTableForm() {
       owner: "",
       status: "",
       priority: "",
-      timeline: new Date(),
-      creationdate: new Date(),
-      completiondate: new Date(),
+      timeline: "",
+      creationdate: "",
+      completiondate: "",
     },
   });
 
@@ -146,8 +150,12 @@ function TaskListTableForm() {
         status: selectedStatus,
         priority: selectedPriority,
         owner: selectedOwner,
+        timeline: selectedTimeLine,
+        creationdate: selectedCreationDay,
+        completiondate: selectedCompletionDay,
       });
       setUpdate((update) => update + 1);
+      setShowTask(false);
       reset();
       setSelectedStatus("");
       setSelectedPriority("");
@@ -159,12 +167,12 @@ function TaskListTableForm() {
 
   return (
     <>
-      <div className="allTaskList">
+      <div >
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
             <tbody className="table-body">
               <tr>
-                <td>
+                <td className="table-headerKey">
                   <input
                     className="key-name"
                     id="key"
@@ -173,17 +181,17 @@ function TaskListTableForm() {
                     {...register("key")}
                   />
                 </td>
-                <td className="task-td">
+                <td className="tasklist-task-field">
                   <input
-                    className="task-name"
+                    className="task-nameForm"
                     id="task"
                     name="task"
                     type="text"
                     {...register("task")}
                   />
                 </td>
-                <td>
-                  <div>
+                <td className="table-headerOwner">
+                  <div className="task-owner">
                     <button
                       type="button"
                       onClick={() => setIsOpeno(!isOpeno)}
@@ -227,8 +235,8 @@ function TaskListTableForm() {
                     )}
                   </div>
                 </td>
-                <td>
-                  <div>
+                <td className="table-headerStatus">
+                  <div className="task-status">
                     <button
                       type="button"
                       onClick={() => setOpen(!open)}
@@ -271,8 +279,8 @@ function TaskListTableForm() {
                     )}
                   </div>
                 </td>
-                <td>
-                  <div>
+                <td className="table-headerPriority">
+                  <div className="task-priority">
                     <button
                       type="button"
                       onClick={() => setOpens(!opens)}
@@ -318,17 +326,11 @@ function TaskListTableForm() {
                     )}
                   </div>
                 </td>
-                <td>
-                  <input
-                    className="task-timeline"
-                    id="timeline"
-                    name="timeline"
-                    type="text"
-                    {...register("timeline")}
-                  />
-                  {}
+                <td className="table-headerTimeline">
+                      <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} 
+                      setSelectedCompletionDay={setSelectedCompletionDay}/>
                 </td>
-                <td>
+                <td className="table-headerCreationdate">
                   <input
                     className="task-creationdate"
                     style={{ border: "none" }}
@@ -338,7 +340,7 @@ function TaskListTableForm() {
                     {...register("creationdate")}
                   />
                 </td>
-                <td>
+                <td className="table-headerCompletiondate">
                   <input
                     className="task-completiondate"
                     id="completiondate"
