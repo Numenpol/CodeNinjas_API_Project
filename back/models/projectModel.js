@@ -33,6 +33,12 @@ const projectSchema = new mongoose.Schema({
       ref: "ProjectTaskList",
     },
   ],
+
+  members: [
+    {
+      type: String,
+    }
+  ]
   
 });
 

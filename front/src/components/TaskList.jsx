@@ -12,21 +12,26 @@ import { StateContext } from "../utils/StateContext";
 import styles1 from "../styles/ProjectWithList.module.css";
 import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
-import { ChevronDown } from "react-bootstrap-icons";
+import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
 
 function TaskList() {
   const { setShowTask, setShowMenu} = useContext(StateContext);
+  
 
   const toggleShow = () => setShowMenu((s) => !s);
 
   const [showAddMember, setShowAddMember] = useState(false);
-
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
 
   const handleShowTask = () => {
-    setShowTask(showTask => !showTask);
+    setShowTask(showTask => !showTask); 
   }
+  const [showTable, setShowTable] = useState(true);
+
+  const toggleTable = () => {
+    setShowTable((prevState) => !prevState);
+  };
 
   const {
     taskList,
@@ -134,9 +139,17 @@ function TaskList() {
               <SearchBar />
             </div>
           </div>
-          <div className={taskListPlanning}><ChevronDown className={taskListPlanningIcon}/>Planning</div>
-      <TaskListTable />
-        {/* </div> */}
+          <div>
+  <div className={taskListPlanning}>
+    {showTable ? (
+      <ChevronDown className={taskListPlanningIcon} onClick={toggleTable} />
+    ) : (
+      <ChevronRight className={taskListPlanningIcon} onClick={toggleTable} />
+    )}
+    Planning
+  </div>
+  {showTable && <TaskListTable />}
+</div>
       </div>
     </div>
 

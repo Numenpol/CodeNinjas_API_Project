@@ -167,7 +167,7 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
 
   return (
     <>
-      <div className="allTaskList">
+      <div >
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
             <tbody className="table-body">
@@ -181,9 +181,9 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                     {...register("key")}
                   />
                 </td>
-                <td>
+                <td className="tasklist-task-field">
                   <input
-                    className="task-name"
+                    className="task-nameForm"
                     id="task"
                     name="task"
                     type="text"
