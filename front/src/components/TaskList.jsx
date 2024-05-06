@@ -12,6 +12,7 @@ import { StateContext } from "../utils/StateContext";
 import styles1 from "../styles/ProjectWithList.module.css";
 import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
+import { ChevronDown } from "react-bootstrap-icons";
 
 function TaskList() {
   const { setShowTask, setShowMenu} = useContext(StateContext);
@@ -33,6 +34,7 @@ function TaskList() {
     taskListCard,
     taskListHeader,
     taskListHeaderTop,
+    taskListHeaderUnderline,
     taskListMenuButton,
     taskListStatus,
     taskListAddMember,
@@ -42,6 +44,8 @@ function TaskList() {
     taskListHeaderBottom,
     taskListNewTask,
     taskListSearch,
+    taskListPlanning,
+    taskListPlanningIcon
   } = styles;
 
   const {MenuThing} = styles1;
@@ -52,8 +56,9 @@ function TaskList() {
          <MenuProjectListDesktop/>
       </div>
       <div className={taskListCard}>
-        <div className={taskListHeader}>
+        {/* <div className={taskListHeader}> */}
           <div className={taskListHeaderTop}>
+            
           <button className={MenuThing} onClick={toggleShow}>
               <img src={burgerIcon} alt="burgerIcon" />
             </button>
@@ -109,9 +114,10 @@ function TaskList() {
             </Modal>
             <div className={taskListNameIcon}>
               <div className={taskListProjectIcon}>ICON</div>
-              <h2 className={taskListProjectName}>NAME</h2>
+              <h2 className={taskListProjectName}>My first project for creating music</h2>
             </div>
           </div>
+          <div className ={taskListHeaderUnderline}></div>
           <div className={taskListHeaderBottom}>
             <Button
               className={taskListNewTask}
@@ -128,8 +134,9 @@ function TaskList() {
               <SearchBar />
             </div>
           </div>
+          <div className={taskListPlanning}><ChevronDown className={taskListPlanningIcon}/>Planning</div>
       <TaskListTable />
-        </div>
+        {/* </div> */}
       </div>
     </div>
 

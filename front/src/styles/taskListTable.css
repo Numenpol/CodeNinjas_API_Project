@@ -1,7 +1,9 @@
 .allTaskList {
-    margin-top: 2rem;
-    max-width: 26rem;
-    overflow-x: auto;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    /* max-width: 23rem; */
+    /* overflow-x: auto; */
 }
 
 
@@ -59,7 +61,7 @@
 }
 
 .task-name {
-    width: 15rem;
+    width: 13rem;
     overflow: hidden;
     text-align: start;
     display: flex;
@@ -119,7 +121,24 @@
     display: flex;
     align-items: center;
     border: none;
-}
+  }
+  
+  .tasklist-task-field input {
+    flex-grow: 1;
+    border: none;
+  }
+  
+  .tasklist-task-field span {
+    margin-left: 0.1rem;
+    margin-right: 0.2rem;
+  }
+  .pencilTrashIcon {
+    color: #9F9F9F
+  }
+  .pencilTrashIcon:hover {
+    color: #565656
+  }
+
 
 @media screen and (min-width: 768px) {
 
@@ -132,7 +151,7 @@
     }
 
     .task-name {
-        width: 35rem;
+        width: 25rem;
         overflow: hidden;
         text-align: start;
     }
@@ -202,12 +221,11 @@
     }
     
     .task-owner {
-        width: 3.5rem;
+        width: 3rem;
     }
     
     .task-status {
         width: 6rem;
-     
     }
     
     .task-priority {
@@ -219,13 +237,11 @@
     }
     
     .task-creationdate {
-        width: 7.5rem;
+        width: 7rem;
     }
     
     .task-completiondate {
-        width: 7.5rem;
+        width: 8rem;
     }
-
-
 }
 

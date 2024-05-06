@@ -7,8 +7,8 @@ import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
-import { PencilSquare, Trash } from "react-bootstrap-icons";
-import { PersonCircle, CircleFill } from "react-bootstrap-icons";
+import { Pencil, Trash } from "react-bootstrap-icons";
+// import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableForm from "./TaskListTableForm";
 import TaskListTableOwner from "./TaskListTableOwner";
 import TaskListTableStatus from "./TaskListTableStatus";
@@ -16,6 +16,8 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { deleteDataTask } from "../services/delete";
+import Delete from "../assets/Delete.svg";
+import Edit from "../assets/Edit.svg";
 
 function TaskListTable() {
   const { tasks, setUpdate, showTask } = useContext(StateContext);
@@ -113,7 +115,7 @@ function TaskListTable() {
   };
 
   const handleKeyPress = async (event, id) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       event.preventDefault();
       await handleUpdate(id, event.target.value);
       event.target.blur();
@@ -161,10 +163,13 @@ function TaskListTable() {
                       onKeyDown={(e) => handleKeyPress(e, task._id)}
                     />
                     <span>
-                      <PencilSquare onClick={() => handlePencilClick(index)}/>
+                      <img
+                        src={Edit}
+                        onClick={() => handlePencilClick(index)}
+                      />
                     </span>
                     <span onClick={() => setShow(true)}>
-                      <Trash />
+                      <img src={Delete} />
                     </span>
                   </td>
                   <td className="table-headerOwner">
@@ -189,7 +194,7 @@ function TaskListTable() {
                   </td>
                   <td className="table-headerTimeline">
                     <input
-                    className="task-timeline"
+                      className="task-timeline"
                       id={`timeline-${index}`}
                       name={`timeline-${index}`}
                       type="text"
@@ -199,7 +204,7 @@ function TaskListTable() {
                   </td>
                   <td className="table-headerCreationdate">
                     <input
-                    className="task-creationdate"
+                      className="task-creationdate"
                       style={{ border: "none" }}
                       id={`creationdate-${index}`}
                       name={`creationdate-${index}`}
@@ -210,7 +215,7 @@ function TaskListTable() {
                   </td>
                   <td className="table-headerCompletiondate">
                     <input
-                    className="task-completiondate"
+                      className="task-completiondate"
                       id={`completiondate-${index}`}
                       name={`completiondate-${index}`}
                       type="text"
