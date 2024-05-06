@@ -25,17 +25,18 @@
 
 .projectListName {
     color: #565656;
-    font-size: 0.875rem;
+    font-size: 0.869rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     overflow: hidden;
     padding-top: 0.5rem;
+    /* text-wrap: nowrap; */
 }
 
 .projectListStatus {
     color: #565656;
-    font-size: 0.875rem;
+    font-size: 0.869rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -46,13 +47,13 @@
 
 .projectListTasks {
     color: #565656;
-    font-size: 0.875rem;
+    font-size: 0.869rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
-    padding-left: 1rem;
+    padding-left: 1.3rem;
 }
 
 .tableBodyBox {
@@ -65,10 +66,10 @@
     border-bottom: 1px solid #565656;
 }
 
-/* .project-list-box {
-  padding-left: 1rem;
-  padding-right: 1rem;
-} */
+.cornerGaps {
+    min-height: 52.1vh;
+}
+
 
 @media screen and (min-width: 768px) {
     .cornerGaps {
@@ -81,10 +82,18 @@
         padding-left: 0;
     }
 
+    .projectListTasks { 
+        padding-right: 0.5rem;
+    }
+
     /* .project-list-box {
         padding-left: 3rem;
         padding-right: 3rem;
       } */
+
+      .cornerGaps {
+        min-height: 66.2vh;
+    }
 }
 
 @media screen and (min-width: 1440px) {

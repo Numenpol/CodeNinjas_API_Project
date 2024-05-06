@@ -1,5 +1,5 @@
 import Project from "./Project";
-import "../styles/ProjectList.css";
+// import "../styles/ProjectList.css";
 import { StateContext } from "../utils/StateContext";
 import { useContext } from "react";
 import styles from "../styles/ProjectList.module.css";
