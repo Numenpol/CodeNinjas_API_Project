@@ -31,7 +31,7 @@ function TaskListTableStatus({selectedStatus, isOpen, setIsOpen, task, updateDat
       };
 
     return(
-    <div>
+    <div className="task-status">
     <button
       type="button"
       onClick={() =>

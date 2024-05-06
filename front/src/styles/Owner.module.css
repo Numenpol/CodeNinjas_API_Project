@@ -1,25 +1,22 @@
 .ownerBtn {
-  border: 1px solid #b9b9b9; /* sita reikes nuimti */
-  width: 5rem;
+  border: none;
   text-align: center;
   color: #565656;
   background-color: #ffffff;
-  height: 1.9rem;
-  margin-top: 1rem;
-  /* sita reikes nuimti */
-  margin-left: 1rem;
-  /* sita reikes nuimti */
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .ownerMenu {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   border: 1px solid #d8d8d8;
   border-radius: 0.625rem;
   background-color: #ffffff;
-  width: 15rem;
-  margin-left: 1rem;
+  width: 14rem;
 }
 .ownerList {
   margin-left: 0.5rem;
@@ -38,7 +35,6 @@
 .ownerIconGrape {
   color: #7f5db6;
   font-size: 1.7rem;
- 
 }
 
 .ownerIconBlue {
@@ -46,15 +42,13 @@
   font-size: 1.7rem;
 }
 .ownerIconPink {
-  color: #C1427F;
+  color: #c1427f;
   font-size: 1.7rem;
 }
-
 
 .ownerIconEmpty {
   color: #ececec;
   font-size: 1.7rem;
- 
 }
 
 .initials {
@@ -77,7 +71,7 @@
 .initialsList div {
   position: absolute;
   top: 50%;
-  left:6%;
+  left: 6%;
   transform: translate(-50%, -50%);
   color: white;
   font-size: 12px;

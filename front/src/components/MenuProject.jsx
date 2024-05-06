@@ -81,7 +81,7 @@ function MenuProject({ project }) {
     }
   }
 
-  const {menuProjectList, menuProjectIcon, menuProjectName, editIcon, menuProjectModalBackDrop, menuEdit, menuPencilsquare, menuTrash} = styles;
+  const { menuProjectList, menuProjectIcon, menuProjectName, editIcon, menuProjectModalBackDrop, menuEdit, menuPencilsquare, menuTrash } = styles;
 
   return (
     <>
@@ -97,11 +97,11 @@ function MenuProject({ project }) {
 
         </div>
         <Modal
-        className="myModal"
-        // className={myModal}
-        // dialogClassName={`${myModal} modal-content`}
-        show={show} onHide={handleClose} backdropClassName={menuProjectModalBackDrop}>
-          <div className={menuEdit} onClick={handleSmAllClose} >
+          className="myModal"
+          // className={myModal}
+          // dialogClassName={`${myModal} modal-content`}
+          show={show} onHide={handleClose} backdropClassName={menuProjectModalBackDrop}>
+          <div className={menuEdit} onClick={handleSmAllClose}>
             <PencilSquare className={menuPencilsquare} /> Edit project
           </div>
 

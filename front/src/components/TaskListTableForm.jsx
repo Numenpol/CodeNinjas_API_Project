@@ -14,7 +14,7 @@ import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 
 function TaskListTableForm() {
-  const { tasks, setUpdate, showTask } = useContext(StateContext);
+  const { tasks, setUpdate, showTask, setShowTask } = useContext(StateContext);
   
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -148,6 +148,7 @@ function TaskListTableForm() {
         owner: selectedOwner,
       });
       setUpdate((update) => update + 1);
+      setShowTask(false);
       reset();
       setSelectedStatus("");
       setSelectedPriority("");
@@ -164,7 +165,7 @@ function TaskListTableForm() {
           <Table bordered>
             <tbody className="table-body">
               <tr>
-                <td>
+                <td className="table-headerKey">
                   <input
                     className="key-name"
                     id="key"
@@ -173,7 +174,7 @@ function TaskListTableForm() {
                     {...register("key")}
                   />
                 </td>
-                <td className="task-td">
+                <td>
                   <input
                     className="task-name"
                     id="task"
@@ -182,8 +183,8 @@ function TaskListTableForm() {
                     {...register("task")}
                   />
                 </td>
-                <td>
-                  <div>
+                <td className="table-headerOwner">
+                  <div className="task-owner">
                     <button
                       type="button"
                       onClick={() => setIsOpeno(!isOpeno)}
@@ -227,8 +228,8 @@ function TaskListTableForm() {
                     )}
                   </div>
                 </td>
-                <td>
-                  <div>
+                <td className="table-headerStatus">
+                  <div className="task-status">
                     <button
                       type="button"
                       onClick={() => setOpen(!open)}
@@ -271,8 +272,8 @@ function TaskListTableForm() {
                     )}
                   </div>
                 </td>
-                <td>
-                  <div>
+                <td className="table-headerPriority">
+                  <div className="task-priority">
                     <button
                       type="button"
                       onClick={() => setOpens(!opens)}
@@ -318,7 +319,7 @@ function TaskListTableForm() {
                     )}
                   </div>
                 </td>
-                <td>
+                <td className="table-headerTimeline">
                   <input
                     className="task-timeline"
                     id="timeline"
@@ -328,7 +329,7 @@ function TaskListTableForm() {
                   />
                   {}
                 </td>
-                <td>
+                <td className="table-headerCreationdate">
                   <input
                     className="task-creationdate"
                     style={{ border: "none" }}
@@ -338,7 +339,7 @@ function TaskListTableForm() {
                     {...register("creationdate")}
                   />
                 </td>
-                <td>
+                <td className="table-headerCompletiondate">
                   <input
                     className="task-completiondate"
                     id="completiondate"
