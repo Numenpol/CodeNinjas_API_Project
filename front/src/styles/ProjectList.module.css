@@ -1,0 +1,110 @@
+.cornerGaps {
+    overflow-x: auto;
+    background-color: #f5f6fa;
+    padding-bottom: 3rem;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+}
+
+.tableBox {
+    background: #f5f6fa;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    min-width: 360px;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 0.7rem;
+}
+
+.tableHeader {
+    min-width: 360px;
+}
+
+.invinsible {
+    width: 1rem;
+}
+
+.projectListName {
+    color: #565656;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    overflow: hidden;
+    padding-top: 0.5rem;
+}
+
+.projectListStatus {
+    color: #565656;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+.projectListTasks {
+    color: #565656;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+.tableBodyBox {
+    border-left: #f5f6fa 20px solid;
+    border-right: #f5f6fa 20px solid;
+}
+
+.projectListList {
+    padding-left: 1rem;
+    border-bottom: 1px solid #565656;
+}
+
+/* .project-list-box {
+  padding-left: 1rem;
+  padding-right: 1rem;
+} */
+
+@media screen and (min-width: 768px) {
+    .cornerGaps {
+        margin: 0 1rem;
+    }
+
+    .projectListStatus,
+    .projectListTasks {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    /* .project-list-box {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      } */
+}
+
+@media screen and (min-width: 1440px) {
+    .cornerGaps {
+        min-height: 72.5vh;
+    }
+
+    .projectListName,
+    .projectListTasks {
+        font-size: 1rem;
+    }
+
+    .projectListStatus {
+        font-size: 1rem;
+        text-align: start;
+        padding-left: 2rem;
+    }
+
+    /* .project-list-box {
+        padding-left: 7rem;
+        padding-right: 7rem;
+      } */
+}
