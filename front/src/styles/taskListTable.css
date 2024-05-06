@@ -3,7 +3,7 @@
     margin-top: 0.5rem;
     margin-right: 1rem;
     /* max-width: 23rem; */
-    /* overflow-x: auto; */
+    overflow-x: auto;
 }
 
 
@@ -18,17 +18,14 @@
     padding: 0rem !important;
 }
 
-
 .table-header th {
     text-align: center;
     color: #565656;
-    text-align: center;
     font-size: 0.75rem;
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
 }
-
 
 .table-headerKey {
     width: 3rem;
@@ -68,6 +65,10 @@
     padding-left: 1rem;
     padding-top: 0.5rem;
 }
+.task-nameForm {
+   min-width: 15.6rem;
+}
+
 
 .pencil {
     margin-right: 0.5rem;
@@ -155,6 +156,12 @@
         overflow: hidden;
         text-align: start;
     }
+    .task-nameForm {
+        min-width: 27.6rem;
+     }
+     .task-nameForm input {
+        width: 15.6rem;
+      }
 
     .pencil {
         margin-right: 0.5rem;
@@ -213,6 +220,10 @@
         overflow: hidden;
         text-align: start;
     }
+    .task-nameForm {
+        min-width: 20.6rem; 
+     }
+
     
     .pencil {
         margin-right: 0.5rem;

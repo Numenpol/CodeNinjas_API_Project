@@ -141,11 +141,11 @@ function TaskListTable() {
                       onKeyDown={(e) => handleKeyPress(e, task._id)}
                     />
                     <span>
-                      <PencilSquare
+                      <PencilSquare className="pencilTrashIcon"
                         onClick={() => handlePencilClick(task._id)}
                       />
                     </span>
-                    <span onClick={() => handleDeleteButtonClick(task._id)}>
+                    <span className="pencilTrashIcon" onClick={() => handleDeleteButtonClick(task._id)}>
                       <Trash />
                     </span>
                   </td>
