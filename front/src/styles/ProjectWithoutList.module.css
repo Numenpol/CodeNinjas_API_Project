@@ -31,13 +31,14 @@
 
 .folderText {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     margin-top: -35px;
     font-size: 1.25rem;
     font-weight: 300;
     color: #7a7e81;
     margin-bottom: 1.88rem;
+    margin-left: 4rem;
 }
 
 .folderIcon1 {
@@ -86,8 +87,8 @@ img.chartIcon {
         /* left: 50px; */
         /* width: 5rem; */
         /* margin-left: -13rem; */
-        margin-top: 0;
-        margin-bottom: 0;
+        /* margin-top: 0;
+        margin-bottom: 0; */
         font-size: 1.375rem;
       }
 
@@ -140,6 +141,7 @@ img.chartIcon {
         font-size: 1.875rem;
         /* justify-content: start; */
         /* text-align: left; */
+        margin: 0;
       }
 
       .projectListSearchBar {

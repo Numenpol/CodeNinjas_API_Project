@@ -3,13 +3,15 @@
     background-color: #f5f6fa;
     padding-bottom: 3rem;
     border-radius: 0.625rem 0.625rem 0rem 0rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .tableBox {
     background: #f5f6fa;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    min-width: 360px;
+    min-width: 344px;
     width: 100%;
     overflow-x: auto;
     margin-top: 0.7rem;
@@ -19,9 +21,9 @@
     min-width: 360px;
 }
 
-.invinsible {
+/* .invinsible {
     width: 1rem;
-}
+} */
 
 .projectListName {
     color: #565656;
@@ -32,6 +34,8 @@
     overflow: hidden;
     padding-top: 0.5rem;
     /* text-wrap: nowrap; */
+    text-align: start;
+    padding-left: 1rem;
 }
 
 .projectListStatus {
@@ -42,7 +46,7 @@
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
-    padding-left: 1rem;
+    padding-left: 1.3rem;
 }
 
 .projectListTasks {
@@ -94,6 +98,10 @@
       .cornerGaps {
         min-height: 66.2vh;
     }
+
+    .projectListName {
+        padding-left: 1.7rem;
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -116,4 +124,7 @@
         padding-left: 7rem;
         padding-right: 7rem;
       } */
+      /* .projectListName {
+        padding-left: 1.7rem;
+    } */
 }

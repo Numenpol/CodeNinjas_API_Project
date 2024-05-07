@@ -326,7 +326,7 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                     )}
                   </div>
                 </td>
-                <td className="table-headerTimeline">
+                <td>
                       <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} 
                       setSelectedCompletionDay={setSelectedCompletionDay}/>
                 </td>

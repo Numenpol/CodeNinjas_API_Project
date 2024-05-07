@@ -10,8 +10,8 @@
 .projectListIcon {
     display: flex;
     justify-content: center;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     width: 1rem;
 }
 
@@ -30,7 +30,7 @@
 
 .projectDone {
     color: #3fadbe;
-    border: 1px solid;
+    border: 1px solid ;
     border-radius: 1rem;
     width: 5.25rem;
     text-align: center;
@@ -94,7 +94,8 @@
 
     .projectListIcon {
         width: 1.3125rem;
-        margin-left: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 
     .projectDone,

@@ -33,13 +33,15 @@
 
 .FolderText {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   margin-top: -35px;
   font-size: 1.25rem;
   font-weight: 300;
   color: #7a7e81;
   margin-bottom: 1.88rem;
+  justify-content: start;
+  margin-left: 4rem;
 }
 
 .FolderIcon1 {
@@ -95,7 +97,7 @@
   color: white;
   border: #3fadbe;
   border-radius: 5px;
-  width: 299px;
+  width: 315px;
   height: 3.125rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -109,23 +111,37 @@
   margin-right: 0.5rem;
 }
 
+/* -------------------- */
+
+/* .FolderText {
+  justify-content: start;
+  margin-left: 4rem;
+} */
+
+/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
 
 
 @media screen and (min-width: 768px) {
   .ProjectListHeader {
     display: flex;
     justify-content: space-between;
+    /* justify-content: start; */
     /* margin-bottom: 15.44rem; */
+    height: 3rem;
   }
+
+
 
   .SearcbarProjectList {
     max-width: 18rem;
   }
 
   .FolderText {
-    margin-top: 0;
-    margin-bottom: 0;
+    /* margin-top: 0;
+    margin-bottom: 0; */
     font-size: 1.375rem;
+    /* justify-content: start; */
+    /* margin-bottom: 4rem; */
   }
 
   .MyProjectsText {
@@ -150,6 +166,7 @@
     margin-top: 1, 35rem;
     margin-bottom: 0.5rem;
   }
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -191,6 +208,7 @@
 
   .FolderText {
     font-size: 1.875rem;
+    margin: 0;
     /* justify-content: flex-start; */
   }
 

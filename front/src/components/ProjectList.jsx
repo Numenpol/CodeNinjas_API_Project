@@ -16,8 +16,8 @@ const {cornerGaps, tableBox, tableHeader, projectTitle, invinsible, projectListN
           {/* <div className="project-list-box"> */}
             <thead className={tableHeader}>
               <tr className={projectTitle}>
-                <th className={invinsible}></th>
-                <th className={projectListName}>PROJECT NAME</th>
+                {/* <th className={invinsible}></th> */}
+                <th colSpan={2} className={projectListName}>PROJECT NAME</th>
                 <th className={projectListStatus}>STATUS</th>
                 <th className={projectListTasks}>TASKS</th>
               </tr>
