@@ -13,9 +13,9 @@ function PriorityDropdown() {
 
   return (
     <div>
-<button type ="button" onClick={() => setIsOpens(!isOpens)} className={priorityBtn + (selectedPriority ? ' ' + selectedPrioLow : '')} style={{ backgroundColor: selectedPriority === "Low" ? '#40ADBE' : selectedPriority === "Medium" ? '#FDAB3D' : selectedPriority === "High" ? '#C0417F' : '' }}>
-  {selectedPriority || String.fromCharCode(9662)}
-</button>
+      <button type="button" onClick={() => setIsOpens(!isOpens)} className={priorityBtn + (selectedPriority ? ' ' + selectedPrioLow : '')} style={{ backgroundColor: selectedPriority === "Low" ? '#40ADBE' : selectedPriority === "Medium" ? '#FDAB3D' : selectedPriority === "High" ? '#C0417F' : '' }}>
+        {selectedPriority || String.fromCharCode(9662)}
+      </button>
       {isOpens && (
         <div className={priorityMenu}>
           <p className={priorityLow} onClick={() => handlePriorityClick("Low")}>Low</p>

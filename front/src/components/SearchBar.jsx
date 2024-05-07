@@ -27,7 +27,7 @@ function SearchBar() {
               className="form-control rounded-pill border-0 color"
             />
            
-              <Sliders onClick={() => setSmShow(true)}  className="sliders me-3 mt-2" />
+              <Sliders onClick={() => setSmShow(true)}  className="sliders me-3 d-flex align-self-center" />
           </div>
             <Modal
               size="sm"

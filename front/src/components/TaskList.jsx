@@ -6,7 +6,6 @@ import TaskListTable from "./TaskListTable";
 import Modal from "react-bootstrap/Modal";
 import { useContext, useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
-// import "../styles/AddMemberPopUp.css";
 import { StateContext } from "../utils/StateContext";
 import styles1 from "../styles/ProjectWithList.module.css";
 import burgerIcon from "../assets/burgerIcon.svg";

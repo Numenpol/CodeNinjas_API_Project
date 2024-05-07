@@ -1,4 +1,4 @@
-// import "../styles/Project.css";
+
 import { useState, useEffect } from "react";
 import styles from "../styles/Project.module.css";
 

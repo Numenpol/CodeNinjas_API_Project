@@ -1,6 +1,5 @@
 // import Form from "react-bootstrap/Form";
 // import InputGroup from "react-bootstrap/InputGroup";
-// import "../styles/projectWithoutList.css";
 import burgerIcon from "../assets/burgerIcon.svg";
 import folderPlusIcon from "../assets/folderPlusIcon.svg";
 import CreateProjectForm from "./CreateProjectForm";
