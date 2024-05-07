@@ -79,7 +79,7 @@ function MenuProject({ project }) {
       setValue("projectName", project.projectName);
       setValue("description", project.description);
     }
-  }, [project]);
+  }, [project, setValue]);
 
   const formSubmitHandler = async (data) => {
     try {
@@ -147,7 +147,7 @@ function MenuProject({ project }) {
           )}
         </div>
 
-        <Modal className="mySecondModal" show={smShow} dialogClassName={modalDialog} backdrop="static">
+        <Modal className="mySecondModal" show={smShow} dialogClassName={modalDialog} backdropClassName="backdrop">
           <div className={createProject}>
             <button className={xIconButton} onClick={handleSmClose}>
               <img src={xIcon} alt="xIcon" />
@@ -171,6 +171,10 @@ function MenuProject({ project }) {
                       // autoComplete="projectName"
                       {...register("projectName", {
                         required: "Project name is required",
+                        maxLength:{
+                          value:40,
+                          message:"Project name is to long, it can't exceed 40 characters"
+                        }
                       })}
                       isInvalid={errors.projectName}
                     />

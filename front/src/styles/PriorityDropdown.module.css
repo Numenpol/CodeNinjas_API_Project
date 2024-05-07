@@ -20,6 +20,7 @@
   border-radius: 0.625rem;
   width: 6rem;
 }
+
 .priorityLow {
   background-color: #40adbe;
   text-align: center;
@@ -28,10 +29,12 @@
   border: none;
   border-radius: 0.3rem;
 }
+
 .priorityLow:hover {
   background-color: #3794a2;
   cursor: pointer;
 }
+
 .priorityMedium {
   background-color: #fdab3d;
   text-align: center;
@@ -40,6 +43,7 @@
   border: none;
   border-radius: 0.3rem;
 }
+
 .priorityMedium:hover {
   background-color: #df9636;
   cursor: pointer;
@@ -53,10 +57,12 @@
   border: none;
   border-radius: 0.3rem;
 }
+
 .priorityHigh:hover {
   background-color: #a2376b;
   cursor: pointer;
 }
+
 .selectedPrioLow {
   background-color: #3372b2;
   color: #fff;
