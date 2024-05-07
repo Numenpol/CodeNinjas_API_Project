@@ -3,26 +3,19 @@ import MenuProjectListPhone from "./MenuProjectListPhone";
 import SearchBar from "./SearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
-import Modal from "react-bootstrap/Modal";
+// import Modal from "react-bootstrap/Modal";
 import { useContext, useState } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
-// import "../styles/AddMemberPopUp.css";
 import { StateContext } from "../utils/StateContext";
 import styles1 from "../styles/ProjectWithList.module.css";
 import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
-import addMemberStyles from "../styles/AddMemberPopUp.module.css";
 
 function TaskList() {
   const { setShowTask, setShowMenu} = useContext(StateContext);
-  
-
   const toggleShow = () => setShowMenu((s) => !s);
-  
   const [showAddMember, setShowAddMember,] = useState(false);
-
-
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
 
@@ -57,7 +50,6 @@ function TaskList() {
     taskListTable
   } = styles;
 
-  const {AddMemberPopUpModal, AddMemberPopUpheader, AddMemberPopUpheadertext, AddMemberPopUpbody, AddButtons, AddCloseButton, AddAddButton, AddMemberPopUpfooter} = addMemberStyles;
 
   const {MenuThing} = styles1;
 
@@ -92,38 +84,7 @@ function TaskList() {
               </svg>
               Add
             </button>
-            <Modal
-              show={showAddMember}
-              onHide={handleClose}
-              bsPrefix={AddMemberPopUpModal}
-            >
-              <Modal.Header closeButton bsPrefix={AddMemberPopUpheader}>
-                <Modal.Title>
-                  {" "}
-                  <div className={AddMemberPopUpheadertext}>
-                    Add project member
-                  </div>
-                </Modal.Title>
-              </Modal.Header>
-              <Modal.Body bsPrefix={AddMemberPopUpbody}>
-                <AddMemberPopUp />
-                <div className={AddButtons}>
-                  <Button
-                    variant="primary"
-                    onClick={handleClose}
-                    bsPrefix={AddCloseButton}
-                  >
-                    Cancel
-                  </Button>
-                  <Button variant="primary" bsPrefix={AddAddButton}>
-                    Add
-                  </Button>
-                </div>
-              </Modal.Body>
-              <Modal.Footer bsPrefix={AddMemberPopUpfooter}>
-                <div className={AddMemberPopUpfooter}>Work together!</div>
-              </Modal.Footer>
-            </Modal>
+                <AddMemberPopUp handleClose={handleClose} showAddMember={showAddMember} />
             <div className={taskListNameIcon}>
               <div className={taskListProjectIcon}>ICON</div>
               <h2 className={taskListProjectName}>My first project for creating music</h2>

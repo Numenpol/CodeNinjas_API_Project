@@ -1,6 +1,7 @@
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 const API_URLT = import.meta.env.VITE_API_URLT;
+const API_URLM = import.meta.env.VITE_API_URLM;
 
 
 export const updateData = async (id, data) => {
@@ -14,3 +15,10 @@ export const updateData = async (id, data) => {
     const response = await axios.patch(`${API_URLT}/${id}`, data);
     return response.data;
   }
+
+  // Projects Members
+
+  export const addMembersToProject = async (id, emails) => {
+    const response = await axios.patch(`${API_URLM}/${id}`, { members: emails });
+    return response.data;
+  };

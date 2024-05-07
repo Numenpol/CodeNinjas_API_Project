@@ -34,7 +34,7 @@ exports.getProject = async (req, res) => {
       message: error.message,
     });
   }
-}
+};
 
 exports.createProject = async (req, res) => {
   try {
@@ -51,7 +51,7 @@ exports.createProject = async (req, res) => {
       message: error.message,
     });
   }
-}
+};
 
 exports.updateProject = async (req, res) => {
   try {
@@ -71,7 +71,7 @@ exports.updateProject = async (req, res) => {
       message: error.message,
     });
   }
-}
+};
 
 exports.deleteProject = async (req, res) => {
   try {
@@ -86,4 +86,23 @@ exports.deleteProject = async (req, res) => {
       message: error.message,
     });
   }
-}
+};
+
+exports.upadateProjectsMembers = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { members } = req.body;
+    const project = await Project.findByIdAndUpdate(id, { $push: { members: { $each: members } } }, { new: true });
+    res.status(200).json({
+      status: "success",
+      data: {
+        project,
+      },
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+};
