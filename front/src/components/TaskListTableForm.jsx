@@ -13,9 +13,11 @@ import styles2 from "../styles/PriorityDropdown.module.css";
 import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
+import { addProjectTask } from "../services/patch";
+
 
 function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCreationDay, selectedCreationDay, selectedCompletionDay, setSelectedCompletionDay}) {
-  const { tasks, setUpdate, showTask, setShowTask } = useContext(StateContext);
+  const { tasks, setUpdate, showTask, setShowTask, projectId } = useContext(StateContext);
   
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -145,7 +147,7 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
 
   const formSubmitHandler = async (data) => {
     try {
-      await postDataTask({
+      const { resDataId } = await postDataTask({
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
@@ -154,6 +156,7 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
       });
+      await addProjectTask(projectId, resDataId);
       setUpdate((update) => update + 1);
       setShowTask(false);
       reset();

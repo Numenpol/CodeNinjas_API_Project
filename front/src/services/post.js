@@ -9,5 +9,7 @@ export const postData = async (data) => {
 // task
 export const postDataTask = async (data) => {
     let  response = await axios.post(API_URLT, data);
-    return response.data;
+    const resData = response.data;
+    const resDataId = response.data.data.task._id;
+    return {resData, resDataId};
 }

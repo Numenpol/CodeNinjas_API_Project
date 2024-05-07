@@ -115,7 +115,7 @@ function MenuProject({ project }) {
   return (
     <>
       <div className={menuProjectList} >
-        <div className={menuProjectList} onClick={projectClickHandler}>
+        <div className={menuProjectList} onClick={() => {projectClickHandler(project)}}>
           <img src={icon} alt="icon" className={menuProjectIcon} />
           <p className={menuProjectName}>{projectName}</p>
         </div>
