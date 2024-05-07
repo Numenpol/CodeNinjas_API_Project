@@ -13,6 +13,7 @@ import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
 import addMemberStyles from "../styles/AddMemberPopUp.module.css";
+import CreateProjectForm from "./CreateProjectForm";
 
 function TaskList() {
   const { setShowTask, setShowMenu} = useContext(StateContext);
@@ -65,6 +66,7 @@ function TaskList() {
     <div className={taskList}>
       <div className={taskListMenu}>
           <MenuProjectListDesktop/>
+          <CreateProjectForm/>
       </div>
       <div className={taskListCard}>
         {/* <div className={taskListHeader}> */}

@@ -62,7 +62,7 @@ function CreateProjectForm() {
     <div className={createProjectModal}>
       <Modal
         show={show}
-        onHide={handleClose}
+        backdropClassName='createProjectFormModalBackDrop'
         keyboard={false}
         dialogClassName={modalDialog}
       >

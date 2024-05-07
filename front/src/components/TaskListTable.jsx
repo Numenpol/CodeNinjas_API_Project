@@ -178,7 +178,8 @@ function TaskListTable() {
                     />
                   </td>
                   <td>
-                  <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}/>
+                  <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
+                  task={task.timeline}/>
                   </td>
                   <td className="table-headerCreationdate">
                     <input

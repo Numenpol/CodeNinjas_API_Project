@@ -6,7 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import "../styles/taskListTable.css"
 import "../styles/TaskListTableTimeLine.css"
 
-function TaskListTableTimeLine({setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay}) {
+function TaskListTableTimeLine({setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay, task}) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
   const [endDateDay, setEndDateDay] = useState(0);
@@ -41,9 +41,9 @@ function TaskListTableTimeLine({setSelectedTimeLine, setSelectedCreationDay, set
       return daysLeftPercentage;
     }
   }
-
   useEffect(() => {
     dateSelection.map((stat) => {
+      if(task == null){
       const startDate = getStartFixedDate(stat.startDate);
       const startDateDay = getNumberFixedDate(stat.startDate);
       if (stat.endDate == null) {
@@ -57,6 +57,14 @@ function TaskListTableTimeLine({setSelectedTimeLine, setSelectedCreationDay, set
         setSelectedTimeLine(calendarDay);
         setSelectedCreationDay(startDate);
         setSelectedCompletionDay(endDate);
+      }
+      } else {
+        const dateNumbers = task.match(/\d+/g);
+        const startDateDay = dateNumbers[0];
+          const endDateDay = dateNumbers[1];
+          setStartDateDay(startDateDay);
+          setEndDateDay(endDateDay);
+          setCalendarDay(task);
       }
     })
     , []
