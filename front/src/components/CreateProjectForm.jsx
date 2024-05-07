@@ -65,6 +65,7 @@ function CreateProjectForm() {
         onHide={handleClose}
         keyboard={false}
         dialogClassName={modalDialog}
+        backdropClassName='backdrop'
       >
         <div className={createProject}>
           <button className={xIconButton} onClick={handleClose}>
@@ -85,6 +86,10 @@ function CreateProjectForm() {
                     autoComplete="projectName"
                     {...register("projectName", {
                       required: "Project name is required",
+                      maxLength:{
+                        value:40,
+                        message:"Project name is to long, it can't exceed 40 characters"
+                      }
                     })}
                     isInvalid={errors.projectName}
                   />
