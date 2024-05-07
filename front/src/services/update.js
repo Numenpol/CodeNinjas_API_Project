@@ -20,5 +20,6 @@ export const updateData = async (id, data) => {
 
   export const addMembersToProject = async (id, emails) => {
     const response = await axios.patch(`${API_URLM}/${id}`, { members: emails });
+    console.log(response.data);
     return response.data;
   };

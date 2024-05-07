@@ -36,6 +36,27 @@ exports.getProject = async (req, res) => {
   }
 };
 
+// get projects by task
+exports.getProjectsByTask = async (req, res) => {
+  try {
+    const { taskId } = req.params;
+    const projects = await Project.find({ tasks: taskId }).populate("tasks");
+    const filteredProjects = projects.filter(project => project.tasks.includes(taskId));
+    
+    res.status(200).json({
+      status: "success",
+      results: filteredProjects.length,
+      data: {
+        projects: filteredProjects,
+      },
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+};
 exports.createProject = async (req, res) => {
   try {
     const project = await Project.create(req.body);

@@ -6,3 +6,4 @@ export const addProjectTask = async (id, task) => {
     const response = await axios.patch(`${API_URL}/${id}`, {tasks: task})
     return response.data;
 }
+
