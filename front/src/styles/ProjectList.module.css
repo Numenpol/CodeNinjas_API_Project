@@ -36,6 +36,7 @@
     /* text-wrap: nowrap; */
     text-align: start;
     padding-left: 1rem;
+    text-wrap: nowrap;
 }
 
 .projectListStatus {
