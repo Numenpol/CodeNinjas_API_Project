@@ -12,6 +12,9 @@ import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
 import addMemberStyles from "../styles/AddMemberPopUp.module.css";
+import CreateProjectForm from "./CreateProjectForm";
+import TaskListExecutionTable from "./TaskListExecution";
+import TaskListDoneTable from "./TaskListDoneTable";
 
 function TaskList() {
   const { setShowTask, setShowMenu } = useContext(StateContext);
@@ -27,10 +30,18 @@ function TaskList() {
     setShowTask((showTask) => !showTask);
   };
   const [showTable, setShowTable] = useState(true);
+  const [showTableExecution, setShowTableExecution] = useState(true);
+  const [showTableDone, setShowTableDone] = useState(true);
 
   const toggleTable = () => {
     setShowTable((prevState) => !prevState);
   };
+  const toggleTableExecution = () => {
+    setShowTableExecution((prevState) => !prevState);
+  };
+  const toggleTableDone = () => {
+    setShowTableDone((prevState) => !prevState);
+  }
 
   const {
     taskList,
@@ -54,7 +65,9 @@ function TaskList() {
     taskListBugerButton,
     taskListStatusDisplay,
     taskListAddMemberDisplay,
-    container
+    container,
+    TaskListExecution,
+    TaskListDone,
   } = styles;
 
   const {
@@ -74,6 +87,11 @@ function TaskList() {
     <div className={taskList}>
       <div className={taskListMenu}>
         <MenuProjectListDesktop/>
+      </div>
+      <div>
+       <div>
+        <CreateProjectForm />
+      </div>
       </div>
       <div className={taskListCard}>
         {/* <div className={taskListHeader}> */}
@@ -179,6 +197,40 @@ function TaskList() {
             Planning
           </div>
           {showTable && <TaskListTable />}
+        </div>
+        <div>
+          <div className={TaskListExecution}>
+            {showTableExecution ? (
+              <ChevronDown
+                className={taskListPlanningIcon}
+                onClick={toggleTableExecution}
+              />
+            ) : (
+              <ChevronRight
+                className={taskListPlanningIcon}
+                onClick={toggleTableExecution}
+              />
+            )}
+            Execution
+          </div>
+          {showTableExecution && <TaskListExecutionTable />}
+        </div>
+        <div>
+          <div className={TaskListDone}>
+            {showTableDone ? (
+              <ChevronDown
+                className={taskListPlanningIcon}
+                onClick={toggleTableDone}
+              />
+            ) : (
+              <ChevronRight
+                className={taskListPlanningIcon}
+                onClick={toggleTableDone}
+              />
+            )}
+            Done
+          </div>
+          {showTableDone && <TaskListDoneTable />}
         </div>
       </div>
     </div>

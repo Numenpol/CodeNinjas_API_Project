@@ -15,7 +15,7 @@ import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-function TaskListTable() {
+function TaskListDoneTable() {
   const { tasks, setUpdate, showTask } = useContext(StateContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -108,7 +108,7 @@ function TaskListTable() {
     setTaskIdToDelete(null);
   };
 
-  const fitleredTasks = tasks.filter((task) => task.status === "To do"||task.status === "");
+  const fitleredTasks = tasks.filter((task) => task.status === "Done");
 
   return (
     <>
@@ -151,11 +151,15 @@ function TaskListTable() {
                       onKeyDown={(e) => handleKeyPress(e, task._id)}
                     />
                     <span>
-                      <PencilSquare className="pencilTrashIcon"
+                      <PencilSquare
+                        className="pencilTrashIcon"
                         onClick={() => handlePencilClick(task._id)}
                       />
                     </span>
-                    <span className="pencilTrashIcon" onClick={() => handleDeleteButtonClick(task._id)}>
+                    <span
+                      className="pencilTrashIcon"
+                      onClick={() => handleDeleteButtonClick(task._id)}
+                    >
                       <Trash />
                     </span>
                   </td>
@@ -180,7 +184,11 @@ function TaskListTable() {
                     />
                   </td>
                   <td>
-                  <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}/>
+                    <TaskListTableTimeLine
+                      setSelectedTimeLine={setSelectedTimeLine}
+                      setSelectedCreationDay={setSelectedCreationDay}
+                      setSelectedCompletionDay={setSelectedCompletionDay}
+                    />
                   </td>
                   <td className="table-headerCreationdate">
                     <input
@@ -209,9 +217,15 @@ function TaskListTable() {
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>
-        <div className={showTask === true ? "" : "hidden"}>
-          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay} 
-          setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay}/>
+        <div className="showTaskExecutionForm">
+          <TaskListTableForm
+            selectedTimeLine={selectedTimeLine}
+            setSelectedTimeLine={setSelectedTimeLine}
+            selectedCreationDay={selectedCreationDay}
+            setSelectedCreationDay={setSelectedCreationDay}
+            setSelectedCompletionDay={setSelectedCompletionDay}
+            selectedCompletionDay={selectedCompletionDay}
+          />
         </div>
       </div>
       <Modal
@@ -233,4 +247,4 @@ function TaskListTable() {
   );
 }
 
-export default TaskListTable;
+export default TaskListDoneTable;

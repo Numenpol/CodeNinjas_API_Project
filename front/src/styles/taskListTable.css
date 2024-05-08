@@ -5,6 +5,9 @@
     /* max-width: 23rem; */
     overflow-x: auto;
 }
+.showTaskExecutionForm{
+    display: none;
+}
 
 
 .table-header th {

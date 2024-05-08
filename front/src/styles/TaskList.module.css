@@ -110,8 +110,23 @@
 .taskListPlanning {
     margin-left: 1rem;
     margin-top: 1.2rem;
-    ;
     color: #3372B2;
+    font-weight: 500;
+    font-size: 20px;
+}
+.TaskListExecution{
+    font-size: 20px;
+    font-weight: 500;
+    color: #7F5DB6;
+    margin-left: 1rem;
+    margin-top: 1.2rem;
+
+}
+.TaskListDone{
+    font-size: 20px;
+    margin-left: 1rem;
+    font-weight: 500;
+    color: #00A167;
 }
 
 .taskListPlanningIcon {
