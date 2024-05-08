@@ -147,7 +147,8 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
 
   const formSubmitHandler = async (data) => {
     try {
-      const { resDataId } = await postDataTask({
+      // const { resDataId } = 
+      await postDataTask({
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
@@ -155,8 +156,9 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
+        projectId: projectId
       });
-      await addProjectTask(projectId, resDataId);
+      // await addProjectTask(projectId, resDataId);
       setUpdate((update) => update + 1);
       setShowTask(false);
       reset();
