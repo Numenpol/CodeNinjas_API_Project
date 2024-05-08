@@ -201,7 +201,7 @@ function TaskListTable() {
                       updateDataTask={updateDataTask}
                     />
                   </td>
-                  <td className="timetable">
+                  <td className="table-timeline">
                   <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
                   task={task.timeline}/>
                   </td>

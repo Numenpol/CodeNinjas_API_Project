@@ -73,7 +73,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
   return (
     <>
       <button className='taskListTimeLineButton' type='button'>
-      <ProgressBar now={calculateDaysLeftPercentage()} label={calendarDay} onClick={handleShowCalendar} className='taskListProgressBar' />
+        <ProgressBar now={calculateDaysLeftPercentage()} label={calendarDay} onClick={handleShowCalendar} className='taskListProgressBar' />
       </button>
       <div className={showCalendar == true ? "" : "hidden"}>
         <DateRange
