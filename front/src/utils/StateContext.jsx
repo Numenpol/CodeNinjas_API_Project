@@ -15,9 +15,9 @@ export const StateProvider = ({ children }) => {
     const [show, setShow] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showTask, setShowTask] = useState(false);
-
     const [projectId, setprojectId] = useState("");
     const [showEdit, setShowEdit] = useState(false);
+
 
     const handleShow = () => setShow(true);
 
@@ -38,7 +38,7 @@ export const StateProvider = ({ children }) => {
         setError(error.message);
       }
     }
-  
+
     const fetchData = async () => {
       try {
         const { data: {projects}} = await getAllData();
@@ -66,7 +66,7 @@ export const StateProvider = ({ children }) => {
 
     return (
         <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
-          showMenu, setShowMenu, handleShow, setShowTask, showTask, setprojectId, projectId, setShowEdit, showEdit}}>
+          showMenu, setShowMenu, handleShow, setShowTask, showTask, setprojectId, projectId, setShowEdit, showEdit, update}}>
             {children}
             </StateContext.Provider>
     );

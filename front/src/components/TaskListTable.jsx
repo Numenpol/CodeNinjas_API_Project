@@ -3,7 +3,7 @@ import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 import { deleteDataTask } from "../services/delete";
@@ -14,9 +14,10 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { getAllTaskById } from '../services/get';
 
 function TaskListTable() {
-  const { tasks, setUpdate, showTask } = useContext(StateContext);
+  const { setUpdate, showTask, projectId, update, setprojectId} = useContext(StateContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -31,6 +32,9 @@ function TaskListTable() {
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
   const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+
+  const [tasksById, setTasksById] = useState([]);
+  const [error, setError] = useState("");
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -108,6 +112,26 @@ function TaskListTable() {
     setTaskIdToDelete(null);
   };
 
+  const fetchTasksByProjectId = async (projectId) => {
+    try {
+      const {data: {tasks}} = await getAllTaskById(projectId);
+      setTasksById(tasks);
+    }  catch (error) {
+      setError(error.message);
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if (projectId=="") {
+      const sessionProjectId = sessionStorage.getItem("projectid");
+      setprojectId(sessionProjectId);
+      fetchTasksByProjectId(projectId);
+    } else
+      fetchTasksByProjectId(projectId);
+  }, [update, projectId]);
+
+
   return (
     <>
       <div className="allTaskList">
@@ -126,7 +150,7 @@ function TaskListTable() {
               </tr>
             </thead>
             <tbody className="table-body">
-              {tasks.map((task) => (
+              {tasksById.map((task) => (
                 <tr key={task._id}>
                   <td className="table-headerKey">
                     <input

@@ -32,7 +32,10 @@ function CreateProjectForm() {
       if (icon == "") {
         setIcon("icons/projectIcon1.svg");
       }
-      await postData({ ...data, icon: icon });
+      const user = localStorage.getItem("user");
+      const userData = JSON.parse(user);
+      const userEmail = userData.data.email
+      await postData({ ...data, icon: icon, members: userEmail });
       setUpdate((update) => update + 1);
       reset();
       handleClose();

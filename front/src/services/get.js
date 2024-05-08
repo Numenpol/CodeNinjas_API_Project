@@ -27,8 +27,7 @@ export const getAllTasks = async () => {
     return response.data;
 }
 
-export const getOneTask = async (id, taskId) => {
-    const response = await axios.get(`${VITE_URLO}/${id}`, {tasks: taskId});
-    console.log(response.data);
+export const getAllTaskById = async (id) => {
+    const response = await axios.get(`${VITE_URLO}/${id}`);
     return response.data;
 }
