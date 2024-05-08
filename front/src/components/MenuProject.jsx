@@ -38,6 +38,7 @@ function MenuProject({ project }) {
   const navigate = useNavigate();
 
   const projectClickHandler = (project) => {
+      sessionStorage.setItem("projectid", project._id);      
       setprojectId(project._id);
       setShowMenu(false);
       navigate("/tasklist");
