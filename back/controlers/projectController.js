@@ -39,15 +39,19 @@ exports.getProject = async (req, res) => {
 // get projects by task
 exports.getProjectsByTask = async (req, res) => {
   try {
-    const { taskId } = req.params;
-    const projects = await Project.find({ tasks: taskId }).populate("tasks");
-    const filteredProjects = projects.filter(project => project.tasks.includes(taskId));
-    
+    // const { taskId } = req.params;
+    // const projects = await Project.find({ tasks: taskId }).populate("tasks");
+    // const filteredProjects = projects.filter(project => project.tasks.includes(taskId));
+    const projectId = req.params.id;
+    const project = await Project.findById(projectId).populate("tasks");
+    const projectTasks = project.tasks;
+
+    console.log(project);
+
     res.status(200).json({
       status: "success",
-      results: filteredProjects.length,
       data: {
-        projects: filteredProjects,
+        tasks: project.tasks,
       },
     });
   } catch (error) {
@@ -113,7 +117,11 @@ exports.upadateProjectsMembers = async (req, res) => {
   try {
     const { id } = req.params;
     const { members } = req.body;
-    const project = await Project.findByIdAndUpdate(id, { $push: { members: { $each: members } } }, { new: true });
+    const project = await Project.findByIdAndUpdate(
+      id,
+      { $push: { members: { $each: members } } },
+      { new: true }
+    );
     res.status(200).json({
       status: "success",
       data: {

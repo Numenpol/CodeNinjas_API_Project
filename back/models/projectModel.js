@@ -30,7 +30,7 @@ const projectSchema = new mongoose.Schema({
   tasks: [
     {
       type: mongoose.Schema.ObjectId,
-      ref: "ProjectTaskList",
+      ref: "Task",
     },
   ],
 
