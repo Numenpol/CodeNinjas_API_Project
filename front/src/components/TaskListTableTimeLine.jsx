@@ -6,7 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import "../styles/taskListTable.css"
 import "../styles/TaskListTableTimeLine.css"
 
-function TaskListTableTimeLine({setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay, task}) {
+function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay, task }) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
   const [endDateDay, setEndDateDay] = useState(0);
@@ -43,42 +43,45 @@ function TaskListTableTimeLine({setSelectedTimeLine, setSelectedCreationDay, set
   }
   useEffect(() => {
     dateSelection.map((stat) => {
-      if(task == null){
-      const startDate = getStartFixedDate(stat.startDate);
-      const startDateDay = getNumberFixedDate(stat.startDate);
-      if (stat.endDate == null) {
-        setCalendarDay(startDate);
-      } else {
-        const endDate = getStartFixedDate(stat.endDate);
-        const endDateDay = getNumberFixedDate(stat.endDate);
-        setStartDateDay(startDateDay);
-        setEndDateDay(endDateDay);
-        setCalendarDay(`${startDate}-${endDate}`);
-        setSelectedTimeLine(calendarDay);
-        setSelectedCreationDay(startDate);
-        setSelectedCompletionDay(endDate);
-      }
+      if (task == null) {
+        const startDate = getStartFixedDate(stat.startDate);
+        const startDateDay = getNumberFixedDate(stat.startDate);
+        if (stat.endDate == null) {
+          setCalendarDay(startDate);
+        } else {
+          const endDate = getStartFixedDate(stat.endDate);
+          const endDateDay = getNumberFixedDate(stat.endDate);
+          setStartDateDay(startDateDay);
+          setEndDateDay(endDateDay);
+          setCalendarDay(`${startDate}-${endDate}`);
+          setSelectedTimeLine(calendarDay);
+          setSelectedCreationDay(startDate);
+          setSelectedCompletionDay(endDate);
+        }
       } else {
         const dateNumbers = task.match(/\d+/g);
         const startDateDay = dateNumbers[0];
-          const endDateDay = dateNumbers[1];
-          setStartDateDay(startDateDay);
-          setEndDateDay(endDateDay);
-          setCalendarDay(task);
+        const endDateDay = dateNumbers[1];
+        setStartDateDay(startDateDay);
+        setEndDateDay(endDateDay);
+        setCalendarDay(task);
       }
     })
-    , []
+      , []
   });
 
   return (
     <>
-      <button className='taskListTimeLineButton' type='button'><ProgressBar now={calculateDaysLeftPercentage()} label={calendarDay} onClick={handleShowCalendar} className='taskListProgressBar' /></button>
+      <button className='taskListTimeLineButton' type='button'>
+      <ProgressBar now={calculateDaysLeftPercentage()} label={calendarDay} onClick={handleShowCalendar} className='taskListProgressBar' />
+      </button>
       <div className={showCalendar == true ? "" : "hidden"}>
         <DateRange
           editableDateInputs={true}
           onChange={item => setDateSelection([item.selection])}
           moveRangeOnFirstSelection={false}
           ranges={dateSelection}
+          className='range'
         />
       </div>
 
