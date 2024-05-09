@@ -14,6 +14,7 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
     handleSubmit,
     register,
     reset,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -23,16 +24,45 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
 
   const objectId = sessionStorage.getItem("projectid");
 
-  const formSubmitHandler = async (data) => {
-    try {
-      const emails = [data.email]; 
-      await addMembersToProject({ id: objectId, emails });
+//   const formSubmitHandler = async (data) => {
+//   try {
+//     const user = users.find((user) => user.email === data.email);
+//     const emails = [data.email]; 
+//     const names = [user.name];
+//     if (user) {
+//       await addMembersToProject({ id: objectId, emails: [...emails, ...names] });
+//       reset();
+//       handleClose();
+//     } else {
+//       setError("email", {
+//         type: "manual",
+//         message: `User with email ${data.email} not found`,
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+const formSubmitHandler = async (data) => {
+  try {
+    const user = users.find((user) => user.email === data.email);
+    if (user) {
+      const member = { email: user.email, name: user.name }; 
+      await addMembersToProject({ id: objectId, members: [member] });
       reset();
       handleClose();
-    } catch (error) {
-      console.log(error);
+    } else {
+      setError("email", {
+        type: "manual",
+        message: `User with email ${data.email} not found`,
+      });
     }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
   // Destructure styles
   const {

@@ -123,12 +123,21 @@ function TaskListTable() {
   }
 
   useEffect(() => {
-    if (projectId=="") {
-      const sessionProjectId = sessionStorage.getItem("projectid");
-      setprojectId(sessionProjectId);
-      fetchTasksByProjectId(projectId);
-    } else
-      fetchTasksByProjectId(projectId);
+    const fetchData = async () => {
+      try {
+        let fetchId = projectId;
+        if (projectId === "") {
+          fetchId = sessionStorage.getItem("projectid");
+          setprojectId(fetchId);
+        }
+        await fetchTasksByProjectId(fetchId);
+      } catch (error) {
+        setError(error.message);
+        console.log(error);
+      }
+    };
+ 
+    fetchData();
   }, [update, projectId]);
 
 

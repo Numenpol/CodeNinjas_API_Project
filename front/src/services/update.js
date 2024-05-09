@@ -24,3 +24,9 @@ export const updateData = async (id, data) => {
     console.log(response.data);
     return response.data;
   };
+
+  // export const addMembersToProject = async ({ id, members }) => {
+  //   const response = await axios.patch(`${API_URLM}/${id}`, { members });
+  //   console.log(response.data);
+  //   return response.data;
+  // };
