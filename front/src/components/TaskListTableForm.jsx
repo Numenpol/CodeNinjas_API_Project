@@ -1,13 +1,9 @@
-import Table from "react-bootstrap/Table";
-// import Button from "react-bootstrap/Button";
-import "../styles/taskListTable.css";
-// import TaskListStatusModal from "./TaskListStatusModal";
+import Table from "react-bootstrap/Table";import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
-import { PencilSquare } from "react-bootstrap-icons";
 import styles from "../styles/StatusDropdown.module.css";
 import styles2 from "../styles/PriorityDropdown.module.css";
 import Ownerstyles from "../styles/Owner.module.css";
@@ -15,16 +11,22 @@ import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import { addProjectTask } from "../services/patch";
 
+function TaskListTableForm({
+  selectedTimeLine,
+  setSelectedTimeLine,
+  setSelectedCreationDay,
+  selectedCreationDay,
+  selectedCompletionDay,
+  setSelectedCompletionDay,
+}) {
+  const { tasks, setUpdate, showTask, setShowTask, projectId } =
+    useContext(StateContext);
 
-function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCreationDay, selectedCreationDay, selectedCompletionDay, setSelectedCompletionDay}) {
-  const { tasks, setUpdate, showTask, setShowTask, projectId } = useContext(StateContext);
-  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
   const [open, setOpen] = useState(false);
 
   //Priority
-
   const [isOpens, setIsOpens] = useState({});
   const [opens, setOpens] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("");
@@ -35,7 +37,6 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
-
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -73,8 +74,6 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
     setIsOpeno(false);
     setIsOpenos(false);
   };
-
-
 
   const {
     statusBtn,
@@ -114,10 +113,6 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
     initialsList,
   } = Ownerstyles;
 
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
   const handleStatusClick = (statuss) => {
     setSelectedStatus(statuss);
     setIsOpen(false);
@@ -129,8 +124,6 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
     setIsOpens(false);
     setOpens(false);
   };
-
-
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -147,7 +140,7 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
 
   const formSubmitHandler = async (data) => {
     try {
-      // const { resDataId } = 
+      // const { resDataId } =
       await postDataTask({
         ...data,
         status: selectedStatus,
@@ -156,7 +149,7 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
-        projectId: projectId
+        projectId: projectId,
       });
       // await addProjectTask(projectId, resDataId);
       setUpdate((update) => update + 1);
@@ -169,10 +162,11 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
       console.log(error);
     }
   };
+  
 
   return (
     <>
-      <div >
+      <div>
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
             <tbody className="table-body">
@@ -201,7 +195,6 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                       type="button"
                       onClick={() => setIsOpeno(!isOpeno)}
                       className={ownerBtn}
-                      // className="task-owner"
                     >
                       {selectedOwner ? (
                         <div className={initialsStyle}>
@@ -240,24 +233,24 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                     )}
                   </div>
                 </td>
-                <td className="table-headerStatus">
+                <td className="table-headerStatusTh">
+                <div className="table-headerStatus"> 
                   <div className="task-status">
                     <button
                       type="button"
                       onClick={() => setOpen(!open)}
                       className={`${statusBtn} ${selectedStatus && selected}`}
-                      // className="task-status"
                       style={{
                         backgroundColor:
-                          selectedStatus === "To do"
-                            ? "#3372b2"
-                            : selectedStatus === "In progress"
-                            ? "#7f5db6"
-                            : selectedStatus === "Done"
-                            ? "#00a167"
-                            : "",
-                          }}
-                    >
+                        selectedStatus === "To do"
+                        ? "#3372b2"
+                        : selectedStatus === "In progress"
+                        ? "#7f5db6"
+                        : selectedStatus === "Done"
+                        ? "#00a167"
+                        : "",
+                      }}
+                      >
                       {selectedStatus || String.fromCharCode(9662)}
                     </button>
                     {open && (
@@ -265,26 +258,29 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                         <p
                           className={statusDo}
                           onClick={() => handleStatusClick("To do")}
-                        >
+                          >
                           To do
                         </p>
                         <p
                           className={statusProgress}
                           onClick={() => handleStatusClick("In progress")}
-                        >
+                          >
                           In progress
                         </p>
                         <p
                           className={statusDone}
                           onClick={() => handleStatusClick("Done")}
-                        >
+                          >
                           Done
                         </p>
                       </div>
                     )}
                   </div>
+                    </div>
                 </td>
-                <td className="table-headerPriority">
+                <td className="table-headerPriorityTh">
+                  <div className="table-headerPriority">
+
                   <div className="task-priority">
                     <button
                       type="button"
@@ -293,18 +289,17 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                         priorityBtn +
                         (selectedPriority ? " " + selectedPrioLow : "")
                       }
-                      // className="task-priority"
                       style={{
                         backgroundColor:
-                          selectedPriority === "Low"
-                            ? "#40ADBE"
-                            : selectedPriority === "Medium"
-                            ? "#FDAB3D"
-                            : selectedPriority === "High"
-                            ? "#C0417F"
-                            : "",
-                          }}
-                    >
+                        selectedPriority === "Low"
+                        ? "#40ADBE"
+                        : selectedPriority === "Medium"
+                        ? "#FDAB3D"
+                        : selectedPriority === "High"
+                        ? "#C0417F"
+                        : "",
+                      }}
+                      >
                       {selectedPriority || String.fromCharCode(9662)}
                     </button>
                     {opens && (
@@ -312,28 +307,32 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                         <p
                           className={priorityLow}
                           onClick={() => handlePriorityClick("Low")}
-                        >
+                          >
                           Low
                         </p>
                         <p
                           className={priorityMedium}
                           onClick={() => handlePriorityClick("Medium")}
-                        >
+                          >
                           Medium
                         </p>
                         <p
                           className={priorityHigh}
                           onClick={() => handlePriorityClick("High")}
-                        >
+                          >
                           High
                         </p>
                       </div>
                     )}
                   </div>
+                    </div>
                 </td>
-                <td className="table-headerTimeline">
-                      <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} 
-                      setSelectedCompletionDay={setSelectedCompletionDay}/>
+                <td className="table-timeline">
+                  <TaskListTableTimeLine
+                    setSelectedTimeLine={setSelectedTimeLine}
+                    setSelectedCreationDay={setSelectedCreationDay}
+                    setSelectedCompletionDay={setSelectedCompletionDay}
+                  />
                 </td>
                 <td className="table-headerCreationdate">
                   <input
@@ -353,16 +352,13 @@ function TaskListTableForm({selectedTimeLine, setSelectedTimeLine, setSelectedCr
                     type="text"
                     {...register("completiondate")}
                   />
-                </td>        
+                </td>
               </tr>
             </tbody>
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>
-
       </div>
-      {/* <Button onClick={handleShow}>Mark</Button>
-                <TaskListStatusModal show={show} handleClose={handleClose} /> */}
     </>
   );
 }

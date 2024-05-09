@@ -151,8 +151,8 @@ function TaskListTable() {
                 <th>Key</th>
                 <th>Task</th>
                 <th>Owner</th>
-                <th className="table-headerStatus">Status</th>
-                <th className="table-headerPriority">Priority</th>
+                <th className="table-headerStatusTh">Status</th>
+                <th className="table-headerPriorityTh">Priority</th>
                 <th>Timeline</th>
                 <th className="table-headerCreationdate">Creation date</th>
                 <th className="table-headerCompletiondate">Completion date</th>
@@ -193,7 +193,7 @@ function TaskListTable() {
                   <td className="table-headerOwner">
                     <TaskListTableOwner task={task} />
                   </td>
-                  <td>
+                  <td className="table-headerStatus">
                     <TaskListTableStatus
                       selectedStatus={selectedStatus}
                       isOpen={isOpen}
@@ -202,7 +202,7 @@ function TaskListTable() {
                       updateDataTask={updateDataTask}
                     />
                   </td>
-                  <td>
+                  <td className="table-headerPriority">
                     <TaskListTablePriority
                       isOpens={isOpens}
                       setIsOpens={setIsOpens}
