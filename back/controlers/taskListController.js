@@ -81,7 +81,17 @@ exports.updateTaskList = async (req, res) => {
 
 exports.deleteTaskList = async (req, res) => {
   try {
-    await Task.findByIdAndDelete(req.params.id);
+    
+    const taskId  = req.params.id;
+    const projects = await Project.find({ tasks: taskId });
+
+    await Promise.all(projects.map(async (project) => {
+      project.tasks = project.tasks.filter(task => task.toString() !== taskId);
+      await project.save();
+    }));
+
+    await Task.findByIdAndDelete(taskId);
+
     res.status(204).json({
       status: "success",
       data: null,

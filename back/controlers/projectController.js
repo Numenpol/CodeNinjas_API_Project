@@ -46,12 +46,10 @@ exports.getProjectsByTask = async (req, res) => {
     const project = await Project.findById(projectId).populate("tasks");
     const projectTasks = project.tasks;
 
-    console.log(project);
-
     res.status(200).json({
       status: "success",
       data: {
-        tasks: project.tasks,
+        tasks: projectTasks,
       },
     });
   } catch (error) {
