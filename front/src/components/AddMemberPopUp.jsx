@@ -24,32 +24,13 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
 
   const objectId = sessionStorage.getItem("projectid");
 
-//   const formSubmitHandler = async (data) => {
-//   try {
-//     const user = users.find((user) => user.email === data.email);
-//     const emails = [data.email]; 
-//     const names = [user.name];
-//     if (user) {
-//       await addMembersToProject({ id: objectId, emails: [...emails, ...names] });
-//       reset();
-//       handleClose();
-//     } else {
-//       setError("email", {
-//         type: "manual",
-//         message: `User with email ${data.email} not found`,
-//       });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-const formSubmitHandler = async (data) => {
+  const formSubmitHandler = async (data) => {
   try {
     const user = users.find((user) => user.email === data.email);
+    const emails = [data.email]; 
+    const names = [user.name];
     if (user) {
-      const member = { email: user.email, name: user.name }; 
-      await addMembersToProject({ id: objectId, members: [member] });
+      await addMembersToProject({ id: objectId, emails: [...emails, ...names] });
       reset();
       handleClose();
     } else {
@@ -63,8 +44,6 @@ const formSubmitHandler = async (data) => {
   }
 };
 
-
-  // Destructure styles
   const {
     AddMemberPopUpheadertexts,
     addMemberSelect,
