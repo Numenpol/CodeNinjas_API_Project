@@ -5,7 +5,7 @@ import { addMembersToProject } from "../services/update";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import styles from "../styles/AddMemberPopUp.module.css"; 
+import styles from "../styles/AddMemberPopUp.module.css";
 
 function AddMemberPopUp({ handleClose, showAddMember }) {
   const { users } = useContext(StateContext);
@@ -25,24 +25,34 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
   const objectId = sessionStorage.getItem("projectid");
 
   const formSubmitHandler = async (data) => {
-  try {
-    const user = users.find((user) => user.email === data.email);
-    const emails = [data.email]; 
-    const names = [user.name];
-    if (user) {
-      await addMembersToProject({ id: objectId, emails: [...emails, ...names] });
-      reset();
-      handleClose();
-    } else {
-      setError("email", {
-        type: "manual",
-        message: `User with email ${data.email} not found`,
-      });
+    try {
+      const user = users.find((user) => user.email === data.email);
+
+      const emails = data.email;
+      const names = user.name;
+
+      if (user) {
+        await addMembersToProject({
+          id: objectId,
+          // emails: [...emails, ...names],
+          emails: {
+            emails,
+            names,
+          }
+          
+        });
+        reset();
+        handleClose();
+      } else {
+        setError("email", {
+          type: "manual",
+          message: `User with email ${data.email} not found`,
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-};
+  };
 
   const {
     AddMemberPopUpheadertexts,
@@ -68,9 +78,7 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
         <Modal.Header closeButton bsPrefix={AddMemberPopUpheader}>
           <Modal.Title>
             {" "}
-            <div className={AddMemberPopUpheadertext}>
-              Add project member
-            </div>
+            <div className={AddMemberPopUpheadertext}>Add project member</div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body bsPrefix={AddMemberPopUpbody}>
