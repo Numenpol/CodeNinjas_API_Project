@@ -20,7 +20,7 @@ export const updateData = async (id, data) => {
 
   export const addMembersToProject = async ({ id, emails }) => {
     // Use destructured parameters
-    const response = await axios.patch(`${API_URLM}/${id}`, { members: emails });
+    const response = await axios.patch(`${API_URLM}/${id}`, emails);
     console.log(response.data);
     return response.data;
   };

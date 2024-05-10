@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import xIcon from "../assets/xIcon.svg";
 import rocketPic from "../assets/rocket.svg";
@@ -12,7 +12,7 @@ import IconList from "../components/IconList";
 import styles from "../styles/CreateProjectForm.module.css";
 
 function CreateProjectForm() {
-  const { show, setShow, icon, setUpdate, setIcon } = useContext(StateContext)
+  const { show, setShow, icon, setUpdate, setIcon } = useContext(StateContext);
   const [error, setError] = useState("");
 
   const {
@@ -32,10 +32,10 @@ function CreateProjectForm() {
       if (icon == "") {
         setIcon("icons/projectIcon1.svg");
       }
-      const user = localStorage.getItem("user");
-      const userData = JSON.parse(user);
-      const userEmail = userData.data.email
-      await postData({ ...data, icon: icon, members: userEmail });
+      // const user = localStorage.getItem("user");
+      // const userData = JSON.parse(user);
+      // const userEmail = userData.data.email
+      await postData({ ...data, icon: icon });
       setUpdate((update) => update + 1);
       reset();
       handleClose();
@@ -45,12 +45,11 @@ function CreateProjectForm() {
         setError("A project with this name already exists");
         setTimeout(() => {
           setError("");
-        }, 2500)
-      } else
-        setError(error.message);
+        }, 2500);
+      } else setError(error.message);
       setTimeout(() => {
         setError("");
-      }, 2500)
+      }, 2500);
     }
   };
 
@@ -59,13 +58,32 @@ function CreateProjectForm() {
     reset();
   };
 
-  const { createProjectModal, modalDialog, createProject, xIconButton, createProjectHeader, createProjectForm, newProjectName, createProjectFormError, createChooseIcon, newProjectDesc, createButtons, cancelBtn, cancelBtnContent, createBtn, createBtnContent, rocketPicture, rocket, rocketSlogan } = styles;
+  const {
+    createProjectModal,
+    modalDialog,
+    createProject,
+    xIconButton,
+    createProjectHeader,
+    createProjectForm,
+    newProjectName,
+    createProjectFormError,
+    createChooseIcon,
+    newProjectDesc,
+    createButtons,
+    cancelBtn,
+    cancelBtnContent,
+    createBtn,
+    createBtnContent,
+    rocketPicture,
+    rocket,
+    rocketSlogan,
+  } = styles;
 
   return (
     <div className={createProjectModal}>
       <Modal
         show={show}
-        backdropClassName='createProjectFormModalBackDrop'
+        backdropClassName="createProjectFormModalBackDrop"
         keyboard={false}
         dialogClassName={modalDialog}
       >
@@ -75,7 +93,10 @@ function CreateProjectForm() {
           </button>
           <div>
             <h1 className={createProjectHeader}>Create a new project</h1>
-            <Form onSubmit={handleSubmit(formSubmitHandler)} className={createProjectForm}>
+            <Form
+              onSubmit={handleSubmit(formSubmitHandler)}
+              className={createProjectForm}
+            >
               <div>
                 <Form.Group
                   className={newProjectName}
@@ -114,10 +135,9 @@ function CreateProjectForm() {
                     rows={3}
                     placeholder="Project description"
                     autoComplete="description"
-                    {...register("description",
-                      {
-                        required: "Project description is required",
-                      })}
+                    {...register("description", {
+                      required: "Project description is required",
+                    })}
                     isInvalid={errors.description}
                   />
                   <Form.Control.Feedback type="invalid">
@@ -131,7 +151,7 @@ function CreateProjectForm() {
                   variant="primary"
                   onClick={handleClose}
                 >
-                  <div className={cancelBtnContent} >Cancel</div>
+                  <div className={cancelBtnContent}>Cancel</div>
                 </Button>
                 <Button
                   variant="primary"
@@ -150,7 +170,7 @@ function CreateProjectForm() {
           </div>
         </div>
       </Modal>
-    </div >
+    </div>
   );
 }
 

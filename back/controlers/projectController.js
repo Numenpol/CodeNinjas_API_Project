@@ -114,10 +114,15 @@ exports.deleteProject = async (req, res) => {
 exports.upadateProjectsMembers = async (req, res) => {
   try {
     const { id } = req.params;
-    const { members } = req.body;
+    const membersData = req.body;
+
+    console.log("******");
+    console.log(membersData);
+
+    
     const project = await Project.findByIdAndUpdate(
       id,
-      { $push: { members: { $each: members } } },
+      { $push: { members: membersData } },
       { new: true }
     );
     res.status(200).json({

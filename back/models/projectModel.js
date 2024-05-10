@@ -36,9 +36,9 @@ const projectSchema = new mongoose.Schema({
 
   members: [
     {
-      type: String,
-      
-    }
+      emails: String,
+      names: String,
+    },
   ]
   
 });
