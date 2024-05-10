@@ -4,22 +4,6 @@
     --bs-progress-border-radius: 20px !important;
 }
 
-.taskListProgressBar {
-    min-width: 120px;
-    display: flex;
-    text-align: center;
-}
-
-.range {
-    position: fixed;
-    z-index: 1;
-    right: 1rem;
-}
-
-.taskListTimeLineButton {
-    width: 100%;
-}
-
 .progress-bar {
     z-index: 2;
     overflow: visible !important;

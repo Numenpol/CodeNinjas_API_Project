@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import "../styles/taskListTable.css"
 import "../styles/TaskListTableTimeLine.css"
+import styles from "../styles/TaskListTableTimeLine.module.css"
 
 function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay, task }) {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -18,6 +19,8 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
       key: 'selection'
     }
   ]);
+
+  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton} = styles;
 
   const handleShowCalendar = () => {
     setShowCalendar(showCalendar => !showCalendar);
@@ -41,6 +44,13 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
       return daysLeftPercentage;
     }
   }
+
+  const handleClickOutside = (event) => {
+    if (!event.target.closest(`.${taskListProgressBar}`)) {
+      setShowCalendar(false);
+    }
+  }; 
+   
   useEffect(() => {
     dateSelection.map((stat) => {
       if (task == null) {
@@ -66,14 +76,21 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
         setEndDateDay(endDateDay);
         setCalendarDay(task);
       }
+      document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
     })
       , []
   });
 
   return (
     <>
-      <button className='taskListTimeLineButton' type='button'>
-        <ProgressBar now={calculateDaysLeftPercentage()} label={calendarDay} onClick={handleShowCalendar} className='taskListProgressBar' />
+      <button className={taskListTimeLineButton} type='button'>
+        <ProgressBar now={calculateDaysLeftPercentage()}
+        label={calendarDay}
+        onClick={handleShowCalendar}
+        className={taskListProgressBar} />
       </button>
       <div className={showCalendar == true ? "" : "hidden"}>
         <DateRange
@@ -81,7 +98,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
           onChange={item => setDateSelection([item.selection])}
           moveRangeOnFirstSelection={false}
           ranges={dateSelection}
-          className='range'
+          className={taskListProgressBarRange}
         />
       </div>
 

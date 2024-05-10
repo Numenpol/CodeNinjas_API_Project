@@ -17,7 +17,7 @@ import Button from "react-bootstrap/Button";
 import { getAllTaskById } from '../services/get';
 
 function TaskListTable() {
-  const { setUpdate, showTask, projectId, update, setprojectId} = useContext(StateContext);
+  const { setUpdate, showTask, projectId, update, setprojectId } = useContext(StateContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -114,9 +114,9 @@ function TaskListTable() {
 
   const fetchTasksByProjectId = async (projectId) => {
     try {
-      const {data: {tasks}} = await getAllTaskById(projectId);
+      const { data: { tasks } } = await getAllTaskById(projectId);
       setTasksById(tasks);
-    }  catch (error) {
+    } catch (error) {
       setError(error.message);
       console.log(error);
     }
@@ -136,7 +136,7 @@ function TaskListTable() {
         console.log(error);
       }
     };
- 
+
     fetchData();
   }, [update, projectId]);
 
@@ -211,8 +211,8 @@ function TaskListTable() {
                     />
                   </td>
                   <td className="table-timeline">
-                  <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
-                  task={task.timeline}/>
+                    <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
+                      task={task.timeline} />
                   </td>
                   <td className="table-headerCreationdate">
                     <input
@@ -242,8 +242,8 @@ function TaskListTable() {
           <input style={{ display: "none" }} type="submit" />
         </form>
         <div className={showTask === true ? "" : "hidden"}>
-          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay} 
-          setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay}/>
+          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay}
+            setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay} />
         </div>
       </div>
       <Modal
