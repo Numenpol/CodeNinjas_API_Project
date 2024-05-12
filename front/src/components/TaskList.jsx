@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
 // import Modal from "react-bootstrap/Modal";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 import { StateContext } from "../utils/StateContext";
 import styles1 from "../styles/ProjectWithList.module.css";
@@ -12,13 +12,15 @@ import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
 import CreateProjectForm from "./CreateProjectForm";
+import { getOne } from "../services/get";
 
 function TaskList() {
-  const { setShowTask, setShowMenu } = useContext(StateContext);
+  const { setShowTask, setShowMenu, projectId } = useContext(StateContext);
   const toggleShow = () => setShowMenu((s) => !s);
   const [showAddMember, setShowAddMember,] = useState(false);
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
+  const [activeProject, setActiveProject] = useState(null);
 
   const handleShowTask = () => {
     setShowTask(showTask => !showTask);
@@ -28,6 +30,18 @@ function TaskList() {
   const toggleTable = () => {
     setShowTable((prevState) => !prevState);
   };
+
+  //active project 
+  const getProjectInfo = async () => {
+    let projectData = await getOne(projectId);
+    let activeProject = projectData.data.project;
+    setActiveProject(activeProject);
+  }
+
+  useEffect(() => {
+    getProjectInfo();
+  }, [projectId]);
+
 
   const {
     taskList,
@@ -88,8 +102,12 @@ function TaskList() {
           </button>
           <AddMemberPopUp handleClose={handleClose} showAddMember={showAddMember} />
           <div className={taskListNameIcon}>
-            <div className={taskListProjectIcon}>ICON</div>
-            <h2 className={taskListProjectName}>My first project for creating music</h2>
+            <div className={taskListProjectIcon}>
+              <img src={activeProject && activeProject.icon} alt="project icon" />
+            </div>
+            <h2 className={taskListProjectName}>
+              {activeProject && activeProject.projectName}
+            </h2>
           </div>
         </div>
         <div className={taskListHeaderUnderline}></div>

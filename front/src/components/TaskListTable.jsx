@@ -191,7 +191,10 @@ function TaskListTable() {
                     </span>
                   </td>
                   <td className="table-headerOwner">
-                    <TaskListTableOwner task={task} />
+                    <TaskListTableOwner 
+                      task={task}
+                      selectedOwner={selectedOwner}
+                      updateDataTask={updateDataTask} />
                   </td>
                   <td className="table-headerStatus">
                     <TaskListTableStatus

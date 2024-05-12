@@ -1,4 +1,5 @@
-import Table from "react-bootstrap/Table";import "../styles/taskListTable.css";
+import Table from "react-bootstrap/Table";
+import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
@@ -10,6 +11,7 @@ import Ownerstyles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import { addProjectTask } from "../services/patch";
+import { getOne } from "../services/get";
 
 function TaskListTableForm({
   selectedTimeLine,
@@ -37,6 +39,17 @@ function TaskListTableForm({
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
+  const [getInfo, setProjectInfo] = useState("");
+
+  const getMembersNames = async () => {
+    let projectData = await getOne(projectId);
+    let getInfo = projectData.data.project;
+    setProjectInfo(getInfo);
+  };
+
+  useEffect(() => {
+    getMembersNames();
+  }, [projectId]);
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -162,7 +175,6 @@ function TaskListTableForm({
       console.log(error);
     }
   };
-  
 
   return (
     <>
@@ -206,6 +218,24 @@ function TaskListTableForm({
                       )}
                     </button>
                     {isOpeno && (
+                    //   <div className={ownerMenu}>
+                    //   <div className={ownerListStyle}>
+                    //   {getInfo && getInfo.members.map((member, index) => (
+                    //       <p
+                    //         key={index}
+                    //         onClick={() =>
+                    //           handleOwnerClick(member.names, ownerColors[index])
+                    //         }
+                    //       >
+                    //         <div className={initialsList}>
+                    //           <CircleFill className={ownerColors[index]} />
+                    //           <div>{getInitials(member.names)}</div>
+                    //           <span>{member.names}</span>
+                    //         </div>
+                    //       </p>
+                    //     ))}
+                    //   </div>
+                    // </div>
                       <div className={ownerMenu}>
                         <div className={ownerListStyle}>
                           {[
@@ -234,98 +264,97 @@ function TaskListTableForm({
                   </div>
                 </td>
                 <td className="table-headerStatusTh">
-                <div className="table-headerStatus"> 
-                  <div className="task-status">
-                    <button
-                      type="button"
-                      onClick={() => setOpen(!open)}
-                      className={`${statusBtn} ${selectedStatus && selected}`}
-                      style={{
-                        backgroundColor:
-                        selectedStatus === "To do"
-                        ? "#3372b2"
-                        : selectedStatus === "In progress"
-                        ? "#7f5db6"
-                        : selectedStatus === "Done"
-                        ? "#00a167"
-                        : "",
-                      }}
+                  <div className="table-headerStatus">
+                    <div className="task-status">
+                      <button
+                        type="button"
+                        onClick={() => setOpen(!open)}
+                        className={`${statusBtn} ${selectedStatus && selected}`}
+                        style={{
+                          backgroundColor:
+                            selectedStatus === "To do"
+                              ? "#3372b2"
+                              : selectedStatus === "In progress"
+                              ? "#7f5db6"
+                              : selectedStatus === "Done"
+                              ? "#00a167"
+                              : "",
+                        }}
                       >
-                      {selectedStatus || String.fromCharCode(9662)}
-                    </button>
-                    {open && (
-                      <div className={statusMenu}>
-                        <p
-                          className={statusDo}
-                          onClick={() => handleStatusClick("To do")}
+                        {selectedStatus || String.fromCharCode(9662)}
+                      </button>
+                      {open && (
+                        <div className={statusMenu}>
+                          <p
+                            className={statusDo}
+                            onClick={() => handleStatusClick("To do")}
                           >
-                          To do
-                        </p>
-                        <p
-                          className={statusProgress}
-                          onClick={() => handleStatusClick("In progress")}
+                            To do
+                          </p>
+                          <p
+                            className={statusProgress}
+                            onClick={() => handleStatusClick("In progress")}
                           >
-                          In progress
-                        </p>
-                        <p
-                          className={statusDone}
-                          onClick={() => handleStatusClick("Done")}
+                            In progress
+                          </p>
+                          <p
+                            className={statusDone}
+                            onClick={() => handleStatusClick("Done")}
                           >
-                          Done
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                            Done
+                          </p>
+                        </div>
+                      )}
                     </div>
+                  </div>
                 </td>
                 <td className="table-headerPriorityTh">
                   <div className="table-headerPriority">
-
-                  <div className="task-priority">
-                    <button
-                      type="button"
-                      onClick={() => setOpens(!opens)}
-                      className={
-                        priorityBtn +
-                        (selectedPriority ? " " + selectedPrioLow : "")
-                      }
-                      style={{
-                        backgroundColor:
-                        selectedPriority === "Low"
-                        ? "#40ADBE"
-                        : selectedPriority === "Medium"
-                        ? "#FDAB3D"
-                        : selectedPriority === "High"
-                        ? "#C0417F"
-                        : "",
-                      }}
+                    <div className="task-priority">
+                      <button
+                        type="button"
+                        onClick={() => setOpens(!opens)}
+                        className={
+                          priorityBtn +
+                          (selectedPriority ? " " + selectedPrioLow : "")
+                        }
+                        style={{
+                          backgroundColor:
+                            selectedPriority === "Low"
+                              ? "#40ADBE"
+                              : selectedPriority === "Medium"
+                              ? "#FDAB3D"
+                              : selectedPriority === "High"
+                              ? "#C0417F"
+                              : "",
+                        }}
                       >
-                      {selectedPriority || String.fromCharCode(9662)}
-                    </button>
-                    {opens && (
-                      <div className={priorityMenu}>
-                        <p
-                          className={priorityLow}
-                          onClick={() => handlePriorityClick("Low")}
+                        {selectedPriority || String.fromCharCode(9662)}
+                      </button>
+                      {opens && (
+                        <div className={priorityMenu}>
+                          <p
+                            className={priorityLow}
+                            onClick={() => handlePriorityClick("Low")}
                           >
-                          Low
-                        </p>
-                        <p
-                          className={priorityMedium}
-                          onClick={() => handlePriorityClick("Medium")}
+                            Low
+                          </p>
+                          <p
+                            className={priorityMedium}
+                            onClick={() => handlePriorityClick("Medium")}
                           >
-                          Medium
-                        </p>
-                        <p
-                          className={priorityHigh}
-                          onClick={() => handlePriorityClick("High")}
+                            Medium
+                          </p>
+                          <p
+                            className={priorityHigh}
+                            onClick={() => handlePriorityClick("High")}
                           >
-                          High
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                            High
+                          </p>
+                        </div>
+                      )}
                     </div>
+                  </div>
                 </td>
                 <td className="table-timeline">
                   <TaskListTableTimeLine
@@ -355,6 +384,11 @@ function TaskListTableForm({
                 </td>
               </tr>
             </tbody>
+    {/* <ul>
+      {getInfo && getInfo.members.map((member, index) => (
+        <li key={index}>{member.names}</li>
+      ))}
+    </ul> */}
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>

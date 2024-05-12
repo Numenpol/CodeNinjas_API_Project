@@ -14,8 +14,10 @@ export const getAllUsers = async () => {
     return response.data;
 }
 
+
+// get project by ID
 export const getOne = async (_id)=>{
-    const response = await axios.get(`${API_URL}${_id}`);
+    const response = await axios.get(`${API_URL}/${_id}`);
     return response.data;
 };
 
