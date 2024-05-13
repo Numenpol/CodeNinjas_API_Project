@@ -26,6 +26,7 @@ function TaskListTable() {
   const [selectedPriority, setSelectedPriority] = useState("");
 
   const [selectedOwner, setSelectedOwner] = useState("");
+  const [ownerColor, setOwnerColor] = useState("");
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
@@ -55,7 +56,7 @@ function TaskListTable() {
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
-        owner: selectedOwner,
+        owner: [selectedOwner, ownerColor],
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
@@ -195,7 +196,7 @@ function TaskListTable() {
                   <td className="table-headerOwner">
                     <TaskListTableOwner 
                       task={task}
-                      selectedOwner={selectedOwner}
+                      setOwnerColor={setOwnerColor}
                       updateDataTask={updateDataTask} />
                   </td>
                   <td className="table-headerStatus">

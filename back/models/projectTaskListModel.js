@@ -12,10 +12,11 @@ const projectTaskListSchema = new mongoose.Schema({
     minlenght: [3, "Project name must be more than 3 characters"],
   },
 
-  owner: {
-    type: String,
-        
-  },
+  owner: [
+    {
+    type: String,   
+    }
+  ],
   status: {
     type: String,
     // enum: ["To do", "In progress", "Done"],

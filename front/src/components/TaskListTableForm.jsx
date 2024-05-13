@@ -38,6 +38,7 @@ function TaskListTableForm({
   const [isOpenos, setIsOpenos] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
+  const [ownerColor, setOwnerColor] = useState("")
   const [ownerColors, setOwnerColors] = useState([]);
   const [getInfo, setProjectInfo] = useState("");
 
@@ -83,6 +84,8 @@ function TaskListTableForm({
 
   const handleOwnerClick = (owner, color) => {
     setSelectedOwner(owner);
+    const fixedColor = color.match(/_([^_]+)_/)[1];
+    setOwnerColor(fixedColor);
     setSelectedOwnerColor(color);
     setIsOpeno(false);
     setIsOpenos(false);
@@ -158,7 +161,7 @@ function TaskListTableForm({
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
-        owner: `${selectedOwner};${selectedOwnerColor}`,
+        owner: [selectedOwner, ownerColor],
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,

@@ -5,7 +5,7 @@ import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import { getOne } from "../services/get";
 import { createPopper } from '@popperjs/core';
 
-function TaskListTableOwner({ task, updateDataTask }) {
+function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
   const { projectId, setUpdate } = useContext(StateContext);
   const [isOpeno, setIsOpeno] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
@@ -24,9 +24,9 @@ function TaskListTableOwner({ task, updateDataTask }) {
     getMembersNames();
   }, [projectId]);
 
-  const handleStatusUpdate = async (id, newOwner) => {
+  const handleStatusUpdate = async (id, newOwner, fixedColor) => {
     try {
-      const data = { owner: newOwner };
+      const data = { owner: [newOwner, fixedColor] };
       await updateDataTask(id, data);
       setUpdate((update) => update + 1);
       // setIsOpen(false);
@@ -35,7 +35,6 @@ function TaskListTableOwner({ task, updateDataTask }) {
     }
   };
 
-  const { ownerIconWater } = styles;
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -70,13 +69,15 @@ function TaskListTableOwner({ task, updateDataTask }) {
   const handleOwnerClick = (owner, color) => {
     setSelectedOwner(owner);
     setSelectedOwnerColor(color);
+    const fixedColor = color.match(/_([^_]+)_/)[1];
+    setOwnerColor(fixedColor);
     setIsOpeno(false);
     task.owner = owner;
-    handleStatusUpdate(task._id, owner);
+    handleStatusUpdate(task._id, owner, fixedColor);
   };
 
   const getInitials = (name) => {
-    const initials = name
+    const initials = name[0]
       .split(" ")
       .map((word) => word[0])
       .join("");
@@ -93,7 +94,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
 
   useEffect(() => {
     let popperInstance;
-  
+
     if (isOpeno) {
       popperInstance = createPopper(buttonRef.current, document.querySelector('.ownerMenu'), {
         placement: 'bottom',
@@ -103,7 +104,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
         popperInstance.destroy();
       }
     }
-  
+
     return () => {
       if (popperInstance) {
         popperInstance.destroy();
@@ -139,7 +140,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
       >
         {task.owner ? (
           <div className={initialsStyle}>
-            <CircleFill className={selectedOwnerColor} />
+            <CircleFill className={selectedOwnerColor == "" ? styles[task.owner[1]] : selectedOwnerColor}/>
             <div>{getInitials(task.owner)}</div>
           </div>
         ) : (
@@ -147,9 +148,9 @@ function TaskListTableOwner({ task, updateDataTask }) {
         )}
       </button>
       {isOpeno[task._id] && (
-  <div className={`${ownerMenu} ownerMenu`}>
+        <div className={`${ownerMenu} ownerMenu`}>
           <div className={ownerListStyle}>
-          {getInfo && getInfo.members.map((member, index) => (
+            {getInfo && getInfo.members.map((member, index) => (
               <div key={index}>
                 <p onClick={() => handleOwnerClick(member.names, ownerColors[index])}>
                   <div className={initialsList}>
