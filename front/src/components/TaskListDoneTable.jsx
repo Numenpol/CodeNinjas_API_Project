@@ -16,7 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 function TaskListDoneTable() {
-  const { tasks, setUpdate, showTask } = useContext(StateContext);
+  const { tasksById, setUpdate, showTask } = useContext(StateContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -108,7 +108,7 @@ function TaskListDoneTable() {
     setTaskIdToDelete(null);
   };
 
-  const fitleredTasks = tasks.filter((task) => task.status === "Done");
+  const fitleredTasks = tasksById.filter((task) => task.status === "Done");
 
   return (
     <>

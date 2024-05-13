@@ -14,11 +14,9 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { getAllTaskById } from '../services/get';
 
 function TaskListTable() {
-  const { setUpdate, showTask, projectId, update, setprojectId } = useContext(StateContext);
-
+  const { setUpdate, showTask, tasksById} = useContext(StateContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -33,9 +31,6 @@ function TaskListTable() {
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
   const [selectedCompletionDay, setSelectedCompletionDay] = useState();
-
-  const [tasksById, setTasksById] = useState([]);
-  const [error, setError] = useState("");
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -112,34 +107,6 @@ function TaskListTable() {
     setDeleteModalShow(false);
     setTaskIdToDelete(null);
   };
-
-  const fetchTasksByProjectId = async (projectId) => {
-    try {
-      const { data: { tasks } } = await getAllTaskById(projectId);
-      setTasksById(tasks);
-    } catch (error) {
-      setError(error.message);
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let fetchId = projectId;
-        if (projectId === "") {
-          fetchId = sessionStorage.getItem("projectid");
-          setprojectId(fetchId);
-        }
-        await fetchTasksByProjectId(fetchId);
-      } catch (error) {
-        setError(error.message);
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, [update, projectId]);
 
 
   const fitleredTasks = tasksById.filter((task) => task.status === "To do"||task.status === "");
