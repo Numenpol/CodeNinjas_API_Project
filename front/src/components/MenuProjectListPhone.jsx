@@ -23,7 +23,7 @@ function MenuProjectListPhone() {
 
   return (
     <div className={menuProjectPopUp}>
-      <Offcanvas show={showMenu} onHide={handleClose} backdrop={false} className="mt-5 mb-5 rounded-3 shadow border-0">
+      <Offcanvas show={showMenu} onHide={handleClose} backdrop={true} className="mt-5 mb-5 rounded-3 shadow border-0">
         <Offcanvas.Body>
           <div className={projectPopUp}>
             <div className={homeIcon}>
