@@ -1,8 +1,9 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { StateContext } from "../utils/StateContext";
 import styles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import { getOne } from "../services/get";
+import { createPopper } from '@popperjs/core';
 
 function TaskListTableOwner({ task, updateDataTask }) {
   const { projectId, setUpdate } = useContext(StateContext);
@@ -11,6 +12,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
   const [getInfo, setProjectInfo] = useState("");
+  const buttonRef = useRef(null);
 
   const getMembersNames = async () => {
     let projectData = await getOne(projectId);
@@ -89,6 +91,39 @@ function TaskListTableOwner({ task, updateDataTask }) {
     initialsList,
   } = styles;
 
+  useEffect(() => {
+    let popperInstance;
+  
+    if (isOpeno) {
+      popperInstance = createPopper(buttonRef.current, document.querySelector('.ownerMenu'), {
+        placement: 'bottom',
+      });
+    } else {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    }
+  
+    return () => {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    };
+  }, [isOpeno]);
+
+  const handleClickOutside = (event) => {
+    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
+      setIsOpeno(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="task-owner">
       <button
@@ -99,6 +134,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
             [task._id]: !prevState[task._id],
           }))
         }
+        ref={buttonRef}
         className={ownerBtn}
       >
         {task.owner ? (
@@ -111,7 +147,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
         )}
       </button>
       {isOpeno[task._id] && (
-        <div className={ownerMenu}>
+  <div className={`${ownerMenu} ownerMenu`}>
           <div className={ownerListStyle}>
           {getInfo && getInfo.members.map((member, index) => (
               <div key={index}>

@@ -1,9 +1,13 @@
 import styles from "../styles/StatusDropdown.module.css";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { StateContext } from "../utils/StateContext";
+import { createPopper } from '@popperjs/core';
 
-function TaskListTableStatus({ selectedStatus, isOpen, setIsOpen, task, updateDataTask }) {
+
+function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
+  const [isOpen, setIsOpen] = useState(false);
   const { setUpdate } = useContext(StateContext);
+  const buttonRef = useRef(null);
 
   const {
     statusBtn,
@@ -12,9 +16,28 @@ function TaskListTableStatus({ selectedStatus, isOpen, setIsOpen, task, updateDa
     statusProgress,
     statusDone,
     selected,
-    statusInProgress,
-    statusDoneSelected,
+    // statusInProgress,
+    // statusDoneSelected,
   } = styles;
+  useEffect(() => {
+    let popperInstance;
+
+    if (isOpen) {
+      popperInstance = createPopper(buttonRef.current, document.querySelector('.statusMenu'), {
+        placement: 'bottom',
+      });
+    } else {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    }
+
+    return () => {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    };
+  }, [isOpen]);
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
@@ -28,18 +51,14 @@ function TaskListTableStatus({ selectedStatus, isOpen, setIsOpen, task, updateDa
   };
 
   const handleStatusClick = (id) => {
-    setIsOpen((prevState) => {
-      const newState = { ...prevState };
-      Object.keys(newState).forEach((key) => {
-        newState[key] = false;
-      });
-      newState[id] = true;
-      return newState;
-    });
+    if (isOpen[id]) {
+      setIsOpen(false);
+    } else {
+      setIsOpen({ [id]: true });
+    }
   };
-
   const handleClickOutside = (event) => {
-    if (!event.target.closest(`.${statusBtn}`)) {
+    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
       setIsOpen(false);
     }
   };
@@ -57,6 +76,7 @@ function TaskListTableStatus({ selectedStatus, isOpen, setIsOpen, task, updateDa
         type="button"
         onClick={() => handleStatusClick(task._id)}
         className={`${statusBtn} ${selectedStatus && selected}`}
+        ref={buttonRef}
         style={{
           backgroundColor:
             task.status === "To do"
@@ -78,8 +98,8 @@ function TaskListTableStatus({ selectedStatus, isOpen, setIsOpen, task, updateDa
       >
         {task.status || String.fromCharCode(9662)}
       </button>
-      {isOpen[task._id] && (
-        <div className={statusMenu}>
+      {isOpen && (
+        <div className={`${statusMenu} statusMenu`}>
           <p
             className={statusDo}
             onClick={() => handleStatusUpdate(task._id, "To do")}

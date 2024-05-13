@@ -1,10 +1,12 @@
 import styles2 from "../styles/PriorityDropdown.module.css";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { StateContext } from "../utils/StateContext";
+import { createPopper } from '@popperjs/core';
 
-
-function TaskListTablePriority({ isOpens, setIsOpens, task, updateDataTask }) {
+function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
+  const [isOpens, setIsOpens] = useState(false);
   const { setUpdate } = useContext(StateContext);
+  const buttonRef = useRef(null);
 
   const {
     priorityBtn,
@@ -12,10 +14,27 @@ function TaskListTablePriority({ isOpens, setIsOpens, task, updateDataTask }) {
     priorityLow,
     priorityMedium,
     priorityHigh,
-    selectedPrioLow,
-    selectedPrioMed,
-    selectedPrioHi,
   } = styles2;
+
+  useEffect(() => {
+    let popperInstance;
+
+    if (isOpens) {
+      popperInstance = createPopper(buttonRef.current, document.querySelector('.priorityMenu'), {
+        placement: 'bottom',
+      });
+    } else {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    }
+
+    return () => {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    };
+  }, [isOpens]);
 
   const handlePriorityUpdate = async (id, newPriority) => {
     try {
@@ -29,18 +48,15 @@ function TaskListTablePriority({ isOpens, setIsOpens, task, updateDataTask }) {
   };
 
   const handlePriorityClick = (id) => {
-    setIsOpens((prevState) => {
-      const newState = { ...prevState };
-      Object.keys(newState).forEach((key) => {
-        newState[key] = false;
-      });
-      newState[id] = true;
-      return newState;
-    });
+    if (isOpens[id]) {
+      setIsOpens(false);
+    } else {
+      setIsOpens({ [id]: true });
+    }
   };
 
   const handleClickOutside = (event) => {
-    if (event.target.closest(`.${priorityBtn}`) === null) {
+    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
       setIsOpens(false);
     }
   };
@@ -57,48 +73,26 @@ function TaskListTablePriority({ isOpens, setIsOpens, task, updateDataTask }) {
       <button
         type="button"
         onClick={() => handlePriorityClick(task._id)}
-        className={`${priorityBtn} ${isOpens[task._id] ? selectedPrioLow : ""}`}
+        className={`${priorityBtn} ${selectedPriority && 'selected'}`}
+        ref={buttonRef}
         style={{
           backgroundColor:
-            task.priority === "Low"
-              ? "#40ADBE"
-              : task.priority === "Medium"
-              ? "#FDAB3D"
-              : task.priority === "High"
-              ? "#C0417F"
-              : "",
+            task.priority === "Low" ? "#40ADBE" :
+            task.priority === "Medium" ? "#FDAB3D" :
+            task.priority === "High" ? "#C0417F" : "",
           color:
-            task.priority === "Low"
-              ? "white"
-              : task.priority === "Medium"
-              ? "white"
-              : task.priority === "High"
-              ? "white"
-              : "black",
+            task.priority === "Low" ? "white" :
+            task.priority === "Medium" ? "white" :
+            task.priority === "High" ? "white" : "black",
         }}
       >
         {task.priority || String.fromCharCode(9662)}
       </button>
-      {isOpens[task._id] && (
-        <div className={priorityMenu}>
-          <p
-            className={priorityLow}
-            onClick={() => handlePriorityUpdate(task._id, "Low")}
-          >
-            Low
-          </p>
-          <p
-            className={priorityMedium}
-            onClick={() => handlePriorityUpdate(task._id, "Medium")}
-          >
-            Medium
-          </p>
-          <p
-            className={priorityHigh}
-            onClick={() => handlePriorityUpdate(task._id, "High")}
-          >
-            High
-          </p>
+      {isOpens && (
+        <div className={`${priorityMenu} priorityMenu`}>
+          <p className={priorityLow} onClick={() => handlePriorityUpdate(task._id, "Low")}>Low</p>
+          <p className={priorityMedium} onClick={() => handlePriorityUpdate(task._id, "Medium")}>Medium</p>
+          <p className={priorityHigh} onClick={() => handlePriorityUpdate(task._id, "High")}>High</p>
         </div>
       )}
     </div>
