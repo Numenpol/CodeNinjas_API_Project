@@ -111,9 +111,9 @@ function TaskListDoneTable() {
   const fitleredTasks = tasksById.filter((task) => task.status === "Done");
 
   return (
-    <>
-      {fitleredTasks.length > 0 && (
-        <div>
+    <>   
+    {fitleredTasks.length > 0 && (
+      <div>
           <div className="allTaskList">
             <form onSubmit={handleSubmit(formSubmitHandler)}>
               <Table bordered>
@@ -228,16 +228,6 @@ function TaskListDoneTable() {
               </Table>
               <input style={{ display: "none" }} type="submit" />
             </form>
-            <div className={showTask === true ? "" : "hidden"}>
-              <TaskListTableForm
-                selectedTimeLine={selectedTimeLine}
-                setSelectedTimeLine={setSelectedTimeLine}
-                selectedCreationDay={selectedCreationDay}
-                setSelectedCreationDay={setSelectedCreationDay}
-                setSelectedCompletionDay={setSelectedCompletionDay}
-                selectedCompletionDay={selectedCompletionDay}
-              />
-            </div>
           </div>
           <Modal
             className="myDeleteModal"
@@ -254,7 +244,7 @@ function TaskListDoneTable() {
               </Button>
             </Modal.Footer>
           </Modal>
-        </div>
+          </div>
       )}
     </>
   );

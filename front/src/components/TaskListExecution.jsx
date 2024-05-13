@@ -230,16 +230,6 @@ function TaskListExecutionTable() {
               </Table>
               <input style={{ display: "none" }} type="submit" />
             </form>
-            <div className={showTask === true ? "" : "hidden"}>
-              <TaskListTableForm
-                selectedTimeLine={selectedTimeLine}
-                setSelectedTimeLine={setSelectedTimeLine}
-                selectedCreationDay={selectedCreationDay}
-                setSelectedCreationDay={setSelectedCreationDay}
-                setSelectedCompletionDay={setSelectedCompletionDay}
-                selectedCompletionDay={selectedCompletionDay}
-              />
-            </div>
           </div>
           <Modal
             className="myDeleteModal"

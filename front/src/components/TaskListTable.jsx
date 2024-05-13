@@ -113,8 +113,8 @@ function TaskListTable() {
 
   return (
     <>
-    {fitleredTasks.length > 0 && (
-    <div>
+    {/* {fitleredTasks.length > 0 && (
+    <div> */}
       <div className="allTaskList">
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
@@ -238,8 +238,8 @@ function TaskListTable() {
           </Button>
         </Modal.Footer>
       </Modal>
-      </div>
-    )}
+      {/* </div>
+    )} */}
     </>
   );
 }
