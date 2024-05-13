@@ -151,7 +151,7 @@ function TaskListTable() {
                 {/* <th>Nr.</th> */}
                 <th>Key</th>
                 <th>Task</th>
-                <th className="table-headerOwnerTh">Member</th>
+                <th className="table-headerOwnerTh">Owner</th>
                 <th className="table-headerStatusTh">Status</th>
                 <th className="table-headerPriorityTh">Priority</th>
                 <th>Timeline</th>

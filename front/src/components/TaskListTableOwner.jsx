@@ -89,6 +89,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
     ownerList: ownerListStyle,
     initials: initialsStyle,
     initialsList,
+    circleIcon
   } = styles;
 
   useEffect(() => {
@@ -151,13 +152,13 @@ function TaskListTableOwner({ task, updateDataTask }) {
           <div className={ownerListStyle}>
           {getInfo && getInfo.members.map((member, index) => (
               <div key={index}>
-                <p onClick={() => handleOwnerClick(member.names, ownerColors[index])}>
+                <div className="{circleIcon}" onClick={() => handleOwnerClick(member.names, ownerColors[index])}>
                   <div className={initialsList}>
                     <CircleFill className={ownerColors[index]} />
                     <div>{getInitials(member.names)}</div>
                     <span>{member.names}</span>
                   </div>
-                </p>
+                </div>
               </div>
             ))}
           </div>

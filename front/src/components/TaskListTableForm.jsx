@@ -124,6 +124,7 @@ function TaskListTableForm({
     ownerList: ownerListStyle,
     initials: initialsStyle,
     initialsList,
+    circleIcon
   } = Ownerstyles;
 
   const handleStatusClick = (statuss) => {
@@ -222,7 +223,7 @@ function TaskListTableForm({
                       <div className={ownerMenu}>
                       <div className={ownerListStyle}>
                       {getInfo && getInfo.members.map((member, index) => (
-                          <p
+                          <div className="{circleIcon}"
                             key={index}
                             onClick={() =>
                               handleOwnerClick(member.names, ownerColors[index])
@@ -233,7 +234,7 @@ function TaskListTableForm({
                               <div>{getInitials(member.names)}</div>
                               <span>{member.names}</span>
                             </div>
-                          </p>
+                          </div>
                         ))}
                       </div>
                     </div>
