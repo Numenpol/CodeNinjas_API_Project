@@ -5,7 +5,6 @@ const projectSchema = new mongoose.Schema({
   projectName: {
     type: String,
     required: [true, "Please enter project name"],
-    unique: true,
     trim: true,
     maxlength: [40, "Project name must be less than 50 characters"],
     minlenght: [10, "Project name must be more than 3 characters"],

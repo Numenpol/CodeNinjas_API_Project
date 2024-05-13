@@ -22,9 +22,9 @@ function TaskListTableOwner({ task, updateDataTask }) {
     getMembersNames();
   }, [projectId]);
 
-  const handleStatusUpdate = async (id, newpPriority) => {
+  const handleStatusUpdate = async (id, newOwner) => {
     try {
-      const data = { status: newpPriority };
+      const data = { owner: newOwner };
       await updateDataTask(id, data);
       setUpdate((update) => update + 1);
       // setIsOpen(false);
@@ -33,7 +33,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
     }
   };
 
-  
+  const { ownerIconWater } = styles;
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -69,6 +69,8 @@ function TaskListTableOwner({ task, updateDataTask }) {
     setSelectedOwner(owner);
     setSelectedOwnerColor(color);
     setIsOpeno(false);
+    task.owner = owner;
+    handleStatusUpdate(task._id, owner);
   };
 
   const getInitials = (name) => {
@@ -99,7 +101,7 @@ function TaskListTableOwner({ task, updateDataTask }) {
         }
         className={ownerBtn}
       >
-        {selectedOwner ? (
+        {task.owner ? (
           <div className={initialsStyle}>
             <CircleFill className={selectedOwnerColor} />
             <div>{getInitials(task.owner)}</div>
@@ -116,8 +118,8 @@ function TaskListTableOwner({ task, updateDataTask }) {
                 <p onClick={() => handleOwnerClick(member.names, ownerColors[index])}>
                   <div className={initialsList}>
                     <CircleFill className={ownerColors[index]} />
-                    <div>{getInitials(task.owner)}</div>
-                    <span>{task.owner}</span>
+                    <div>{getInitials(member.names)}</div>
+                    <span>{member.names}</span>
                   </div>
                 </p>
               </div>

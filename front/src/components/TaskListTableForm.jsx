@@ -158,7 +158,7 @@ function TaskListTableForm({
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
-        owner: selectedOwner,
+        owner: `${selectedOwner};${selectedOwnerColor}`,
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
@@ -218,48 +218,48 @@ function TaskListTableForm({
                       )}
                     </button>
                     {isOpeno && (
-                    //   <div className={ownerMenu}>
-                    //   <div className={ownerListStyle}>
-                    //   {getInfo && getInfo.members.map((member, index) => (
-                    //       <p
-                    //         key={index}
-                    //         onClick={() =>
-                    //           handleOwnerClick(member.names, ownerColors[index])
-                    //         }
-                    //       >
-                    //         <div className={initialsList}>
-                    //           <CircleFill className={ownerColors[index]} />
-                    //           <div>{getInitials(member.names)}</div>
-                    //           <span>{member.names}</span>
-                    //         </div>
-                    //       </p>
-                    //     ))}
-                    //   </div>
-                    // </div>
                       <div className={ownerMenu}>
-                        <div className={ownerListStyle}>
-                          {[
-                            "Peter Pan",
-                            "Alice Wonderland",
-                            "Tom Sawyer",
-                            "Mirabel Madrigal",
-                            "John Doe",
-                          ].map((owner, index) => (
-                            <p
-                              key={index}
-                              onClick={() =>
-                                handleOwnerClick(owner, ownerColors[index])
-                              }
-                            >
-                              <div className={initialsList}>
-                                <CircleFill className={ownerColors[index]} />
-                                <div>{getInitials(owner)}</div>
-                                <span>{owner}</span>
-                              </div>
-                            </p>
-                          ))}
-                        </div>
+                      <div className={ownerListStyle}>
+                      {getInfo && getInfo.members.map((member, index) => (
+                          <p
+                            key={index}
+                            onClick={() =>
+                              handleOwnerClick(member.names, ownerColors[index])
+                            }
+                          >
+                            <div className={initialsList}>
+                              <CircleFill className={ownerColors[index]} />
+                              <div>{getInitials(member.names)}</div>
+                              <span>{member.names}</span>
+                            </div>
+                          </p>
+                        ))}
                       </div>
+                    </div>
+                      // <div className={ownerMenu}>
+                      //   <div className={ownerListStyle}>
+                      //     {[
+                      //       "Peter Pan",
+                      //       "Alice Wonderland",
+                      //       "Tom Sawyer",
+                      //       "Mirabel Madrigal",
+                      //       "John Doe",
+                      //     ].map((owner, index) => (
+                      //       <p
+                      //         key={index}
+                      //         onClick={() =>
+                      //           handleOwnerClick(owner, ownerColors[index])
+                      //         }
+                      //       >
+                      //         <div className={initialsList}>
+                      //           <CircleFill className={ownerColors[index]} />
+                      //           <div>{getInitials(owner)}</div>
+                      //           <span>{owner}</span>
+                      //         </div>
+                      //       </p>
+                      //     ))}
+                      //   </div>
+                      // </div>
                     )}
                   </div>
                 </td>
