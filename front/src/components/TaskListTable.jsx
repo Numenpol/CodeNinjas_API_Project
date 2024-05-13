@@ -148,6 +148,7 @@ function TaskListTable() {
           <Table bordered>
             <thead>
               <tr className="table-header">
+                {/* <th>Nr.</th> */}
                 <th>Key</th>
                 <th>Task</th>
                 <th>Owner</th>
@@ -161,6 +162,7 @@ function TaskListTable() {
             <tbody className="table-body">
               {tasksById.map((task) => (
                 <tr key={task._id}>
+                  {/* <td>{index+1}</td> */}
                   <td className="table-headerKey">
                     <input
                       className="key-name"
