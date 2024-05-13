@@ -147,10 +147,10 @@ function TaskListTable() {
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
             <thead>
-              <tr className="table-header">
+            <tr className="table-header">
                 <th>Key</th>
                 <th>Task</th>
-                <th>Owner</th>
+                <th className="table-headerOwnerTh">Member</th>
                 <th className="table-headerStatusTh">Status</th>
                 <th className="table-headerPriorityTh">Priority</th>
                 <th>Timeline</th>

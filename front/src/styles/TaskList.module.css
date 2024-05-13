@@ -1,4 +1,3 @@
-
  * {
     box-sizing: border-box;
 }
@@ -7,8 +6,7 @@
     min-width: 360px;
     background-color: #F5F6FA;
     padding-top: 1.12rem;
-    /* height: 100vh; */
-    /* overflow-y: hidden; */
+    margin-top: 5rem;
 }
 
 .taskListMenu {
@@ -18,11 +16,6 @@
 .taskListCard {
     background-color: #FFF;
     border-radius: 0.625rem 0.625rem 0rem 0rem;
-    /* height: 100vh; */
-}
-
-.taskListHeader {
-    /* margin: 1rem; */
 }
 
 .taskListHeaderTop {

@@ -1,108 +1,112 @@
 * {
     box-sizing: border-box;
-}
-
-.headerNavigation {
+  }
+  
+  .headerNavigation {
     width: 100%;
     height: 80px;
-    background-image: linear-gradient(90deg, #3FADBE, #3372B2);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    background-image: linear-gradient(90deg, #3fadbe, #3372b2);
     display: flex;
     align-items: center;
     justify-content: space-between;
     min-width: 360px;
-}
-
-.headerTabletIcon {
+  }
+  
+  .headerTabletIcon {
     display: none;
-}
-
-.headerRightSide {
+  }
+  
+  .headerRightSide {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.headerThemeButton {
+  }
+  
+  .headerThemeButton {
     /* width: 100px; */
     border-radius: 19px;
     border: none;
     padding: 3px 10px;
     width: 60px;
-    background-color: #FFF;
+    background-color: #fff;
     height: 38px;
-}
-
-.headerUserName {
+  }
+  
+  .headerUserName {
     display: none;
-}
-
-.headerUserRole {
+  }
+  
+  .headerUserRole {
     display: none;
-}
-
-.headerLogOutButton {
+  }
+  
+  .headerLogOutButton {
     border-radius: 5px;
     border: none;
     padding: 10px 16px;
     margin-right: 10px;
-    background-color: #F5F6FA;
+    background-color: #f5f6fa;
     font-size: 14px;
     color: #565656;
     /* font-family: Inter; */
-}
-
-.headerThemeButton:hover {
-    background-color: #F5F6FA;
-}
-
-.headerLogOutButton:hover {
-    background-color: #D5D5D5;
-}
-
-@media(min-width: 768px) {
+  }
+  
+  .headerThemeButton:hover {
+    background-color: #f5f6fa;
+  }
+  
+  .headerLogOutButton:hover {
+    background-color: #d5d5d5;
+  }
+  
+  @media (min-width: 768px) {
     .headerNavigation {
-        padding-left: 10px;
+      padding-left: 10px;
     }
-
+  
     .headerMobileIcon {
-        display: none;
+      display: none;
     }
-
+  
     .headerTabletIcon {
-        display: inline-block;
+      display: inline-block;
     }
-
+  
     .headerRightSide {
-        gap: 30px;
+      gap: 30px;
     }
-
+  
     .headerUserName {
-        display: block;
-        margin: 0;
-        font-size: 14px;
-        /* font-family: "Nunito Sans"; */
-        color: #fff;
+      display: block;
+      margin: 0;
+      font-size: 14px;
+      /* font-family: "Nunito Sans"; */
+      color: #fff;
     }
-
+  
     .headerUserRole {
-        display: block;
-        margin: 0;
-        font-size: 12px;
-        /* font-family: "Nunito Sans"; */
-        color: #f5f6fa;
+      display: block;
+      margin: 0;
+      font-size: 12px;
+      /* font-family: "Nunito Sans"; */
+      color: #f5f6fa;
     }
-
+  
     .headerLogOutButton {
-        margin-right: 15px;
+      margin-right: 15px;
     }
-}
-
-@media(min-width: 1440px) {
+  }
+  
+  @media (min-width: 1440px) {
     .headerNavigation {
-        padding-left: 90px;
+      padding-left: 90px;
     }
-
+  
     .headerThemeButton {
-        margin-right: 60px;
+      margin-right: 60px;
     }
-}
+  }
+  

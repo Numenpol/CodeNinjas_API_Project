@@ -201,7 +201,8 @@ function TaskListTableForm({
                     {...register("task")}
                   />
                 </td>
-                <td className="table-headerOwner">
+                <td className="table-headerOwnerTh">
+                  <div className="table-headerOwner">
                   <div className="task-owner">
                     <button
                       type="button"
@@ -261,6 +262,7 @@ function TaskListTableForm({
                       //   </div>
                       // </div>
                     )}
+                  </div>
                   </div>
                 </td>
                 <td className="table-headerStatusTh">
