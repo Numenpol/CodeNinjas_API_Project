@@ -139,7 +139,7 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
         ref={buttonRef}
         className={ownerBtn}
       >
-        {task.owner ? (
+        {task.owner && task.owner[1] ? (
           <div className={initialsStyle}>
             <CircleFill className={selectedOwnerColor == "" ? styles[task.owner[1]] : selectedOwnerColor}/>
             <div>{getInitials(task.owner)}</div>
