@@ -41,6 +41,7 @@
 
 .initialsList {
   position: relative;
+  margin-bottom: 0.5rem;
 }
 
 .initialsList div {
@@ -50,6 +51,7 @@
   transform: translate(-50%, -50%);
   color: white;
   font-size: 12px;
+  
 }
 span {
   margin-left: 0.5rem;
@@ -84,4 +86,5 @@ span {
 .ownerIconEmpty {
   color: #ececec;
   font-size: 1.7rem;
+margin-left: 0.6rem;
 }
