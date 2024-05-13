@@ -100,7 +100,7 @@ function TaskList() {
             <button className={MenuThing} onClick={toggleShow}>
               <img src={burgerIcon} alt="burgerIcon" />
             </button>
-            <MenuProjectListPhone />
+            <MenuProjectListPhone/>
           </div>
           <div className={taskListNameIcon}>
             <div className={taskListProjectIcon}>ICON</div>
