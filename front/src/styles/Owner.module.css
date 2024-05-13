@@ -1,4 +1,5 @@
 .ownerBtn {
+  position: relative;
   border: none;
   text-align: center;
   color: #565656;
@@ -7,25 +8,61 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 2.323rem;
 }
 
 .ownerMenu {
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-40%);
   border: 1px solid #d8d8d8;
   border-radius: 0.625rem;
   background-color: #ffffff;
   width: 14rem;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
 }
+
 .ownerList {
   margin-left: 0.5rem;
   margin-top: 1rem;
 }
+.initials {
+  position: relative;
+}
 
+.initials div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+.initialsList {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.initialsList div {
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  
+}
+span {
+  margin-left: 0.5rem;
+}
+.circleIcon {
+  margin-bottom: 1rem;
+}
 .ownerIconWater {
   color: #40adbe;
   font-size: 1.7rem;
+  
 }
 .ownerIconOrange {
   color: #fdab3d;
@@ -49,33 +86,5 @@
 .ownerIconEmpty {
   color: #ececec;
   font-size: 1.7rem;
-}
-
-.initials {
-  position: relative;
-}
-
-.initials div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 12px;
-}
-
-.initialsList {
-  position: relative;
-}
-
-.initialsList div {
-  position: absolute;
-  top: 50%;
-  left: 6%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 12px;
-}
-span {
-  margin-left: 0.5rem;
+margin-left: 0.6rem;
 }

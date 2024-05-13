@@ -87,6 +87,27 @@
     width: 5rem;
 }
 
+.projectListProject:hover {
+    cursor: pointer;
+    background: #C7D7FA;
+}
+
+.projectListProject {
+    position: relative;
+  }
+
+.projectListProject:hover:after {
+    background: #3fadbe;
+    border-radius: 5px;
+    bottom: 10px;
+    color: #fff;
+    content: attr(data-gloss);
+    left: 20%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+  }
+
 @media (min-width: 768px) {
     .projectListStatus {
         width: 15rem;

@@ -2,13 +2,10 @@
     margin-left: 1rem;
     margin-top: 0.5rem;
     margin-right: 1rem;
-    /* max-width: 23rem; */
-    overflow-x: auto;
 }
 .showTaskExecutionForm{
     display: none;
 }
-
 
 .table-header th {
     background: #f5f6fa !important;
@@ -16,6 +13,7 @@
 
 .table-body td input {
     border: none !important;
+    height: 2.323rem;
 }
 .table-body td {
     padding: 0rem !important;
@@ -34,13 +32,36 @@
     width: 3rem;
 }
 .table-headerOwner {
-    width: 5rem;
+    position: relative;
+    min-width: 3.98rem;
 }
-.table-headerStatus {
+.table-headerOwnerTh {
+    position: relative;
+    width: 3.5rem;
+}
+.table-headerStatus  {
+    position: relative;
+    min-width: 6rem;
+    padding: 0;
+}
+.table-headerStatusTh  {
+    position: relative;
     width: 6rem;
     padding: 0;
 }
 .table-headerPriority {
+    position: relative;
+    min-width: 6rem;
+    padding: 0;
+}
+.table-headerPriorityForm {
+    position: relative;
+    width: 6rem;
+    padding: 0;
+}
+
+.table-headerPriorityTh {
+    position: relative;
     width: 6rem;
     padding: 0;
 }
@@ -72,7 +93,6 @@
    min-width: 15.6rem;
 }
 
-
 .pencil {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
@@ -81,24 +101,26 @@
 
 .task-owner {
     width: 3.5rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-top: 0.5rem;
+    position: absolute;
 }
 
 .task-status {
     width: 6rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+}
+
+.task-statusForm {
+    width: 6rem;
+    position: absolute;
 }
 
 .task-priority {
+   width: 6rem;
+    position: absolute;
+}
+.task-priorityForm {
     width: 6rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
 }
 
 .task-timeline {
@@ -147,6 +169,13 @@
   }
 .hidden{
     display: none;
+}
+
+.table-timeline {
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    width: 9rem;
 }
 
 
@@ -203,21 +232,11 @@
     }
 }
 
-/* @media screen and (min-width: 1290px) {
-    .allTaskList {
-        overflow-x: hidden;
-    }
-} */
-
 @media screen and (min-width: 1440px) {
 
     ._taskListCard_1d586_35 {
         min-width: 73%;
     }
-
-    /* .allTaskList {
-        overflow-x: hidden;
-    } */
 
     .key-name {
         width: 2.5rem;

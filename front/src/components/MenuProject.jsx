@@ -38,6 +38,7 @@ function MenuProject({ project }) {
   const navigate = useNavigate();
 
   const projectClickHandler = (project) => {
+      sessionStorage.setItem("projectid", project._id);      
       setprojectId(project._id);
       setShowMenu(false);
       navigate("/tasklist");
@@ -115,7 +116,7 @@ function MenuProject({ project }) {
   return (
     <>
       <div className={menuProjectList} >
-        <div className={menuProjectList} onClick={projectClickHandler}>
+        <div className={menuProjectList} onClick={() => {projectClickHandler(project)}}>
           <img src={icon} alt="icon" className={menuProjectIcon} />
           <p className={menuProjectName}>{projectName}</p>
         </div>

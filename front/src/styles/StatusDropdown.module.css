@@ -3,11 +3,11 @@
   left: 50%;
   transform: translateX(-50%);
   border: none;
-  width: 100%;
+  width: 99%;
   text-align: center;
   color: #565656;
   background-color: #ffffff;
-  height: 2.6rem;
+  height: 2.323rem;
 }
 
 .statusMenu {
@@ -17,14 +17,16 @@
   border: 1px solid #d8d8d8;
   background-color: #ffffff;
   border-radius: 0.625rem;
-  width: 6rem;
+  width: 7rem;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
 }
 
 .statusDo {
   background-color: #3372b2;
   text-align: center;
   margin: 0.3rem;
-  color: #fff;
+  color: #fff; 
   border: none;
   border-radius: 0.3rem;
 }

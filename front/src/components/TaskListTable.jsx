@@ -3,7 +3,7 @@ import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../utils/StateContext";
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 import { deleteDataTask } from "../services/delete";
@@ -14,9 +14,10 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { getAllTaskById } from '../services/get';
 
 function TaskListTable() {
-  const { tasks, setUpdate, showTask } = useContext(StateContext);
+  const { setUpdate, showTask, projectId, update, setprojectId } = useContext(StateContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -25,12 +26,16 @@ function TaskListTable() {
   const [selectedPriority, setSelectedPriority] = useState("");
 
   const [selectedOwner, setSelectedOwner] = useState("");
+  const [ownerColor, setOwnerColor] = useState("");
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
   const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+
+  const [tasksById, setTasksById] = useState([]);
+  const [error, setError] = useState("");
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -51,7 +56,7 @@ function TaskListTable() {
         ...data,
         status: selectedStatus,
         priority: selectedPriority,
-        owner: selectedOwner,
+        owner: [selectedOwner, ownerColor],
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
@@ -108,7 +113,36 @@ function TaskListTable() {
     setTaskIdToDelete(null);
   };
 
-  const fitleredTasks = tasks.filter((task) => task.status === "To do"||task.status === "");
+  const fetchTasksByProjectId = async (projectId) => {
+    try {
+      const { data: { tasks } } = await getAllTaskById(projectId);
+      setTasksById(tasks);
+    } catch (error) {
+      setError(error.message);
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let fetchId = projectId;
+        if (projectId === "") {
+          fetchId = sessionStorage.getItem("projectid");
+          setprojectId(fetchId);
+        }
+        await fetchTasksByProjectId(fetchId);
+      } catch (error) {
+        setError(error.message);
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [update, projectId]);
+
+
+  const fitleredTasks = tasksById.filter((task) => task.status === "To do"||task.status === "");
 
   return (
     <>
@@ -117,11 +151,12 @@ function TaskListTable() {
           <Table bordered>
             <thead>
               <tr className="table-header">
+                {/* <th>Nr.</th> */}
                 <th>Key</th>
                 <th>Task</th>
-                <th>Owner</th>
-                <th className="table-headerStatus">Status</th>
-                <th className="table-headerPriority">Priority</th>
+                <th className="table-headerOwnerTh">Owner</th>
+                <th className="table-headerStatusTh">Status</th>
+                <th className="table-headerPriorityTh">Priority</th>
                 <th>Timeline</th>
                 <th className="table-headerCreationdate">Creation date</th>
                 <th className="table-headerCompletiondate">Completion date</th>
@@ -130,6 +165,7 @@ function TaskListTable() {
             <tbody className="table-body">
               {fitleredTasks.map((task) => (
                 <tr key={task._id}>
+                  {/* <td>{index+1}</td> */}
                   <td className="table-headerKey">
                     <input
                       className="key-name"
@@ -160,9 +196,12 @@ function TaskListTable() {
                     </span>
                   </td>
                   <td className="table-headerOwner">
-                    <TaskListTableOwner task={task} />
+                    <TaskListTableOwner 
+                      task={task}
+                      setOwnerColor={setOwnerColor}
+                      updateDataTask={updateDataTask} />
                   </td>
-                  <td>
+                  <td className="table-headerStatus">
                     <TaskListTableStatus
                       selectedStatus={selectedStatus}
                       isOpen={isOpen}
@@ -171,7 +210,7 @@ function TaskListTable() {
                       updateDataTask={updateDataTask}
                     />
                   </td>
-                  <td>
+                  <td className="table-headerPriority">
                     <TaskListTablePriority
                       isOpens={isOpens}
                       setIsOpens={setIsOpens}
@@ -179,8 +218,9 @@ function TaskListTable() {
                       updateDataTask={updateDataTask}
                     />
                   </td>
-                  <td>
-                  <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}/>
+                  <td className="table-timeline">
+                    <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
+                      task={task.timeline} />
                   </td>
                   <td className="table-headerCreationdate">
                     <input
@@ -210,8 +250,8 @@ function TaskListTable() {
           <input style={{ display: "none" }} type="submit" />
         </form>
         <div className={showTask === true ? "" : "hidden"}>
-          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay} 
-          setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay}/>
+          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay}
+            setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay} />
         </div>
       </div>
       <Modal

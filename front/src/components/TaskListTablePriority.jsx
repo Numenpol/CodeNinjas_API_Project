@@ -1,98 +1,102 @@
 import styles2 from "../styles/PriorityDropdown.module.css";
-import { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { StateContext } from "../utils/StateContext";
+import { createPopper } from '@popperjs/core';
 
-function TaskListTablePriority({isOpens, setIsOpens, task, updateDataTask}) {
+function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
+  const [isOpens, setIsOpens] = useState(false);
+  const { setUpdate } = useContext(StateContext);
+  const buttonRef = useRef(null);
 
-    const { setUpdate } = useContext(StateContext);
+  const {
+    priorityBtn,
+    priorityMenu,
+    priorityLow,
+    priorityMedium,
+    priorityHigh,
+  } = styles2;
 
-    const {
-        priorityBtn,
-        priorityMenu,
-        priorityLow,
-        priorityMedium,
-        priorityHigh,
-        selectedPrioLow,
-        selectedPrioMed,
-        selectedPrioHi,
-      } = styles2;
+  useEffect(() => {
+    let popperInstance;
 
-      const handlePriorityUpdate = async (id, newPriority) => {
-        try {
-          const data = { priority: newPriority };
-          await updateDataTask(id, data);
-          setUpdate((update) => update + 1);
-          setIsOpens(false);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-
-    return(
-    <div className="task-priority">
-    <button
-      type="button"
-      onClick={() =>
-        setIsOpens((prevState) => ({
-          ...prevState,
-          [task._id]: !prevState[task._id],
-        }))
+    if (isOpens) {
+      popperInstance = createPopper(buttonRef.current, document.querySelector('.priorityMenu'), {
+        placement: 'bottom',
+      });
+    } else {
+      if (popperInstance) {
+        popperInstance.destroy();
       }
-      className={`${priorityBtn} ${
-        isOpens[task._id] ? selectedPrioLow : ""
-      }`}
-      style={{
-        backgroundColor:
-          task.priority === "Low"
-            ? "#40ADBE"
-            : task.priority === "Medium"
-            ? "#FDAB3D"
-            : task.priority === "High"
-            ? "#C0417F"
-            : "",
-            color:
-            task.priority === "Low"
-            ? "white"
-            : task.priority === "Medium"
-            ? "white"
-            : task.priority === "High"
-            ? "white"
-            : "black",
-      }}
-    >
-      {task.priority || String.fromCharCode(9662)}
-    </button>
-    {isOpens[task._id] && (
-      <div className={priorityMenu}>
-        <p
-          className={priorityLow}
-          onClick={() =>
-            handlePriorityUpdate(task._id, "Low")
-          }
-        >
-          Low
-        </p>
-        <p
-          className={priorityMedium}
-          onClick={() =>
-            handlePriorityUpdate(task._id, "Medium")
-          }
-        >
-          Medium
-        </p>
-        <p
-          className={priorityHigh}
-          onClick={() =>
-            handlePriorityUpdate(task._id, "High")
-          }
-        >
-          High
-        </p>
-      </div>
-    )}
-  </div>
-  )
+    }
+
+    return () => {
+      if (popperInstance) {
+        popperInstance.destroy();
+      }
+    };
+  }, [isOpens]);
+
+  const handlePriorityUpdate = async (id, newPriority) => {
+    try {
+      const data = { priority: newPriority };
+      await updateDataTask(id, data);
+      setUpdate((update) => update + 1);
+      setIsOpens(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlePriorityClick = (id) => {
+    if (isOpens[id]) {
+      setIsOpens(false);
+    } else {
+      setIsOpens({ [id]: true });
+    }
+  };
+
+  const handleClickOutside = (event) => {
+    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
+      setIsOpens(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div className="task-priority">
+      <button
+        type="button"
+        onClick={() => handlePriorityClick(task._id)}
+        className={`${priorityBtn} ${selectedPriority && 'selected'}`}
+        ref={buttonRef}
+        style={{
+          backgroundColor:
+            task.priority === "Low" ? "#40ADBE" :
+            task.priority === "Medium" ? "#FDAB3D" :
+            task.priority === "High" ? "#C0417F" : "",
+          color:
+            task.priority === "Low" ? "white" :
+            task.priority === "Medium" ? "white" :
+            task.priority === "High" ? "white" : "black",
+        }}
+      >
+        {task.priority || String.fromCharCode(9662)}
+      </button>
+      {isOpens && (
+        <div className={`${priorityMenu} priorityMenu`}>
+          <p className={priorityLow} onClick={() => handlePriorityUpdate(task._id, "Low")}>Low</p>
+          <p className={priorityMedium} onClick={() => handlePriorityUpdate(task._id, "Medium")}>Medium</p>
+          <p className={priorityHigh} onClick={() => handlePriorityUpdate(task._id, "High")}>High</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default TaskListTablePriority;

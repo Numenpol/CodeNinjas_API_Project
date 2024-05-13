@@ -1,0 +1,17 @@
+.taskListProgressBar{
+    min-width: 120px;
+    display: flex;
+    text-align: center;
+  }
+
+  .taskListProgressBarRange {
+    position: fixed;
+    z-index: 3;
+    right: 1rem;
+}
+
+.taskListTimeLineButton {
+    width: 100%;
+    border: none;
+    background-color: #fff;
+}
