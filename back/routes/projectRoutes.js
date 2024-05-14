@@ -8,7 +8,7 @@ const { protect, restrictTo } = authControler;
 
 const router = express.Router();
 
-router.route("/").get(getAllProjects).post(createProject);
+router.route("/").get(protect, getAllProjects).post(protect,createProject);
 router
     .route("/:id")
     .get(getProject)

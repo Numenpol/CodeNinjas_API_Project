@@ -5,7 +5,12 @@ const API_URLT = import.meta.env.VITE_API_URLT;
 const VITE_URLO = import.meta.env.VITE_API_URLO;
 
 export const getAllData = async () => {
-    const response = await axios.get(API_URL);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(API_URL, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     return response.data;
 }
 
