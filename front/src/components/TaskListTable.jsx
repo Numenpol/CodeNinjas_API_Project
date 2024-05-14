@@ -193,7 +193,7 @@ function TaskListTable() {
                       id={task._id}/>
                   </td>
                   <td className="table-headerCreationdate">
-                    <input
+                    <p
                       className="task-creationdate"
                       style={{ border: "none" }}
                       id={`creationdate-${task._id}`}
@@ -201,17 +201,17 @@ function TaskListTable() {
                       type="text"
                       defaultValue={task.creationdate}
                       {...register(`creationdate-${task._id}`)}
-                    />
+                    >{task.creationdate}</p>
                   </td>
                   <td className="table-headerCompletiondate">
-                    <input
+                    <p
                       className="task-completiondate"
                       id={`completiondate-${task._id}`}
                       name={`completiondate-${task._id}`}
                       type="text"
                       defaultValue={task.completiondate}
                       {...register(`completiondate-${task._id}`)}
-                    />
+                    >{task.completiondate}</p>
                   </td>
                 </tr>
               ))}
