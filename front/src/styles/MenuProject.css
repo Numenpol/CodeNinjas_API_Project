@@ -11,6 +11,7 @@
   left: 300px;
   margin-top: 500px;
 }
+
 div [class="fade myModal modal show"] {
   display: none !important;
   position: absolute;
@@ -19,9 +20,14 @@ div [class="fade myModal modal show"] {
 div[class="fade modal-backdrop show"] {
   display: none !important;
 }
+div[class="fade myDeleteModal modal show"] {
+  margin-left: -14rem !important;
+}
 
-.myDeleteModal .modal-footer {
-  justify-content: center !important;
+.myDeleteModal .modal-dialog{
+  position: absolute;
+  top: 150px;
+
 }
 
 .myDeleteModal .modal-body {

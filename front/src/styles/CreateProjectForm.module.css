@@ -1,120 +1,127 @@
 * {
     box-sizing: border-box;
-}
-
-.modalDialog {
+  }
+  
+  .modalDialog {
     max-width: 400px !important;
     margin: 3rem auto !important;
-}
-
-.createProject {
+  }
+  
+  
+  
+  .createProject {
     display: flex;
     flex-direction: column;
     min-width: 360px;
-    background-color: #F5F6FA;
+    background-color: #f5f6fa;
     border-radius: 0.625rem;
-}
-
-.xIconButton {
+  }
+  
+  .xIconButton {
     border: none;
-    background-color: #F5F6FA;
+    background-color: #f5f6fa;
     text-align: end;
     border-radius: 0.625rem;
     padding-top: 0.5rem;
-}
-
-.createProjectHeader {
+  }
+  
+  .createProjectHeader {
     font-size: 1.5rem;
     color: #565656;
     font-weight: 500;
     line-height: 1.25rem;
     margin-bottom: 1rem;
     padding-left: 2rem;
-}
-
-.createProjectForm {
+  }
+  
+  .createProjectForm {
     display: flex;
     flex-direction: column;
     padding: 0 2rem;
-}
-
-.newProjectName {
+  }
+  
+  .newProjectName {
     color: #565656;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
     margin-top: 0.69rem;
-}
-
-.createProjectFormError {
+  }
+  
+  .createProjectFormError {
     color: rgba(209, 61, 72, 1);
-}
-
-.createChooseIcon {
+  }
+  
+  .createChooseIcon {
     color: #565656;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
     margin-bottom: 0;
     margin-top: 0.69rem;
-}
-
-.newProjectDesc {
+  }
+  
+  .newProjectDesc {
     color: #565656;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
     margin-top: 0.69rem;
-}
-
-.createButtons {
+  }
+  
+  .createButtons {
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
     margin-top: 1rem;
     padding-bottom: 0.62rem;
-}
-
-.cancelBtn {
+  }
+  
+  .cancelBtn {
+      margin-right: 1rem;
     padding: 0.625rem 1rem;
     background-color: #fff !important;
     border: 0.2px solid #97979769 !important;
-}
-
-.cancelBtnContent {
+  }
+  
+  .cancelBtnContent {
     color: #565656;
     font-size: 0.875rem;
     font-weight: 500;
-}
-
-.createBtn {
+  }
+  
+  .createBtn {
     padding: 0.625rem 1rem;
-    background: #3FADBE !important;
+    background: #3fadbe !important;
     border: none !important;
-}
-
-.createBtnContent {
+  }
+  .deleteBtn {
+    background-color: #3fadbe !important;
+    border: none !important;
+  }
+  
+  .createBtnContent {
     font-size: 0.875rem;
     font-weight: 500;
     color: #fff;
-}
-
-.rocketPicture {
+  }
+  
+  .rocketPicture {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     background-color: #fff;
     border-radius: 0 0 0.65rem 0.625rem;
-}
-
-.rocket {
+  }
+  
+  .rocket {
     width: 8.0625rem;
     height: 8.375rem;
     margin: 1rem auto 0.81rem;
-}
-
-.rocketSlogan {
+  }
+  
+  .rocketSlogan {
     background: linear-gradient(90deg, #3fadbe 0%, #4067f6 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -122,100 +129,105 @@
     font-size: 32px;
     font-weight: 800;
     margin-bottom: 1rem;
-}
-
-.newProjectName input::placeholder {
-    color: #ADB5BD;
+  }
+  
+  .newProjectName input::placeholder {
+    color: #adb5bd;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-}
-
-.newProjectDesc input::placeholder {
-    color: #ADB5BD;
+  }
+  
+  .newProjectDesc input::placeholder {
+    color: #adb5bd;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-}
-
-.cancelBtn:hover {
-    background-color: #F5F6FA !important;
-}
-
-.createBtn:hover {
-    background-color: #3593A2 !important;
-}
-
-@media screen and (min-width: 768px) {
+  }
+  
+  .cancelBtn:hover {
+    background-color: #f5f6fa !important;
+  }
+  
+  .createBtn:hover {
+    background-color: #3593a2 !important;
+  }
+  
+  @media screen and (min-width: 768px) {
     .modalDialog {
-        max-width: 780px !important;
-        margin-top: 13rem !important;
+      max-width: 780px !important;
+      margin-top: 13rem !important;
     }
-
+  
     .createProject {
-        flex-direction: row;
-        border-radius: 0.625rem;
+      flex-direction: row;
+      border-radius: 0.625rem;
     }
-
+  
     .xIconButton {
-        order: 2;
-        padding-bottom: 24.5rem;
-        background: #fff;
-        border-radius: 0 0.625rem 0.625rem 0;
+      order: 2;
+      padding-bottom: 24.5rem;
+      background: #fff;
+      border-radius: 0 0.625rem 0.625rem 0;
     }
-
+  
     .createProjectHeader {
-        padding-top: 2rem;
-        padding-left: 3.5rem;
-        margin-bottom: 0.69rem;
+      padding-top: 2rem;
+      padding-left: 3.5rem;
+      margin-bottom: 0.69rem;
     }
-
+  
     .createProjectForm {
-        padding: 0 4rem 0 3.5rem;
+      padding: 0 4rem 0 3.5rem;
     }
-
+  
     .createButtons {
-        padding-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
     }
-
+  
     .rocketPicture {
-        border-radius: 0;
+      border-radius: 0;
     }
-
+  
     .rocket {
-        width: 15.125rem;
-        height: 15.75rem;
-        margin: 3.5rem 2rem 0.62rem 3.5rem;
+      width: 15.125rem;
+      height: 15.75rem;
+      margin: 3.5rem 2rem 0.62rem 3.5rem;
     }
-
+  
     .rocketSlogan {
-        margin-bottom: 3rem;
-        margin-left: 1.6rem;
+      margin-bottom: 3rem;
+      margin-left: 1.6rem;
     }
-}
-
-@media screen and (min-width: 1440px) {
+  }
+  
+  @media screen and (min-width: 1440px) {
     .modalDialog {
-        max-width: 820px !important;
+      max-width: 820px !important;
     }
-
+    .cancelBtn {
+      width: 4.75rem;
+      height: 2.375rem;
+    }
+  
     .xIconButton {
-        padding-bottom: 29rem;
+      padding-bottom: 29rem;
     }
-
+  
     .createProjectHeader {
-        font-size: 1.875rem;
-        padding-top: 4rem;
+      font-size: 1.875rem;
+      padding-top: 4rem;
     }
-
+  
     .rocket {
-        width: 18.6875rem;
-        height: 18.6875rem;
-        margin-top: 5rem;
+      width: 18.6875rem;
+      height: 18.6875rem;
+      margin-top: 5rem;
     }
-
+  
     .rocketSlogan {
-        font-size: 2.25rem;
-        margin-bottom: 4rem;
+      font-size: 2.25rem;
+      margin-bottom: 4rem;
     }
-}
+  }
+  

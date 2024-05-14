@@ -1,6 +1,11 @@
 import "../styles/MenuProject.css";
 import IconList from "../components/IconList";
-import { DashSquare, Trash, PencilSquare, ThreeDots } from "react-bootstrap-icons";
+import {
+  DashSquare,
+  Trash,
+  PencilSquare,
+  ThreeDots,
+} from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
@@ -18,7 +23,7 @@ import xIcon from "../assets/xIcon.svg";
 import rocketPic from "../assets/rocket.svg";
 
 function MenuProject({ project }) {
-  const { setprojectId, setShowMenu } = useContext(StateContext)
+  const { setprojectId, setShowMenu } = useContext(StateContext);
 
   const { setUpdate } = useContext(StateContext);
   const [clickX, setClickX] = useState(null);
@@ -38,13 +43,12 @@ function MenuProject({ project }) {
   const navigate = useNavigate();
 
   const projectClickHandler = (project) => {
-      sessionStorage.setItem("projectid", project._id);      
-      setprojectId(project._id);
-      setShowMenu(false);
-      navigate("/tasklist");
-  }
-  
-  
+    sessionStorage.setItem("projectid", project._id);
+    setprojectId(project._id);
+    setShowMenu(false);
+    navigate("/tasklist");
+  };
+
   const [smShow, setSmShow] = useState(false);
   const handleSmClose = () => setSmShow(false);
   const handleSmShow = () => setSmShow(true);
@@ -109,14 +113,47 @@ function MenuProject({ project }) {
     }
   };
 
-  const { menuProjectList, menuProjectIcon, menuProjectName, editIcon, menuProjectModalBackDrop, menuEdit, menuPencilsquare, menuTrash, menuTrashIcon } = styles;
+  const {
+    menuProjectList,
+    menuProjectIcon,
+    menuProjectName,
+    editIcon,
+    menuProjectModalBackDrop,
+    menuEdit,
+    menuPencilsquare,
+    menuTrash,
+    menuTrashIcon,
+  } = styles;
 
-  const { modalDialog, createProject, xIconButton, createProjectHeader, createProjectForm, newProjectName, createChooseIcon, newProjectDesc, createButtons, cancelBtn, cancelBtnContent, createBtn, createBtnContent, rocketPicture, rocket, rocketSlogan } = stylesForm;
+  const {
+    modalDialog,
+    createProject,
+    xIconButton,
+    createProjectHeader,
+    createProjectForm,
+    newProjectName,
+    createChooseIcon,
+    newProjectDesc,
+    createButtons,
+    cancelBtn,
+    cancelBtnContent,
+    createBtn,
+    createBtnContent,
+    rocketPicture,
+    rocket,
+    rocketSlogan,
+    buttonsStupid,
+  } = stylesForm;
 
   return (
     <>
-      <div className={menuProjectList} >
-        <div className={menuProjectList} onClick={() => {projectClickHandler(project)}}>
+      <div className={menuProjectList}>
+        <div
+          className={menuProjectList}
+          onClick={() => {
+            projectClickHandler(project);
+          }}
+        >
           <img src={icon} alt="icon" className={menuProjectIcon} />
           <p className={menuProjectName}>{projectName}</p>
         </div>
@@ -148,7 +185,12 @@ function MenuProject({ project }) {
           )}
         </div>
 
-        <Modal className="mySecondModal" show={smShow} dialogClassName={modalDialog} backdropClassName="backdrop">
+        <Modal
+          className="mySecondModal"
+          show={smShow}
+          dialogClassName={modalDialog}
+          backdropClassName="backdrop"
+        >
           <div className={createProject}>
             <button className={xIconButton} onClick={handleSmClose}>
               <img src={xIcon} alt="xIcon" />
@@ -172,10 +214,11 @@ function MenuProject({ project }) {
                       // autoComplete="projectName"
                       {...register("projectName", {
                         required: "Project name is required",
-                        maxLength:{
-                          value:40,
-                          message:"Project name is to long, it can't exceed 40 characters"
-                        }
+                        maxLength: {
+                          value: 40,
+                          message:
+                            "Project name is to long, it can't exceed 40 characters",
+                        },
                       })}
                       isInvalid={errors.projectName}
                     />
@@ -185,9 +228,7 @@ function MenuProject({ project }) {
                   </Form.Group>
                 </div>
                 <div>
-                  <p className={createChooseIcon}>
-                    Choose your project icon
-                  </p>
+                  <p className={createChooseIcon}>Choose your project icon</p>
                   <IconList />
                 </div>
                 <div>
@@ -197,7 +238,7 @@ function MenuProject({ project }) {
                   >
                     <Form.Label>Project description</Form.Label>
                     <Form.Control
-                    style={{ resize: "none" }}
+                      style={{ resize: "none" }}
                       type="textarea"
                       as="textarea"
                       rows={3}
@@ -226,9 +267,7 @@ function MenuProject({ project }) {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <div className={createBtnContent}>
-                      Edit
-                    </div>
+                    <div className={createBtnContent}>Edit</div>
                   </Button>
                 </div>
               </Form>
@@ -240,19 +279,26 @@ function MenuProject({ project }) {
           </div>
         </Modal>
 
-        <Modal className="myDeleteModal" show={delShow}>
-          <Modal.Body>Are You sure, you want to delete {projectName}?</Modal.Body>
-          <Modal.Footer>
-            <Button className={cancelBtn} onClick={handleDelClose}>
-              <div className={cancelBtnContent}>Cancel</div>
-            </Button>
-            <Button
-              className="createBtn"
-              onClick={() => handleDelete(project._id)}
-            >
-              Delete
-            </Button>
-          </Modal.Footer>
+        <Modal
+          className="myDeleteModal"
+          show={delShow}
+          style={{ top: `${clickY - 160}px`, left: `${clickX - 100}px` }}
+          backdrop="true"
+        >
+          <Modal.Body>
+            Are You sure, you want to delete "{projectName}"?
+            <div className={buttonsStupid}>
+              <Button className={cancelBtn} onClick={handleDelClose}>
+                <div className={cancelBtnContent}>Cancel</div>
+              </Button>
+              <Button
+                className={createBtn}
+                onClick={() => handleDelete(project._id)}
+              >
+                Delete
+              </Button>
+            </div>
+          </Modal.Body>
         </Modal>
       </div>
     </>
