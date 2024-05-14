@@ -44,6 +44,9 @@
 
 .buttonthing {
     padding-left: 1rem;
+    border: none;
+    background-color: #fff;
+    text-decoration: none;
 }
 
 .closeButton {

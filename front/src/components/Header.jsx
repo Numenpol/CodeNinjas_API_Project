@@ -33,8 +33,8 @@ function Header() {
         <nav className={headerNavigation} >
             <div className="w-100 d-flex justify-content-between ps-3">
                 <Link to={"/Projects"}>
-                <img src={mobileIcon} alt="icon" className={headerMobileIcon} />
-                <img src={tabletIcon} alt="icon" className={headerTabletIcon} />
+                    <img src={mobileIcon} alt="icon" className={headerMobileIcon} />
+                    <img src={tabletIcon} alt="icon" className={headerTabletIcon} />
                 </Link>
                 <div className={headerRightSide}>
                     <button className={headerThemeButton}>🌞</button>

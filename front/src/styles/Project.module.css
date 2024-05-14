@@ -99,13 +99,18 @@
 .projectListProject:hover:after {
     background: #3fadbe;
     border-radius: 5px;
-    bottom: 10px;
+    top: 3rem;
     color: #fff;
     content: attr(data-gloss);
-    left: 20%;
+    left: 5%;
+    /* right: 0; */
+    text-align: center;
     padding: 5px 15px;
     position: absolute;
     z-index: 98;
+    width: 50%;
+    /* max-width: 60ch; */
+    overflow: hidden;
   }
 
 @media (min-width: 768px) {
@@ -125,6 +130,12 @@
     .projectOnHold {
         width: 6.6875rem;
         font-size: 0.8125rem;
+    }
+
+    .projectListProject:hover:after  {
+        /* max-width: 90ch; */
+        /* width: 94%; */
+        /* width: 100%; */
     }
 }
 
@@ -148,6 +159,11 @@
 
     .projectListStatus {
         justify-content: start;
+    }
+
+    .projectListProject:hover:after  {
+        /* max-width: 150ch; */
+        width: 30%;
     }
 
 }
