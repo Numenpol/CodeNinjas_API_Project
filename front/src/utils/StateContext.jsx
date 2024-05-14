@@ -55,7 +55,6 @@ export const StateProvider = ({ children }) => {
         setTasksById(tasks);
       } catch (error) {
         setError(error.message);
-        console.log(error);
       }
     }
 

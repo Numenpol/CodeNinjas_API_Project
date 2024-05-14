@@ -198,6 +198,10 @@ function TaskListDoneTable() {
                           setSelectedTimeLine={setSelectedTimeLine}
                           setSelectedCreationDay={setSelectedCreationDay}
                           setSelectedCompletionDay={setSelectedCompletionDay}
+                          selectedTimeLine={selectedTimeLine}
+                          selectedCreationDay={selectedCreationDay}
+                          selectedCompletionDay={selectedCompletionDay}
+                          id={task._id}
                           task={task.timeline}
                         />
                       </td>

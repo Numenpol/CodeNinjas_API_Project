@@ -343,6 +343,9 @@ function TaskListTableForm({
                     setSelectedTimeLine={setSelectedTimeLine}
                     setSelectedCreationDay={setSelectedCreationDay}
                     setSelectedCompletionDay={setSelectedCompletionDay}
+                    selectedTimeLine={selectedTimeLine} 
+                    selectedCreationDay={selectedCreationDay} 
+                    selectedCompletionDay={selectedCompletionDay}
                   />
                 </td>
                 <td className="table-headerCreationdate">
