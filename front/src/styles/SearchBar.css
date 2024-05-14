@@ -3,12 +3,12 @@
     width: 0.93788rem;
     height: 0.93794rem;
     opacity: 0.5;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .searchbar-div {
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
+    /* margin-left: 0.7rem; */
+    /* margin-right: 0.3rem; */
 }
 
 .searchbar .form-control,

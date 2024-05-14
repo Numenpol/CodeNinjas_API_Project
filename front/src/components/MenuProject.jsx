@@ -1,6 +1,6 @@
 import "../styles/MenuProject.css";
 import IconList from "../components/IconList";
-import { DashSquare, Trash, PencilSquare } from "react-bootstrap-icons";
+import { DashSquare, Trash, PencilSquare, ThreeDots } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
@@ -122,7 +122,7 @@ function MenuProject({ project }) {
         </div>
         <div className="Thing">
           <div>
-            <DashSquare className={editIcon} onClick={handleShow} />
+            <ThreeDots className={editIcon} onClick={handleShow} />
           </div>
           {show && (
             <Modal

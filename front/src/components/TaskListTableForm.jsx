@@ -241,30 +241,6 @@ function TaskListTableForm({
                         ))}
                       </div>
                     </div>
-                      // <div className={ownerMenu}>
-                      //   <div className={ownerListStyle}>
-                      //     {[
-                      //       "Peter Pan",
-                      //       "Alice Wonderland",
-                      //       "Tom Sawyer",
-                      //       "Mirabel Madrigal",
-                      //       "John Doe",
-                      //     ].map((owner, index) => (
-                      //       <p
-                      //         key={index}
-                      //         onClick={() =>
-                      //           handleOwnerClick(owner, ownerColors[index])
-                      //         }
-                      //       >
-                      //         <div className={initialsList}>
-                      //           <CircleFill className={ownerColors[index]} />
-                      //           <div>{getInitials(owner)}</div>
-                      //           <span>{owner}</span>
-                      //         </div>
-                      //       </p>
-                      //     ))}
-                      //   </div>
-                      // </div>
                     )}
                   </div>
                   </div>
@@ -390,11 +366,6 @@ function TaskListTableForm({
                 </td>
               </tr>
             </tbody>
-    {/* <ul>
-      {getInfo && getInfo.members.map((member, index) => (
-        <li key={index}>{member.names}</li>
-      ))}
-    </ul> */}
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>
