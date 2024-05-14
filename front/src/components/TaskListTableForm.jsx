@@ -3,7 +3,7 @@ import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { StateContext } from "../utils/StateContext";
 import styles from "../styles/StatusDropdown.module.css";
 import styles2 from "../styles/PriorityDropdown.module.css";
@@ -12,6 +12,7 @@ import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import { addProjectTask } from "../services/patch";
 import { getOne } from "../services/get";
+import { createPopper } from '@popperjs/core';
 
 function TaskListTableForm({
   selectedTimeLine,
@@ -24,23 +25,33 @@ function TaskListTableForm({
   const { tasks, setUpdate, showTask, setShowTask, projectId } =
     useContext(StateContext);
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpenStatus, setIsOpenStatus] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   //Priority
-  const [isOpens, setIsOpens] = useState({});
-  const [opens, setOpens] = useState(false);
+  // const [isOpens, setIsOpens] = useState({});
+  // const [opens, setOpens] = useState(false);
+  const [isOpenPriority, setIsOpenPriority] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("");
 
   // Owner
-  const [isOpeno, setIsOpeno] = useState(false);
-  const [isOpenos, setIsOpenos] = useState(false);
+  // const [isOpeno, setIsOpeno] = useState(false);
+  // const [isOpenos, setIsOpenos] = useState(false);
+  const [isOpenOwner, setIsOpenOwner] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
   const [ownerColor, setOwnerColor] = useState("")
   const [ownerColors, setOwnerColors] = useState([]);
   const [getInfo, setProjectInfo] = useState("");
+
+  const statusRef = useRef();
+  const priorityRef = useRef();
+  const ownerRef = useRef();
+  const statusMenuRef = useRef();
+  const priorityMenuRef = useRef();
+  const ownerMenuRef = useRef();
 
   const getMembersNames = async () => {
     let projectData = await getOne(projectId);
@@ -87,8 +98,16 @@ function TaskListTableForm({
     const fixedColor = color.match(/_([^_]+)_/)[1];
     setOwnerColor(fixedColor);
     setSelectedOwnerColor(color);
-    setIsOpeno(false);
-    setIsOpenos(false);
+    setIsOpenOwner(false);
+  };
+  const handleStatusClick = (status) => {
+    setSelectedStatus(status);
+    setIsOpenStatus(false);
+  };
+
+  const handlePriorityClick = (priority) => {
+    setSelectedPriority(priority);
+    setIsOpenPriority(false);
   };
 
   const {
@@ -130,17 +149,6 @@ function TaskListTableForm({
     circleIcon
   } = Ownerstyles;
 
-  const handleStatusClick = (statuss) => {
-    setSelectedStatus(statuss);
-    setIsOpen(false);
-    setOpen(false);
-  };
-
-  const handlePriorityClick = (prioritys) => {
-    setSelectedPriority(prioritys);
-    setIsOpens(false);
-    setOpens(false);
-  };
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -180,6 +188,53 @@ function TaskListTableForm({
     }
   };
 
+  const handleClickOutside = (event) => {
+    if (
+      statusRef.current && !statusRef.current.contains(event.target) &&
+      statusMenuRef.current && !statusMenuRef.current.contains(event.target)
+    ) {
+      setIsOpenStatus(false);
+    }
+    if (
+      priorityRef.current && !priorityRef.current.contains(event.target) &&
+      priorityMenuRef.current && !priorityMenuRef.current.contains(event.target)
+    ) {
+      setIsOpenPriority(false);
+    }
+    if (
+      ownerRef.current && !ownerRef.current.contains(event.target) &&
+      ownerMenuRef.current && !ownerMenuRef.current.contains(event.target)
+    ) {
+      setIsOpenOwner(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isOpenStatus) {
+      createPopper(statusRef.current, statusMenuRef.current, {
+        placement: 'bottom-start',
+      });
+    }
+    if (isOpenPriority) {
+      createPopper(priorityRef.current, priorityMenuRef.current, {
+        placement: 'bottom-start',
+      });
+    }
+    if (isOpenOwner) {
+      createPopper(ownerRef.current, ownerMenuRef.current, {
+        placement: 'bottom-start',
+      });
+    }
+  }, [isOpenStatus, isOpenPriority, isOpenOwner]);
+
+
   return (
     <>
       <div>
@@ -207,14 +262,14 @@ function TaskListTableForm({
                 </td>
                 <td className="table-headerOwnerTh">
                   <div className="table-headerOwner">
-                    <div className="task-owner">
+                    <div className="task-owner" ref={ownerRef}>
                       <button
                         type="button"
-                        onClick={() => setIsOpeno(!isOpeno)}
-                        className={ownerBtn}
+                        onClick={() => setIsOpenOwner(!isOpenOwner)}
+                        className={Ownerstyles.ownerBtn}
                       >
                         {selectedOwner ? (
-                          <div className={initialsStyle}>
+                          <div className={Ownerstyles.initials}>
                             <CircleFill className={selectedOwnerColor} />
                             <div>{getInitials(selectedOwner)}</div>
                           </div>
@@ -222,23 +277,30 @@ function TaskListTableForm({
                           <PersonCircle className={Ownerstyles.ownerIconEmpty} />
                         )}
                       </button>
-                      {isOpeno && (
-                        <div className={ownerMenu}>
-                          <div className={ownerListStyle}>
-                            {getInfo && getInfo.members.map((member, index) => (
-                              <div className="{circleIcon}"
-                                key={index}
-                                onClick={() =>
-                                  handleOwnerClick(member.names, ownerColors[index])
-                                }
-                              >
-                                <div className={initialsList}>
-                                  <CircleFill className={ownerColors[index]} />
-                                  <div>{getInitials(member.names)}</div>
-                                  <span>{member.names}</span>
+                      {isOpenOwner && (
+                        <div ref={ownerMenuRef} className={Ownerstyles.ownerMenu}>
+                          <div className={Ownerstyles.ownerList}>
+                            {getInfo &&
+                              getInfo.members.map((member, index) => (
+                                <div
+                                  className={Ownerstyles.circleIcon}
+                                  key={index}
+                                  onClick={() =>
+                                    handleOwnerClick(
+                                      member.names,
+                                      ownerColors[index]
+                                    )
+                                  }
+                                >
+                                  <div className={Ownerstyles.initialsList}>
+                                    <CircleFill
+                                      className={ownerColors[index]}
+                                    />
+                                    <div>{getInitials(member.names)}</div>
+                                    <span>{member.names}</span>
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
+                              ))}
                           </div>
                         </div>
                       )}
@@ -247,41 +309,43 @@ function TaskListTableForm({
                 </td>
                 <td className="table-headerStatusTh">
                   <div className="table-headerStatus">
-                    <div className="task-status">
+                    <div className="task-status" ref={statusRef}>
                       <button
                         type="button"
-                        onClick={() => setOpen(!open)}
-                        className={`${statusBtn} ${selectedStatus && selected}`}
+                        onClick={() => setIsOpenStatus(!isOpenStatus)}
+                        className={`${styles.statusBtn} ${
+                          selectedStatus && styles.selected
+                        }`}
                         style={{
                           backgroundColor:
-                            selectedStatus === "To do"
-                              ? "#3372b2"
-                              : selectedStatus === "In progress"
-                                ? "#7f5db6"
-                                : selectedStatus === "Done"
-                                  ? "#00a167"
-                                  : "",
+                            selectedStatus === 'To do'
+                              ? '#3372b2'
+                              : selectedStatus === 'In progress'
+                              ? '#7f5db6'
+                              : selectedStatus === 'Done'
+                              ? '#00a167'
+                              : '',
                         }}
                       >
                         {selectedStatus || String.fromCharCode(9662)}
                       </button>
-                      {open && (
-                        <div className={statusMenu}>
+                      {isOpenStatus && (
+                        <div ref={statusMenuRef} className={styles.statusMenu}>
                           <p
-                            className={statusDo}
-                            onClick={() => handleStatusClick("To do")}
+                            className={styles.statusDo}
+                            onClick={() => handleStatusClick('To do')}
                           >
                             To do
                           </p>
                           <p
-                            className={statusProgress}
-                            onClick={() => handleStatusClick("In progress")}
+                            className={styles.statusProgress}
+                            onClick={() => handleStatusClick('In progress')}
                           >
                             In progress
                           </p>
                           <p
-                            className={statusDone}
-                            onClick={() => handleStatusClick("Done")}
+                            className={styles.statusDone}
+                            onClick={() => handleStatusClick('Done')}
                           >
                             Done
                           </p>
@@ -292,44 +356,46 @@ function TaskListTableForm({
                 </td>
                 <td className="table-headerPriorityTh">
                   <div className="table-headerPriority">
-                    <div className="task-priority">
+                    <div className="task-priority" ref={priorityRef}>
                       <button
                         type="button"
-                        onClick={() => setOpens(!opens)}
-                        className={
-                          priorityBtn +
-                          (selectedPriority ? " " + selectedPrioLow : "")
-                        }
+                        onClick={() => setIsOpenPriority(!isOpenPriority)}
+                        className={`${styles2.priorityBtn} ${
+                          selectedPriority && 
+                            (selectedPriority === 'Low' ? styles2.selectedPrioLow : 
+                            selectedPriority === 'Medium' ? styles2.selectedPrioMed : 
+                            selectedPriority === 'High' ? styles2.selectedPrioHi : '')
+                        }`}
                         style={{
                           backgroundColor:
-                            selectedPriority === "Low"
-                              ? "#40ADBE"
-                              : selectedPriority === "Medium"
-                                ? "#FDAB3D"
-                                : selectedPriority === "High"
-                                  ? "#C0417F"
-                                  : "",
+                            selectedPriority === 'Low'
+                              ? '#40ADBE'
+                              : selectedPriority === 'Medium'
+                              ? '#FDAB3D'
+                              : selectedPriority === 'High'
+                              ? '#C0417F'
+                              : '',
                         }}
                       >
                         {selectedPriority || String.fromCharCode(9662)}
                       </button>
-                      {opens && (
-                        <div className={priorityMenu}>
+                      {isOpenPriority && (
+                        <div ref={priorityMenuRef} className={styles2.priorityMenu}>
                           <p
-                            className={priorityLow}
-                            onClick={() => handlePriorityClick("Low")}
+                            className={styles2.priorityLow}
+                            onClick={() => handlePriorityClick('Low')}
                           >
                             Low
                           </p>
                           <p
-                            className={priorityMedium}
-                            onClick={() => handlePriorityClick("Medium")}
+                            className={styles2.priorityMedium}
+                            onClick={() => handlePriorityClick('Medium')}
                           >
                             Medium
                           </p>
                           <p
-                            className={priorityHigh}
-                            onClick={() => handlePriorityClick("High")}
+                            className={styles2.priorityHigh}
+                            onClick={() => handlePriorityClick('High')}
                           >
                             High
                           </p>

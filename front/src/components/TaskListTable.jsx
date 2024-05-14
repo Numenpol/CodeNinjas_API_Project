@@ -113,14 +113,13 @@ function TaskListTable() {
 
   return (
     <>
-    {/* {fitleredTasks.length > 0 && (
-    <div> */}
+    {fitleredTasks.length > 0 && (
+    <div>
       <div className="allTaskList">
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
             <thead>
               <tr className="table-header">
-                {/* <th>Nr.</th> */}
                 <th>Key</th>
                 <th>Task</th>
                 <th className="table-headerOwnerTh">Owner</th>
@@ -219,11 +218,7 @@ function TaskListTable() {
           </Table>
           <input style={{ display: "none" }} type="submit" />
         </form>
-        <div className={showTask === true ? "" : "hidden"}>
-          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay}
-            setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay} />
         </div>
-      </div>
       <Modal
         className="myDeleteModal"
         show={deleteModalShow}
@@ -239,10 +234,15 @@ function TaskListTable() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* </div>
-    )} */}
+      </div>
+    )}
+    <div className="tableForm">
+        <div className={showTask === true ? "" : "hidden"}>
+          <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay}
+            setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay} />
+        </div>
+            </div>
     </>
   );
 }
-
 export default TaskListTable;
