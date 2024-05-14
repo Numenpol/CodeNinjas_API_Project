@@ -1,9 +1,15 @@
 const Project = require("../models/projectModel");
 
 exports.getAllProjects = async (req, res) => {
-  const projects = await Project.find();
-
+  // const projects = await Project.find( );
   try {
+    let projects;
+    if(req.user.role === "admin"){
+      projects = await Project.find();
+    } else {
+      const userId = req.user._id;
+      projects = await Project.find({ user: userId });
+    }
     res.status(200).json({
       status: "success",
       results: projects.length,
@@ -61,7 +67,7 @@ exports.getProjectsByTask = async (req, res) => {
 };
 exports.createProject = async (req, res) => {
   try {
-    const project = await Project.create(req.body);
+    const project = await Project.create({...req.body, user: req.user._id});
     res.status(201).json({
       status: "success",
       data: {

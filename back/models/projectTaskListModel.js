@@ -43,9 +43,6 @@ const projectTaskListSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
   },
-   members: {
-      
-   }
 });
 projectTaskListSchema.pre('save', async function(next) {
   if (!this.key) {

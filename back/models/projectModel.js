@@ -38,7 +38,8 @@ const projectSchema = new mongoose.Schema({
       emails: String,
       names: String,
     },
-  ]
+  ],
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   
 });
 
