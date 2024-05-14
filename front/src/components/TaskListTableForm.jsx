@@ -207,42 +207,42 @@ function TaskListTableForm({
                 </td>
                 <td className="table-headerOwnerTh">
                   <div className="table-headerOwner">
-                  <div className="task-owner">
-                    <button
-                      type="button"
-                      onClick={() => setIsOpeno(!isOpeno)}
-                      className={ownerBtn}
-                    >
-                      {selectedOwner ? (
-                        <div className={initialsStyle}>
-                          <CircleFill className={selectedOwnerColor} />
-                          <div>{getInitials(selectedOwner)}</div>
-                        </div>
-                      ) : (
-                        <PersonCircle className={Ownerstyles.ownerIconEmpty} />
-                      )}
-                    </button>
-                    {isOpeno && (
-                      <div className={ownerMenu}>
-                      <div className={ownerListStyle}>
-                      {getInfo && getInfo.members.map((member, index) => (
-                          <div className="{circleIcon}"
-                            key={index}
-                            onClick={() =>
-                              handleOwnerClick(member.names, ownerColors[index])
-                            }
-                          >
-                            <div className={initialsList}>
-                              <CircleFill className={ownerColors[index]} />
-                              <div>{getInitials(member.names)}</div>
-                              <span>{member.names}</span>
-                            </div>
+                    <div className="task-owner">
+                      <button
+                        type="button"
+                        onClick={() => setIsOpeno(!isOpeno)}
+                        className={ownerBtn}
+                      >
+                        {selectedOwner ? (
+                          <div className={initialsStyle}>
+                            <CircleFill className={selectedOwnerColor} />
+                            <div>{getInitials(selectedOwner)}</div>
                           </div>
-                        ))}
-                      </div>
+                        ) : (
+                          <PersonCircle className={Ownerstyles.ownerIconEmpty} />
+                        )}
+                      </button>
+                      {isOpeno && (
+                        <div className={ownerMenu}>
+                          <div className={ownerListStyle}>
+                            {getInfo && getInfo.members.map((member, index) => (
+                              <div className="{circleIcon}"
+                                key={index}
+                                onClick={() =>
+                                  handleOwnerClick(member.names, ownerColors[index])
+                                }
+                              >
+                                <div className={initialsList}>
+                                  <CircleFill className={ownerColors[index]} />
+                                  <div>{getInitials(member.names)}</div>
+                                  <span>{member.names}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    )}
-                  </div>
                   </div>
                 </td>
                 <td className="table-headerStatusTh">
@@ -257,10 +257,10 @@ function TaskListTableForm({
                             selectedStatus === "To do"
                               ? "#3372b2"
                               : selectedStatus === "In progress"
-                              ? "#7f5db6"
-                              : selectedStatus === "Done"
-                              ? "#00a167"
-                              : "",
+                                ? "#7f5db6"
+                                : selectedStatus === "Done"
+                                  ? "#00a167"
+                                  : "",
                         }}
                       >
                         {selectedStatus || String.fromCharCode(9662)}
@@ -305,10 +305,10 @@ function TaskListTableForm({
                             selectedPriority === "Low"
                               ? "#40ADBE"
                               : selectedPriority === "Medium"
-                              ? "#FDAB3D"
-                              : selectedPriority === "High"
-                              ? "#C0417F"
-                              : "",
+                                ? "#FDAB3D"
+                                : selectedPriority === "High"
+                                  ? "#C0417F"
+                                  : "",
                         }}
                       >
                         {selectedPriority || String.fromCharCode(9662)}
@@ -346,23 +346,23 @@ function TaskListTableForm({
                   />
                 </td>
                 <td className="table-headerCreationdate">
-                  <input
+                  <p
                     className="task-creationdate"
                     style={{ border: "none" }}
                     id="creationdate"
                     name="creationdate"
                     type="text"
                     {...register("creationdate")}
-                  />
+                  ></p>
                 </td>
                 <td className="table-headerCompletiondate">
-                  <input
+                  <p
                     className="task-completiondate"
                     id="completiondate"
                     name="completiondate"
                     type="text"
                     {...register("completiondate")}
-                  />
+                  ></p>
                 </td>
               </tr>
             </tbody>

@@ -13,13 +13,14 @@ import houseIconPic from "../assets/houseIcon.svg";
 import MenuProjectList from "./MenuProjectList"
 import SearchBar from './SearchBar';
 import styles from "../styles/MenuProjectListDesktop.module.css";
+import { Link } from "react-router-dom";
 
 function MenuProjectListPhone() {
   const { showMenu, setShowMenu, handleShow } = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
 
-  const {menuProjectPopUp, projectPopUp, homeIcon, houseIconText, houseIcon, buttonthing, closeButton, searchThing, folderTextThing, menuMyProjects, folderIcon2, myProjectsText, plusIcon, addProjectButton, bob} = styles;
+  const { menuProjectPopUp, projectPopUp, homeIcon, houseIconText, houseIcon, buttonthing, closeButton, searchThing, folderTextThing, menuMyProjects, folderIcon2, myProjectsText, plusIcon, addProjectButton, bob } = styles;
 
   return (
     <div className={menuProjectPopUp}>
@@ -27,10 +28,12 @@ function MenuProjectListPhone() {
         <Offcanvas.Body>
           <div className={projectPopUp}>
             <div className={homeIcon}>
-              <div className={houseIconText}>
-                <img src={houseIconPic} alt="HouseIcon" className={houseIcon} />
-                <span className={buttonthing}>Home</span>
-              </div>
+              <Link to={"/projects"}>
+                <div className={houseIconText}>
+                  <img src={houseIconPic} alt="HouseIcon" className={houseIcon} />
+                  <button className={buttonthing}>Home</button>
+                </div>
+              </Link>
               <button className={closeButton} onClick={handleClose}>
                 <img src={xIcon} alt="X" />
               </button>

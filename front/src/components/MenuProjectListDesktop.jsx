@@ -7,24 +7,27 @@ import houseIconPic from "../assets/houseIcon.svg";
 import MenuProjectList from "./MenuProjectList";
 import SearchBar from "./SearchBar";
 import styles from "../styles/MenuProjectListDesktop.module.css";
+import { Link } from "react-router-dom";
 
 function MenuProjectListDesktop() {
-    const {setShowMenu, handleShow} = useContext(StateContext)
+  const { setShowMenu, handleShow } = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
 
-  const {projectPopUp, homeIcon, houseIconText, houseIcon, buttonthing, closeButton, searchThing, folderTextThing, menuMyProjects, folderIcon2, myProjectsText, plusIcon, addProjectButton} = styles;
+  const { projectPopUp, homeIcon, houseIconText, houseIcon, buttonthing, closeButton, searchThing, folderTextThing, menuMyProjects, folderIcon2, myProjectsText, plusIcon, addProjectButton } = styles;
 
   return (
     <>
-        <div className={projectPopUp}>
+      <div className={projectPopUp}>
         <div className={homeIcon}>
-          <div className={houseIconText}>
-          <img src={houseIconPic} alt="HouseIcon" className={houseIcon}/>
-            <span className={buttonthing}>Home</span>
-          </div>
+          <Link to={"/projects"}>
+            <div className={houseIconText}>
+              <img src={houseIconPic} alt="HouseIcon" className={houseIcon} />
+              <button className={buttonthing}>Home</button>
+            </div>
+          </Link>
           <button className={closeButton} onClick={handleClose}>
-          <img src={xIcon} alt="X" />
+            <img src={xIcon} alt="X" />
           </button>
         </div>
         <div className={searchThing}>
@@ -32,16 +35,16 @@ function MenuProjectListDesktop() {
         </div>
         <div className={folderTextThing}>
           <div className={menuMyProjects}>
-            <img src={folderPlusIcon} alt="folderIcon" className={folderIcon2}/>
+            <img src={folderPlusIcon} alt="folderIcon" className={folderIcon2} />
             <p className={myProjectsText}>My Projects</p>
           </div>
-              <div className={plusIcon}>
-                <button className={addProjectButton} onClick={handleShow}>
-                <img src={plusSquareFillIcon} alt="squareIcon" />
-                </button>
-              </div>
+          <div className={plusIcon}>
+            <button className={addProjectButton} onClick={handleShow}>
+              <img src={plusSquareFillIcon} alt="squareIcon" />
+            </button>
+          </div>
         </div>
-        <MenuProjectList/>
+        <MenuProjectList />
       </div>
     </>
   );

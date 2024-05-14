@@ -3,11 +3,13 @@
     margin-top: 0.5rem;
     margin-right: 1rem;
 }
-.tableForm{
+
+.tableForm {
     margin-left: 1rem;
     margin-right: 1rem;
 }
-.showTaskExecutionForm{
+
+.showTaskExecutionForm {
     display: none;
 }
 
@@ -19,6 +21,7 @@
     border: none !important;
     height: 2.323rem;
 }
+
 .table-body td {
     padding: 0rem !important;
 }
@@ -35,29 +38,35 @@
 .table-headerKey {
     width: 3rem;
 }
+
 .table-headerOwner {
     position: relative;
     min-width: 3.98rem;
 }
+
 .table-headerOwnerTh {
     position: relative;
     width: 3.5rem;
 }
-.table-headerStatus  {
+
+.table-headerStatus {
     position: relative;
     min-width: 6rem;
     padding: 0;
 }
-.table-headerStatusTh  {
+
+.table-headerStatusTh {
     position: relative;
     width: 6rem;
     padding: 0;
 }
+
 .table-headerPriority {
     position: relative;
     min-width: 6rem;
     padding: 0;
 }
+
 .table-headerPriorityForm {
     position: relative;
     width: 6rem;
@@ -69,12 +78,19 @@
     width: 6rem;
     padding: 0;
 }
+
 .table-headerTimeline {
     width: 10rem;
 }
+
 .table-headerCreationdate {
     width: 6rem;
 }
+
+.table-headerCreationdate p {
+    width: 7.5rem;
+}
+
 .table-headerCompletiondate {
     width: 6rem;
 }
@@ -93,8 +109,9 @@
     padding-left: 1rem;
     padding-top: 0.5rem;
 }
+
 .task-nameForm {
-   min-width: 15.6rem;
+    min-width: 15.6rem;
 }
 
 .pencil {
@@ -119,9 +136,10 @@
 }
 
 .task-priority {
-   width: 6rem;
+    width: 6rem;
     position: absolute;
 }
+
 .task-priorityForm {
     width: 6rem;
     position: absolute;
@@ -146,32 +164,36 @@
     padding-top: 0.5rem;
 }
 
-.taskListTimeLineButton{
+.taskListTimeLineButton {
     border: none;
     background: none;
 }
+
 .tasklist-task-field {
     display: flex;
     align-items: center;
     border: none;
-  }
-  
-  .tasklist-task-field input {
+}
+
+.tasklist-task-field input {
     flex-grow: 1;
     border: none;
-  }
-  
-  .tasklist-task-field span {
+}
+
+.tasklist-task-field span {
     margin-left: 0.1rem;
     margin-right: 0.2rem;
-  }
-  .pencilTrashIcon {
+}
+
+.pencilTrashIcon {
     color: #9F9F9F
-  }
-  .pencilTrashIcon:hover {
+}
+
+.pencilTrashIcon:hover {
     color: #565656
-  }
-.hidden{
+}
+
+.hidden {
     display: none;
 }
 
@@ -198,12 +220,14 @@
         overflow: hidden;
         text-align: start;
     }
+
     .task-nameForm {
         min-width: 27.6rem;
-     }
-     .task-nameForm input {
+    }
+
+    .task-nameForm input {
         width: 15.6rem;
-      }
+    }
 
     .pencil {
         margin-right: 0.5rem;
@@ -246,45 +270,45 @@
         width: 2.5rem;
         text-align: center;
     }
-    
+
     .task-name {
         width: 18rem;
         overflow: hidden;
         text-align: start;
     }
-    .task-nameForm {
-        min-width: 20.6rem; 
-     }
 
-    
+    .task-nameForm {
+        min-width: 20.6rem;
+    }
+
+
     .pencil {
         margin-right: 0.5rem;
         margin-left: 0.5rem;
         margin-top: 0.5rem;
     }
-    
+
     .task-owner {
         width: 3rem;
     }
-    
+
     .task-status {
         width: 6rem;
     }
-    
+
     .task-priority {
-        width: 6rem; 
+        width: 6rem;
     }
-    
+
     .task-timeline {
         width: 9rem;
     }
-    
+
     .task-creationdate {
         width: 7rem;
     }
-    
+
     .task-completiondate {
         width: 8rem;
     }
 }
-
