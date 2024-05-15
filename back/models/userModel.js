@@ -41,6 +41,14 @@ const userSchema = new mongoose.Schema({
       type: String,
       default: "avatars/avatar.svg"
     }
+  ,
+  membersProject: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Project",
+    }
+  ]
+
 });
 
 //hashing password

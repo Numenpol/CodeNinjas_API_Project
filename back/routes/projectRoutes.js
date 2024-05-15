@@ -2,7 +2,7 @@ const express = require("express");
 const projectController = require("../controlers/projectController");
 const authControler = require("../controlers/authController");
 
-const { getAllProjects, getProject, createProject, updateProject, deleteProject, upadateProjectsMembers, getProjectsByTask } = projectController;
+const { getAllProjects, getProject, createProject, updateProject, deleteProject, updateProjectsMembers, getProjectsByTask } = projectController;
 
 const { protect, restrictTo } = authControler;
 
@@ -11,12 +11,12 @@ const router = express.Router();
 router.route("/").get(protect, getAllProjects).post(protect,createProject);
 router
     .route("/:id")
-    .get(getProject)
+    .get( getProject)
     .patch(updateProject)
     .delete(protect, restrictTo("admin", "user"), deleteProject);
 router
     .route("/members/:id")
-    .patch(upadateProjectsMembers);
+    .patch(updateProjectsMembers);
 router
     .route("/onetask/:id")
     .get(getProjectsByTask);

@@ -117,7 +117,7 @@ exports.deleteProject = async (req, res) => {
   }
 };
 
-exports.upadateProjectsMembers = async (req, res) => {
+exports.updateProjectsMembers = async (req, res) => {
   try {
     const { id } = req.params;
     const membersData = req.body;

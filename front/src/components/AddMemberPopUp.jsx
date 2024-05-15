@@ -28,10 +28,10 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
     try {
       const user = users.find((user) => user.email === data.email);
 
-      const emails = data.email;
-      const names = user.name;
-
+      
       if (user) {
+        const emails = data.email;
+        const names = user.name;
         await addMembersToProject({
           id: objectId,
           // emails: [...emails, ...names],
