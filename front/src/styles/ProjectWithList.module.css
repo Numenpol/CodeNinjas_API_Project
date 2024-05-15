@@ -30,6 +30,7 @@
   border: none;
   background: none;
   color: #3fadbe;
+  margin-left: -0.5rem;
 }
 
 .FolderText {
@@ -167,6 +168,10 @@
     margin-top: 1, 35rem;
     margin-bottom: 0.5rem;
   }
+  .MenuThing {
+    margin-left: -0.2rem;
+  }
+
 
 }
 

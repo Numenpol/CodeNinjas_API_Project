@@ -62,9 +62,13 @@
     color: #7a7e81;
     /* margin: 1rem 0 1.88rem; */
     padding-top: 0.5rem;
-    padding-left: 1rem;
-    flex-basis: 100%
+    padding-left: 1.2rem;
+    flex-basis: 100%;
+    order: 3;
+    grid-row: 2/3;
+    grid-column: 1/12;
 }
+
 
 .taskListProjectIcon {
     color: #3FADBE;
@@ -127,6 +131,7 @@
 
 }
 .TaskListDone{
+    margin-top: 1.2rem;
     font-size: 20px;
     margin-left: 1rem;
     font-weight: 500;
@@ -135,6 +140,7 @@
 
 .taskListPlanningIcon {
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 
 #inputGroup-sizing-sm {
@@ -178,7 +184,7 @@
     grid-template-rows: 50px 50px;
     grid-template-columns: 20px auto 20px 20px;
     padding-top: 1rem;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .taskListBugerButton {
@@ -187,14 +193,6 @@
     grid-column: 1/2;
 }
 
-.taskListNameIcon {
-    order: 3;
-    grid-row: 2/3;
-    grid-column: 1/12;
-    display: flex;
-    justify-content: center;
-
-}
 
 .taskListStatusDisplay {
     order: 1;
@@ -289,11 +287,6 @@
     .taskListAddMember {
         min-width: 5rem;
     }
-
-    .bob {
-        margin-top: 0.1rem;
-    }
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -337,6 +330,7 @@
         font-weight: 300;
         color: #7a7e81;
         padding-top: 1.5rem;
+        padding-left: 0rem;
         margin-left: 0;
     }
 

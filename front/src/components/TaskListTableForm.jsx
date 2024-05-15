@@ -219,17 +219,17 @@ function TaskListTableForm({
   useEffect(() => {
     if (isOpenStatus) {
       createPopper(statusRef.current, statusMenuRef.current, {
-        placement: 'bottom-start',
+        placement: 'bottom',
       });
     }
     if (isOpenPriority) {
       createPopper(priorityRef.current, priorityMenuRef.current, {
-        placement: 'bottom-start',
+        placement: 'bottom',
       });
     }
     if (isOpenOwner) {
       createPopper(ownerRef.current, ownerMenuRef.current, {
-        placement: 'bottom-start',
+        placement: 'bottom',
       });
     }
   }, [isOpenStatus, isOpenPriority, isOpenOwner]);
@@ -243,13 +243,13 @@ function TaskListTableForm({
             <tbody className="table-body">
               <tr>
                 <td className="table-headerKey">
-                  <input
+                  <p
                     className="key-name"
                     id="key"
                     name="key"
                     type="text"
                     {...register("key")}
-                  />
+                  >{tasks.key}</p>
                 </td>
                 <td className="tasklist-task-field">
                   <input
