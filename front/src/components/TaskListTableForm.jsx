@@ -219,17 +219,17 @@ function TaskListTableForm({
   useEffect(() => {
     if (isOpenStatus) {
       createPopper(statusRef.current, statusMenuRef.current, {
-        placement: 'bottom-start',
+        placement: 'bottom',
       });
     }
     if (isOpenPriority) {
       createPopper(priorityRef.current, priorityMenuRef.current, {
-        placement: 'bottom-start',
+        placement: 'bottom',
       });
     }
     if (isOpenOwner) {
       createPopper(ownerRef.current, ownerMenuRef.current, {
-        placement: 'bottom-start',
+        placement: 'bottom',
       });
     }
   }, [isOpenStatus, isOpenPriority, isOpenOwner]);

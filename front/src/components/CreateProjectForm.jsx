@@ -83,10 +83,10 @@ function CreateProjectForm() {
     <div className={createProjectModal}>
       <Modal
         show={show}
-        backdropClassName="createProjectFormModalBackDrop"
+        backdropClassName="createProjectFormModalBackDrop backdrop"
         keyboard={false}
         dialogClassName={modalDialog}
-        backdropClassName='backdrop'
+        // backdropClassName='backdrop'
       >
         <div className={createProject}>
           <button className={xIconButton} onClick={handleClose}>
