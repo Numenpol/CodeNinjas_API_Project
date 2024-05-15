@@ -23,6 +23,8 @@
     text-align: end;
     border-radius: 0.625rem;
     padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 0;
   }
   
   .createProjectHeader {
@@ -192,12 +194,12 @@
     .rocket {
       width: 15.125rem;
       height: 15.75rem;
-      margin: 3.5rem 2rem 0.62rem 3.5rem;
+      margin: 3.5rem 0.7rem 0.62rem 3.5rem;
     }
   
     .rocketSlogan {
       margin-bottom: 3rem;
-      margin-left: 1.6rem;
+      margin-left: 2.9rem;
     }
   }
   

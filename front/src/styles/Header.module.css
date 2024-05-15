@@ -1,112 +1,115 @@
 * {
-    box-sizing: border-box;
-  }
-  
+  box-sizing: border-box;
+}
+
+.headerNavigation {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  background-image: linear-gradient(90deg, #3fadbe, #3372b2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 360px;
+}
+
+.headerTabletIcon {
+  display: none;
+}
+
+.headerRightSide {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerThemeButton {
+  /* width: 100px; */
+  border-radius: 19px;
+  border: none;
+  padding: 3px 10px;
+  width: 60px;
+  background-color: #fff;
+  height: 38px;
+  margin-right: 0.3rem;
+}
+
+.headerUserName {
+  display: none;
+}
+
+.headerUserRole {
+  display: none;
+}
+
+.headerLogOutButton {
+  border-radius: 5px;
+  border: none;
+  padding: 10px 16px;
+  margin-right: 10px;
+  background-color: #f5f6fa;
+  font-size: 14px;
+  color: #565656;
+  /* font-family: Inter; */
+}
+
+.headerThemeButton:hover {
+  background-color: #f5f6fa;
+}
+
+.headerLogOutButton:hover {
+  background-color: #d5d5d5;
+}
+
+@media (min-width: 768px) {
   .headerNavigation {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    background-image: linear-gradient(90deg, #3fadbe, #3372b2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 360px;
+    padding-left: 10px;
   }
-  
+
+  .headerMobileIcon {
+    display: none;
+  }
+
   .headerTabletIcon {
-    display: none;
+    display: inline-block;
   }
-  
+
   .headerRightSide {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
-  
   .headerThemeButton {
-    /* width: 100px; */
-    border-radius: 19px;
-    border: none;
-    padding: 3px 10px;
-    width: 60px;
-    background-color: #fff;
-    height: 38px;
+    margin-right: -0.3rem;
   }
-  
+
   .headerUserName {
-    display: none;
-  }
-  
-  .headerUserRole {
-    display: none;
-  }
-  
-  .headerLogOutButton {
-    border-radius: 5px;
-    border: none;
-    padding: 10px 16px;
-    margin-right: 10px;
-    background-color: #f5f6fa;
+    display: block;
+    margin: 0;
     font-size: 14px;
-    color: #565656;
-    /* font-family: Inter; */
+    /* font-family: "Nunito Sans"; */
+    color: #fff;
   }
-  
-  .headerThemeButton:hover {
-    background-color: #f5f6fa;
+
+  .headerUserRole {
+    display: block;
+    margin: 0;
+    font-size: 12px;
+    /* font-family: "Nunito Sans"; */
+    color: #f5f6fa;
   }
-  
-  .headerLogOutButton:hover {
-    background-color: #d5d5d5;
+
+  .headerLogOutButton {
+    margin-right: 15px;
   }
-  
-  @media (min-width: 768px) {
-    .headerNavigation {
-      padding-left: 10px;
-    }
-  
-    .headerMobileIcon {
-      display: none;
-    }
-  
-    .headerTabletIcon {
-      display: inline-block;
-    }
-  
-    .headerRightSide {
-      gap: 30px;
-    }
-  
-    .headerUserName {
-      display: block;
-      margin: 0;
-      font-size: 14px;
-      /* font-family: "Nunito Sans"; */
-      color: #fff;
-    }
-  
-    .headerUserRole {
-      display: block;
-      margin: 0;
-      font-size: 12px;
-      /* font-family: "Nunito Sans"; */
-      color: #f5f6fa;
-    }
-  
-    .headerLogOutButton {
-      margin-right: 15px;
-    }
+}
+
+@media (min-width: 1440px) {
+  .headerNavigation {
+    padding-left: 90px;
   }
-  
-  @media (min-width: 1440px) {
-    .headerNavigation {
-      padding-left: 90px;
-    }
-  
-    .headerThemeButton {
-      margin-right: 60px;
-    }
+
+  .headerThemeButton {
+    margin-right: 60px;
   }
-  
+}
