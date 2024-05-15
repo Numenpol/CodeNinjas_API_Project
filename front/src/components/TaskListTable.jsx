@@ -135,14 +135,14 @@ function TaskListTable() {
                 <tr key={task._id}>
                   {/* <td>{index+1}</td> */}
                   <td className="table-headerKey">
-                    <input
+                    <p
                       className="key-name"
                       id={`key-${task._id}`}
                       name={`key-${task._id}`}
                       type="text"
                       defaultValue={task.key}
                       {...register(`key-${task._id}`)}
-                    />
+                    >{task.key}</p>
                   </td>
                   <td className="tasklist-task-field">
                     <input

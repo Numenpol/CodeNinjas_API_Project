@@ -10,6 +10,7 @@
 .searchbar-div {
     /* margin-left: 0.7rem; */
     /* margin-right: 0.3rem; */
+    position: relative;
 }
 
 .searchbar .form-control,
@@ -42,7 +43,16 @@
     margin-right: 4rem !important;
     width: 12.1875rem !important;
     height: 5.5625rem !important;
+    position: absolute !important;
 }
+
+.sliders {
+    position: relative;
+}
+
+/* .searchbar {
+    position: relative !important;
+} */
 
 .modal-title {
     font-family: 'Inter' !important;
@@ -54,6 +64,7 @@
 .check-icon,
 .check-icon-empty {
     color: #3FADBE !important;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 576px) {

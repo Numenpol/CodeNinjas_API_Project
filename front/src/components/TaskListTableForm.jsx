@@ -243,13 +243,13 @@ function TaskListTableForm({
             <tbody className="table-body">
               <tr>
                 <td className="table-headerKey">
-                  <input
+                  <p
                     className="key-name"
                     id="key"
                     name="key"
                     type="text"
                     {...register("key")}
-                  />
+                  >{tasks.key}</p>
                 </td>
                 <td className="tasklist-task-field">
                   <input
