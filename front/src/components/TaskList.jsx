@@ -18,12 +18,13 @@ import TaskListExecutionTable from "./TaskListExecution";
 import TaskListDoneTable from "./TaskListDoneTable";
 
 function TaskList() {
-  const { setShowTask, setShowMenu, projectId } = useContext(StateContext);
+  const { setShowTask, setShowMenu, projectId, update } = useContext(StateContext);
   const toggleShow = () => setShowMenu((s) => !s);
   const [showAddMember, setShowAddMember] = useState(false);
   const handleClose = () => setShowAddMember(false);
   const handleShow = () => setShowAddMember(true);
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProjectName, setActiveProjectName] = useState("");
+  const [activeProjectIcon, setActiveProjectIcon] = useState("");
 
   const handleShowTask = () => {
     setShowTask((showTask) => !showTask);
@@ -39,13 +40,19 @@ function TaskList() {
   //active project
   const getProjectInfo = async () => {
     let projectData = await getOne(projectId);
-    let activeProject = projectData.data.project;
-    setActiveProject(activeProject);
+  
+    if (projectData && projectData.data && projectData.data.project && projectData.data.project.projectName) {
+      const { projectName, icon } = projectData.data.project;
+      setActiveProjectName(projectName);
+      setActiveProjectIcon(icon);
+    } else {
+      return;
+    }
   };
 
   useEffect(() => {
     getProjectInfo();
-  }, [projectId]);
+  }, [projectId, update]);
 
   const toggleTableExecution = () => {
     setShowTableExecution((prevState) => !prevState);
@@ -117,13 +124,13 @@ function TaskList() {
           <div className={taskListNameIcon}>
             <div className={taskListProjectIcon}>
               <img
-                src={activeProject && activeProject.icon}
+                src={activeProjectIcon}
                 alt="project icon"
               />
             </div>
             <div className={taskListNameBox}>
               <h2 className={taskListProjectName}>
-                {activeProject && activeProject.projectName}
+                {activeProjectName}
               </h2>
             </div>
           </div>

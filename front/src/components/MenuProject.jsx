@@ -104,10 +104,13 @@ function MenuProject({ project }) {
 
   const handleDelete = async (id) => {
     try {
+      sessionStorage.removeItem("projectid");
       await deleteData(id);
       setUpdate((update) => update + 1);
+      navigate("/Projects");
       handleClose();
       handleDelClose();
+      setShowMenu(false)
     } catch (error) {
       console.log(error);
     }

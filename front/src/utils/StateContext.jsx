@@ -11,7 +11,7 @@ export const StateProvider = ({ children }) => {
     const [error, setError] = useState("");
     const [projects, setProjects] = useState([]);
     const [tasks, setTasks] = useState([]);
-    const [icon, setIcon] = useState("")
+    const [icon, setIcon] = useState("");
     const [update, setUpdate] = useState(0);
     const [show, setShow] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -51,11 +51,16 @@ export const StateProvider = ({ children }) => {
 
     const fetchTasksByProjectId = async (projectId) => {
       try {
+        if (!projectId) {
+          
+        } else {
         const { data: { tasks } } = await getAllTaskById(projectId);
         setTasksById(tasks);
+        }
       } catch (error) {
         setError(error.message);
       }
+      
     }
 
 

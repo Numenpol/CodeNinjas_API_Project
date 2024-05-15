@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Button from "react-bootstrap/Button";
@@ -27,14 +27,14 @@ function CreateProjectForm() {
     },
   });
 
-  const formSubmitHandler = async (data) => {
-    try {
+  useEffect(() => {
       if (icon == "") {
         setIcon("icons/projectIcon1.svg");
       }
-      // const user = localStorage.getItem("user");
-      // const userData = JSON.parse(user);
-      // const userEmail = userData.data.email
+  }, [icon])
+
+  const formSubmitHandler = async (data) => {
+    try {
       await postData({ ...data, icon: icon });
       setUpdate((update) => update + 1);
       reset();

@@ -22,7 +22,12 @@ export const getAllUsers = async () => {
 
 // get project by ID
 export const getOne = async (_id)=>{
-    const response = await axios.get(`${API_URL}/${_id}`);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(`${API_URL}/${_id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     return response.data;
 };
 
@@ -30,7 +35,6 @@ export const getOne = async (_id)=>{
 
 export const getAllTasks = async () => {
     const response = await axios.get(API_URLT);
-
     return response.data;
 }
 

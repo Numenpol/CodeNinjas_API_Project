@@ -9,7 +9,7 @@ function Project({ project }) {
 
   const { setprojectId, setShowMenu } = useContext(StateContext)
 
-  const { projectName, icon, description, status, overall } = project;
+  const { projectName, icon, description, status, tasks } = project;
 
   useEffect(() => {
     setStatusCheck(status);
@@ -48,7 +48,7 @@ function Project({ project }) {
         </p>
       </td>
       <td className={projectOverall}>
-        <p className={overallBox}>{overall}</p>
+        <p className={overallBox}>{tasks.length}</p>
       </td>
     </tr>
   );
