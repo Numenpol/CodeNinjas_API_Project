@@ -1,4 +1,5 @@
 const Project = require("../models/projectModel");
+const User = require("../models/userModel");
 
 exports.getAllProjects = async (req, res) => {
   // const projects = await Project.find( );
@@ -117,6 +118,77 @@ exports.deleteProject = async (req, res) => {
   }
 };
 
+// exports.updateProjectsMembers = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const  membersData = req.body;
+
+//     console.log("******");
+//     console.log(membersData);
+
+//     const project = await Project.findByIdAndUpdate(
+//       id,
+//       { $push: { members: membersData } },
+//       { new: true }
+//     );
+//     await User.findOneAndUpdate(
+//       {email: membersData.emails}, {$push: {membersProject: id}}
+//     )
+
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         project,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(404).json({
+//       status: "fail",
+//       message: error.message,
+//     });
+//   }
+// };
+
+// exports.updateProjectsMembers = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const membersData = req.body;
+
+//     console.log("******");
+//     console.log(membersData);
+
+//     // Get the current project
+//     const project = await Project.findById(id);
+
+//     // Check if the member is already in the project
+//     if (!project.members.includes(membersData.emails)) {
+//       // If not, update the project and add the member
+//       await Project.findByIdAndUpdate(
+//         id,
+//         { $push: { members: membersData } },
+//         { new: true }
+//       );
+//       await User.findOneAndUpdate(
+//         { email: membersData.emails }, 
+//         { $push: { membersProject: id } }
+//       );
+//     }
+
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         project,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(404).json({
+//       status: "fail",
+//       message: error.message,
+//     });
+//   }
+// };
+
+
 exports.updateProjectsMembers = async (req, res) => {
   try {
     const { id } = req.params;
@@ -125,12 +197,21 @@ exports.updateProjectsMembers = async (req, res) => {
     console.log("******");
     console.log(membersData);
 
-    
-    const project = await Project.findByIdAndUpdate(
-      id,
-      { $push: { members: membersData } },
-      { new: true }
-    );
+    const project = await Project.findById(id);
+
+    if (!project.members.some(member => member.emails === membersData.emails)) {
+  
+      await Project.findByIdAndUpdate(
+        id,
+        { $push: { members: membersData } },
+        { new: true }
+      );
+      await User.findOneAndUpdate(
+        { email: membersData.emails }, 
+        { $push: { membersProject: id } }
+      );
+    }
+
     res.status(200).json({
       status: "success",
       data: {
@@ -144,3 +225,4 @@ exports.updateProjectsMembers = async (req, res) => {
     });
   }
 };
+

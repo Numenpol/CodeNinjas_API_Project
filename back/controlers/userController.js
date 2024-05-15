@@ -50,7 +50,7 @@ exports.createUser = async (req, res) => {
     const newUser = User.create(req.body);
 
     await Project.findById(
-      req.body.membersProject, { $push: { members: newUser._id } },
+      req.body.membersProject, { $push: { projects: newUser._id } },
     )
     res.status(201).json({
       status: "success",
