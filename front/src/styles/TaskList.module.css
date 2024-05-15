@@ -134,6 +134,7 @@
 
 .taskListPlanningIcon {
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 
 #inputGroup-sizing-sm {

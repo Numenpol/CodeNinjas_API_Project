@@ -90,6 +90,7 @@
 .projectListProject:hover {
     cursor: pointer;
     background: #C7D7FA;
+    margin: 1rem;
 }
 
 .projectListProject {
