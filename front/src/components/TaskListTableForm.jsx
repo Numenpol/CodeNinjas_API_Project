@@ -13,6 +13,8 @@ import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import { addProjectTask } from "../services/patch";
 import { getOne } from "../services/get";
 import { createPopper } from '@popperjs/core';
+import { updateData } from "../services/update";
+
 
 function TaskListTableForm({
   selectedTimeLine,
@@ -176,7 +178,10 @@ function TaskListTableForm({
         completiondate: selectedCompletionDay,
         projectId: projectId,
       });
-      // await addProjectTask(projectId, resDataId);
+      
+      const projectData = { status: "in progress"}
+      await updateData(projectId, projectData)
+
       setUpdate((update) => update + 1);
       setShowTask(false);
       reset();

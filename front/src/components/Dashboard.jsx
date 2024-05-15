@@ -16,7 +16,7 @@ function Dashboard() {
 
 
   useEffect(() => {
-  tasks.map((task) =>  {
+    tasks.map((task) =>  {
     if(task.status == "Done") {
       setDone((count) => count + 1 / 2);
     } else if (task.status == "In progress") {

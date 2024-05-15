@@ -31,7 +31,6 @@ const {cornerGaps, tableBox, tableHeader, projectTitle, invinsible, projectListN
                   />
                 );
               })}
-              {error}{""}
             </tbody>
           {/* </div> */}
         </table>

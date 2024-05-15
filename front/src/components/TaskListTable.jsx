@@ -14,9 +14,10 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { updateData } from "../services/update";
 
 function TaskListTable() {
-  const { setUpdate, showTask, tasksById} = useContext(StateContext);
+  const { setUpdate, showTask, tasksById, projectId} = useContext(StateContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -56,6 +57,10 @@ function TaskListTable() {
         creationdate: selectedCreationDay,
         completiondate: selectedCompletionDay,
       });
+      //nezinau ar sitas geras ar is viso kazka daro
+      const projectData = { status: "in progress"}
+      await updateData(projectId, projectData)
+      
       setUpdate((update) => update + 1);
       reset();
       setSelectedStatus("");
@@ -98,6 +103,11 @@ function TaskListTable() {
       await deleteDataTask(taskIdToDelete);
       setUpdate((update) => update + 1);
       handleCloseDeleteModal();
+      // padaryti geriau sita
+      if (tasksById.length == 1) {
+        const projectData = { status: "on hold"}
+        await updateData(projectId, projectData)
+      }
     } catch (error) {
       console.log(error);
     }
@@ -107,7 +117,6 @@ function TaskListTable() {
     setDeleteModalShow(false);
     setTaskIdToDelete(null);
   };
-
 
   const fitleredTasks = tasksById.filter((task) => task.status === "To do"||task.status === "");
 
