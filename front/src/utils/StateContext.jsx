@@ -19,6 +19,7 @@ export const StateProvider = ({ children }) => {
     const [projectId, setprojectId] = useState("");
     const [showEdit, setShowEdit] = useState(false);
     const [tasksById, setTasksById] = useState([]);
+    const [selectedIcon, setSelectedIcon] = useState(null);
 
     const handleShow = () => setShow(true);
 
@@ -97,7 +98,7 @@ export const StateProvider = ({ children }) => {
     return (
         <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
           showMenu, setShowMenu, handleShow, setShowTask, showTask, setprojectId, projectId, setShowEdit, showEdit, 
-          update, tasksById}}>
+          update, tasksById, selectedIcon, setSelectedIcon}}>
             {children}
             </StateContext.Provider>
     );

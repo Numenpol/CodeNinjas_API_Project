@@ -1,3 +1,13 @@
+.myTaskDeleteModal {
+  text-align: center;
+}
+.myTaskDeleteModal .modal-dialog {
+  width: 22.875rem !important;
+  height: 6.75rem !important;
+  position: relative;
+  left: -2rem;
+  top: 2.3rem;
+}
 .myModal .modal-content {
   padding-left: 0.8rem;
   padding-top: 0.4rem;
@@ -12,6 +22,7 @@
   margin-top: 500px;
 }
 
+
 div [class="fade myModal modal show"] {
   display: none !important;
   position: absolute;
@@ -23,11 +34,15 @@ div[class="fade modal-backdrop show"] {
 div[class="fade myDeleteModal modal show"] {
   margin-left: -14rem !important;
 }
+div[class="fade myTaskDeleteModal modal show"] {
+  width: 100% !important;
+  margin-top: -21rem;
+  margin-left: 20rem;
+}
 
-.myDeleteModal .modal-dialog{
+.myDeleteModal .modal-dialog {
   position: absolute;
   top: 150px;
-
 }
 
 .myDeleteModal .modal-body {
@@ -35,5 +50,24 @@ div[class="fade myDeleteModal modal show"] {
 }
 
 .myDeleteModal .modal-content {
-  width: 22.875rem !important;
+  min-width: 20rem !important;
+  max-width: 22.875rem !important;
+
+}
+
+@media screen and (min-width: 768px) {
+  .myDeleteModal .modal-dialog {
+    position: absolute;
+    left: 200px;
+  }
+  .myTaskDeleteModal .modal-dialog {
+    top: -1rem;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .myDeleteModal .modal-dialog {
+    position: absolute;
+    
+  }
+
 }
