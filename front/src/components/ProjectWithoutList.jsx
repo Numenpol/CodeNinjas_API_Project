@@ -9,9 +9,12 @@ import MenuProjectListPhone from "./MenuProjectListPhone";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import SearchBar from "./SearchBar";
 import styles from "../styles/ProjectWithoutList.module.css";
+import { useTheme } from "../utils/ThemeContext";
 
 function ProjectWithoutList() {
   const { setShowMenu, handleShow } = useContext(StateContext);
+
+  const { theme } = useTheme();
 
   const {
     projectWithoutList,
@@ -27,14 +30,17 @@ function ProjectWithoutList() {
     createProjectBox,
     chartIcon,
     createFirstProjectButton,
+    projectWithoutListDark,
+    projectListCardDark,
+    myProjectsTextDark,
   } = styles;
 
   return (
-    <div className={projectWithoutList}>
+    <div className={theme == "light" ? projectWithoutList : projectWithoutListDark}>
       <div className={projectListMenu}>
         <MenuProjectListDesktop />
       </div>
-      <div className={projectListCard}>
+      <div className={theme == "light" ?  projectListCard : projectListCardDark}>
         <div className={projectThing}>
           <div className={projectListHeader}>
             <div>
@@ -48,7 +54,7 @@ function ProjectWithoutList() {
                   alt="folderPlusIcon"
                   className={folderIcon1}
                 />
-                <div className={myProjectsText}>My Projects</div>
+                <div className={theme == "light" ? myProjectsText : myProjectsTextDark}>My Projects</div>
               </div>
             </div>
             <div className={projectListSearchBar}>
