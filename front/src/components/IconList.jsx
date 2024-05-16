@@ -4,8 +4,7 @@ import { useContext, useState } from "react";
 import { StateContext } from "../utils/StateContext";
 
 function IconList() {
-    const {setIcon} = useContext(StateContext);
-    const [selectedIcon, setSelectedIcon] = useState(null);
+    const {setIcon, selectedIcon, setSelectedIcon} = useContext(StateContext);
     const {projectIcons, createProjectIcons, createProjectIconsSelected} = styles;
 
     const handleIconClick = (icon) => {

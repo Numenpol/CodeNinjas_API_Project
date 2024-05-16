@@ -23,7 +23,7 @@ import xIcon from "../assets/xIcon.svg";
 import rocketPic from "../assets/rocket.svg";
 
 function MenuProject({ project }) {
-  const { setprojectId, setShowMenu } = useContext(StateContext);
+  const { setprojectId, setShowMenu, selectedIcon, setIcon } = useContext(StateContext);
 
   const { setUpdate } = useContext(StateContext);
   const [clickX, setClickX] = useState(null);
@@ -83,15 +83,16 @@ function MenuProject({ project }) {
     if (project) {
       setValue("projectName", project.projectName);
       setValue("description", project.description);
+      setIcon(project.icon)
     }
   }, [project, setValue]);
 
   const formSubmitHandler = async (data) => {
     try {
       if (project) {
-        await updateData(project._id, data);
+        await updateData(project._id,{ ...data, icon:selectedIcon });
       } else {
-        await postData({ ...data, icon: icon });
+        await postData({ ...data, icon: selectedIcon });
       }
       setUpdate((update) => update + 1);
       reset();
@@ -146,6 +147,8 @@ function MenuProject({ project }) {
     rocket,
     rocketSlogan,
     buttonsStupid,
+    TextThing12,
+    xIconButton1,
   } = stylesForm;
 
   return (
@@ -289,7 +292,10 @@ function MenuProject({ project }) {
           backdrop="true"
         >
           <Modal.Body>
-            Are You sure, you want to delete "{projectName}"?
+            <div className={TextThing12}>Are You sure, you want to delete "{projectName}"?</div>
+            <button className={xIconButton1} onClick={handleDelClose}>
+              <img src={xIcon} alt="xIcon" />
+            </button>
             <div className={buttonsStupid}>
               <Button className={cancelBtn} onClick={handleDelClose}>
                 <div className={cancelBtnContent}>Cancel</div>

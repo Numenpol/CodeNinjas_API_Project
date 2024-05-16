@@ -6,9 +6,21 @@
     max-width: 400px !important;
     margin: 3rem auto !important;
   }
-  
-  
-  
+  .xIconButton1{
+    border: none;
+    background-color: #ffff;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.2rem;
+  }
+  .TextThing12{
+    /* margin-top: 0.5rem; */
+    font-size: 0.875rem;
+
+  } 
+  .buttonsStupid{
+    margin-top: 0.5rem;
+  }
   .createProject {
     display: flex;
     flex-direction: column;
