@@ -4,13 +4,17 @@ const User = require("../models/userModel");
 exports.getAllProjects = async (req, res) => {
   // const projects = await Project.find( );
   try {
-    let projects;
+    let projetsCreated;
     if(req.user.role === "admin"){
-      projects = await Project.find();
+      projetsCreated = await Project.find();
     } else {
       const userId = req.user._id;
-      projects = await Project.find({ user: userId });
+      projetsCreated = await Project.find({ user: userId });
     }
+
+    let userWithProjects = await User.findById(req.user._id).populate("membersProject");
+
+    let projects = [...userWithProjects.membersProject, ...projetsCreated];
     res.status(200).json({
       status: "success",
       results: projects.length,
