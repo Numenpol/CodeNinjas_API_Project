@@ -21,6 +21,7 @@
     min-width: 360px;
 }
 
+
 /* .invinsible {
     width: 1rem;
 } */
@@ -37,6 +38,8 @@
     text-align: start;
     padding-left: 1rem;
     text-wrap: nowrap;
+    padding-bottom: 0.5rem;
+   
 }
 
 .projectListStatus {
@@ -48,6 +51,7 @@
     text-align: start;
     padding-top: 0.5rem;
     padding-left: 1.3rem;
+    padding-bottom: 0.5rem;
 }
 
 .projectListTasks {
@@ -59,6 +63,7 @@
     text-align: start;
     padding-top: 0.5rem;
     padding-left: 1.3rem;
+    padding-bottom: 0.5rem;
 }
 
 .tableBodyBox {
