@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from "../styles/AddMemberPopUp.module.css";
+import { login } from "../utils/auth/authenticate";
 
 function AddMemberPopUp({ handleClose, showAddMember }) {
   const { users } = useContext(StateContext);
@@ -27,8 +28,11 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
   const formSubmitHandler = async (data) => {
     try {
       const user = users.find((user) => user.email === data.email);
+      const currentUser = localStorage.getItem("user");
+      const userObject = JSON.parse(currentUser);
+      if(data.email==userObject.data.email){
 
-      
+      } else
       if (user) {
         const emails = data.email;
         const names = user.name;
