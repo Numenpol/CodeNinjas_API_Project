@@ -39,7 +39,14 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
 
   const getNumberFixedDate = (date) => {
     const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
-    return dateNumber;
+    return dateNumber; 
+  }
+
+  const getMonthFixedDate = (date) => {
+    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
+    const monthNumber = date.getMonth() + 1;
+    console.log(monthNumber);
+    return dateMonth;
   }
 
   const calculateDaysLeftPercentage = () => {
@@ -82,22 +89,28 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
   useEffect(() => {
     dateSelection.map((stat) => {
       if (task == null || stat.endDate) {
-        let startDate = getStartFixedDate(stat.startDate);
-        let startDateDay = getNumberFixedDate(stat.startDate);
+        let startDate = getStartFixedDate(new Date());
+        let startDateDay = getNumberFixedDate(new Date());
+        let startDateMonth = getMonthFixedDate(new Date());
         if (stat.endDate == null) {
           setCalendarDay(startDate);
         } else {
-          const endDate = getStartFixedDate(stat.endDate);
-          const endDateDay = getNumberFixedDate(stat.endDate);
+          let endDate = getStartFixedDate(stat.endDate);
+          let endDateDay = getNumberFixedDate(stat.endDate);
+          let endDateMonth = getMonthFixedDate(stat.endDate);
+          if (parseInt(endDateDay)<parseInt(startDateDay) && startDateMonth == endDateMonth) {
+            endDate=startDate;
+            endDateDay=startDateDay;
+          }
+          if(startDateMonth != endDateMonth){
+
+          }
           setStartDateDay(startDateDay);
           setEndDateDay(endDateDay);
           setCalendarDay(`${startDate}-${endDate}`);
           setSelectedTimeLine(calendarDay);
           setSelectedCreationDay(startDate);
           setSelectedCompletionDay(endDate);
-          if (task) {
-          handleStatusUpdate(id, selectedTimeLine, selectedCreationDay, selectedCompletionDay);            
-          }
         } 
       } else {
         const dateNumbers = task.match(/\d+/g);
@@ -114,6 +127,13 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
     })
       , []
   });
+
+  useEffect(() => {
+    if (id) {
+    handleStatusUpdate(id, selectedTimeLine, selectedCreationDay, selectedCompletionDay);      
+    }
+  }, [id, selectedTimeLine, selectedCreationDay, selectedCompletionDay])
+
 
   return (
     <>

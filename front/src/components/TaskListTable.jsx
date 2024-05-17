@@ -33,6 +33,8 @@ function TaskListTable() {
   const [selectedCreationDay, setSelectedCreationDay] = useState();
   const [selectedCompletionDay, setSelectedCompletionDay] = useState();
 
+  const [timeLineTaskId, setTimeLineTaskId] = useState("");
+
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       key: "",
@@ -112,6 +114,10 @@ function TaskListTable() {
       console.log(error);
     }
   };
+
+  const handleTimeLineClick = (taskId) => {
+    setTimeLineTaskId(taskId);
+  }
 
   const handleCloseDeleteModal = () => {
     setDeleteModalShow(false);
@@ -195,10 +201,10 @@ function TaskListTable() {
                       updateDataTask={updateDataTask}
                     />
                   </td>
-                  <td className="table-timeline">
+                  <td className="table-timeline" onClick={() => handleTimeLineClick(task._id)}>
                     <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
                       task={task.timeline} selectedTimeLine={selectedTimeLine} selectedCreationDay={selectedCreationDay} selectedCompletionDay={selectedCompletionDay}
-                      id={task._id}/>
+                      id={timeLineTaskId}/>
                   </td>
                   <td className="table-headerCreationdate">
                     <p
