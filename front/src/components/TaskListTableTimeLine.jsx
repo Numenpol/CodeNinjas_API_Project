@@ -10,7 +10,7 @@ import { updateDataTask } from '../services/update';
 import { StateContext } from "../utils/StateContext";
 
 
-function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay, task, selectedTimeLine, 
+function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, task, selectedTimeLine, 
   selectedCreationDay, selectedCompletionDay, id}) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
@@ -128,8 +128,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
           setEndDateDay(endDateDay);
           setCalendarDay(`${startDate}-${endDate}`);
           setSelectedTimeLine(calendarDay);
-          setSelectedCreationDay(startDate);
-          setSelectedCompletionDay(endDate);
+          setSelectedCreationDay(getStartFixedDate(new Date()));
         } 
       } else {
         const dateNumbers = task.match(/\d+/g);

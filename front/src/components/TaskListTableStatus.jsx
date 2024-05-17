@@ -9,6 +9,9 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
   const { setUpdate } = useContext(StateContext);
   const buttonRef = useRef(null);
 
+  const dateToday = new Date();
+  const formattedDate = dateToday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
   const {
     statusBtn,
     statusMenu,
@@ -39,12 +42,21 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
     };
   }, [isOpen]);
 
+
+  
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      const data = { status: newStatus };
+      if (newStatus=="Done") {
+        const data = { completiondate: formattedDate, status: newStatus};
+        await updateDataTask(id, data);
+        setUpdate((update) => update + 1);
+        setIsOpen(false);
+      } else {
+      const data = { completiondate: "", status: newStatus };
       await updateDataTask(id, data);
       setUpdate((update) => update + 1);
       setIsOpen(false);
+    }
     } catch (error) {
       console.log(error);
     }

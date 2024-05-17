@@ -31,7 +31,6 @@ function TaskListTable() {
 
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
-  const [selectedCompletionDay, setSelectedCompletionDay] = useState();
 
   const [timeLineTaskId, setTimeLineTaskId] = useState("");
 
@@ -57,7 +56,7 @@ function TaskListTable() {
         owner: [selectedOwner, ownerColor],
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
-        completiondate: selectedCompletionDay,
+        completiondate: "",
       });
       //nezinau ar sitas geras ar is viso kazka daro
       const projectData = { status: "in progress"}
@@ -202,9 +201,8 @@ function TaskListTable() {
                     />
                   </td>
                   <td className="table-timeline" onClick={() => handleTimeLineClick(task._id)}>
-                    <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay}
-                      task={task.timeline} selectedTimeLine={selectedTimeLine} selectedCreationDay={selectedCreationDay} selectedCompletionDay={selectedCompletionDay}
-                      id={timeLineTaskId}/>
+                    <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay}
+                      task={task.timeline} selectedTimeLine={selectedTimeLine} selectedCreationDay={selectedCreationDay} id={timeLineTaskId}/>
                   </td>
                   <td className="table-headerCreationdate">
                     <p
@@ -254,7 +252,7 @@ function TaskListTable() {
     <div className="tableForm">
         <div className={showTask === true ? "" : "hidden"}>
           <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay}
-            setSelectedCreationDay={setSelectedCreationDay} setSelectedCompletionDay={setSelectedCompletionDay} selectedCompletionDay={selectedCompletionDay} />
+            setSelectedCreationDay={setSelectedCreationDay}/>
         </div>
             </div>
     </>
