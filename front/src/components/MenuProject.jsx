@@ -21,6 +21,7 @@ import styles from "../styles/MenuProject.module.css";
 import stylesForm from "../styles/CreateProjectForm.module.css";
 import xIcon from "../assets/xIcon.svg";
 import rocketPic from "../assets/rocket.svg";
+import { useTheme } from "../utils/ThemeContext";
 
 function MenuProject({ project }) {
   const { setprojectId, setShowMenu, selectedIcon, setIcon } = useContext(StateContext);
@@ -28,6 +29,7 @@ function MenuProject({ project }) {
   const { setUpdate } = useContext(StateContext);
   const [clickX, setClickX] = useState(null);
   const [clickY, setClickY] = useState(null);
+  const { theme } = useTheme();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -127,6 +129,7 @@ function MenuProject({ project }) {
     menuPencilsquare,
     menuTrash,
     menuTrashIcon,
+    menuProjectNameDark
   } = styles;
 
   const {
@@ -161,7 +164,7 @@ function MenuProject({ project }) {
           }}
         >
           <img src={icon} alt="icon" className={menuProjectIcon} />
-          <p className={menuProjectName}>{projectName}</p>
+          <p className={theme == "light" ? menuProjectName : menuProjectNameDark}>{projectName}</p>
         </div>
         <div className="Thing">
           <div>

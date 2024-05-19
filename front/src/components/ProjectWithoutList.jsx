@@ -16,6 +16,7 @@ function ProjectWithoutList() {
 
   const { theme } = useTheme();
 
+
   const {
     projectWithoutList,
     projectListMenu,
@@ -33,11 +34,12 @@ function ProjectWithoutList() {
     projectWithoutListDark,
     projectListCardDark,
     myProjectsTextDark,
+    projectListMenuDark,
   } = styles;
 
   return (
     <div className={theme == "light" ? projectWithoutList : projectWithoutListDark}>
-      <div className={projectListMenu}>
+      <div className={theme == "light" ? projectListMenu : projectListMenuDark}>
         <MenuProjectListDesktop />
       </div>
       <div className={theme == "light" ?  projectListCard : projectListCardDark}>

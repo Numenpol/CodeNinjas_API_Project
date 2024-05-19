@@ -9,11 +9,14 @@ import { StateContext } from "../utils/StateContext";
 import MenuProjectListPhone from "./MenuProjectListPhone";
 import SearchBar from "./SearchBar";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
+import { useTheme } from "../utils/ThemeContext";
 
 function ProjectWithList() {
   const { setShowMenu, handleShow } = useContext(StateContext);
 
   const toggleShow = () => setShowMenu((s) => !s);
+
+  const { theme } = useTheme();
 
   const {
     projectList,
@@ -29,15 +32,25 @@ function ProjectWithList() {
     CreateProjectButtonPosition,
     createFirstProjectButton,
     projectListList,
+    createFirstProjectButtonDark,
+    CreateProjectButtonPositionDark,
+    ProjectThingDark,
+    projectListCardDark,
+    projectListDark,
+    ProjectListHeaderDark,
+    MyProjectsText,
+    MyProjectsTextDark,
+    FolderTextDark,
+    ProjectListMenuDark,
   } = styles;
   return (
-    <div className={projectList}>
-      <div className={ProjectListMenu}>
+    <div className={theme == "light" ? projectList : projectListDark}>
+      <div className={theme == "light" ? ProjectListMenu : ProjectListMenuDark}>
         <MenuProjectListDesktop />
       </div>
-      <div className={projectListCard}>
-        <div className={ProjectThing}>
-          <div className={ProjectListHeader}>
+      <div className={theme == "light" ? projectListCard : projectListCardDark}>
+        <div className={theme == "light" ? ProjectThing : ProjectThingDark}>
+          <div className={theme == "light" ? ProjectListHeader : ProjectListHeaderDark}>
             <div>
               <div>
                 <button className={MenuThing} onClick={toggleShow}>
@@ -45,13 +58,13 @@ function ProjectWithList() {
                 </button>
                 <MenuProjectListPhone />
               </div>
-              <div className={FolderText}>
+              <div className={theme == "light" ? FolderText : FolderTextDark}>
                 <img
                   src={folderPlusIcon}
                   alt="folderPlusIcon"
                   className={FolderPlusIcon}
                 />
-                <div className="MyProjectsText">My Projects</div>
+                <div className={theme == "light" ? MyProjectsText : MyProjectsTextDark}>My Projects</div>
               </div>
             </div>
             <div>
@@ -64,8 +77,8 @@ function ProjectWithList() {
         <div className={ProjectListDashboard}>
           <Dashboard />
         </div>
-        <div className={CreateProjectButtonPosition}>
-          <button className={createFirstProjectButton} onClick={handleShow}>
+        <div className={theme == "light" ? CreateProjectButtonPosition : CreateProjectButtonPositionDark}>
+          <button className={theme == "light" ? createFirstProjectButton : createFirstProjectButtonDark} onClick={handleShow}>
             {" "}
             Create Your project{" "}
           </button>

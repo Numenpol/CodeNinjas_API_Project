@@ -65,3 +65,13 @@
     background-color: #C7D7FA;
     border-radius: 0.3rem;
 }
+
+/* Dark theme css */
+
+.menuProjectNameDark{
+    margin-bottom: 0.3rem;
+    margin-left: 0.81rem;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+}

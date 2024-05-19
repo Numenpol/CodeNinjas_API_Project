@@ -2,9 +2,10 @@
     box-sizing: border-box;
 }
 
-.menuProjectPopUp{
+.menuProjectPopUp {
     border-radius: 50px;
     /* min-width: 360px; */
+
 }
 
 .projectPopUp {
@@ -102,11 +103,48 @@
     color: #3593A2 !important;
 }
 
+/* Dark theme css */
+
+
+.projectPopUpDark {
+    min-width: 22.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 15rem;
+    height: 80vh;
+    margin-top: 27px;
+    background-color: #1E1E1E;
+}
+
+.buttonthingDark {
+    padding-left: 1rem;
+    border: none;
+    background-color: #fff;
+    text-decoration: none;
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+}
+
+.myProjectsTextDark {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+}
+
 @media screen and (min-width: 768px) {
     .projectPopUp {
         min-height: 20rem;
-        min-width: 22.5rem; 
-      }
+        min-width: 22.5rem;
+    }
+
+    /* Dark theme css */
+
+    .projectPopUpDark {
+        min-height: 20rem;
+        min-width: 22.5rem;
+        background-color: #1E1E1E;
+    }
 }
 
 @media screen and (min-width: 1440px) {

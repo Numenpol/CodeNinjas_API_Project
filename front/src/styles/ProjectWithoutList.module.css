@@ -98,6 +98,10 @@ img.chartIcon {
   color: #FFF;
 }
 
+.projectListMenuDark {
+  display: none;
+}
+
 
 
 @media screen and (min-width: 768px) {
@@ -195,6 +199,16 @@ img.chartIcon {
 
   .projectListCardDark {
     width: 100%;
+  }
 
+  /* Dark theme css */
+
+
+  .projectListMenuDark {
+    display: block;
+    max-width: 30%;
+    background-color: #FFF;
+    border-radius: 0rem 0.625rem 0rem 0rem;
+    background-color: #1E1E1E;
   }
 }

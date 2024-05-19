@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from "react";
 import styles from "../styles/Project.module.css";
 import { StateContext } from "../utils/StateContext";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../utils/ThemeContext";
+
 
 function Project({ project }) {
   const [statusCheck, setStatusCheck] = useState("");
@@ -11,11 +13,13 @@ function Project({ project }) {
 
   const { projectName, icon, description, status, tasks } = project;
 
+  const { theme } = useTheme();
+
   useEffect(() => {
     setStatusCheck(status);
   }, []);
 
-  const {projectListProject, projectIcon, projectListIcon, projectListName, projectListStatus, projectDone, projectOnHold,projectInProgress, projectOverall, overallBox} = styles;
+  const {projectListProject, projectIcon, projectListIcon, projectListName, projectListStatus, projectDone, projectOnHold,projectInProgress, projectOverall, overallBox,projectListNameDark} = styles;
 
   const navigate = useNavigate();
 
@@ -31,7 +35,7 @@ function Project({ project }) {
       <th className={projectIcon}>
         <img className={projectListIcon} src={icon} alt="icon" />
       </th>
-        <td className={projectListName}> {projectName}</td>
+        <td className={theme == "light" ? projectListName : projectListNameDark}> {projectName}</td>
       <td className={projectListStatus}>
         <p
           className={

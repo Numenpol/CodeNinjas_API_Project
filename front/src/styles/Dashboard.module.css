@@ -74,6 +74,25 @@
     width: 4.5rem;
 }
 
+/* Dark theme css */
+
+.dashboardBoxDark {
+    min-width: 9.375rem;
+    height: 90px;
+    border-radius: 10px;
+    background-color: #121212;
+}
+.dashboardNumberDark {
+    color: #D5D5D5;
+    /* text-align: center; */
+    margin-left: -5px;
+    margin-top: -30px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 4.2rem;
+    width: 4.5rem;
+}
+
 @media screen and (min-width: 768px) {
     .dashboard {
         flex-direction: row;
@@ -111,6 +130,17 @@
         margin-left: 4.9rem;
         width: 5.5rem;
     }
+
+    /* Dark theme css */
+    
+    .dashboardBoxDark {
+        width: 180px;
+    }
+
+    .dashboardNumberDark {
+        margin-left: 4.9rem;
+        width: 5.5rem;
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -145,7 +175,7 @@
         font-size: 20px;
     }
 
-  .dashboardNumber {
+    .dashboardNumber {
         margin-top: -53px;
         font-size: 45px;
         margin-left: 7rem;
@@ -157,5 +187,19 @@
     .dashboardTopBoxes,
     .dashboardBottomBoxes {
         gap: 1rem;
+    }
+
+    /* Dark theme css  */
+
+    .dashboardBoxDark {
+        width: 15.5rem;
+        height: 110px;
+    }
+
+    .dashboardNumberDark {
+        margin-top: -53px;
+        font-size: 45px;
+        margin-left: 7rem;
+        width: 5.5rem;
     }
 }
