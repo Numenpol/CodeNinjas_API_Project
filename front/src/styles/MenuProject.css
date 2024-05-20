@@ -21,7 +21,13 @@
   left: 300px;
   margin-top: 500px;
 }
+.invalid-feedback {
+ color: #C1427F !important;   
+}
 
+.form-control::placeholder {
+  font-family: var(--inter) !important;
+}
 
 div [class="fade myModal modal show"] {
   display: none !important;

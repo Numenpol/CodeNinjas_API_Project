@@ -103,6 +103,8 @@
   height: 3.125rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
 .createFirstProjectButton:hover {
@@ -111,6 +113,11 @@
 
 .FolderPlusIcon {
   margin-right: 0.5rem;
+}
+.MyProjectsText {
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 /* -------------------- */
@@ -148,6 +155,7 @@
 
   .MyProjectsText {
     margin-left: 10px;
+    font-size: 1.375rem;
   }
 
   .FolderPlusIcon {
@@ -245,5 +253,8 @@
 
   .projectListList {
     order: 2;
+  }
+  .MyProjectsText {
+    font-size: 1.875rem;
   }
 }
