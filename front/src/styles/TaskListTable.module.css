@@ -1,0 +1,156 @@
+.allTaskList {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+}
+
+.tableHeader th {
+    background: #f5f6fa !important;
+    text-align: center;
+    color: #565656;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+}
+
+.tableHeaderOwnerTh {
+    position: relative;
+    width: 3.5rem;
+}
+
+.tableHeaderStatusTh, .tableHeaderPriorityTh {
+    position: relative;
+    width: 6rem;
+    padding: 0;
+}
+
+.tableHeaderCreationDate, .tableHeaderCompletionDate {
+    width: 6rem;
+}
+
+.tableBody td input {
+    border: none !important;
+    height: 2.323rem;
+}
+
+.tableBody td {
+    padding: 0rem !important;
+}
+
+.tableHeaderKey {
+    width: 3rem;
+}
+
+.keyName {
+    width: 3rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.tasklistTaskField {
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+.tasklistTaskField input {
+    flex-grow: 1;
+    border: none;
+}
+
+.tasklistTaskField span {
+    margin-left: 0.1rem;
+    margin-right: 0.2rem;
+}
+
+.taskName {
+    width: 13rem;
+    overflow: hidden;
+    text-align: start;
+    display: flex;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+}
+
+.pencilTrashIcon {
+    color: #9F9F9F;
+    cursor: pointer;
+}
+
+.tableHeaderOwner {
+    position: relative;
+    min-width: 3.98rem;
+}
+
+.tableHeaderStatus, .tableHeaderPriority {
+    position: relative;
+    min-width: 6rem;
+    padding: 0;
+}
+
+.tableTimeline {
+    width: 9rem;
+    text-align: center;
+    padding-left: 1rem;
+    vertical-align: middle;
+    position: relative;
+}
+
+.taskCreationDate, .taskCompletionDate {
+    width: 7.5rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.tableForm {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.pencilTrashIcon:hover {
+    color: #565656
+}
+
+@media screen and (min-width: 768px) {
+    .allTaskList {
+        max-width: 100%;
+    }
+
+    .keyName {
+        width: 3rem;
+    }
+
+    .taskName {
+        width: 25rem;
+        overflow: hidden;
+        text-align: start;
+    }
+
+    .taskCreationDate, .taskCompletionDate {
+        width: 7.5rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .keyName {
+        width: 2.5rem;
+        text-align: center;
+    }
+
+    .taskName {
+        width: 18rem;
+        overflow: hidden;
+        text-align: start;
+    }
+
+    .taskCreationDate {
+        width: 7rem;
+    }
+
+    .taskCompletionDate {
+        width: 8rem;
+    }
+}

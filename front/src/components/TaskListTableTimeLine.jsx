@@ -3,7 +3,6 @@ import 'react-date-range/dist/theme/default.css';
 import { DateRange } from "react-date-range";
 import { useState, useEffect, useContext } from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import "../styles/taskListTable.css"
 import "../styles/TaskListTableTimeLine.css"
 import styles from "../styles/TaskListTableTimeLine.module.css"
 import { updateDataTask } from '../services/update';
