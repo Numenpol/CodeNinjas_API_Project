@@ -3,16 +3,31 @@ import { useState, useEffect, useContext } from "react";
 import styles from "../styles/Project.module.css";
 import { StateContext } from "../utils/StateContext";
 import { useNavigate } from "react-router-dom";
+import { getAllTaskById } from "../services/get";
 
 function Project({ project }) {
   const [statusCheck, setStatusCheck] = useState("");
+  const [countDone, setCountDone] = useState(0);
 
-  const { setprojectId, setShowMenu } = useContext(StateContext)
+  const { setprojectId, setShowMenu} = useContext(StateContext)
 
-  const { projectName, icon, description, status, tasks } = project;
+  const { projectName, icon, description, status, tasks, _id } = project;
+
+
+  const calculateCounts = async () => {
+    const { data: { tasks } } = await getAllTaskById(_id);
+    let doneCount = 0;
+    tasks.map((task) => {
+    if (task.status == "Done") {
+    doneCount++;
+    };
+    })
+    setCountDone(doneCount);
+  };
 
   useEffect(() => {
     setStatusCheck(status);
+    calculateCounts();
   }, []);
 
   const {projectListProject, projectIcon, projectListIcon, projectListName, projectListStatus, projectDone, projectOnHold,projectInProgress, projectOverall, overallBox} = styles;
@@ -25,6 +40,7 @@ function Project({ project }) {
     setShowMenu(false);
     navigate("/tasklist");
 }
+
 
   return (
     <tr className={projectListProject} data-gloss={description} onClick={() => {projectClickHandler(project)}}>
@@ -48,7 +64,7 @@ function Project({ project }) {
         </p>
       </td>
       <td className={projectOverall}>
-        <p className={overallBox}>{tasks.length}</p>
+        <p className={overallBox}>{countDone}/{tasks.length}</p>
       </td>
     </tr>
   );
