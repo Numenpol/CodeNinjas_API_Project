@@ -22,8 +22,8 @@
 }
 
 .taskListStorage {
-    overflow-x: auto;
-    overflow-y: hidden;
+    /* overflow-x: auto;
+    overflow-y: hidden; */
 }
 
 .taskListHeaderTop {

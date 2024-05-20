@@ -14,6 +14,7 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import xIcon from "../assets/xIcon.svg";
 
 function TaskListDoneTable() {
   const { setUpdate, showTask, tasksById } = useContext(StateContext);
@@ -31,6 +32,9 @@ function TaskListDoneTable() {
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
   const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+  const [clickX, setClickX] = useState(null);
+  const [clickY, setClickY] = useState(null);
+
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -88,11 +92,12 @@ function TaskListDoneTable() {
     }
   };
 
-  const handleDeleteButtonClick = (taskId) => {
+  const handleDeleteButtonClick = (event, taskId) => {
     setTaskIdToDelete(taskId);
     setDeleteModalShow(true);
+    setClickX(event.clientX);
+    setClickY(event.clientY);
   };
-
   const handleDeleteTask = async () => {
     try {
       await deleteDataTask(taskIdToDelete);
@@ -164,7 +169,7 @@ function TaskListDoneTable() {
                         </span>
                         <span
                           className="pencilTrashIcon"
-                          onClick={() => handleDeleteButtonClick(task._id)}
+                          onClick={() => handleDeleteButtonClick(event, task._id)}
                         >
                           <Trash />
                         </span>
@@ -232,19 +237,27 @@ function TaskListDoneTable() {
             </form>
           </div>
           <Modal
-            className="myDeleteModal"
+            className="myTaskDeleteModal"
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
+            style={{ top: `${clickY+290 }px`, left: `${clickX -600}px` }}
           >
-            <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
-            <Modal.Footer>
+            <Modal.Body>
+              <div>Are you sure you want to delete this task?</div>
+              <button
+                className="DeleteModalCloseBtn"
+                onClick={handleCloseDeleteModal}
+              >
+                <img src={xIcon} alt="xIcon" />
+              </button>
+              <div></div>
               <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
               <Button className="createBtn" onClick={handleDeleteTask}>
                 Delete
               </Button>
-            </Modal.Footer>
+            </Modal.Body>
           </Modal>
           </div>
       )}
