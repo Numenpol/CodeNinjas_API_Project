@@ -2,26 +2,31 @@ import "../styles/SearchBar.css";
 import { Search } from "react-bootstrap-icons";
 // import Modal from 'react-bootstrap/Modal';
 import { Sliders, CheckSquareFill, Square } from 'react-bootstrap-icons';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { createPopper } from '@popperjs/core';
 import { getSearchByProjectName } from "../services/get";
+import { StateContext } from "../utils/StateContext";
 
 function SearchBar() {
   const [smShow, setSmShow] = useState(false);
   const [checked, setChecked] = useState({ projectName: false, status: false });
   const [value, setValue] = useState("");
 
+  const { setProjects } = useContext(StateContext);
+
 
   const handleSearchChange = (e) => {
     setValue(e.target.value);
   };
 
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await getSearchByProjectName(value, checked);
-    console.log(result);
+    const result = await getSearchByProjectName(value);
+    setProjects(result.data.projects);
   }
+
+
 
 
   const buttonRef = useRef(null);
@@ -58,7 +63,7 @@ function SearchBar() {
       setSmShow(true);
     }
   }
-  
+
   return (
     <>
       <form className="searchbar" onSubmit={handleSubmit}>
@@ -81,7 +86,7 @@ function SearchBar() {
               ref={buttonRef}
               onClick={() => handleClick()}
               className="sliders me-3 d-flex align-self-center" />
-                {smShow && (
+            {smShow && (
               <div className="sort-popup" >
                 <div className="sort-title">
                   <p className="modal-title">Choose columns to search</p>

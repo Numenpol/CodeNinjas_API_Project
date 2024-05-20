@@ -2,23 +2,33 @@ const Project = require("../models/projectModel");
 const User = require("../models/userModel");
 
 exports.getAllProjects = async (req, res) => {
-
   //paimame query string iš fronto
   let searchParams = req.query;
-  console.log(searchParams);
+  // console.log(searchParams);
   // const projects = await Project.find( );
   try {
     let projetsCreated;
-    if(req.user.role === "admin"){
-      projetsCreated = await Project.find(searchParams);
+    if (req.user.role === "admin") {
+      projetsCreated = await Project.find();
     } else {
       const userId = req.user._id;
-      projetsCreated = await Project.find({ user: userId, ...searchParams});
+      // console.log(JSON.stringify({ user: userId, ...searchParams }));
+      projetsCreated = await Project.find({ user: userId });
     }
 
-    let userWithProjects = await User.findById(req.user._id).populate("membersProject");
-
-    let projects = [...userWithProjects.membersProject, ...projetsCreated];
+    let userWithProjects = await User.findById(req.user._id).populate(
+      "membersProject"
+    );
+    let projects = [
+      ...userWithProjects.membersProject,
+      ...projetsCreated,
+    ].filter((project) => {
+      if (searchParams.projectName) {
+        return project.projectName.includes(searchParams.projectName);
+      } else {
+        return true;
+      }
+    });
     res.status(200).json({
       status: "success",
       results: projects.length,
@@ -76,7 +86,7 @@ exports.getProjectsByTask = async (req, res) => {
 };
 exports.createProject = async (req, res) => {
   try {
-    const project = await Project.create({...req.body, user: req.user._id});
+    const project = await Project.create({ ...req.body, user: req.user._id });
     res.status(201).json({
       status: "success",
       data: {
@@ -177,7 +187,7 @@ exports.deleteProject = async (req, res) => {
 //         { new: true }
 //       );
 //       await User.findOneAndUpdate(
-//         { email: membersData.emails }, 
+//         { email: membersData.emails },
 //         { $push: { membersProject: id } }
 //       );
 //     }
@@ -196,7 +206,6 @@ exports.deleteProject = async (req, res) => {
 //   }
 // };
 
-
 exports.updateProjectsMembers = async (req, res) => {
   try {
     const { id } = req.params;
@@ -207,15 +216,16 @@ exports.updateProjectsMembers = async (req, res) => {
 
     const project = await Project.findById(id);
 
-    if (!project.members.some(member => member.emails === membersData.emails)) {
-  
+    if (
+      !project.members.some((member) => member.emails === membersData.emails)
+    ) {
       await Project.findByIdAndUpdate(
         id,
         { $push: { members: membersData } },
         { new: true }
       );
       await User.findOneAndUpdate(
-        { email: membersData.emails }, 
+        { email: membersData.emails },
         { $push: { membersProject: id } }
       );
     }
@@ -233,4 +243,3 @@ exports.updateProjectsMembers = async (req, res) => {
     });
   }
 };
-
