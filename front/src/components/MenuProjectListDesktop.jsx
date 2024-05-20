@@ -10,7 +10,7 @@ import styles from "../styles/MenuProjectListDesktop.module.css";
 import { Link } from "react-router-dom";
 
 function MenuProjectListDesktop() {
-  const { setShowMenu, handleShow } = useContext(StateContext)
+  const { setShowMenu, handleShow, value, setValue } = useContext(StateContext)
 
   const handleClose = () => setShowMenu(false);
 
@@ -31,7 +31,7 @@ function MenuProjectListDesktop() {
           </button>
         </div>
         <div className={searchThing}>
-          <SearchBar />
+          <SearchBar value={value} setValue={setValue} />
         </div>
         <div className={folderTextThing}>
           <div className={menuMyProjects}>

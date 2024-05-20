@@ -3,8 +3,10 @@ const Task = require("../models/projectTaskListModel");
 
 
 exports.getAllTasks = async (req, res) => {
+
+  let searchParams = req.query;
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find(searchParams);
     res.status(200).json({
       status: "success",
       results: tasks.length,

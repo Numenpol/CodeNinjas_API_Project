@@ -4,11 +4,28 @@ import { Search } from "react-bootstrap-icons";
 import { Sliders, CheckSquareFill, Square } from 'react-bootstrap-icons';
 import { useEffect, useRef, useState } from "react";
 import { createPopper } from '@popperjs/core';
+import { getSearchByProjectName } from "../services/get";
 
 function SearchBar() {
   const [smShow, setSmShow] = useState(false);
   const [checked, setChecked] = useState({ projectName: false, status: false });
+  const [value, setValue] = useState("");
+
+
+  const handleSearchChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await getSearchByProjectName(value, checked);
+    console.log(result);
+  }
+
+
   const buttonRef = useRef(null);
+
 
   const handleCheck = (name) => {
     setChecked(prevState => ({ ...prevState, [name]: !prevState[name] }));
@@ -44,7 +61,7 @@ function SearchBar() {
   
   return (
     <>
-      <form className="searchbar" action="">
+      <form className="searchbar" onSubmit={handleSubmit}>
         <div className="rounded border rounded-pill position-relative searchbar-div">
           <div className="input-group">
             <button id="button-addon" type="submit" className="btn">
@@ -55,6 +72,8 @@ function SearchBar() {
               placeholder="Search"
               aria-describedby="button-addon"
               className="form-control rounded-pill border-0 color"
+              onChange={handleSearchChange}
+              value={value}
             />
             <Sliders
               // onClick={() => setSmShow(true)}

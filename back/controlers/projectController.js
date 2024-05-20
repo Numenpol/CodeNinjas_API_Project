@@ -2,14 +2,18 @@ const Project = require("../models/projectModel");
 const User = require("../models/userModel");
 
 exports.getAllProjects = async (req, res) => {
+
+  //paimame query string iš fronto
+  let searchParams = req.query;
+  console.log(searchParams);
   // const projects = await Project.find( );
   try {
     let projetsCreated;
     if(req.user.role === "admin"){
-      projetsCreated = await Project.find();
+      projetsCreated = await Project.find(searchParams);
     } else {
       const userId = req.user._id;
-      projetsCreated = await Project.find({ user: userId });
+      projetsCreated = await Project.find({ user: userId, ...searchParams});
     }
 
     let userWithProjects = await User.findById(req.user._id).populate("membersProject");
