@@ -51,6 +51,7 @@
 .menuEdit,
 .menuTrash {
     cursor: pointer;
+    padding-bottom: 0.2rem;
 }
 
 .editIcon:hover {
