@@ -1,8 +1,3 @@
-.allTaskList {
-    margin-left: 1rem;
-    margin-top: 0.5rem;
-    margin-right: 1rem;
-}
 .cancelBtn{
     margin-right: 1rem;
     background-color: #ffffff !important;
@@ -33,76 +28,11 @@
     margin-bottom: 1rem;
 }
 
-.tableForm {
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
 .showTaskExecutionForm {
     display: none;
 }
 
-.table-header th {
-    background: #f5f6fa !important;
-}
-
-.table-body td input {
-    border: none !important;
-    height: 2.323rem;
-}
-
-.table-body td {
-    padding: 0rem !important;
-}
-
-.table-header th {
-    text-align: center;
-    color: #565656;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 130%;
-}
-
-.table-headerKey {
-    width: 3rem;
-}
-
-.table-headerOwner {
-    position: relative;
-    min-width: 3.98rem;
-}
-
-.table-headerOwnerTh {
-    position: relative;
-    width: 3.5rem;
-}
-
-.table-headerStatus {
-    position: relative;
-    min-width: 6rem;
-    padding: 0;
-}
-
-.table-headerStatusTh {
-    position: relative;
-    width: 6rem;
-    padding: 0;
-}
-
-.table-headerPriority {
-    position: relative;
-    min-width: 6rem;
-    padding: 0;
-}
-
 .table-headerPriorityForm {
-    position: relative;
-    width: 6rem;
-    padding: 0;
-}
-
-.table-headerPriorityTh {
     position: relative;
     width: 6rem;
     padding: 0;
@@ -112,48 +42,10 @@
     width: 10rem;
 }
 
-.table-headerCreationdate {
-    width: 6rem;
-}
-
-.table-headerCompletiondate {
-    width: 6rem;
-}
-
-.key-name {
-    width: 3rem;
-    text-align: center;
-    padding-top: 0.5rem;
-    margin-bottom: 0;
-}
-
-.task-name {
-    width: 13rem;
-    overflow: hidden;
-    text-align: start;
-    display: flex;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
-}
-
-.task-nameForm {
-    min-width: 15.6rem;
-}
-
 .pencil {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
     margin-top: 0.5rem;
-}
-
-.task-owner {
-    width: 3.5rem;
-    position: absolute;
-}
-
-.task-status {
-    width: 6rem;
-    position: absolute;
 }
 
 .task-statusForm {
@@ -171,125 +63,20 @@
     position: absolute;
 }
 
-.task-timeline {
-    width: 9rem;
-    text-align: center;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
-}
-
-/* .task-creationdate {
-    width: 7.5rem;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
-} */
-
-.task-creationdate,
-.task-completiondate {
-    width: 7.5rem;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
-    margin-bottom: 0;
-    font-size: 12px;
-    text-align: center;
-    padding-left: 0rem;
-}
-
 .taskListTimeLineButton {
     border: none;
     background: none;
 }
 
-.tasklist-task-field {
-    display: flex;
-    align-items: center;
-    border: none;
-}
-
-.tasklist-task-field input {
-    flex-grow: 1;
-    border: none;
-}
-
-.tasklist-task-field span {
-    margin-left: 0.1rem;
-    margin-right: 0.2rem;
-}
-
-.pencilTrashIcon {
-    color: #9F9F9F;
-    cursor: pointer;
-}
-
-.pencilTrashIcon:hover {
-    color: #565656
-}
-
-.hidden {
-    display: none;
-}
-
-.table-timeline {
-    position: relative;
-    vertical-align: middle;
-    text-align: center;
-    width: 9rem;
-}
-
-
 @media screen and (min-width: 768px) {
-
-    .allTaskList {
-        max-width: 100%;
-    }
-
-    .key-name {
-        width: 3rem;
-    }
-
-    .task-name {
-        width: 25rem;
-        overflow: hidden;
-        text-align: start;
-    }
-
-    .task-nameForm {
-        min-width: 27.6rem;
-    }
-
-    .task-nameForm input {
-        width: 15.6rem;
-    }
-
     .pencil {
         margin-right: 0.5rem;
         margin-left: 0.5rem;
         margin-top: 0.5rem;
     }
 
-    .task-owner {
-        width: 3.5rem;
-    }
-
-    .task-status {
-        width: 6rem;
-    }
-
-    .task-priority {
-        width: 6rem;
-    }
-
     .task-timeline {
         width: 9rem;
-    }
-
-    .task-creationdate {
-        width: 7.5rem;
-    }
-
-    .task-completiondate {
-        width: 7.5rem;
-     
     }
 }
 
@@ -299,51 +86,13 @@
         min-width: 73%;
     }
 
-    .key-name {
-        width: 2.5rem;
-        text-align: center;
-    }
-
-    .task-name {
-        width: 18rem;
-        overflow: hidden;
-        text-align: start;
-    }
-
-    .task-nameForm {
-        min-width: 20.6rem;
-    }
-
-
     .pencil {
         margin-right: 0.5rem;
         margin-left: 0.5rem;
         margin-top: 0.5rem;
     }
 
-    .task-owner {
-        width: 3rem;
-    }
-
-    .task-status {
-        width: 6rem;
-    }
-
-    .task-priority {
-        width: 6rem;
-    }
-
     .task-timeline {
         width: 9rem;
-    }
-
-    .task-creationdate {
-        width: 7rem;
-        font-size: 14px;
-    }
-
-    .task-completiondate {
-        width: 8rem;
-        font-size: 14px;
     }
 }

@@ -1,11 +1,11 @@
-import "../styles/SearchBar.css";
-import { Search } from "react-bootstrap-icons";
+import { CheckCircleFill, Circle, Search, Sliders } from "react-bootstrap-icons";
 // import Modal from 'react-bootstrap/Modal';
-import { Sliders, CheckSquareFill, Square } from 'react-bootstrap-icons';
+
 import { useEffect, useRef, useState, useContext } from "react";
 import { createPopper } from '@popperjs/core';
 import { getSearchByProjectName } from "../services/get";
 import { StateContext } from "../utils/StateContext";
+import styles from "../styles/SearchBar.module.css";
 
 function SearchBar() {
   const [smShow, setSmShow] = useState(false);
@@ -33,8 +33,13 @@ function SearchBar() {
 
 
   const handleCheck = (name) => {
-    setChecked(prevState => ({ ...prevState, [name]: !prevState[name] }));
+    setChecked(prevState => ({
+      // ...prevState, 
+      [name]: !prevState[name]
+    }));
   }
+
+  const { searchbar, searchbarDiv, inputGroup, searchbarButton, searchIcon, sliders, searchInput, sortPopup, sortTitle, modalTitle, checkIcon, checkIconEmpty, sortBy } = styles;
 
   useEffect(() => {
     let popperInstance;
@@ -66,17 +71,17 @@ function SearchBar() {
 
   return (
     <>
-      <form className="searchbar" onSubmit={handleSubmit}>
-        <div className="rounded border rounded-pill position-relative searchbar-div">
-          <div className="input-group">
-            <button id="button-addon" type="submit" className="btn">
-              <Search className="search-icon" />
+      <form className={searchbar} onSubmit={handleSubmit}>
+        <div className={searchbarDiv}>
+          <div className={inputGroup}>
+            <button id="button-addon" type="submit" className={`btn ${searchbarButton}`}>
+              <Search className={searchIcon} />
             </button>
             <input
               type="search"
               placeholder="Search"
               aria-describedby="button-addon"
-              className="form-control rounded-pill border-0 color"
+              className={`form-control rounded-pill border-0 color ${searchInput}`}
               onChange={handleSearchChange}
               value={value}
             />
@@ -85,18 +90,18 @@ function SearchBar() {
               // onClick={handleShow}
               ref={buttonRef}
               onClick={() => handleClick()}
-              className="sliders me-3 d-flex align-self-center" />
+              className={`${sliders} me-3 d-flex align-self-center`} />
             {smShow && (
-              <div className="sort-popup" >
-                <div className="sort-title">
-                  <p className="modal-title">Choose columns to search</p>
+              <div className={`${sortPopup} sort-popup`}  >
+                <div className={sortTitle}>
+                  <p className={modalTitle}>Choose columns to search</p>
                 </div>
-                <div onClick={() => handleCheck('projectName')}>
-                  {checked.projectName ? <CheckSquareFill className="me-3 check-icon" /> : <Square className="me-3 check-icon-empty" />}
+                <div onClick={() => handleCheck('projectName')} className={sortBy}>
+                  {checked.projectName ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
                   Project name
                 </div>
-                <div onClick={() => handleCheck('status')}>
-                  {checked.status ? <CheckSquareFill className="me-3 check-icon" /> : <Square className="me-3 check-icon-empty" />}
+                <div onClick={() => handleCheck('status')} className={sortBy}>
+                  {checked.status ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
                   Status
                 </div>
               </div>

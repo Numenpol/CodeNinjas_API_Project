@@ -67,6 +67,27 @@ div[class="fade myTaskDeleteModal modal show"] {
 
 }
 
+.sort-popup {
+  /* position: absolute; */
+  /* left: 8rem; */
+  /* right: 2rem; */
+  /* top: 100%; */
+  /* transform: translateX(-50%); */
+  border: 1px solid #d8d8d8;
+  background-color: #ffffff;
+  border-radius: 0.625rem !important;
+  width: 13rem;
+  padding: 0.5rem 0;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
+  margin-right: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+
 @media screen and (min-width: 768px) {
   .myDeleteModal .modal-dialog {
     position: absolute;
