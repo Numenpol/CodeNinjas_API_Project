@@ -3,6 +3,35 @@
     margin-top: 0.5rem;
     margin-right: 1rem;
 }
+.cancelBtn{
+    margin-right: 1rem;
+    background-color: #ffffff !important;
+    border: 1px solid #D5D5D5!important;
+    color: #565656 !important;
+}
+.cancelBtn:hover{
+    background-color:#F5F6FA !important; ;
+}
+.createBtn{
+    background-color: #3FADBE   !important;
+    border: #3FADBE !important;
+}
+.createBtn:hover{
+    background-color: #3593A2 !important;
+
+}
+.DeleteModalCloseBtn{
+    background-color: #ffff;
+    border: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.5rem;
+}
+.myTaskDeleteModalText{
+    margin-bottom: 1rem;
+}
 
 .tableForm {
     margin-left: 1rem;
