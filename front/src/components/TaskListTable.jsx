@@ -15,6 +15,7 @@ import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { updateData } from "../services/update";
+import xIcon from "../assets/xIcon.svg";
 
 function TaskListTable() {
   const { setUpdate, showTask, tasksById, projectId} = useContext(StateContext);
@@ -33,6 +34,8 @@ function TaskListTable() {
   const [selectedCreationDay, setSelectedCreationDay] = useState();
 
   const [timeLineTaskId, setTimeLineTaskId] = useState("");
+  const [clickX, setClickX] = useState(null);
+  const [clickY, setClickY] = useState(null);
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -94,9 +97,11 @@ function TaskListTable() {
     }
   };
 
-  const handleDeleteButtonClick = (taskId) => {
+  const handleDeleteButtonClick = (event, taskId) => {
     setTaskIdToDelete(taskId);
     setDeleteModalShow(true);
+    setClickX(event.clientX);
+    setClickY(event.clientY);
   };
 
   const handleDeleteTask = async () => {
@@ -155,7 +160,7 @@ function TaskListTable() {
                       name={`key-${task._id}`}
                       type="text"
                       defaultValue={task.key}
-                      {...register(`key-${task._id}`)}
+                      {...register(`key-${task._id},{maxLength: {value:50}}`)}
                     >{task.key}</p>
                   </td>
                   <td className="tasklist-task-field">
@@ -173,7 +178,7 @@ function TaskListTable() {
                         onClick={() => handlePencilClick(task._id)}
                       />
                     </span>
-                    <span className="pencilTrashIcon" onClick={() => handleDeleteButtonClick(task._id)}>
+                    <span className="pencilTrashIcon" onClick={() => handleDeleteButtonClick(event, task._id)}>
                       <Trash />
                     </span>
                   </td>
@@ -232,21 +237,29 @@ function TaskListTable() {
           <input style={{ display: "none" }} type="submit" />
         </form>
         </div>
-      <Modal
-        className="myDeleteModal"
-        show={deleteModalShow}
-        onHide={handleCloseDeleteModal}
-      >
-        <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
-        <Modal.Footer>
-          <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
-            Cancel
-          </Button>
-          <Button className="createBtn" onClick={handleDeleteTask}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal
+            className="myTaskDeleteModal"
+            show={deleteModalShow}
+            onHide={handleCloseDeleteModal}
+            style={{ top: `${clickY+290 }px`, left: `${clickX -600}px` }}
+          >
+            <Modal.Body>
+              <div>Are you sure you want to delete this task?</div>
+              <button
+                className="DeleteModalCloseBtn"
+                onClick={handleCloseDeleteModal}
+              >
+                <img src={xIcon} alt="xIcon" />
+              </button>
+              <div></div>
+              <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
+                Cancel
+              </Button>
+              <Button className="createBtn" onClick={handleDeleteTask}>
+                Delete
+              </Button>
+            </Modal.Body>
+          </Modal>
       </div>
     )}
     <div className="tableForm">
