@@ -147,6 +147,7 @@ function TaskListExecutionTable() {
                       {/* <td>{index+1}</td> */}
                       <td className="table-headerKey">
                         <input
+                          disabled
                           className="key-name"
                           id={`key-${task._id}`}
                           name={`key-${task._id}`}
@@ -162,7 +163,7 @@ function TaskListExecutionTable() {
                           name={`task-${task._id}`}
                           type="text"
                           defaultValue={task.task}
-                          {...register(`task-${task._id}`)}
+                          {...register(`task-${task._id},{maxLength: {value:50}`)}
                           onKeyDown={(e) => handleKeyPress(e, task._id)}
                         />
                         <span>

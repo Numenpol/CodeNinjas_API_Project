@@ -1,6 +1,12 @@
 .myTaskDeleteModal {
   text-align: center;
 }
+._menuProjectList_1pt6d_9{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start !important;
+
+}
 .myTaskDeleteModal .modal-dialog {
   width: 22.875rem !important;
   height: 6.75rem !important;
