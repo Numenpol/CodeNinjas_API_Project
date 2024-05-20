@@ -27,7 +27,6 @@ export const StateProvider = ({ children }) => {
       try {
         const {data: {users}} = await getAllUsers();
         setUsers(users);
-        console.log(users);
       } catch (error) {
         setError(error.message);
       }
