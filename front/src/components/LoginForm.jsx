@@ -37,8 +37,8 @@ function LoginForm() {
       <div className={loginPhoto}>
         <img className={ninjaLogo} src={codeNinjaLogo} alt="Logo" />
         <p className={textOnPhoto}>
-          <strong>Empower</strong> your team to{" "}
-          <strong>crush deadlines </strong>with inituitive project
+          <span>Empower</span> your team to
+          <span>crush deadlines </span>with inituitive project
           managment app!
         </p>
       </div>

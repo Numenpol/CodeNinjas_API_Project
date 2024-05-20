@@ -50,9 +50,10 @@
   padding: 10px 16px;
   margin-right: 10px;
   background-color: #f5f6fa;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #565656;
-  /* font-family: Inter; */
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
 .headerThemeButton:hover {
@@ -86,16 +87,19 @@
   .headerUserName {
     display: block;
     margin: 0;
-    font-size: 14px;
-    /* font-family: "Nunito Sans"; */
+    font-size: 0.875rem;
+    font-family: var(--inter);
+    font-weight: 600;
     color: #fff;
   }
 
   .headerUserRole {
     display: block;
     margin: 0;
-    font-size: 12px;
-    /* font-family: "Nunito Sans"; */
+    font-size: 0.875rem;
+    font-family: var(--inter);
+    font-weight: 400;
+    text-transform: capitalize;
     color: #f5f6fa;
   }
 

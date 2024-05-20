@@ -29,6 +29,7 @@ function ProjectWithList() {
     CreateProjectButtonPosition,
     createFirstProjectButton,
     projectListList,
+    MyProjectsText,
   } = styles;
   return (
     <div className={projectList}>
@@ -51,7 +52,7 @@ function ProjectWithList() {
                   alt="folderPlusIcon"
                   className={FolderPlusIcon}
                 />
-                <div className="MyProjectsText">My Projects</div>
+                <div className={MyProjectsText}>My Projects</div>
               </div>
             </div>
             <div>

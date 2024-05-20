@@ -45,10 +45,15 @@
 .textOnPhoto {
     color: aliceblue;
     text-align: center;
-    font-size: 1.2rem;
+    font-family: var(--inter);
+    font-size: 1rem;
+    font-weight: 300;
     justify-self: baseline;
     margin: auto 1.88rem 2.12rem;
     line-height: 1.875rem
+}
+.textOnPhoto span{
+    font-weight: 600;
 }
 
 .loginPageForm {
@@ -86,6 +91,8 @@
     color: white;
     border: none;
     margin-bottom: 1rem;
+    font-family: var(--inter) !important;
+    font-weight: 400 !important;
 }
 
 .newAccountBtn {

@@ -13,7 +13,18 @@ function RegisterForm() {
 
   const navigate = useNavigate();
 
-  const { registerPage, registerPhoto, registerLogo, registerInfo, registerFormDiv, registerForm, registerInput, registerInputHolder, registerEmailError, registerButton } = styles;
+  const {
+    registerPage,
+    registerPhoto,
+    registerLogo,
+    registerInfo,
+    registerFormDiv,
+    registerForm,
+    registerInput,
+    registerInputHolder,
+    registerEmailError,
+    registerButton,
+  } = styles;
 
   const {
     handleSubmit,
@@ -37,9 +48,8 @@ function RegisterForm() {
       <div className={registerPhoto}>
         <img src={registerFormLogo} alt="logo" className={registerLogo} />
         <p className={registerInfo}>
-          <strong>Empower</strong> your team to
-          <strong> crush deadlines</strong> with intuitive project management
-          app!
+          <span>Empower</span> your team to
+          <span> crush deadlines</span> with intuitive project management app!
         </p>
       </div>
       <div className={registerFormDiv}>
@@ -51,7 +61,7 @@ function RegisterForm() {
               placeholder="Enter your name & surname"
               autoComplete="name"
               {...register("name", {
-                required: "name is required",
+                required: "Name is required",
               })}
               isInvalid={errors.name}
             />
@@ -101,7 +111,10 @@ function RegisterForm() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className={registerInput} controlId="formBasicConfirmPassword">
+          <Form.Group
+            className={registerInput}
+            controlId="formBasicConfirmPassword"
+          >
             <Form.Control
               className={registerInputHolder}
               type="password"
@@ -121,7 +134,12 @@ function RegisterForm() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button variant="primary" type="submit" disabled={isSubmitting} className={registerButton}>
+          <Button
+            variant="primary"
+            type="submit"
+            disabled={isSubmitting}
+            className={registerButton}
+          >
             Create new account
           </Button>
         </Form>
