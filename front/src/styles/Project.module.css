@@ -114,6 +114,17 @@
     overflow: hidden;
   }
 
+  /* Dark theme css */
+
+  .projectListNameDark {
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    text-wrap: nowrap;
+  }
+
 @media (min-width: 768px) {
     .projectListStatus {
         width: 15rem;
@@ -167,4 +178,10 @@
         width: 30%;
     }
 
+    /* DArk theme css */
+
+    .projectListNameDark {
+        font-size: 1rem;
+        width: 80%;
+    }
 }

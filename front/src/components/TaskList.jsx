@@ -16,6 +16,7 @@ import { getOne } from "../services/get";
 import addMemberStyles from "../styles/AddMemberPopUp.module.css";
 import TaskListExecutionTable from "./TaskListExecution";
 import TaskListDoneTable from "./TaskListDoneTable";
+import { useTheme } from "../utils/ThemeContext";
 
 function TaskList() {
   const { setShowTask, setShowMenu, projectId, update, users } = useContext(StateContext);
@@ -25,7 +26,8 @@ function TaskList() {
   const handleShow = () => setShowAddMember(true);
   const [activeProjectName, setActiveProjectName] = useState("");
   const [activeProjectIcon, setActiveProjectIcon] = useState("");
-
+  const { theme } = useTheme();
+  
   const handleShowTask = () => {
     setShowTask((showTask) => !showTask);
   };
@@ -88,6 +90,10 @@ function TaskList() {
     TaskListDone,
     taskListStorage,
     taskListNameBox,
+    taskListCardDark,
+    taskListDark,
+    taskListMenuDark,
+    taskListProjectNameDark,
   } = styles;
 
   const {
@@ -104,8 +110,8 @@ function TaskList() {
   const { MenuThing } = styles1;
 
   return (
-    <div className={taskList}>
-      <div className={taskListMenu}>
+    <div className={theme == "light" ? taskList : taskListDark}>
+      <div className={theme == "light" ? taskListMenu : taskListMenuDark}>
         <MenuProjectListDesktop />
       </div>
       <div>
@@ -113,7 +119,7 @@ function TaskList() {
           <CreateProjectForm />
         </div>
       </div>
-      <div className={taskListCard}>
+      <div className={theme == "light" ? taskListCard : taskListCardDark}>
         <div className={container}>
           <div className={taskListBugerButton}>
             <button className={MenuThing} onClick={toggleShow}>
@@ -129,7 +135,7 @@ function TaskList() {
               />
             </div>
             <div className={taskListNameBox}>
-              <h2 className={taskListProjectName}>
+              <h2 className={theme == "light" ? taskListProjectName : taskListProjectNameDark}>
                 {activeProjectName}
               </h2>
             </div>

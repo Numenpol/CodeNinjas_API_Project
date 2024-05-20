@@ -5,6 +5,7 @@
     border-radius: 0.625rem 0.625rem 0rem 0rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    min-height: 52.1vh;
 }
 
 .tableBox {
@@ -76,14 +77,77 @@
     border-bottom: 1px solid #565656;
 }
 
-.cornerGaps {
+/* Dark theme css */
+
+
+.cornerGapsDark {
+    overflow-x: auto;
+    background-color: #121212;
+    padding-bottom: 3rem;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     min-height: 52.1vh;
 }
 
+.projectListNameDark {
+    color:
+        #FFFFFF;
+    font-size: 0.869rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    overflow: hidden;
+    padding-top: 0.5rem;
+    text-align: start;
+    padding-left: 1rem;
+    text-wrap: nowrap;
+    background-color: #121212;
+}
+
+.projectListStatusDark {
+    color: #FFFFFF;
+    font-size: 0.869rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1.3rem;
+    background-color: #121212;
+}
+
+.projectListTasksDark {
+    color: #FFFFFF;
+    font-size: 0.869rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1.3rem;
+    background-color: #121212;
+}
+
+.tableBoxDark {
+    background-color: #121212;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    min-width: 344px;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 0.7rem;
+}
+
+.tableBodyBoxDark {
+    border-left: #121212 20px solid;
+    border-right: #121212 20px solid;
+}
 
 @media screen and (min-width: 768px) {
     .cornerGaps {
         margin: 0 1rem;
+        min-height: 66.2vh;
     }
 
     .projectListStatus,
@@ -92,7 +156,7 @@
         padding-left: 0;
     }
 
-    .projectListTasks { 
+    .projectListTasks {
         padding-right: 0.5rem;
     }
 
@@ -101,11 +165,31 @@
         padding-right: 3rem;
       } */
 
-      .cornerGaps {
-        min-height: 66.2vh;
-    }
 
     .projectListName {
+        padding-left: 1.7rem;
+    }
+
+    /* Dark theme css */
+
+    .cornerGapsDark {
+        margin: 0 1rem;
+        min-height: 66.2vh;
+        background-color: #121212;
+    }
+
+    .projectListTasksDark .projectListNameDark {
+        text-align: center;
+        padding-left: 1.7rem;
+        background-color: #121212;
+    }
+
+    .projectListStatusDark {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .projectListNameDark {
         padding-left: 1.7rem;
     }
 }
@@ -126,11 +210,33 @@
         padding-left: 1.7rem;
     }
 
-    /* .project-list-box {
-        padding-left: 7rem;
-        padding-right: 7rem;
-      } */
-      /* .projectListName {
-        padding-left: 1.7rem;
-    } */
+    /* Dark theme css */
+
+
+    .cornerGapsDark {
+        min-height: 72.5vh;
+        background-color: #121212;
+    }
+
+    .projectListNameDark,
+    .projectListTasksDark {
+        font-size: 1rem;
+        background-color: #121212;
+    }
+
+    .projectListStatusDark {
+        font-size: 1rem;
+        text-align: start;
+        padding-left: 2rem;
+        background-color: #121212;
+    }
+
+    .projectListTasksDark {
+        font-size: 1rem;
+        background-color: #121212;
+    }
+
+    /* Dark theme css */
+
+
 }
