@@ -99,7 +99,7 @@
   color: white;
   border: #3fadbe;
   border-radius: 5px;
-  width: 315px;
+  width: 330px;
   height: 3.125rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -302,7 +302,7 @@
     /* display: none; */
     order: 0;
     align-items: end;
-    margin-right: 1.5rem;
+    margin-right: 0.9rem;
     margin-top: -5rem;
   }
 

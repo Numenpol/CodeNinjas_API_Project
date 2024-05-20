@@ -19,7 +19,7 @@ import TaskListDoneTable from "./TaskListDoneTable";
 import { useTheme } from "../utils/ThemeContext";
 
 function TaskList() {
-  const { setShowTask, setShowMenu, projectId, update } = useContext(StateContext);
+  const { setShowTask, setShowMenu, projectId, update, users } = useContext(StateContext);
   const toggleShow = () => setShowMenu((s) => !s);
   const [showAddMember, setShowAddMember] = useState(false);
   const handleClose = () => setShowAddMember(false);

@@ -35,7 +35,10 @@ function CreateProjectForm() {
 
   const formSubmitHandler = async (data) => {
     try {
-      await postData({ ...data, icon: icon });
+      const currentUser = localStorage.getItem("user");
+      const userObject = JSON.parse(currentUser);
+
+      await postData({ ...data, icon: icon, members: {emails: userObject.data.email, names: userObject.data.name}});
       setUpdate((update) => update + 1);
       reset();
       handleClose();

@@ -10,7 +10,7 @@ import { updateDataTask } from '../services/update';
 import { StateContext } from "../utils/StateContext";
 
 
-function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, setSelectedCompletionDay, task, selectedTimeLine, 
+function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, task, selectedTimeLine, 
   selectedCreationDay, selectedCompletionDay, id}) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
@@ -23,6 +23,8 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
       key: 'selection'
     }
   ]);
+  const [monthNumberDate, setMonthNumberDate] = useState();
+
   const { setUpdate } = useContext(StateContext);
 
 
@@ -39,12 +41,26 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
 
   const getNumberFixedDate = (date) => {
     const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
-    return dateNumber;
+    return dateNumber; 
+  }
+
+  const getMonthFixedDate = (date) => {
+    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
+    return dateMonth;
+  }
+
+  const getMonthNumberFixedDate = (date) => {
+    const monthNumber = date.getMonth() + 1;
+    return monthNumber;
   }
 
   const calculateDaysLeftPercentage = () => {
     if (!endDateDay) {
       return 100;
+    } if(monthNumberDate) {
+      const totalDays = monthNumberDate - startDateDay + 1;
+      const daysLeftPercentage = (1 / totalDays) * 100;
+      return daysLeftPercentage;    
     }
       const totalDays = endDateDay - startDateDay + 1;
       const daysLeftPercentage = (1 / totalDays) * 100;
@@ -82,27 +98,55 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
   useEffect(() => {
     dateSelection.map((stat) => {
       if (task == null || stat.endDate) {
-        let startDate = getStartFixedDate(stat.startDate);
-        let startDateDay = getNumberFixedDate(stat.startDate);
+        let startDate = getStartFixedDate(new Date());
+        let startDateDay = getNumberFixedDate(new Date());
+        let startDateMonth = getMonthFixedDate(new Date());
+        let startDateMonthNumber = getMonthNumberFixedDate(new Date());
         if (stat.endDate == null) {
           setCalendarDay(startDate);
         } else {
-          const endDate = getStartFixedDate(stat.endDate);
-          const endDateDay = getNumberFixedDate(stat.endDate);
+          let endDate = getStartFixedDate(stat.endDate);
+          let endDateDay = getNumberFixedDate(stat.endDate);
+          let endDateMonth = getMonthFixedDate(stat.endDate);
+          let endDateMonthNumber = getMonthNumberFixedDate(stat.endDate);
+          if (parseInt(endDateDay)<parseInt(startDateDay) && startDateMonth == endDateMonth) {
+            endDate=startDate;
+            endDateDay=startDateDay;
+          }
+          if(startDateMonth != endDateMonth){
+            if(startDateMonthNumber<endDateMonthNumber){
+            let MonthNumberCount = endDateMonthNumber - startDateMonthNumber;
+            MonthNumberCount = MonthNumberCount * 30;
+            setMonthNumberDate(MonthNumberCount);
+            } else {
+            let MonthNumberCount = startDateMonthNumber - endDateMonthNumber;
+            MonthNumberCount = MonthNumberCount * 30;
+            setMonthNumberDate(MonthNumberCount);
+            }
+          }
           setStartDateDay(startDateDay);
           setEndDateDay(endDateDay);
           setCalendarDay(`${startDate}-${endDate}`);
           setSelectedTimeLine(calendarDay);
-          setSelectedCreationDay(startDate);
-          setSelectedCompletionDay(endDate);
-          if (task) {
-          handleStatusUpdate(id, selectedTimeLine, selectedCreationDay, selectedCompletionDay);            
-          }
+          setSelectedCreationDay(getStartFixedDate(new Date()));
         } 
       } else {
         const dateNumbers = task.match(/\d+/g);
+        const dateMonths = task.match(/[A-Za-z]+/g);
+
         const startDateDay = dateNumbers[0];
         const endDateDay = dateNumbers[1];
+        const startDateMonth = dateMonths[0];
+        const endDateMonth = dateMonths[1];
+        if(startDateMonth != endDateMonth){
+          if (parseInt(endDateDay)>parseInt(startDateDay)) {
+          let MonthNumberCount = endDateDay+startDateDay;            
+          setMonthNumberDate(MonthNumberCount);   
+          } else{
+          let MonthNumberCount = endDateDay+30;           
+          setMonthNumberDate(MonthNumberCount);   
+          }
+        }
         setStartDateDay(startDateDay);
         setEndDateDay(endDateDay);
         setCalendarDay(task);
@@ -114,6 +158,13 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, se
     })
       , []
   });
+
+  useEffect(() => {
+    if (id) {
+    handleStatusUpdate(id, selectedTimeLine, selectedCreationDay, selectedCompletionDay);      
+    }
+  }, [id, selectedTimeLine, selectedCreationDay, selectedCompletionDay])
+
 
   return (
     <>
