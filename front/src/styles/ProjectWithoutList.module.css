@@ -102,6 +102,15 @@ img.chartIcon {
   display: none;
 }
 
+.createFirstProjectButtonDark {
+  background: #3372B2;
+  color: white;
+  border: #3fadbe;
+  height: 50px;
+  width: 299px;
+  margin-top: 40px;
+  border-radius: 5px;
+}
 
 
 @media screen and (min-width: 768px) {

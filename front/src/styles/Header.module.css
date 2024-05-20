@@ -45,14 +45,16 @@
 }
 
 .headerLogOutButton {
-  border-radius: 5px;
   border: none;
   padding: 10px 16px;
   margin-right: 10px;
-  background-color: #f5f6fa;
   font-size: 14px;
   color: #565656;
   /* font-family: Inter; */
+  border-radius: 0.3125rem;
+  background: #F5F6FA;
+  border: 0.5px solid #565656;
+
 }
 
 .headerThemeButton:hover {
@@ -101,7 +103,7 @@
   border: none;
   padding: 10px 16px;
   margin-right: 10px;
-
+  background-color: #f5f6fa;
   font-size: 14px;
   color: #565656;
   border-radius: 0.3125rem;

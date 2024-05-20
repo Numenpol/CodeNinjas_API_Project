@@ -79,8 +79,8 @@
 /* Dark theme css */
 
 .dashboardBoxDark {
-    min-width: 9.375rem;
-    height: 90px;
+    min-width: 10rem;
+    height: 5.2rem;
     border-radius: 10px;
     background-color: #121212;
 }
@@ -144,21 +144,14 @@
 
 
     .dashboardBoxDark {
-        width: 180px;
+        width: 177px;
+        height: 5.2rem;
     }
 
     .dashboardNumberDark {
         margin-left: 4.1rem;
         width: 5.5rem;
     }
-
-    /* Dark theme css */
-
-    .dashboardBoxDark {
-        width: 180px;
-    }
-
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -209,7 +202,7 @@
     /* Dark theme css */
 
     .dashboardBoxDark {
-        width: 15.5rem;
+        width: 15.2rem;
         height: 110px;
     }
 

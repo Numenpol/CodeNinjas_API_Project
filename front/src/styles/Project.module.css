@@ -117,12 +117,60 @@
   /* Dark theme css */
 
   .projectListNameDark {
-    width: 100%;
     color: #FFFFFF;
+    width: 100%;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
     text-wrap: nowrap;
+  }
+
+  .projectOnHoldDark {
+    color: #979797;
+    border: 1px solid;
+    border-radius: 1rem;
+    width: 5.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: #1E1E1E;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+    padding-top: 0.2rem;
+  }
+
+  .projectInProgressDark {
+    color: #c0417f;
+    border: 1px solid;
+    border-radius: 1rem;
+    width: 5.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: #1E1E1E;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+    padding-top: 0.2rem;
+  }
+
+  .projectDoneDark {
+    color: #3fadbe;
+    border: 1px solid ;
+    border-radius: 1rem;
+    width: 5.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: #1E1E1E;
+    height: 1.9rem;
+    margin-top: 0.6rem;
+    padding-top: 0.2rem;
+  }
+
+  .overallBoxDark {
+    margin-top: 0.6rem;
+    width: 5rem;
+    color: #fff;
   }
 
 @media (min-width: 768px) {
@@ -149,6 +197,16 @@
         /* width: 94%; */
         /* width: 100%; */
     }
+
+    /* Dark theme css */
+
+    .projectDoneDark,
+    .projectInProgressDark,
+    .projectOnHoldDark {
+        width: 6.6875rem;
+        font-size: 0.8125rem;
+    }
+
 }
 
 @media (min-width: 1440px) {
@@ -183,5 +241,13 @@
     .projectListNameDark {
         font-size: 1rem;
         width: 80%;
+    }
+    
+    .projectDoneDark,
+    .projectInProgressDark,
+    .projectOnHoldDark {
+        width: 7.25rem;
+        height: 2.2745rem;
+        font-size: 1rem;
     }
 }

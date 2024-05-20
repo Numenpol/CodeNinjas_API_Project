@@ -10,6 +10,7 @@ import { StateContext } from "../utils/StateContext";
 import { postData } from "../services/post";
 import IconList from "../components/IconList";
 import styles from "../styles/CreateProjectForm.module.css";
+import { useTheme } from "../utils/ThemeContext";
 
 function CreateProjectForm() {
   const { show, setShow, icon, setUpdate, setIcon } = useContext(StateContext);
@@ -28,17 +29,23 @@ function CreateProjectForm() {
   });
 
   useEffect(() => {
-      if (icon == "") {
-        setIcon("icons/projectIcon1.svg");
-      }
-  }, [icon])
+    if (icon == "") {
+      setIcon("icons/projectIcon1.svg");
+    }
+  }, [icon]);
+
+  const { theme } = useTheme();
 
   const formSubmitHandler = async (data) => {
     try {
       const currentUser = localStorage.getItem("user");
       const userObject = JSON.parse(currentUser);
 
-      await postData({ ...data, icon: icon, members: {emails: userObject.data.email, names: userObject.data.name}});
+      await postData({
+        ...data,
+        icon: icon,
+        members: { emails: userObject.data.email, names: userObject.data.name },
+      });
       setUpdate((update) => update + 1);
       reset();
       handleClose();
@@ -80,6 +87,23 @@ function CreateProjectForm() {
     rocketPicture,
     rocket,
     rocketSlogan,
+    rocketPictureDark,
+    createProjectFormDark,
+    createProjectHeaderDark,
+    blankSpace,
+    blankSpaceDark,
+    formLabel,
+    formLabelDark,
+    createChooseIconDark,
+    formLabelProjectDescription,
+    formLabelProjectDescriptionDark,
+    xIconButtonDark,
+    createProjectDark,
+    projectNameField,
+    projectNameFieldDark,
+    projectDescriptionField,
+    projectDescriptionFieldDark,
+    newProjectNameDark,
   } = styles;
 
   return (
@@ -91,32 +115,49 @@ function CreateProjectForm() {
         dialogClassName={modalDialog}
         // backdropClassName='backdrop'
       >
-        <div className={createProject}>
-          <button className={xIconButton} onClick={handleClose}>
+        <div className={theme == "light" ? createProject : createProjectDark}>
+          <button
+            className={theme == "light" ? xIconButton : xIconButtonDark}
+            onClick={handleClose}
+          >
             <img src={xIcon} alt="xIcon" />
           </button>
-          <div>
-            <h1 className={createProjectHeader}>Create a new project</h1>
+          <div className={theme == "light" ? blankSpace : blankSpaceDark}>
+            <h1
+              className={
+                theme == "light" ? createProjectHeader : createProjectHeaderDark
+              }
+            >
+              Create a new project
+            </h1>
             <Form
               onSubmit={handleSubmit(formSubmitHandler)}
-              className={createProjectForm}
+              className={
+                theme == "light" ? createProjectForm : createProjectFormDark
+              }
             >
               <div>
                 <Form.Group
-                  className={newProjectName}
+                  className={theme == "light" ? newProjectName : newProjectNameDark}
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>Project Name</Form.Label>
+                  <p className={theme == "light" ? formLabel : formLabelDark}>
+                    Project Name
+                  </p>
                   <Form.Control
                     type="textarea"
                     placeholder="New project"
                     autoComplete="projectName"
+                    className={
+                      theme == "light" ? projectNameField : projectNameFieldDark
+                    }
                     {...register("projectName", {
                       required: "Project name is required",
-                      maxLength:{
-                        value:40,
-                        message:"Project name is to long, it can't exceed 40 characters"
-                      }
+                      maxLength: {
+                        value: 40,
+                        message:
+                          "Project name is to long, it can't exceed 40 characters",
+                      },
                     })}
                     isInvalid={errors.projectName}
                   />
@@ -127,7 +168,13 @@ function CreateProjectForm() {
                 </Form.Group>
               </div>
               <div>
-                <p className={createChooseIcon}>Choose your project icon</p>
+                <p
+                  className={
+                    theme == "light" ? createChooseIcon : createChooseIconDark
+                  }
+                >
+                  Choose your project icon
+                </p>
                 <IconList />
               </div>
               <div>
@@ -135,13 +182,26 @@ function CreateProjectForm() {
                   className={newProjectDesc}
                   controlId="exampleForm.ControlTextarea1"
                 >
-                  <Form.Label>Project description</Form.Label>
+                  <p
+                    className={
+                      theme == "light"
+                        ? formLabelProjectDescription
+                        : formLabelProjectDescriptionDark
+                    }
+                  >
+                    Project description
+                  </p>
                   <Form.Control
                     style={{ resize: "none" }}
                     type="textarea"
                     as="textarea"
                     rows={3}
                     placeholder="Project description"
+                    className={
+                      theme == "light"
+                        ? projectDescriptionField
+                        : projectDescriptionFieldDark
+                    }
                     autoComplete="description"
                     {...register("description", {
                       required: "Project description is required",
@@ -172,7 +232,7 @@ function CreateProjectForm() {
               </div>
             </Form>
           </div>
-          <div className={rocketPicture}>
+          <div className={theme == "light" ? rocketPicture : rocketPictureDark}>
             <img src={rocketPic} alt="rocketPicture" className={rocket} />
             <h1 className={rocketSlogan}>Ready? Launch!</h1>
           </div>

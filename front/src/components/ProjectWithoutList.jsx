@@ -35,6 +35,7 @@ function ProjectWithoutList() {
     projectListCardDark,
     myProjectsTextDark,
     projectListMenuDark,
+    createFirstProjectButtonDark,
   } = styles;
 
   return (
@@ -66,7 +67,7 @@ function ProjectWithoutList() {
         </div>
         <div className={createProjectBox}>
           <img src="src\assets\Group 54.svg" alt="" className={chartIcon} />
-          <button className={createFirstProjectButton} onClick={handleShow}>
+          <button className={theme == "light" ? createFirstProjectButton : createFirstProjectButtonDark} onClick={handleShow}>
             Create Your first project
           </button>
         </div>
