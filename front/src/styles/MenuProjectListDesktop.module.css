@@ -132,6 +132,11 @@
     margin-bottom: 0.1rem;
 }
 
+.offcanvasBodyDark {
+    background-color: #1E1E1E;
+    border-radius: 0.4rem;
+}
+
 @media screen and (min-width: 768px) {
     .projectPopUp {
         min-height: 20rem;

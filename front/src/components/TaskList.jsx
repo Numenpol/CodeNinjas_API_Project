@@ -94,6 +94,7 @@ function TaskList() {
     taskListDark,
     taskListMenuDark,
     taskListProjectNameDark,
+    taskListAddMemberDark,
   } = styles;
 
   const {
@@ -144,7 +145,7 @@ function TaskList() {
             <p className={taskListStatus}>STATUS</p>
           </div>
           <div className={taskListAddMemberDisplay}>
-            <button className={taskListAddMember} onClick={handleShow}>
+            <button className={theme == "light" ? taskListAddMember : taskListAddMemberDark} onClick={handleShow}>
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

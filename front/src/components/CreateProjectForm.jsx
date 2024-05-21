@@ -104,6 +104,8 @@ function CreateProjectForm() {
     projectDescriptionField,
     projectDescriptionFieldDark,
     newProjectNameDark,
+    createBtnDark,
+    cancelBtnDark,
   } = styles;
 
   return (
@@ -215,7 +217,7 @@ function CreateProjectForm() {
               </div>
               <div className={createButtons}>
                 <Button
-                  className={cancelBtn}
+                  className={theme == "light" ? cancelBtn : cancelBtnDark}
                   variant="primary"
                   onClick={handleClose}
                 >
@@ -223,7 +225,7 @@ function CreateProjectForm() {
                 </Button>
                 <Button
                   variant="primary"
-                  className={createBtn}
+                  className={theme == "light" ? createBtn : createBtnDark}
                   type="submit"
                   disabled={isSubmitting}
                 >
