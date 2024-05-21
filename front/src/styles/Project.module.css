@@ -211,14 +211,6 @@
     font-size: 0.8125rem;
   }
 
-
-
-  .projectListProject:hover:after {
-    /* max-width: 90ch; */
-    /* width: 94%; */
-    /* width: 100%; */
-  }
-
   /* Dark theme css */
 
   .projectDoneDark,

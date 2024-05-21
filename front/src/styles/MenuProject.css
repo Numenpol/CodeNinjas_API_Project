@@ -11,9 +11,6 @@
   justify-content: flex-start !important;
 
 }
-div[class="mt-5 mb-5 rounded-3 shadow border-0 offcanvas offcanvas-start show"]{
-  width: 21rem !important;
-}
 
 div[class="fade offcanvas-backdrop EpicBack show"] {
   opacity: 0 !important;
@@ -143,9 +140,6 @@ div[class="fade myTaskDeleteModal modal show"] {
     top: -1rem;
     width: 22.875rem !important;
     left: -2rem;
-  }
-  div[class="mt-5 mb-5 rounded-3 shadow border-0 offcanvas offcanvas-start show"]{
-    width: 24.5rem !important;
   }
 }
 
