@@ -34,14 +34,18 @@ div[class="fade offcanvas-backdrop EpicBack show"] {
  color: #C1427F !important;   
 }
 
-.form-control::placeholder {
-  font-family: var(--inter) !important;
-}
 .form-label{
   font-family: var(--inter) !important;
   font-weight: 400 !important;
   font-size: 0.875rem !important;
   margin-top: 1rem;
+}
+
+.form-control::placeholder {
+  font-family: var(--inter) !important;
+  color: #ADB5BD !important;
+  font-weight: 400 !important;
+  font-size: 0.8125rem !important;
 }
 
 

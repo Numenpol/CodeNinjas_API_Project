@@ -43,6 +43,10 @@
 }
 
 .buttonthing {
+    font-family: var(--inter);
+    color: #7A7E81;
+    font-size: 1rem;
+    font-weight: 400;
     padding-left: 1rem;
     border: none;
     background-color: #fff;
@@ -85,6 +89,7 @@
 }
 
 .myProjectsText {
+    font-family: var(--montserrat);
     color: #7A7E81;
     font-size: 1rem;
     font-weight: 700;

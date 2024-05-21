@@ -21,20 +21,18 @@
     min-width: 360px;
 }
 
-
 /* .invinsible {
     width: 1rem;
 } */
 
 .projectListName {
     color: #565656;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     overflow: hidden;
     padding-top: 0.5rem;
-    /* text-wrap: nowrap; */
     text-align: start;
     padding-left: 1rem;
     text-wrap: nowrap;
@@ -44,9 +42,9 @@
 
 .projectListStatus {
     color: #565656;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
@@ -56,9 +54,9 @@
 
 .projectListTasks {
     color: #565656;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
