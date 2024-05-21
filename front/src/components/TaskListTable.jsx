@@ -3,7 +3,7 @@ import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
 import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { StateContext } from "../utils/StateContext";
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 import { deleteDataTask } from "../services/delete";
@@ -14,7 +14,6 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { updateData } from "../services/update";
 import xIcon from "../assets/xIcon.svg";
 import styles from "../styles/TaskListTable.module.css";
 
@@ -50,7 +49,7 @@ function TaskListTable() {
       completiondate: "",
     },
   });
-
+  
   const formSubmitHandler = async (data) => {
     try {
       await postDataTask({
@@ -62,10 +61,6 @@ function TaskListTable() {
         creationdate: selectedCreationDay,
         completiondate: "",
       });
-      //nezinau ar sitas geras ar is viso kazka daro
-      const projectData = { status: "in progress" }
-      await updateData(projectId, projectData)
-
       setUpdate((update) => update + 1);
       reset();
       setSelectedStatus("");
@@ -110,11 +105,6 @@ function TaskListTable() {
       await deleteDataTask(taskIdToDelete);
       setUpdate((update) => update + 1);
       handleCloseDeleteModal();
-      // padaryti geriau sita
-      if (tasksById.length == 1) {
-        const projectData = { status: "on hold" }
-        await updateData(projectId, projectData)
-      }
     } catch (error) {
       console.log(error);
     }
@@ -131,7 +121,7 @@ function TaskListTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "To do" || task.status === "");
 
-  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, tableForm } = styles;
+  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn, tableForm } = styles;
 
   return (
     <>
@@ -209,8 +199,7 @@ function TaskListTable() {
                         />
                       </td>
                       <td className={tableTimeline} onClick={() => handleTimeLineClick(task._id)}>
-                        <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} setSelectedCreationDay={setSelectedCreationDay}
-                          task={task.timeline} selectedTimeLine={selectedTimeLine} selectedCreationDay={selectedCreationDay} id={timeLineTaskId} />
+                        <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} task={task.timeline} selectedTimeLine={selectedTimeLine} id={timeLineTaskId} />
                       </td>
                       <td className={tableHeaderCreationDate}>
                         <p
@@ -249,16 +238,16 @@ function TaskListTable() {
             <Modal.Body>
               <div>Are you sure you want to delete this task?</div>
               <button
-                className="DeleteModalCloseBtn"
+                className={DeleteModalCloseBtn}
                 onClick={handleCloseDeleteModal}
               >
                 <img src={xIcon} alt="xIcon" />
               </button>
               <div></div>
-              <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
+              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className="createBtn" onClick={handleDeleteTask}>
+              <Button className={createBtn} onClick={handleDeleteTask}>
                 Delete
               </Button>
             </Modal.Body>
@@ -268,7 +257,7 @@ function TaskListTable() {
       <div className={tableForm}>
         <div className={showTask === true ? "" : "hidden"}>
           <TaskListTableForm selectedTimeLine={selectedTimeLine} setSelectedTimeLine={setSelectedTimeLine} selectedCreationDay={selectedCreationDay}
-            setSelectedCreationDay={setSelectedCreationDay} />
+          setSelectedCreationDay={setSelectedCreationDay}/>
         </div>
       </div>
     </>

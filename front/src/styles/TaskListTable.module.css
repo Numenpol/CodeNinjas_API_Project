@@ -19,13 +19,15 @@
     width: 3.5rem;
 }
 
-.tableHeaderStatusTh, .tableHeaderPriorityTh {
+.tableHeaderStatusTh,
+.tableHeaderPriorityTh {
     position: relative;
     width: 6rem;
     padding: 0;
 }
 
-.tableHeaderCreationDate, .tableHeaderCompletionDate {
+.tableHeaderCreationDate,
+.tableHeaderCompletionDate {
     width: 6rem;
 }
 
@@ -84,7 +86,8 @@
     min-width: 3.98rem;
 }
 
-.tableHeaderStatus, .tableHeaderPriority {
+.tableHeaderStatus,
+.tableHeaderPriority {
     position: relative;
     min-width: 6rem;
     padding: 0;
@@ -98,11 +101,34 @@
     position: relative;
 }
 
-.taskCreationDate, .taskCompletionDate {
+.taskCreationDate,
+.taskCompletionDate {
     width: 7.5rem;
     padding-left: 1rem;
     padding-top: 0.5rem;
     margin-bottom: 0;
+}
+
+.DeleteModalCloseBtn {
+    background-color: #ffff;
+    border: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.5rem;
+}
+
+.cancelBtn {
+    margin-right: 1rem;
+    background-color: #ffffff !important;
+    border: 1px solid #D5D5D5 !important;
+    color: #565656 !important;
+}
+
+.createBtn {
+    background-color: #3FADBE !important;
+    border: #3FADBE !important;
 }
 
 .tableForm {
@@ -112,6 +138,15 @@
 
 .pencilTrashIcon:hover {
     color: #565656
+}
+
+.cancelBtn:hover {
+    background-color: #F5F6FA !important;
+    ;
+}
+
+.createBtn:hover {
+    background-color: #3593A2 !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -129,7 +164,8 @@
         text-align: start;
     }
 
-    .taskCreationDate, .taskCompletionDate {
+    .taskCreationDate,
+    .taskCompletionDate {
         width: 7.5rem;
     }
 }

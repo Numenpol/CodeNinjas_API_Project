@@ -9,9 +9,13 @@ import MenuProjectListPhone from "./MenuProjectListPhone";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import ProjectsSearchBar from "./ProjectsSearchBar";
 import styles from "../styles/ProjectWithoutList.module.css";
+import { useTheme } from "../utils/ThemeContext";
 
 function ProjectWithoutList() {
   const { setShowMenu, handleShow } = useContext(StateContext);
+
+  const { theme } = useTheme();
+
 
   const {
     projectWithoutList,
@@ -27,14 +31,19 @@ function ProjectWithoutList() {
     createProjectBox,
     chartIcon,
     createFirstProjectButton,
+    projectWithoutListDark,
+    projectListCardDark,
+    myProjectsTextDark,
+    projectListMenuDark,
+    createFirstProjectButtonDark,
   } = styles;
 
   return (
-    <div className={projectWithoutList}>
-      <div className={projectListMenu}>
+    <div className={theme == "light" ? projectWithoutList : projectWithoutListDark}>
+      <div className={theme == "light" ? projectListMenu : projectListMenuDark}>
         <MenuProjectListDesktop />
       </div>
-      <div className={projectListCard}>
+      <div className={theme == "light" ?  projectListCard : projectListCardDark}>
         <div className={projectThing}>
           <div className={projectListHeader}>
             <div>
@@ -48,7 +57,7 @@ function ProjectWithoutList() {
                   alt="folderPlusIcon"
                   className={folderIcon1}
                 />
-                <div className={myProjectsText}>My Projects</div>
+                <div className={theme == "light" ? myProjectsText : myProjectsTextDark}>My Projects</div>
               </div>
             </div>
             <div className={projectListSearchBar}>
@@ -58,7 +67,7 @@ function ProjectWithoutList() {
         </div>
         <div className={createProjectBox}>
           <img src="src\assets\Group 54.svg" alt="" className={chartIcon} />
-          <button className={createFirstProjectButton} onClick={handleShow}>
+          <button className={theme == "light" ? createFirstProjectButton : createFirstProjectButtonDark} onClick={handleShow}>
             Create Your first project
           </button>
         </div>

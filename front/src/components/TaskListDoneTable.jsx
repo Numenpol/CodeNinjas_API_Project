@@ -116,7 +116,7 @@ function TaskListDoneTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "Done");
 
-  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate } = styles;
+  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
 
   return (
     <>
@@ -249,16 +249,16 @@ function TaskListDoneTable() {
             <Modal.Body>
               <div>Are you sure you want to delete this task?</div>
               <button
-                className="DeleteModalCloseBtn"
+                className={DeleteModalCloseBtn}
                 onClick={handleCloseDeleteModal}
               >
                 <img src={xIcon} alt="xIcon" />
               </button>
               <div></div>
-              <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
+              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className="createBtn" onClick={handleDeleteTask}>
+              <Button className={createBtn} onClick={handleDeleteTask}>
                 Delete
               </Button>
             </Modal.Body>
