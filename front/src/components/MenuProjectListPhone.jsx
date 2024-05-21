@@ -14,6 +14,7 @@ import MenuProjectList from "./MenuProjectList"
 import SearchBar from './SearchBar';
 import styles from "../styles/MenuProjectListDesktop.module.css";
 import { Link } from "react-router-dom";
+import "../styles/MenuProject.css"
 
 function MenuProjectListPhone() {
   const { showMenu, setShowMenu, handleShow } = useContext(StateContext)
@@ -24,7 +25,7 @@ function MenuProjectListPhone() {
 
   return (
     <div className={menuProjectPopUp}>
-      <Offcanvas show={showMenu} onHide={handleClose} backdrop={true} className="mt-5 mb-5 rounded-3 shadow border-0">
+      <Offcanvas show={showMenu} onHide={handleClose}  backdropClassName="EpicBack" className="mt-5 mb-5 rounded-3 shadow border-0">
         <Offcanvas.Body>
           <div className={projectPopUp}>
             <div className={homeIcon}>

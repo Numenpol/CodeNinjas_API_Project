@@ -198,6 +198,7 @@ function MenuProject({ project }) {
           show={smShow}
           dialogClassName={modalDialog}
           backdropClassName="backdrop"
+          onHide={handleSmClose}
         >
           <div className={createProject}>
             <button className={xIconButton} onClick={handleSmClose}>
@@ -291,6 +292,7 @@ function MenuProject({ project }) {
           className="myDeleteModal"
           show={delShow}
           style={{ top: `${clickY - 160}px`, left: `${clickX - 100}px` }}
+          onHide={handleDelClose}
           backdrop="true"
         >
           <Modal.Body>

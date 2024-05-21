@@ -7,6 +7,9 @@
   justify-content: flex-start !important;
 
 }
+div[class="fade offcanvas-backdrop EpicBack show"] {
+  opacity: 0 !important;
+}
 .myTaskDeleteModal .modal-dialog {
   width: 22.875rem !important;
   height: 6.75rem !important;
