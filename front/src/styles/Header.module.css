@@ -48,9 +48,10 @@
   border: none;
   padding: 10px 16px;
   margin-right: 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #565656;
-  /* font-family: Inter; */
+  font-family: var(--inter);
+  font-weight: 400;
   border-radius: 0.3125rem;
   background: #F5F6FA;
   border: 0.5px solid #565656;
@@ -110,6 +111,9 @@
   border: 0.5px solid #565656;
   background: #1E1E1E;
   color: #fff;
+  font-size: 0.875rem;
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
 
@@ -138,16 +142,19 @@
   .headerUserName {
     display: block;
     margin: 0;
-    font-size: 14px;
-    /* font-family: "Nunito Sans"; */
+    font-size: 0.875rem;
+    font-family: var(--inter);
+    font-weight: 600;
     color: #fff;
   }
 
   .headerUserRole {
     display: block;
     margin: 0;
-    font-size: 12px;
-    /* font-family: "Nunito Sans"; */
+    font-size: 0.875rem;
+    font-family: var(--inter);
+    font-weight: 400;
+    text-transform: capitalize;
     color: #f5f6fa;
   }
 

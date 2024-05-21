@@ -14,6 +14,8 @@ import TaskListTablePriority from "./TaskListTablePriority";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import xIcon from "../assets/xIcon.svg";
+import styles from "../styles/TaskListTable.module.css";
 
 function TaskListDoneTable() {
   const { setUpdate, showTask, tasksById } = useContext(StateContext);
@@ -31,6 +33,9 @@ function TaskListDoneTable() {
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
   const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+  const [clickX, setClickX] = useState(null);
+  const [clickY, setClickY] = useState(null);
+
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -88,11 +93,12 @@ function TaskListDoneTable() {
     }
   };
 
-  const handleDeleteButtonClick = (taskId) => {
+  const handleDeleteButtonClick = (event, taskId) => {
     setTaskIdToDelete(taskId);
     setDeleteModalShow(true);
+    setClickX(event.clientX);
+    setClickY(event.clientY);
   };
-
   const handleDeleteTask = async () => {
     try {
       await deleteDataTask(taskIdToDelete);
@@ -110,35 +116,38 @@ function TaskListDoneTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "Done");
 
+  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, deleteTaskModal, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
+
   return (
-    <>   
-    {fitleredTasks.length > 0 && (
-      <div>
-          <div className="allTaskList">
+    <>
+      {fitleredTasks.length > 0 && (
+        <div>
+          <div className={allTaskList}>
             <form onSubmit={handleSubmit(formSubmitHandler)}>
               <Table bordered>
                 <thead>
-                  <tr className="table-header">
+                  <tr className={tableHeader}>
                     {/* <th>Nr.</th> */}
                     <th>Key</th>
                     <th>Task</th>
-                    <th className="table-headerOwnerTh">Owner</th>
-                    <th className="table-headerStatusTh">Status</th>
-                    <th className="table-headerPriorityTh">Priority</th>
+                    <th className={tableHeaderOwnerTh}>Owner</th>
+                    <th className={tableHeaderStatusTh}>Status</th>
+                    <th className={tableHeaderPriorityTh}>Priority</th>
                     <th>Timeline</th>
-                    <th className="table-headerCreationdate">Creation date</th>
-                    <th className="table-headerCompletiondate">
+                    <th className={tableHeaderCreationDate}>Creation date</th>
+                    <th className={tableHeaderCompletionDate}>
                       Completion date
                     </th>
                   </tr>
                 </thead>
-                <tbody className="table-body">
+                <tbody className={tableBody}>
                   {fitleredTasks.map((task) => (
                     <tr key={task._id}>
                       {/* <td>{index+1}</td> */}
-                      <td className="table-headerKey">
+                      <td className={tableHeaderKey}>
                         <input
-                          className="key-name"
+                          className={keyName}
+                          disabled
                           id={`key-${task._id}`}
                           name={`key-${task._id}`}
                           type="text"
@@ -146,37 +155,37 @@ function TaskListDoneTable() {
                           {...register(`key-${task._id}`)}
                         />
                       </td>
-                      <td className="tasklist-task-field">
+                      <td className={tasklistTaskField}>
                         <input
-                          className="task-name"
+                          className={taskName}
                           id={`task-${task._id}`}
                           name={`task-${task._id}`}
                           type="text"
                           defaultValue={task.task}
-                          {...register(`task-${task._id}`)}
+                          {...register(`task-${task._id},{maxLength: {value:50}`)}
                           onKeyDown={(e) => handleKeyPress(e, task._id)}
                         />
                         <span>
                           <PencilSquare
-                            className="pencilTrashIcon"
+                            className={pencilTrashIcon}
                             onClick={() => handlePencilClick(task._id)}
                           />
                         </span>
                         <span
-                          className="pencilTrashIcon"
-                          onClick={() => handleDeleteButtonClick(task._id)}
+                          className={pencilTrashIcon}
+                          onClick={() => handleDeleteButtonClick(event, task._id)}
                         >
                           <Trash />
                         </span>
                       </td>
-                      <td className="table-headerOwner">
+                      <td className={tableHeaderOwner}>
                         <TaskListTableOwner
                           task={task}
                           setOwnerColor={setOwnerColor}
                           updateDataTask={updateDataTask}
                         />
                       </td>
-                      <td className="table-headerStatus">
+                      <td className={tableHeaderStatus}>
                         <TaskListTableStatus
                           selectedStatus={selectedStatus}
                           isOpen={isOpen}
@@ -185,7 +194,7 @@ function TaskListDoneTable() {
                           updateDataTask={updateDataTask}
                         />
                       </td>
-                      <td className="table-headerPriority">
+                      <td className={tableHeaderPriority}>
                         <TaskListTablePriority
                           isOpens={isOpens}
                           setIsOpens={setIsOpens}
@@ -193,7 +202,7 @@ function TaskListDoneTable() {
                           updateDataTask={updateDataTask}
                         />
                       </td>
-                      <td className="table-timeline">
+                      <td className={tableTimeline}>
                         <TaskListTableTimeLine
                           setSelectedTimeLine={setSelectedTimeLine}
                           setSelectedCreationDay={setSelectedCreationDay}
@@ -205,9 +214,9 @@ function TaskListDoneTable() {
                           task={task.timeline}
                         />
                       </td>
-                      <td className="table-headerCreationdate">
+                      <td className={tableHeaderCreationDate}>
                         <p
-                          className="task-creationdate"
+                          className={taskCreationDate}
                           style={{ border: "none" }}
                           id={`creationdate-${task._id}`}
                           name={`creationdate-${task._id}`}
@@ -215,9 +224,9 @@ function TaskListDoneTable() {
                           defaultValue={task.creationdate}
                           {...register(`creationdate-${task._id}`)}>{task.creationdate}</p>
                       </td>
-                      <td className="table-headerCompletiondate">
+                      <td className={tableHeaderCompletionDate}>
                         <p
-                          className="task-completiondate"
+                          className={taskCompletionDate}
                           id={`completiondate-${task._id}`}
                           name={`completiondate-${task._id}`}
                           type="text"
@@ -232,21 +241,29 @@ function TaskListDoneTable() {
             </form>
           </div>
           <Modal
-            className="myDeleteModal"
+            className={`myTaskDeleteModal ${deleteTaskModal}`}
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
+            style={{ top: `${clickY + 290}px`, left: `${clickX - 600}px` }}
           >
-            <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
-            <Modal.Footer>
-              <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
+            <Modal.Body>
+              <div>Are you sure you want to delete this task?</div>
+              <button
+                className={DeleteModalCloseBtn}
+                onClick={handleCloseDeleteModal}
+              >
+                <img src={xIcon} alt="xIcon" />
+              </button>
+              <div></div>
+              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className="createBtn" onClick={handleDeleteTask}>
+              <Button className={createBtn} onClick={handleDeleteTask}>
                 Delete
               </Button>
-            </Modal.Footer>
+            </Modal.Body>
           </Modal>
-          </div>
+        </div>
       )}
     </>
   );

@@ -42,3 +42,16 @@ export const getAllTaskById = async (id) => {
     const response = await axios.get(`${VITE_URLO}/${id}`);
     return response.data;
 }
+
+// get Search by Projectname
+
+export const getSearchByProjectName = async (value) => {
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(`${API_URL}?projectName=${value}`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    return response.data;
+}

@@ -3,18 +3,33 @@ import styles from "../styles/Project.module.css";
 import { StateContext } from "../utils/StateContext";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../utils/ThemeContext";
+import { getAllTaskById } from "../services/get";
 
 function Project({ project }) {
   const [statusCheck, setStatusCheck] = useState("");
+  const [countDone, setCountDone] = useState(0);
 
   const { setprojectId, setShowMenu } = useContext(StateContext);
 
-  const { projectName, icon, description, status, tasks } = project;
+  const { projectName, icon, description, status, tasks, _id } = project;
 
   const { theme } = useTheme();
 
+
+  const calculateCounts = async () => {
+    const { data: { tasks } } = await getAllTaskById(_id);
+    let doneCount = 0;
+    tasks.map((task) => {
+    if (task.status == "Done") {
+    doneCount++;
+    };
+    })
+    setCountDone(doneCount);
+  };
+
   useEffect(() => {
     setStatusCheck(status);
+    calculateCounts();
   }, []);
 
   const {
@@ -73,7 +88,7 @@ function Project({ project }) {
         <p className={getStatusClass()}>{status}</p>
       </td>
       <td className={projectOverall}>
-        <p className={theme === "light" ? overallBox : overallBoxDark}>{tasks.length}</p>
+        <p className={theme === "light" ? overallBox : overallBoxDark}>{countDone}/{tasks.length}</p>
       </td>
     </tr>
   );

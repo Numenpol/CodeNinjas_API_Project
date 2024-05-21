@@ -15,6 +15,7 @@ import SearchBar from './SearchBar';
 import styles from "../styles/MenuProjectListDesktop.module.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "../utils/ThemeContext";
+import "../styles/MenuProject.css"
 
 function MenuProjectListPhone() {
   const { showMenu, setShowMenu, handleShow } = useContext(StateContext);

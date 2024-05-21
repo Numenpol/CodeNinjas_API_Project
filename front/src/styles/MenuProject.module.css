@@ -13,10 +13,11 @@
 }
 
 .menuProjectName {
+    font-family: var(--montserrat);
     margin-bottom: 0.3rem;
     margin-left: 0.81rem;
     color: #565656;
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 400;
 }
 
@@ -50,8 +51,14 @@
 
 .menuEdit,
 .menuTrash {
+    font-family: var(--inter);
+    color: #565656;
+    font-size: 0.875rem;
+    font-weight: 300;
     cursor: pointer;
+    padding-bottom: 0.2rem;
 }
+
 
 .editIcon:hover {
     cursor: pointer;
@@ -68,10 +75,23 @@
 
 /* Dark theme css */
 
-.menuProjectNameDark{
+.menuProjectNameDark {
     margin-bottom: 0.3rem;
     margin-left: 0.81rem;
     color: #FFFFFF;
     font-size: 1rem;
     font-weight: 400;
+    font-family: var(--montserrat);
+    font-weight: 400;
+}
+
+@media screen and (min-width: 1440px) {
+    .menuProjectName {
+        font-size: 1rem;
+    }
+
+    .menuEdit,
+    .menuTrash {
+        font-size: 0.97rem;
+    }
 }

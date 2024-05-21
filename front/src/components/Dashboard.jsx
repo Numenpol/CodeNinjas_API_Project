@@ -6,29 +6,44 @@ import statisticicon from "../assets/StatisticIcon.png";
 import styles from "../styles/Dashboard.module.css";
 import { StateContext } from "../utils/StateContext";
 import { useTheme } from "../utils/ThemeContext";
+import { getAllTaskById } from "../services/get";
 
 function Dashboard() {
   const [done, setDone] = useState(0);
   const [inprogress, setInProgress] = useState(0);
   const [onhold, setOnHold] = useState(0);
   const [overall, setOverall] = useState(0);
-
-  const { tasks } = useContext(StateContext)
-
+  const { projects } = useContext(StateContext)
   const { theme } = useTheme();
 
   useEffect(() => {
-    tasks.map((task) => {
-      if (task.status == "Done") {
-        setDone((count) => count + 1 / 2);
-      } else if (task.status == "In progress") {
-        setInProgress((count) => count + 1 / 2);
-      } else if (task.status == "To do") {
-        setOnHold((count) => count + 1 / 2);
+    let doneCount = 0;
+    let inProgressCount = 0;
+    let onHoldCount = 0;
+    let totalTasks = 0;
+
+    const calculateCounts = async () => {
+      for (let project of projects) {
+        totalTasks += project.tasks.length;
+        const { data: { tasks } } = await getAllTaskById(project._id);
+        tasks.forEach((task) => {
+          if (task.status === 'Done') {
+            doneCount += 1;
+          } else if (task.status === 'In progress') {
+            inProgressCount += 1;
+          } else if (task.status === 'To do') {
+            onHoldCount += 1;
+          }
+        });
       }
-      setOverall(tasks.length);
-    })
-  }, []);
+      setDone(doneCount);
+      setInProgress(inProgressCount);
+      setOnHold(onHoldCount);
+      setOverall(totalTasks);
+    };
+
+    calculateCounts();
+  }, [projects]);
 
 
   const { dashboard, dashboardTopBoxes, dashboardBox, checkmarkIcon, dashboardDone, dashboardNumber, penandpaperIcon, dashboardInProgress, dashboardBottomBoxes, calendarIcon, dashboardOnHold, statisticIcon, dashboardOverall , dashboardBoxDark, dashboardNumberDark} = styles;

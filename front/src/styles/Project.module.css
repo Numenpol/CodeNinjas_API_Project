@@ -1,253 +1,287 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .projectListProject {
-    min-width: 360px;
-    border-bottom: 1px solid #565656;
+  min-width: 360px;
+  border-bottom: 1px solid #565656;
 }
 
 .projectListIcon {
-    display: flex;
-    justify-content: center;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    width: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 1rem;
 }
 
 .projectListName {
-    width: 100%;
-    color: #565656;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 400;
-    text-wrap: nowrap;
+  font-family: var(--montserrat);
+  width: 100%;
+  color: #565656;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-wrap: nowrap;
 }
 
 .projectListStatus {
-    justify-content: end;
-    vertical-align: middle;
+  justify-content: end;
+  vertical-align: middle;
 }
 
 .projectDone {
-    color: #3fadbe;
-    border: 1px solid ;
-    border-radius: 1rem;
-    width: 5.25rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: white;
-    height: 1.9rem;
-    margin-top: 0.6rem;
-    padding-top: 0.2rem;
+  font-family: var(--montserrat);
+  color: #3fadbe;
+  border: 1px solid;
+  border-radius: 1rem;
+  width: 5.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 035rem;
 }
 
 .projectOnHold {
-    color: #979797;
-    border: 1px solid;
-    border-radius: 1rem;
-    width: 5.25rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: white;
-    height: 1.9rem;
-    margin-top: 0.6rem;
-    padding-top: 0.2rem;
+  font-family: var(--montserrat);
+  color: #979797;
+  border: 1px solid;
+  border-radius: 1rem;
+  width: 5.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.35rem;
 }
 
 .projectInProgress {
-    color: #c0417f;
-    border: 1px solid;
-    border-radius: 1rem;
-    width: 5.25rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: white;
-    height: 1.9rem;
-    margin-top: 0.6rem;
-    padding-top: 0.2rem;
+  font-family: var(--montserrat);
+  color: #c0417f;
+  border: 1px solid;
+  border-radius: 1rem;
+  width: 5.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.35rem;
 }
 
 .projectOverall {
-    width: 5.375rem;
-    height: 1.13725rem;
-    flex-shrink: 0;
-    margin-left: 3rem;
-    color: #565656;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
+  font-family: var(--montserrat);
+  font-size: 0.875rem;
+  width: 5.375rem;
+  height: 1.13725rem;
+  flex-shrink: 0;
+  margin-left: 3rem;
+  color: #565656;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
 }
 
 .overallBox {
-    margin-top: 0.6rem;
-    width: 5rem;
+  margin-top: 0.6rem;
+  width: 5rem;
 }
 
 .projectListProject:hover {
-    cursor: pointer;
-    background: #C7D7FA;
-    margin: 1rem;
+  cursor: pointer;
+  background: #c7d7fa;
+  margin: 1rem;
 }
 
 .projectListProject {
-    position: relative;
-  }
+  position: relative;
+}
 
 .projectListProject:hover:after {
-    background: #3fadbe;
-    border-radius: 5px;
-    top: 3rem;
-    color: #fff;
-    content: attr(data-gloss);
-    left: 5%;
-    /* right: 0; */
-    text-align: center;
-    padding: 5px 15px;
-    position: absolute;
-    z-index: 98;
-    width: 50%;
-    /* max-width: 60ch; */
-    overflow: hidden;
+  background: #3fadbe;
+  border-radius: 5px;
+  top: 3rem;
+  color: #fff;
+  content: attr(data-gloss);
+  left: 5%;
+  /* right: 0; */
+  text-align: center;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 50%;
+  /* max-width: 60ch; */
+  overflow: hidden;
+}
+
+/* Dark theme css */
+
+.projectListNameDark {
+  font-family: var(--montserrat);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  width: 100%;
+  font-weight: 400;
+  text-wrap: nowrap;
+}
+
+.projectOnHoldDark {
+  color: #979797;
+  border: 1px solid;
+  border-radius: 1rem;
+  width: 5.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: #1E1E1E;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.2rem;
+  font-family: var(--montserrat);
+  padding-top: 0.35rem;
+}
+
+
+.projectInProgressDark {
+  font-family: var(--montserrat);
+  color: #c0417f;
+  border: 1px solid;
+  border-radius: 1rem;
+  width: 5.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: #1E1E1E;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.35rem;
+
+
+
+}
+
+.projectDoneDark {
+  color: #3fadbe;
+  border: 1px solid;
+  border-radius: 1rem;
+  width: 5.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: #1E1E1E;
+  height: 1.9rem;
+  margin-top: 0.6rem;
+  padding-top: 0.2rem;
+  font-family: var(--montserrat);
+  padding-top: 0.35rem;
+}
+
+.overallBoxDark {
+  margin-top: 0.6rem;
+  width: 5rem;
+  color: #fff;
+}
+
+.projectListStatusDark {
+  justify-content: end;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .projectListStatus {
+    width: 15rem;
+    justify-content: center;
+  }
+
+  .projectListIcon {
+    width: 1.3125rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .projectDone,
+  .projectInProgress,
+  .projectOnHold {
+    width: 6.6875rem;
+    font-size: 0.8125rem;
+  }
+
+
+
+  .projectListProject:hover:after {
+    /* max-width: 90ch; */
+    /* width: 94%; */
+    /* width: 100%; */
   }
 
   /* Dark theme css */
 
-  .projectListNameDark {
-    color: #FFFFFF;
-    width: 100%;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 400;
-    text-wrap: nowrap;
-  }
-
+  .projectDoneDark,
+  .projectInProgressDark,
   .projectOnHoldDark {
-    color: #979797;
-    border: 1px solid;
-    border-radius: 1rem;
-    width: 5.25rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: #1E1E1E;
-    height: 1.9rem;
-    margin-top: 0.6rem;
-    padding-top: 0.2rem;
+    width: 6.6875rem;
+    font-size: 0.8125rem;
   }
 
-  .projectInProgressDark {
-    color: #c0417f;
-    border: 1px solid;
-    border-radius: 1rem;
-    width: 5.25rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: #1E1E1E;
-    height: 1.9rem;
-    margin-top: 0.6rem;
-    padding-top: 0.2rem;
+  .projectListStatusDark {
+    width: 15rem;
+    justify-content: center;
   }
-
-  .projectDoneDark {
-    color: #3fadbe;
-    border: 1px solid ;
-    border-radius: 1rem;
-    width: 5.25rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: #1E1E1E;
-    height: 1.9rem;
-    margin-top: 0.6rem;
-    padding-top: 0.2rem;
-  }
-
-  .overallBoxDark {
-    margin-top: 0.6rem;
-    width: 5rem;
-    color: #fff;
-  }
-
-@media (min-width: 768px) {
-    .projectListStatus {
-        width: 15rem;
-        justify-content: center;
-    }
-
-    .projectListIcon {
-        width: 1.3125rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    .projectDone,
-    .projectInProgress,
-    .projectOnHold {
-        width: 6.6875rem;
-        font-size: 0.8125rem;
-    }
-
-    .projectListProject:hover:after  {
-        /* max-width: 90ch; */
-        /* width: 94%; */
-        /* width: 100%; */
-    }
-
-    /* Dark theme css */
-
-    .projectDoneDark,
-    .projectInProgressDark,
-    .projectOnHoldDark {
-        width: 6.6875rem;
-        font-size: 0.8125rem;
-    }
 
 }
 
 @media (min-width: 1440px) {
-    .projectListIcon {
-        width: 1.5rem;
-    }
+  .projectListIcon {
+    width: 1.5rem;
+  }
 
-    .projectListName {
-        font-size: 1rem;
-        width: 80%;
-    }
+  .projectListName {
+    font-size: 1rem;
+    width: 80%;
+  }
 
-    .projectDone,
-    .projectInProgress,
-    .projectOnHold {
-        width: 7.25rem;
-        height: 2.2745rem;
-        font-size: 1rem;
-    }
+  .projectDone,
+  .projectInProgress,
+  .projectOnHold,
+  .projectOverall {
+    width: 7.25rem;
+    height: 2.2745rem;
+    font-size: 1rem;
+  }
 
-    .projectListStatus {
-        justify-content: start;
-    }
 
-    .projectListProject:hover:after  {
-        /* max-width: 150ch; */
-        width: 30%;
-    }
+  .projectListStatus {
+    justify-content: start;
+  }
 
-    /* DArk theme css */
+  .projectListProject:hover:after {
+    /* max-width: 150ch; */
+    width: 30%;
+  }
 
-    .projectListNameDark {
-        font-size: 1rem;
-        width: 80%;
-    }
-    
-    .projectDoneDark,
-    .projectInProgressDark,
-    .projectOnHoldDark {
-        width: 7.25rem;
-        height: 2.2745rem;
-        font-size: 1rem;
-    }
+  /* Dark theme css */
+
+  .projectListStatusDark {
+    justify-content: start;
+  }
+
+  .projectDoneDark,
+  .projectInProgressDark,
+  .projectOnHoldDark,
+  .projectOverallDark {
+    width: 7.25rem;
+    height: 2.2745rem;
+    font-size: 1rem;
+  }
+
+
+  .projectListNameDark {
+    font-size: 1rem;
+    width: 80%;
+  }
 }

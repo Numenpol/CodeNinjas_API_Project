@@ -1,29 +1,59 @@
-// import "../styles/SearchBar.css";
-import {
-  CheckCircleFill,
-  Circle,
-  Search,
-  Sliders,
-} from "react-bootstrap-icons";
-// import Modal from 'react-bootstrap/Modal';
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { Search } from "react-bootstrap-icons";
+import { Sliders, CheckCircleFill, Circle } from "react-bootstrap-icons"; // Adjust imports based on your icon library
 import { createPopper } from "@popperjs/core";
+import { getSearchByProjectName } from "../services/get";
+import { StateContext } from "../utils/StateContext";
 import styles from "../styles/SearchBar.module.css";
 import { useTheme } from "../utils/ThemeContext";
 
 function SearchBar() {
   const [smShow, setSmShow] = useState(false);
   const [checked, setChecked] = useState({ projectName: false, status: false });
+  const [value, setValue] = useState("");
+
+  const { setProjects } = useContext(StateContext);
+
+  const handleSearchChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await getSearchByProjectName(value);
+    setProjects(result.data.projects);
+  };
+
   const buttonRef = useRef(null);
 
   const handleCheck = (name) => {
     setChecked((prevState) => ({
-      // ...prevState,
+      ...prevState,
       [name]: !prevState[name],
     }));
   };
 
   const { theme } = useTheme();
+
+  const {
+    searchbar,
+    searchbarDiv,
+    inputGroup,
+    searchbarButton,
+    searchIcon,
+    sliders,
+    searchInput,
+    sortPopup,
+    sortTitle,
+    modalTitle,
+    checkIcon,
+    checkIconEmpty,
+    sortBy,
+    searchbarDivDark,
+    searchbarButtonDark,
+    searchInputDark,
+    slidersDark,
+  } = styles;
 
   useEffect(() => {
     let popperInstance;
@@ -50,46 +80,19 @@ function SearchBar() {
   }, [smShow]);
 
   const handleClick = () => {
-    if (smShow) {
-      setSmShow(false);
-    } else {
-      setSmShow(true);
-    }
+    setSmShow(!smShow);
   };
-
-  const {
-    searchbar,
-    searchbarDiv,
-    searchbarDivDark,
-    inputGroup,
-    searchbarButton,
-    searchIcon,
-    sliders,
-    searchInput,
-    sortPopup,
-    sortTitle,
-    modalTitle,
-    checkIcon,
-    checkIconEmpty,
-    sortBy,
-    searchbarButtonDark,
-    searchInputDark,
-    slidersDark,
-  } = styles;
 
   return (
     <>
-      <form className={searchbar} action="">
-        <div className={theme == "light" ? searchbarDiv : searchbarDivDark}>
-          <div
-            // className="input-group"
-            className={inputGroup}
-          >
+      <form className={searchbar} onSubmit={handleSubmit}>
+        <div className={theme === "light" ? searchbarDiv : searchbarDivDark}>
+          <div className={inputGroup}>
             <button
               id="button-addon"
               type="submit"
               className={`btn ${
-                theme == "light" ? searchbarButton : searchbarButtonDark
+                theme === "light" ? searchbarButton : searchbarButtonDark
               }`}
             >
               <Search className={searchIcon} />
@@ -98,14 +101,18 @@ function SearchBar() {
               type="search"
               placeholder="Search"
               aria-describedby="button-addon"
-              className={`form-control rounded-pill border-0 color ${theme == "light" ? searchInput : searchInputDark}`}
+              className={`form-control rounded-pill border-0 color ${
+                theme === "light" ? searchInput : searchInputDark
+              }`}
+              value={value}
+              onChange={handleSearchChange}
             />
             <Sliders
-              // onClick={() => setSmShow(true)}
-              // onClick={handleShow}
               ref={buttonRef}
-              onClick={() => handleClick()}
-              className={`${theme == "light" ? sliders : slidersDark} me-3 d-flex align-self-center`}
+              onClick={handleClick}
+              className={`${
+                theme === "light" ? sliders : slidersDark
+              } me-3 d-flex align-self-center`}
             />
             {smShow && (
               <div className={`${sortPopup} sort-popup`}>
