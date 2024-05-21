@@ -16,6 +16,7 @@
 .TextThing12{
   /* margin-top: 0.5rem; */
   font-size: 0.875rem;
+  margin: 0.4rem 0.4rem 0.8rem
 
 } 
 
@@ -164,6 +165,7 @@
 
 .newProjectDesc input::placeholder {
   color: #adb5bd;
+  color: #4067f6 !important;
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 1.25rem;
@@ -175,6 +177,32 @@
 }
 
 .createBtn:hover {
+  background-color: #3593a2 !important;
+}
+.cancelBtnProject {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  background-color: #fff !important;
+  border: 0.2px solid #97979769 !important;
+  margin-right: 0.5rem;
+}
+.createBtnProject {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #3fadbe !important;
+  border: none !important;
+}
+.cancelBtnProject:hover {
+  background-color: #f5f6fa !important;
+}
+
+.createBtnProject:hover {
   background-color: #3593a2 !important;
 }
 

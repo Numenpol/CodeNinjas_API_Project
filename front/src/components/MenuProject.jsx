@@ -140,6 +140,8 @@ function MenuProject({ project }) {
     newProjectDesc,
     createButtons,
     cancelBtn,
+    cancelBtnProject,
+    createBtnProject,
     cancelBtnContent,
     createBtn,
     createBtnContent,
@@ -297,11 +299,11 @@ function MenuProject({ project }) {
               <img src={xIcon} alt="xIcon" />
             </button>
             <div className={buttonsStupid}>
-              <Button className={cancelBtn} onClick={handleDelClose}>
+              <Button className={cancelBtnProject} onClick={handleDelClose}>
                 <div className={cancelBtnContent}>Cancel</div>
               </Button>
               <Button
-                className={createBtn}
+                className={createBtnProject}
                 onClick={() => handleDelete(project._id)}
               >
                 Delete
