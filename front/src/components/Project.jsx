@@ -1,8 +1,8 @@
-// import "../styles/Project.css";
 import { useState, useEffect, useContext } from "react";
 import styles from "../styles/Project.module.css";
 import { StateContext } from "../utils/StateContext";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../utils/ThemeContext";
 import { getAllTaskById } from "../services/get";
 import { updateData } from "../services/update";
 
@@ -12,6 +12,8 @@ function Project({ project }) {
   const { setprojectId, setShowMenu, setUpdate} = useContext(StateContext)
 
   const { projectName, icon, description, status, tasks, _id } = project;
+
+  const { theme } = useTheme();
 
 
   const calculateCounts = async () => {
@@ -62,41 +64,63 @@ function Project({ project }) {
     setStatusCheck(status);
   }, [status]);
 
-  const {projectListProject, projectIcon, projectListIcon, projectListName, projectListStatus, projectDone, projectOnHold,projectInProgress, projectOverall, overallBox} = styles;
+  const {
+    projectListProject,
+    projectIcon,
+    projectListIcon,
+    projectListName,
+    projectListStatus,
+    projectDone,
+    projectOnHold,
+    projectInProgress,
+    projectOverall,
+    overallBox,
+    projectListNameDark,
+    projectDoneDark,
+    projectOnHoldDark,
+    projectInProgressDark,
+    overallBoxDark,
+  } = styles;
 
   const navigate = useNavigate();
 
   const projectClickHandler = (project) => {
-    sessionStorage.setItem("projectid", project._id);      
+    sessionStorage.setItem("projectid", project._id);
     setprojectId(project._id);
     setShowMenu(false);
     navigate("/tasklist");
-}
+  };
 
+  const getStatusClass = () => {
+    if (statusCheck === "Done") {
+      return theme === "light" ? projectDone : projectDoneDark;
+    } else if (statusCheck === "On hold") {
+      return theme === "light" ? projectOnHold : projectOnHoldDark;
+    } else if (statusCheck === "In progress") {
+      return theme === "light" ? projectInProgress : projectInProgressDark;
+    }
+    return "";
+  };
 
   return (
-    <tr className={projectListProject} data-gloss={description} onClick={() => {projectClickHandler(project)}}>
+    <tr
+      className={projectListProject}
+      data-gloss={description}
+      onClick={() => {
+        projectClickHandler(project);
+      }}
+    >
       <th className={projectIcon}>
         <img className={projectListIcon} src={icon} alt="icon" />
       </th>
-        <td className={projectListName}> {projectName}</td>
+      <td className={theme === "light" ? projectListName : projectListNameDark}>
+        {projectName}
+      </td>
       <td className={projectListStatus}>
-        <p
-          className={
-            statusCheck == "Done"
-              ? projectDone
-              : statusCheck == "On hold"
-                ? projectOnHold
-                : statusCheck == "In progress"
-                  ? projectInProgress
-                  : ""
-          }
-        >
-          {status}
-        </p>
+        <p className={getStatusClass()}>{status}</p>
       </td>
       <td className={projectOverall}>
-        <p className={overallBox}>{countDone}/{tasks.length}</p>
+        <p className={theme === "light" ? overallBox : overallBoxDark}>{countDone}/{tasks.length}</p>
       </td>
     </tr>
   );

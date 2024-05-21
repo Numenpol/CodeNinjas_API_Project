@@ -85,6 +85,7 @@
     line-height: 1.375rem;
     /* 137.5% */
     margin-left: 0.2rem;
+    width: 100%;
 }
 
 
@@ -219,12 +220,50 @@
     margin-left: 1rem;
 }
 
-.taskListProjectName {
+.taskListNameBox {
+    margin-left: 0.5rem;
+}
+
+/* Dark theme css */
+
+.taskListCardDark {
+    background-color: #202020;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    width: 100%;
+    height: 95vh;
+}
+
+.taskListDark {
+    min-width: 360px;
+    background-color: 
+    #121212;
+    padding-top: 1.12rem;
+    margin-top: 5rem;
+}
+
+.taskListMenuDark {
+  display: none;
+}
+
+.taskListProjectNameDark {
+    color: #FFFFFF;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.375rem;
+    /* 137.5% */
+    margin-left: 0.2rem;
     width: 100%;
 }
 
-.taskListNameBox {
-    margin-left: 0.5rem;
+.taskListAddMemberDark {
+    border: 1px solid #D5D5D5;
+    padding: 0 0.6rem;
+    border-radius: 0.3125rem;
+    background: #202020;
+    height: 2rem;
+    color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px) {
@@ -287,6 +326,21 @@
     .taskListAddMember {
         min-width: 5rem;
     }
+
+
+/*  Dark theme css */
+
+.taskListProjectNameDark {
+    font-family: Montserrat;
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.taskListAddMemberDark {
+    min-width: 5rem;
+}
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -344,4 +398,31 @@
         line-height: normal;
     }
 
+    /* Dark theme css */
+
+    .taskListCardDark {
+        width: 100%;
+        height: 95vh;
+    }
+
+    .taskListDark {
+        display: flex;
+        width: 100%;
+        gap: 1.06rem;   
+    }
+    .taskListMenuDark {
+        display: block;
+        max-width: 30%;
+     background-color: #202020;
+        border-radius: 0rem 0.625rem 0rem 0rem;
+    }
+
+    .taskListProjectNameDark {
+        color: #FFFFFF;
+        font-family: Montserrat;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
 }

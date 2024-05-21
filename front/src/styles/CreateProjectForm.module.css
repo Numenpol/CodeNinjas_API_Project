@@ -16,6 +16,7 @@
 .TextThing12{
   /* margin-top: 0.5rem; */
   font-size: 0.875rem;
+  margin: 0.4rem 0.4rem 0.8rem
 
 } 
 
@@ -164,6 +165,7 @@
 
 .newProjectDesc input::placeholder {
   color: #adb5bd;
+  color: #4067f6 !important;
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 1.25rem;
@@ -177,6 +179,144 @@
 .createBtn:hover {
   background-color: #3593a2 !important;
 }
+.cancelBtnProject {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  background-color: #fff !important;
+  border: 0.2px solid #97979769 !important;
+  margin-right: 0.5rem;
+}
+.createBtnProject {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #3fadbe !important;
+  border: none !important;
+}
+.cancelBtnProject:hover {
+  background-color: #f5f6fa !important;
+}
+
+.createBtnProject:hover {
+  background-color: #3593a2 !important;
+}
+
+/* Dark theme css */
+
+.rocketPictureDark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #1E1E1E;
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.createProjectFormDark {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  background-color: #121212;
+}
+
+.createProjectHeaderDark {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  background-color: #121212;
+  border-radius: 0.3rem;
+}
+
+.blankSpaceDark {
+  background-color: #121212;
+  border-radius: 1rem;
+}
+
+.formLabelDark {
+  color: #FFFFFF;
+}
+
+.createChooseIconDark {
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-bottom: 0;
+  margin-top: 0.69rem;
+}
+
+.formLabelProjectDescriptionDark {
+  color: #FFFFFF;
+}
+
+.xIconButtonDark {
+  border: none;
+  background-color: #f5f6fa;
+  text-align: end;
+  border-radius: 0.3rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  padding-left: 0;
+  background-color: #121212;
+}
+
+.createProjectDark {
+  display: flex;
+  flex-direction: column;
+  min-width: 360px;
+  background-color: #121212;
+  border-radius: 0.625rem;
+}
+
+.projectNameFieldDark {
+  background: #1E1E1E !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid #565656 !important;
+  background: #1E1E1E !important;
+  color: #FFFFFF !important;
+}
+
+.projectDescriptionFieldDark {
+  background: #1E1E1E !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid #565656 !important;
+  background: #1E1E1E !important;
+  color: #FFFFFF !important;
+}
+
+.newProjectNameDark input::placeholder {
+  color: #adb5bd;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.modal-content {
+  border-radius: 1rem !important;
+}
+
+.createBtnDark {
+  padding: 0.625rem 1rem;
+  background: #3372B2 !important;
+  border: none !important;
+}
+
+.cancelBtnDark {
+  border-radius: 0.3125rem !important;
+  border: 0.2px solid #565656 !important;
+  background: #1E1E1E !important;
+  margin-right: 1rem;
+  padding: 0.625rem 1rem;
+}
+
 
 @media screen and (min-width: 768px) {
   .modalDialog {
@@ -227,6 +367,35 @@
   .newProjectName {
     margin-top: -0.4rem;
   }
+
+  /* Dark theme css */
+
+  .rocketPictureDark {
+    border-radius: 0;
+  }
+
+  .createProjectFormDark {
+    padding: 0 4rem 0 3.5rem;
+    border-radius: 0.3rem;
+  }
+
+  .createProjectHeaderDark {
+    padding-top: 2rem;
+    padding-left: 3.5rem;
+    margin-bottom: 0.69rem;
+  }
+
+  .xIconButtonDark {
+    order: 2;
+    padding-bottom: 24.5rem;
+    border-radius: 0 0.625rem 0.625rem 0;
+    background-color: #1E1E1E;
+  }
+
+  .createProjectDark {
+    flex-direction: row;
+    border-radius: 0.3rem;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -253,4 +422,16 @@
     font-size: 2.25rem;
     margin-bottom: 4rem;
   }
+
+  /* Dark theme css */
+
+  .xIconButtonDark {
+    padding-bottom: 29rem;
+  }
+
+  .cancelBtnDark {
+    width: 4.75rem;
+    height: 2.375rem;
+  }
+  
 }

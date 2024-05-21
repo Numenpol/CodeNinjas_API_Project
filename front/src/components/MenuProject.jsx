@@ -21,6 +21,7 @@ import styles from "../styles/MenuProject.module.css";
 import stylesForm from "../styles/CreateProjectForm.module.css";
 import xIcon from "../assets/xIcon.svg";
 import rocketPic from "../assets/rocket.svg";
+import { useTheme } from "../utils/ThemeContext";
 
 function MenuProject({ project }) {
   const { setprojectId, setShowMenu, selectedIcon, setIcon } = useContext(StateContext);
@@ -28,6 +29,7 @@ function MenuProject({ project }) {
   const { setUpdate } = useContext(StateContext);
   const [clickX, setClickX] = useState(null);
   const [clickY, setClickY] = useState(null);
+  const { theme } = useTheme();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -90,7 +92,7 @@ function MenuProject({ project }) {
   const formSubmitHandler = async (data) => {
     try {
       if (project) {
-        await updateData(project._id,{ ...data, icon:selectedIcon });
+        await updateData(project._id, { ...data, icon: selectedIcon });
       } else {
         await postData({ ...data, icon: selectedIcon });
       }
@@ -121,12 +123,16 @@ function MenuProject({ project }) {
     menuProjectList,
     menuProjectIcon,
     menuProjectName,
+    menuProjectProject,
     editIcon,
+    menuProjectEditDelete,
     menuProjectModalBackDrop,
     menuEdit,
     menuPencilsquare,
     menuTrash,
     menuTrashIcon,
+    menuProjectNameDark,
+    menuProjectEditModal,
   } = styles;
 
   const {
@@ -140,6 +146,8 @@ function MenuProject({ project }) {
     newProjectDesc,
     createButtons,
     cancelBtn,
+    cancelBtnProject,
+    createBtnProject,
     cancelBtnContent,
     createBtn,
     createBtnContent,
@@ -161,15 +169,15 @@ function MenuProject({ project }) {
           }}
         >
           <img src={icon} alt="icon" className={menuProjectIcon} />
-          <p className={menuProjectName}>{projectName}</p>
+          <p className={theme == "light" ? menuProjectName : menuProjectNameDark}>{projectName}</p>
         </div>
-        <div className="Thing">
+        <div className={`Thing ${menuProjectProject}`}>
           <div>
             <ThreeDots className={editIcon} onClick={handleShow} />
           </div>
           {show && (
             <Modal
-              className="myModal"
+              className={`myModal ${menuProjectEditDelete}`}
               // dialogClassName={`${myModal} modal-content`}
               show={show}
               onHide={handleClose}
@@ -192,10 +200,11 @@ function MenuProject({ project }) {
         </div>
 
         <Modal
-          className="mySecondModal"
+          cclassName={`mySecondModal ${menuProjectEditModal}`}
           show={smShow}
           dialogClassName={modalDialog}
           backdropClassName="backdrop"
+          onHide={handleSmClose}
         >
           <div className={createProject}>
             <button className={xIconButton} onClick={handleSmClose}>
@@ -289,19 +298,20 @@ function MenuProject({ project }) {
           className="myDeleteModal"
           show={delShow}
           style={{ top: `${clickY - 160}px`, left: `${clickX - 100}px` }}
+          onHide={handleDelClose}
           backdrop="true"
         >
           <Modal.Body>
-            <div className={TextThing12}>Are You sure, you want to delete "{projectName}"?</div>
+            <div className={TextThing12}>Are You sure, you want to delete &quot;{projectName}&quot;?</div>
             <button className={xIconButton1} onClick={handleDelClose}>
               <img src={xIcon} alt="xIcon" />
             </button>
             <div className={buttonsStupid}>
-              <Button className={cancelBtn} onClick={handleDelClose}>
+              <Button className={cancelBtnProject} onClick={handleDelClose}>
                 <div className={cancelBtnContent}>Cancel</div>
               </Button>
               <Button
-                className={createBtn}
+                className={createBtnProject}
                 onClick={() => handleDelete(project._id)}
               >
                 Delete
