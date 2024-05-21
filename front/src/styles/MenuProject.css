@@ -1,12 +1,18 @@
 .myTaskDeleteModal {
   text-align: center;
 }
+.MenuPopUpBody {
+  margin-left: -1rem;
+}
 
 ._menuProjectList_1pt6d_9 {
   display: flex;
   width: 100%;
   justify-content: flex-start !important;
 
+}
+div[class="mt-5 mb-5 rounded-3 shadow border-0 offcanvas offcanvas-start show"]{
+  width: 21rem !important;
 }
 
 div[class="fade offcanvas-backdrop EpicBack show"] {
@@ -31,7 +37,7 @@ div[class="fade offcanvas-backdrop EpicBack show"] {
 
 .myModal .modal-dialog {
   position: fixed;
-  left: 300px;
+  left: 150px;
   margin-top: 500px;
 }
 
@@ -137,6 +143,9 @@ div[class="fade myTaskDeleteModal modal show"] {
     top: -1rem;
     width: 22.875rem !important;
     left: -2rem;
+  }
+  div[class="mt-5 mb-5 rounded-3 shadow border-0 offcanvas offcanvas-start show"]{
+    width: 24.5rem !important;
   }
 }
 

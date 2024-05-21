@@ -133,7 +133,6 @@ function MenuProject({ project }) {
     menuTrashIcon,
     menuProjectNameDark,
     menuProjectEditModal,
-    menuProjectDeleteModal,
   } = styles;
 
   const {
@@ -296,7 +295,7 @@ function MenuProject({ project }) {
         </Modal>
 
         <Modal
-          className={`myDeleteModal ${menuProjectDeleteModal}`}
+          className="myDeleteModal"
           show={delShow}
           style={{ top: `${clickY - 160}px`, left: `${clickX - 100}px` }}
           onHide={handleDelClose}

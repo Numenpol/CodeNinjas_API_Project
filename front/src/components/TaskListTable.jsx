@@ -131,7 +131,7 @@ function TaskListTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "To do" || task.status === "");
 
-  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, deleteTaskModal, DeleteModalCloseBtn, cancelBtn, createBtn, tableForm } = styles;
+  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn, tableForm } = styles;
 
   return (
     <>
@@ -241,7 +241,7 @@ function TaskListTable() {
             </form>
           </div>
           <Modal
-            className={`myTaskDeleteModal ${deleteTaskModal}`}
+            className="myTaskDeleteModal"
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
             style={{ top: `${clickY + 290}px`, left: `${clickX - 600}px` }}

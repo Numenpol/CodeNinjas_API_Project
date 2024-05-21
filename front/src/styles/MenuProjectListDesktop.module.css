@@ -2,28 +2,39 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .menuProjectPopUp {
     border-radius: 50px;
     /* min-width: 360px; */
 
 }
 
+=======
+>>>>>>> a2b65dcd9381fbea90d69dd5ab7ea8372dca9fc8
 .projectPopUp {
-    min-width: 22.5rem;
+    width: 21rem;
     display: flex;
     flex-direction: column;
     min-height: 15rem;
-    height: 80vh;
     margin-top: 27px;
-    /* justify-content: center; */
+}
+.projectPopUp .modal-dialog {
+    width: 20rem;
+}
+.menuProjectPopUp{
+    width: 2rem;
 }
 
 .homeIcon {
     border-bottom: 1px solid #d8d8d8;
+    /* width: 100vh; */
     color: #565656;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.12rem;
+    margin-left: -1rem;
+    padding-left:1rem ;
+    margin-top: -1rem;
     /* width: 100%; */
 }
 
@@ -57,8 +68,9 @@
 .closeButton {
     border: none;
     background: none;
-    margin-top: -4.5rem;
+    margin-top: -3rem;
     color: #565656;
+    margin-right: 0.2rem;
 }
 
 .searchThing {
@@ -145,7 +157,9 @@
 
 @media screen and (min-width: 768px) {
     .projectPopUp {
+         width: 25rem; 
         min-height: 20rem;
+<<<<<<< HEAD
         min-width: 22.5rem;
     }
 
@@ -156,6 +170,13 @@
         min-width: 22.5rem;
         background-color: #1E1E1E;
     }
+=======
+       
+      }
+      .closeButton{
+        margin-right: 1rem;
+      }
+>>>>>>> a2b65dcd9381fbea90d69dd5ab7ea8372dca9fc8
 }
 
 @media screen and (min-width: 1440px) {

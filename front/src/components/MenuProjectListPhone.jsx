@@ -48,6 +48,7 @@ function MenuProjectListPhone() {
 
   return (
     <div className={menuProjectPopUp}>
+<<<<<<< HEAD
       <Offcanvas
         show={showMenu}
         onHide={handleClose}
@@ -56,6 +57,11 @@ function MenuProjectListPhone() {
       >
         <Offcanvas.Body className={theme === "light" ? offcanvasBody : offcanvasBodyDark}>
           <div className={theme === "light" ? projectPopUp : projectPopUpDark}>
+=======
+      <Offcanvas show={showMenu} onHide={handleClose}  animation="false"  backdropClassName="EpicBack" className="mt-5 mb-5 rounded-3 shadow border-0">
+        <Offcanvas.Body className="MenuPopUpBody">
+          <div className={projectPopUp}>
+>>>>>>> a2b65dcd9381fbea90d69dd5ab7ea8372dca9fc8
             <div className={homeIcon}>
               <Link to={"/projects"}>
                 <div className={houseIconText}>
