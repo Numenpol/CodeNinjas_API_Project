@@ -5,50 +5,16 @@ import calendaricon from "../assets/CalendarIcon.png";
 import statisticicon from "../assets/StatisticIcon.png";
 import styles from "../styles/Dashboard.module.css";
 import { StateContext } from "../utils/StateContext";
-import { getAllTaskById } from "../services/get";
 
 function Dashboard() {
-  const [done, setDone] = useState(0);
-  const [inprogress, setInProgress] = useState(0);
-  const [onhold, setOnHold] = useState(0);
-  const [overall, setOverall] = useState(0);
   const { projects } = useContext(StateContext)
 
-  useEffect(() => {
-    let doneCount = 0;
-    let inProgressCount = 0;
-    let onHoldCount = 0;
-    let totalTasks = 0;
-
-    const calculateCounts = async () => {
-      for (let project of projects) {
-        totalTasks += project.tasks.length;
-        const { data: { tasks } } = await getAllTaskById(project._id);
-        tasks.forEach((task) => {
-          if (task.status === 'Done') {
-            doneCount += 1;
-          } else if (task.status === 'In progress') {
-            inProgressCount += 1;
-          } else if (task.status === 'To do') {
-            onHoldCount += 1;
-          }
-        });
-      }
-      setDone(doneCount);
-      setInProgress(inProgressCount);
-      setOnHold(onHoldCount);
-      setOverall(totalTasks);
-    };
-
-    calculateCounts();
-  }, [projects]);
-
+  const doneCount = projects.filter(project => project.status === 'Done').length;
+  const inProgressCount = projects.filter(project => project.status === 'In progress').length;
+  const onHoldCount = projects.filter(project => project.status === 'On hold').length;
+  const totalProjects = projects.length;
 
   const {dashboard, dashboardTopBoxes, dashboardBox, checkmarkIcon, dashboardDone, dashboardNumber, penandpaperIcon, dashboardInProgress, dashboardBottomBoxes, calendarIcon, dashboardOnHold, statisticIcon, dashboardOverall} = styles;
-
-
-
-
 
   return (
     <>
@@ -61,7 +27,7 @@ function Dashboard() {
               className={checkmarkIcon}
             />
             <p className={dashboardDone}>Done</p>
-            <div className={dashboardNumber}>{done}</div>
+            <div className={dashboardNumber}>{doneCount}</div>
           </div>
           <div className={dashboardBox}>
             <img
@@ -70,7 +36,7 @@ function Dashboard() {
               className={penandpaperIcon}
             />
             <p className={dashboardInProgress}>In Progress</p>
-            <div className={dashboardNumber}>{inprogress}</div>
+            <div className={dashboardNumber}>{inProgressCount}</div>
           </div>
         </div>
         <div className={dashboardBottomBoxes}>
@@ -82,7 +48,7 @@ function Dashboard() {
             />
 
             <p className={dashboardOnHold}>On Hold</p>
-            <div className={dashboardNumber}>{onhold}</div>
+            <div className={dashboardNumber}>{onHoldCount}</div>
           </div>
           <div className={dashboardBox}>
             <img
@@ -91,7 +57,7 @@ function Dashboard() {
               className={statisticIcon}
             />
             <p className={dashboardOverall}>Overall</p>
-            <div className={dashboardNumber}>{overall}</div>
+            <div className={dashboardNumber}>{totalProjects}</div>
           </div>
         </div>
       </div>

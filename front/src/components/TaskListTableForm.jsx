@@ -1,7 +1,6 @@
 import Table from "react-bootstrap/Table";
 import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
-import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
 import { useContext, useState, useEffect, useRef } from "react";
 import { StateContext } from "../utils/StateContext";
@@ -12,10 +11,8 @@ import taskListStyles from "../styles/TaskListTable.module.css";
 import tableFormStyles from "../styles/TaskListTableForm.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
-import { addProjectTask } from "../services/patch";
 import { getOne } from "../services/get";
 import { createPopper } from '@popperjs/core';
-import { updateData } from "../services/update";
 
 
 function TaskListTableForm({
@@ -24,7 +21,6 @@ function TaskListTableForm({
   setSelectedCreationDay,
   selectedCreationDay,
   selectedCompletionDay,
-  setSelectedCompletionDay,
 }) {
   const { tasks, setUpdate, showTask, setShowTask, projectId } =
     useContext(StateContext);
@@ -63,8 +59,14 @@ function TaskListTableForm({
     setProjectInfo(getInfo);
   };
 
+  const getStartFixedDate = (date) => {
+    const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return formattedDate;
+  }
+
   useEffect(() => {
     getMembersNames();
+    setSelectedCreationDay(getStartFixedDate(new Date()));
   }, [projectId]);
 
   useEffect(() => {
@@ -169,7 +171,6 @@ function TaskListTableForm({
 
   const formSubmitHandler = async (data) => {
     try {
-      // const { resDataId } =
       await postDataTask({
         ...data,
         status: selectedStatus,
@@ -180,10 +181,6 @@ function TaskListTableForm({
         completiondate: selectedCompletionDay,
         projectId: projectId,
       });
-
-      const projectData = { status: "in progress" }
-      await updateData(projectId, projectData)
-
       setUpdate((update) => update + 1);
       setShowTask(false);
       reset();
@@ -415,11 +412,7 @@ function TaskListTableForm({
                 <td className={tableTimeline}>
                   <TaskListTableTimeLine
                     setSelectedTimeLine={setSelectedTimeLine}
-                    setSelectedCreationDay={setSelectedCreationDay}
-                    setSelectedCompletionDay={setSelectedCompletionDay}
                     selectedTimeLine={selectedTimeLine}
-                    selectedCreationDay={selectedCreationDay}
-                    selectedCompletionDay={selectedCompletionDay}
                   />
                 </td>
                 <td className={tableHeaderCreationDate}>

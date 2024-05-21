@@ -9,8 +9,7 @@ import { updateDataTask } from '../services/update';
 import { StateContext } from "../utils/StateContext";
 
 
-function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, task, selectedTimeLine, 
-  selectedCreationDay, selectedCompletionDay, id}) {
+function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id}) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
   const [endDateDay, setEndDateDay] = useState(0);
@@ -78,12 +77,10 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, ta
   const showCalendarElementClass = "taskListTimeLineCalendar";
 
 
-  const handleStatusUpdate = async (id, updateTimeLine, updateCreationDay, updateCompletionDay) => {
+  const handleStatusUpdate = async (id, updateTimeLine) => {
     try {
       const data = { 
         timeline: updateTimeLine,
-        creationdate: updateCreationDay,
-        completiondate: updateCompletionDay,
        };
       await updateDataTask(id, data);
       setUpdate((update) => update + 1);
@@ -127,7 +124,6 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, ta
           setEndDateDay(endDateDay);
           setCalendarDay(`${startDate}-${endDate}`);
           setSelectedTimeLine(calendarDay);
-          setSelectedCreationDay(getStartFixedDate(new Date()));
         } 
       } else {
         const dateNumbers = task.match(/\d+/g);
@@ -160,9 +156,9 @@ function TaskListTableTimeLine({ setSelectedTimeLine, setSelectedCreationDay, ta
 
   useEffect(() => {
     if (id) {
-    handleStatusUpdate(id, selectedTimeLine, selectedCreationDay, selectedCompletionDay);      
+    handleStatusUpdate(id, selectedTimeLine);      
     }
-  }, [id, selectedTimeLine, selectedCreationDay, selectedCompletionDay])
+  }, [id, selectedTimeLine])
 
 
   return (

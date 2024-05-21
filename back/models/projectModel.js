@@ -19,12 +19,8 @@ const projectSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["on hold", "in progress", "done"],
-    default: "on hold",
-  },
-  overall: {
-    type: Number,
-    default: 0,
+    enum: ["On hold", "In progress", "Done"],
+    default: "On hold",
   },
   tasks: [
     {
