@@ -25,8 +25,8 @@ function MenuProjectListPhone() {
 
   return (
     <div className={menuProjectPopUp}>
-      <Offcanvas show={showMenu} onHide={handleClose}  backdropClassName="EpicBack" className="mt-5 mb-5 rounded-3 shadow border-0">
-        <Offcanvas.Body>
+      <Offcanvas show={showMenu} onHide={handleClose}  animation="false"  backdropClassName="EpicBack" className="mt-5 mb-5 rounded-3 shadow border-0">
+        <Offcanvas.Body className="MenuPopUpBody">
           <div className={projectPopUp}>
             <div className={homeIcon}>
               <Link to={"/projects"}>
