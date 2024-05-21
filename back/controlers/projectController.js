@@ -19,12 +19,13 @@ exports.getAllProjects = async (req, res) => {
     let userWithProjects = await User.findById(req.user._id).populate(
       "membersProject"
     );
+    
     let projects = [
       ...userWithProjects.membersProject,
       ...projetsCreated,
     ].filter((project) => {
       if (searchParams.projectName) {
-        return project.projectName.includes(searchParams.projectName);
+        return project.projectName.toLowerCase().includes(searchParams.projectName);
       } else {
         return true;
       }
@@ -62,28 +63,72 @@ exports.getProject = async (req, res) => {
 };
 
 // get projects by task
+// exports.getProjectsByTask = async (req, res) => {
+//  let searchParamstask = req.query;
+
+//   try {
+//     // const { taskId } = req.params;
+//     // const projects = await Project.find({ tasks: taskId }).populate("tasks");
+//     // const filteredProjects = projects.filter(project => project.tasks.includes(taskId));
+//     const projectId = req.params.id;
+//     const project = await Project.findById(projectId).populate("tasks");
+//     const projectTasks = project.tasks;
+
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         tasks: projectTasks,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(404).json({
+//       status: "fail",
+//       message: error.message,
+//     });
+//   }
+// };
+
 exports.getProjectsByTask = async (req, res) => {
+  let searchParams = req.query;
+
   try {
-    // const { taskId } = req.params;
-    // const projects = await Project.find({ tasks: taskId }).populate("tasks");
-    // const filteredProjects = projects.filter(project => project.tasks.includes(taskId));
     const projectId = req.params.id;
     const project = await Project.findById(projectId).populate("tasks");
-    const projectTasks = project.tasks;
+
+    if (!project) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Project not found",
+      });
+    }
+
+    // Filter tasks based on search parameters
+    const filteredTasks = project.tasks.filter(task => {
+      let matches = true;
+      for (const key in searchParams) {
+        if (searchParams[key] && task[key] && !task[key].toString().toLowerCase().includes(searchParams[key])) {
+          matches = false;
+          break;
+        }
+      }
+      return matches;
+    });
 
     res.status(200).json({
       status: "success",
       data: {
-        tasks: projectTasks,
+        tasks: filteredTasks,
       },
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       status: "fail",
       message: error.message,
     });
   }
 };
+
+
 exports.createProject = async (req, res) => {
   try {
     const project = await Project.create({ ...req.body, user: req.user._id });

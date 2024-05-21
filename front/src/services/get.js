@@ -55,3 +55,26 @@ export const getSearchByProjectName = async (value) => {
         });
     return response.data;
 }
+
+// get Search by Task name
+// export const getSearchByTaskName = async (value) => {
+//     let token = JSON.parse(localStorage.getItem("user")).token;
+//     const response = await axios.get(`${API_URLT}?taskName=${value}`,
+//         {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//             },
+//         });
+//     return response.data;
+// }
+
+export const getSearchByTaskName = async (id, value) => {
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(`${VITE_URLO}/${id}?task=${value}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response.data;
+}
+

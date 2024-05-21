@@ -11,7 +11,7 @@ import houseIconPic from "../assets/houseIcon.svg";
 // import Form from "react-bootstrap/Form";
 // import InputGroup from "react-bootstrap/InputGroup";
 import MenuProjectList from "./MenuProjectList"
-import SearchBar from './SearchBar';
+import ProjectsSearchBar from './ProjectsSearchBar';
 import styles from "../styles/MenuProjectListDesktop.module.css";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ function MenuProjectListPhone() {
               </button>
             </div>
             <div className={searchThing}>
-              <SearchBar />
+              <ProjectsSearchBar/>
             </div>
             <div className={folderTextThing}>
               <div className={menuMyProjects}>

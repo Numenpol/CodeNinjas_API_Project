@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPhone from "./MenuProjectListPhone";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
-import SearchBar from "./SearchBar";
+import ProjectsSearchBar from "./ProjectsSearchBar";
 import styles from "../styles/ProjectWithoutList.module.css";
 
 function ProjectWithoutList() {
@@ -52,7 +52,7 @@ function ProjectWithoutList() {
               </div>
             </div>
             <div className={projectListSearchBar}>
-              <SearchBar />
+              <ProjectsSearchBar />
             </div>
           </div>
         </div>

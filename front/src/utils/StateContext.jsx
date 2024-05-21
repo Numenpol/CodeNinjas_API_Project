@@ -102,7 +102,7 @@ export const StateProvider = ({ children }) => {
     return (
         <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
           showMenu, setShowMenu, handleShow,setProjects, setShowTask, showTask, setprojectId, projectId, setShowEdit, showEdit, 
-          update, tasksById, selectedIcon, setSelectedIcon, value, setValue, result, setResult}}>
+          update, tasksById, selectedIcon, setSelectedIcon, value, setValue, result, setTasks,setTasksById, setResult}}>
             {children}
             </StateContext.Provider>
     );

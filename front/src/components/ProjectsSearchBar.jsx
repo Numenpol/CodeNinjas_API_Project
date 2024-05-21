@@ -7,16 +7,17 @@ import { getSearchByProjectName } from "../services/get";
 import { StateContext } from "../utils/StateContext";
 import styles from "../styles/SearchBar.module.css";
 
-function SearchBar() {
+function ProjectsSearchBar() {
   const [smShow, setSmShow] = useState(false);
   const [checked, setChecked] = useState({ projectName: false, status: false });
   const [value, setValue] = useState("");
 
-  const { setProjects } = useContext(StateContext);
+  const { setProjects, projects } = useContext(StateContext);
 
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = async (e) => {
     setValue(e.target.value);
+    await handleSubmit(e);
   };
 
 
@@ -25,8 +26,6 @@ function SearchBar() {
     const result = await getSearchByProjectName(value);
     setProjects(result.data.projects);
   }
-
-
 
 
   const buttonRef = useRef(null);
@@ -136,5 +135,5 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default ProjectsSearchBar;
 

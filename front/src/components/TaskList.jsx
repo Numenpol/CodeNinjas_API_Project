@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/esm/Button";
 import MenuProjectListPhone from "./MenuProjectListPhone";
-import SearchBar from "./SearchBar";
+import TaskListSearchBar from "./TaskListSearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
 // import Modal from "react-bootstrap/Modal";
@@ -175,7 +175,7 @@ function TaskList() {
             New task
           </Button>
           <div className={taskListSearch}>
-            <SearchBar />
+            <TaskListSearchBar />
           </div>
         </div>
         <div className={taskListStorage}>

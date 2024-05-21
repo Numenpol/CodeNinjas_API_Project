@@ -7,7 +7,7 @@ import CreateProjectForm from "./CreateProjectForm";
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPhone from "./MenuProjectListPhone";
-import SearchBar from "./SearchBar";
+import ProjectsSearchBar from "./ProjectsSearchBar";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 
 function ProjectWithList() {
@@ -57,7 +57,7 @@ function ProjectWithList() {
             </div>
             <div>
               <div className={projectListSearchBar}>
-                <SearchBar />
+                <ProjectsSearchBar />
               </div>
             </div>
           </div>
