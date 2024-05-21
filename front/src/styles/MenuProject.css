@@ -1,22 +1,26 @@
 .myTaskDeleteModal {
   text-align: center;
 }
-._menuProjectList_1pt6d_9{
+
+._menuProjectList_1pt6d_9 {
   display: flex;
   width: 100%;
   justify-content: flex-start !important;
 
 }
+
 div[class="fade offcanvas-backdrop EpicBack show"] {
   opacity: 0 !important;
 }
+
 .myTaskDeleteModal .modal-dialog {
-  width: 22.875rem !important;
+  width: 20.8rem !important;
   height: 6.75rem !important;
   position: relative;
-  left: -2rem;
+  left: -0.5rem;
   top: 2.3rem;
 }
+
 .myModal .modal-content {
   padding-left: 0.8rem;
   padding-top: 0.4rem;
@@ -30,11 +34,12 @@ div[class="fade offcanvas-backdrop EpicBack show"] {
   left: 300px;
   margin-top: 500px;
 }
+
 .invalid-feedback {
- color: #C1427F !important;   
+  color: #C1427F !important;
 }
 
-.form-label{
+.form-label {
   font-family: var(--inter) !important;
   font-weight: 400 !important;
   font-size: 0.875rem !important;
@@ -54,12 +59,15 @@ div [class="fade myModal modal show"] {
   position: absolute;
   width: 100vh !important;
 }
+
 div[class="fade modal-backdrop show"] {
   display: none !important;
 }
+
 div[class="fade myDeleteModal modal show"] {
   margin-left: -14rem !important;
 }
+
 div[class="fade myTaskDeleteModal modal show"] {
   width: 100% !important;
   margin-top: -21rem;
@@ -107,19 +115,22 @@ div[class="fade myTaskDeleteModal modal show"] {
     position: absolute;
     left: 200px;
   }
+
   .myTaskDeleteModal .modal-dialog {
     top: -1rem;
+    width: 22.875rem !important;
+    left: -2rem;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .myDeleteModal .modal-dialog {
     position: absolute;
-    
   }
+
   .myTaskDeleteModal .modal-dialog {
     top: 1rem;
     left: -20%;
 
   }
-
 }

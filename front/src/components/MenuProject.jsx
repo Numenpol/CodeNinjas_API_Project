@@ -90,7 +90,7 @@ function MenuProject({ project }) {
   const formSubmitHandler = async (data) => {
     try {
       if (project) {
-        await updateData(project._id,{ ...data, icon:selectedIcon });
+        await updateData(project._id, { ...data, icon: selectedIcon });
       } else {
         await postData({ ...data, icon: selectedIcon });
       }
@@ -121,12 +121,16 @@ function MenuProject({ project }) {
     menuProjectList,
     menuProjectIcon,
     menuProjectName,
+    menuProjectProject,
     editIcon,
+    menuProjectEditDelete,
     menuProjectModalBackDrop,
     menuEdit,
     menuPencilsquare,
     menuTrash,
     menuTrashIcon,
+    menuProjectEditModal,
+    menuProjectDeleteModal
   } = styles;
 
   const {
@@ -165,13 +169,13 @@ function MenuProject({ project }) {
           <img src={icon} alt="icon" className={menuProjectIcon} />
           <p className={menuProjectName}>{projectName}</p>
         </div>
-        <div className="Thing">
+        <div className={`Thing ${menuProjectProject}`}>
           <div>
             <ThreeDots className={editIcon} onClick={handleShow} />
           </div>
           {show && (
             <Modal
-              className="myModal"
+              className={`myModal ${menuProjectEditDelete}`}
               // dialogClassName={`${myModal} modal-content`}
               show={show}
               onHide={handleClose}
@@ -194,7 +198,7 @@ function MenuProject({ project }) {
         </div>
 
         <Modal
-          className="mySecondModal"
+          cclassName={`mySecondModal ${menuProjectEditModal}`}
           show={smShow}
           dialogClassName={modalDialog}
           backdropClassName="backdrop"
@@ -289,14 +293,14 @@ function MenuProject({ project }) {
         </Modal>
 
         <Modal
-          className="myDeleteModal"
+          className={`myDeleteModal ${menuProjectDeleteModal}`}
           show={delShow}
           style={{ top: `${clickY - 160}px`, left: `${clickX - 100}px` }}
           onHide={handleDelClose}
           backdrop="true"
         >
           <Modal.Body>
-            <div className={TextThing12}>Are You sure, you want to delete "{projectName}"?</div>
+            <div className={TextThing12}>Are You sure, you want to delete &quot;{projectName}&quot;?</div>
             <button className={xIconButton1} onClick={handleDelClose}>
               <img src={xIcon} alt="xIcon" />
             </button>

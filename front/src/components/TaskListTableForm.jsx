@@ -114,17 +114,6 @@ function TaskListTableForm({
     setIsOpenPriority(false);
   };
 
-  const {
-    statusBtn,
-    statusMenu,
-    statusDo,
-    statusProgress,
-    statusDone,
-    selected,
-    statusInProgress,
-    statusDoneSelected,
-  } = styles;
-
   const getInitials = (name) => {
     const initials = name
       .split(" ")
@@ -132,27 +121,6 @@ function TaskListTableForm({
       .join("");
     return initials.toUpperCase();
   };
-
-  const {
-    priorityBtn,
-    priorityMenu,
-    priorityLow,
-    priorityMedium,
-    priorityHigh,
-    selectedPrioLow,
-    selectedPrioMed,
-    selectedPrioHi,
-  } = styles2;
-
-  const {
-    ownerBtn,
-    ownerMenu,
-    ownerList: ownerListStyle,
-    initials: initialsStyle,
-    initialsList,
-    circleIcon
-  } = Ownerstyles;
-
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {

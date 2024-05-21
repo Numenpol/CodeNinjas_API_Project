@@ -131,7 +131,7 @@ function TaskListTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "To do" || task.status === "");
 
-  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, tableForm } = styles;
+  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, deleteTaskModal, DeleteModalCloseBtn, cancelBtn, createBtn, tableForm } = styles;
 
   return (
     <>
@@ -241,7 +241,7 @@ function TaskListTable() {
             </form>
           </div>
           <Modal
-            className="myTaskDeleteModal"
+            className={`myTaskDeleteModal ${deleteTaskModal}`}
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
             style={{ top: `${clickY + 290}px`, left: `${clickX - 600}px` }}
@@ -249,16 +249,16 @@ function TaskListTable() {
             <Modal.Body>
               <div>Are you sure you want to delete this task?</div>
               <button
-                className="DeleteModalCloseBtn"
+                className={DeleteModalCloseBtn}
                 onClick={handleCloseDeleteModal}
               >
                 <img src={xIcon} alt="xIcon" />
               </button>
               <div></div>
-              <Button className="cancelBtn" onClick={handleCloseDeleteModal}>
+              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className="createBtn" onClick={handleDeleteTask}>
+              <Button className={createBtn} onClick={handleDeleteTask}>
                 Delete
               </Button>
             </Modal.Body>
