@@ -77,22 +77,23 @@ export const getSearchByProjectName = async (value, includeStatus) => {
 
 
 
-export const getSearchByTaskName = async (id, value, includesPriority, includesStatus) => {
+export const getSearchByTaskName = async (id, value, priority, status) => {
     let token = JSON.parse(localStorage.getItem('user')).token;
     let url = `${VITE_URLO}/${id}?task=${value}`;
-    if (includesPriority) {
-      url += `&priority=low`;  // Pakeiskite į norimą prioritetą
+    if (priority) {
+        url += `&priority=${priority}`;
     }
-    if (includesStatus) {
-      url += `&status=active`;  // Pakeiskite į norimą statusą
+    if (status) {
+        url += `&status=${status}`;
     }
     const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
     });
     return response.data;
-  };
+};
+
   
 
 

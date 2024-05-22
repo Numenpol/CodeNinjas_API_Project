@@ -152,10 +152,7 @@ function ProjectsSearchBar() {
                   )}
                   Project name
                 </div>
-                <div
-                  onClick={() => handleCheck("status")}
-                  className={sortBy}
-                >
+                <div onClick={() => handleCheck("status")} className={sortBy}>
                   {checked.status ? (
                     <CheckCircleFill className={checkIcon} />
                   ) : (

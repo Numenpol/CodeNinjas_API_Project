@@ -89,33 +89,35 @@ exports.getProjectsByTask = async (req, res) => {
 
       let filteredTasks = project.tasks.filter((task) => {
           let matches = true;
-          let matchesPriority = true;
-          let matchesStatus = true;
 
-          for (const key in searchParams) {
-              if (
-                  searchParams[key] &&
-                  task[key] &&
-                  !task[key].toString().toLowerCase().includes(searchParams[key].toLowerCase())
-              ) {
-                  matches = false;
-                  break;
+          if (searchParams.task) {
+              matches = task.task.toLowerCase().includes(searchParams.task.toLowerCase());
+          }
+
+          if (matches && searchParams.status) {
+              if (searchParams.status === 'active') {
+                  matches = ['in progress', 'done', 'to do'].includes(task.status.toLowerCase());
+              } else {
+                  matches = task.status.toLowerCase() === searchParams.status.toLowerCase();
               }
           }
-          if (searchParams.status && searchParams.status === 'active') {
-              matchesStatus = ['In Progress', 'Done', 'To Do'].includes(task.status);
+
+          if (matches && searchParams.priority) {
+              matches = ['low', 'medium', 'high'].includes(task.priority.toLowerCase());
           }
 
-          if (searchParams.priority && searchParams.priority === 'low') {
-              matchesPriority = ['Low', 'Medium', 'High'].includes(task.priority);
-          }
-
-          return matches && matchesPriority && matchesStatus;
+          return matches;
       });
 
-      if (filteredTasks.length === 0) {
-          filteredTasks = project.tasks;
+      if (searchParams.status && filteredTasks.length === 0) {
+        filteredTasks = project.tasks;
       }
+  
+      if (searchParams.priority && filteredTasks.length === 0) {
+        filteredTasks = project.tasks;
+      }
+  
+  
 
       res.status(200).json({
           status: 'success',

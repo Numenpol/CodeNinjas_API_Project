@@ -24,28 +24,28 @@ function TaskListSearchBar() {
     };
 
     const debounceSearch = useCallback(
-        debounce(async (searchValue, includesPriority, includesStatus) => {
+        debounce(async (searchValue, priority, status) => {
             try {
                 let projectId = sessionStorage.getItem('projectid');
-                const result = await getSearchByTaskName(projectId, searchValue, includesPriority, includesStatus);
+                const result = await getSearchByTaskName(projectId, searchValue, priority, status);
                 setTasksById(result.data.tasks);
             } catch (error) {
                 console.error('Error fetching tasks:', error);
             }
         }, 400),
-        [setTasksById]
+        []
     );
 
     const handleSearchChange = (e) => {
         setValue(e.target.value);
-        debounceSearch(e.target.value, checked.priority, checked.status);
+        debounceSearch(e.target.value, checked.priority, checked.status ? 'active' : '');
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             let projectId = sessionStorage.getItem('projectid');
-            const result = await getSearchByTaskName(projectId, value, checked.priority, checked.status);
+            const result = await getSearchByTaskName(projectId, value, checked.priority, checked.status ? 'active' : '');
             setTasksById(result.data.tasks);
         } catch (error) {
             console.error("Error fetching tasks:", error);
@@ -55,12 +55,18 @@ function TaskListSearchBar() {
     const buttonRef = useRef(null);
 
     const handleCheck = (name) => {
-        setChecked(prevState => ({
-            ...prevState,
-            [name]: !prevState[name]
-        }));
+        const newChecked = {
+            ...checked,
+            [name]: !checked[name]
+        };
+
+        setChecked(newChecked);
         setSmShow(false);
-        debounceSearch(value, name === "priority" ? !checked.priority : checked.priority, name === "status" ? !checked.status : checked.status);
+        debounceSearch(
+            value,
+            name === "priority" ? newChecked.priority : checked.priority,
+            name === "status" ? (newChecked.status ? 'active' : '') : (checked.status ? 'active' : '')
+        );
     };
 
     const {
@@ -128,7 +134,7 @@ function TaskListSearchBar() {
                                 </div>
                                 <div onClick={() => handleCheck('priority')} className={sortBy}>
                                     {checked.priority ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
-                                    Priority
+                                    Priority 
                                 </div>
                             </div>
                         )}
