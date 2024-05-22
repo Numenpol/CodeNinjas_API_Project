@@ -1,6 +1,5 @@
 import { CheckCircleFill, Circle, Search, Sliders } from "react-bootstrap-icons";
-// import Modal from 'react-bootstrap/Modal';
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext, useCallback } from "react";
 import { createPopper } from '@popperjs/core';
 import { getSearchByTaskName } from "../services/get";
 import { StateContext } from "../utils/StateContext";
@@ -10,12 +9,36 @@ function TaskListSearchBar() {
     const [smShow, setSmShow] = useState(false);
     const [checked, setChecked] = useState({ projectName: false, status: false });
     const [value, setValue] = useState("");
-
     const { setTasksById } = useContext(StateContext);
 
-    const handleSearchChange = async (e) => {
+    const debounce = (func, delay) => {
+        let timeoutId;
+        return (...args) => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = setTimeout(() => {
+                func(...args);
+            }, delay);
+        };
+    };
+
+    const debounceSearch = useCallback(
+        debounce(async (searchValue) => {
+            try {
+                let projectId = sessionStorage.getItem('projectid');
+                const result = await getSearchByTaskName(projectId, searchValue);
+                setTasksById(result.data.tasks);
+            } catch (error) {
+                console.error("Error fetching tasks:", error);
+            }
+        }, 400),
+        []
+    );
+
+    const handleSearchChange = (e) => {
         setValue(e.target.value);
-        await handleSubmit(e);
+        debounceSearch(e.target.value);
     };
 
     const handleSubmit = async (e) => {
@@ -38,7 +61,10 @@ function TaskListSearchBar() {
         }));
     };
 
-    const { searchbar, searchbarDiv, inputGroup, searchbarButton, searchIcon, sliders, searchInput, sortPopup, sortTitle, modalTitle, checkIcon, checkIconEmpty, sortBy } = styles;
+    const {
+        searchbar, searchbarDiv, inputGroup, searchbarButton, searchIcon, sliders, searchInput, sortPopup, sortTitle,
+        modalTitle, checkIcon, checkIconEmpty, sortBy
+    } = styles;
 
     useEffect(() => {
         let popperInstance;
@@ -83,9 +109,10 @@ function TaskListSearchBar() {
                         <Sliders
                             ref={buttonRef}
                             onClick={handleClick}
-                            className={`${sliders} me-3 d-flex align-self-center`} />
+                            className={`${sliders} me-3 d-flex align-self-center`}
+                        />
                         {smShow && (
-                            <div className={`${sortPopup} sort-popup`}  >
+                            <div className={`${sortPopup} sort-popup`}>
                                 <div className={sortTitle}>
                                     <p className={modalTitle}>Choose columns to search</p>
                                 </div>

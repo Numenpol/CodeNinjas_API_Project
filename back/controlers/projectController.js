@@ -2,39 +2,41 @@ const Project = require("../models/projectModel");
 const User = require("../models/userModel");
 
 exports.getAllProjects = async (req, res) => {
-  //paimame query string iš fronto
   let searchParams = req.query;
-  // console.log(searchParams);
-  // const projects = await Project.find( );
+
   try {
     let projetsCreated;
     if (req.user.role === "admin") {
       projetsCreated = await Project.find();
     } else {
       const userId = req.user._id;
-      // console.log(JSON.stringify({ user: userId, ...searchParams }));
       projetsCreated = await Project.find({ user: userId });
     }
 
-    let userWithProjects = await User.findById(req.user._id).populate(
-      "membersProject"
-    );
+    let userWithProjects = await User.findById(req.user._id).populate("membersProject");
     
-    let projects = [
+    let allProjects = [
       ...userWithProjects.membersProject,
       ...projetsCreated,
-    ].filter((project) => {
+    ];
+
+    let filteredProjects = allProjects.filter((project) => {
       if (searchParams.projectName) {
-        return project.projectName.toLowerCase().includes(searchParams.projectName);
+        return project.projectName.toLowerCase().includes(searchParams.projectName.toLowerCase());
       } else {
         return true;
       }
     });
+
+    if (searchParams.projectName && filteredProjects.length === 0) {
+      filteredProjects = allProjects;
+    }
+
     res.status(200).json({
       status: "success",
-      results: projects.length,
+      results: filteredProjects.length,
       data: {
-        projects,
+        projects: filteredProjects,
       },
     });
   } catch (error) {
@@ -102,11 +104,14 @@ exports.getProjectsByTask = async (req, res) => {
       });
     }
 
-    // Filter tasks based on search parameters
-    const filteredTasks = project.tasks.filter(task => {
+    let filteredTasks = project.tasks.filter(task => {
       let matches = true;
       for (const key in searchParams) {
-        if (searchParams[key] && task[key] && !task[key].toString().toLowerCase().includes(searchParams[key])) {
+        if (
+          searchParams[key] && 
+          task[key] && 
+          !task[key].toString().toLowerCase().includes(searchParams[key].toLowerCase())
+        ) {
           matches = false;
           break;
         }
@@ -114,14 +119,19 @@ exports.getProjectsByTask = async (req, res) => {
       return matches;
     });
 
+    if (filteredTasks.length === 0) {
+      filteredTasks = project.tasks;
+    }
+
     res.status(200).json({
       status: "success",
+      results: filteredTasks.length,
       data: {
         tasks: filteredTasks,
       },
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(404).json({
       status: "fail",
       message: error.message,
     });

@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext, useCallback } from "react";
 import { Search } from "react-bootstrap-icons";
-import { Sliders, CheckCircleFill, Circle } from "react-bootstrap-icons"; // Adjust imports based on your icon library
+import { Sliders, CheckCircleFill, Circle } from "react-bootstrap-icons";
 import { createPopper } from "@popperjs/core";
 import { getSearchByProjectName } from "../services/get";
 import { StateContext } from "../utils/StateContext";
@@ -11,21 +11,38 @@ function ProjectsSearchBar() {
   const [smShow, setSmShow] = useState(false);
   const [checked, setChecked] = useState({ projectName: false, status: false });
   const [value, setValue] = useState("");
+  const { setProjects } = useContext(StateContext);
 
-  const { setProjects, projects } = useContext(StateContext);
-
-
-  const handleSearchChange = async (e) => {
-    setValue(e.target.value);
-    await handleSubmit(e);
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
   };
+
+  const handleSearchChange = (e) => {
+    setValue(e.target.value);
+    debounceSearch(e.target.value);
+  };
+
+  const debounceSearch = useCallback(
+    debounce(async (searchValue) => {
+      const result = await getSearchByProjectName(searchValue);
+      setProjects(result.data.projects);
+    }, 400),
+    []
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await getSearchByProjectName(value);
     setProjects(result.data.projects);
-  }
-
+  };
 
   const buttonRef = useRef(null);
 
@@ -151,4 +168,3 @@ function ProjectsSearchBar() {
 }
 
 export default ProjectsSearchBar;
-
