@@ -25,22 +25,22 @@ function ProjectsSearchBar() {
     };
   };
 
-  const handleSearchChange = (e) => {
-    setValue(e.target.value);
-    debounceSearch(e.target.value);
-  };
-
   const debounceSearch = useCallback(
-    debounce(async (searchValue) => {
-      const result = await getSearchByProjectName(searchValue);
+    debounce(async (searchValue, includeStatus) => {
+      const result = await getSearchByProjectName(searchValue, includeStatus);
       setProjects(result.data.projects);
     }, 400),
     []
   );
 
+  const handleSearchChange = (e) => {
+    setValue(e.target.value);
+    debounceSearch(e.target.value, checked.status);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await getSearchByProjectName(value);
+    const result = await getSearchByProjectName(value, checked.status);
     setProjects(result.data.projects);
   };
 
@@ -51,6 +51,8 @@ function ProjectsSearchBar() {
       ...prevState,
       [name]: !prevState[name],
     }));
+    setSmShow(false);
+    debounceSearch(value, name === "status" ? !checked.status : checked.status);
   };
 
   const { theme } = useTheme();
@@ -150,7 +152,10 @@ function ProjectsSearchBar() {
                   )}
                   Project name
                 </div>
-                <div onClick={() => handleCheck("status")} className={sortBy}>
+                <div
+                  onClick={() => handleCheck("status")}
+                  className={sortBy}
+                >
                   {checked.status ? (
                     <CheckCircleFill className={checkIcon} />
                   ) : (
