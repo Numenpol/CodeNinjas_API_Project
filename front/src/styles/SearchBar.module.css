@@ -1,0 +1,281 @@
+.searchIcon,
+.sliders {
+    width: 0.93788rem;
+    height: 0.93794rem;
+    opacity: 0.5;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.sliders {
+    width: 1.3rem;
+    height: 1rem;
+    position: relative;
+    border: none;
+    border-radius: 0rem;
+    text-align: center;
+    color: #565656;
+    background-color: #ffffff;
+}
+
+.searchbarDiv {
+    /* margin-left: 0.7rem; */
+    /* margin-right: 0.3rem; */
+    position: relative;
+    border-radius: 1.1875rem !important;
+    background-color: #F5F6FA;
+    border: 1px solid #D5D5D5;
+}
+
+.inputGroup {
+    display: flex;
+}
+
+.searchbarButton {
+    border: none !important;
+}
+
+.searchInput {
+    background-color: #F5F6FA !important;
+}
+
+.searchbar .form-control,
+.rounded {
+    background: #F5F6FA !important;
+}
+
+.searchbar .rounded {
+    border: 0.6px solid #D5D5D5 !important;
+}
+
+.searchInput::placeholder {
+    color: #202224 !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    font-family: "Nunito Sans" !important;
+    opacity: 0.5 !important;
+}
+
+.searchInput:focus {
+    box-shadow: none !important;
+}
+
+.searchbar .input-group input {
+    padding-left: 0;
+}
+
+/* .modal-90w {
+    margin-right: 4rem !important;
+    width: 12.1875rem !important;
+    height: 5.5625rem !important;
+    position: absolute !important;
+} */
+
+.sortBy {
+    margin-left: 1.5rem;
+}
+
+.modalTitle {
+    font-family: 'Inter' !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #565656 !important;
+    margin-bottom: 0.3rem !important;
+    text-align: center;
+}
+
+.sortTitle {
+    border-bottom: 1px solid #D8D8D8;
+    margin-bottom: 0.4rem;
+}
+
+.checkIcon,
+.checkIconEmpty {
+    color: #3FADBE !important;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+/* Dark theme css */
+
+.searchbarButtonDark {
+    border: none !important;
+    background-color: #1E1E1E !important;
+    color: #565656 !important;
+    border-radius: 1.5rem !important;
+}
+
+.searchbarDivDark {
+    position: relative;
+    border-radius: 1.1875rem !important;
+    background: #1E1E1E !important;
+    border: 1px solid #565656;
+}
+
+.searchInputDark {
+    color: #FFF !important;
+    background: #1E1E1E !important;
+}
+
+.searchInputDark::placeholder {
+    color: #FFF !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    font-family: "Nunito Sans" !important;
+    opacity: 0.5 !important;
+    
+}
+
+.slidersDark {
+    width: 1.3rem;
+    height: 1rem;
+    position: relative;
+    border: none;
+    border-radius: 0rem;
+    text-align: center;
+    color: #565656;
+    background: #1E1E1E;
+}
+
+.searchInputDark:focus {
+    box-shadow: none !important;
+}
+
+
+@media screen and (max-width: 576px) {
+    /* .modal-90w {
+        margin-top: 2rem !important;
+        margin-left: 15rem !important;
+        width: 12.1875rem !important;
+        height: 5.5625rem !important;
+    } */
+
+    @media screen and (max-width: 768x) {
+
+        .searchbarDiv {
+            /* margin-left: 0.7rem; */
+            margin-right: 0.7rem;
+        }
+    }
+
+    /* Dark theme css */
+
+    .searchbarDivDark {
+        margin-right: 0.7rem;
+    }
+}.searchIcon,
+.sliders {
+    width: 0.93788rem;
+    height: 0.93794rem;
+    opacity: 0.5;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.sliders {
+    width: 1.3rem;
+    height: 1rem;
+    position: relative;
+    border: none;
+    border-radius: 0rem;
+    text-align: center;
+    color: #565656;
+    background-color: #ffffff;
+}
+
+.searchbarDiv {
+    /* margin-left: 0.7rem; */
+    /* margin-right: 0.3rem; */
+    position: relative;
+    border-radius: 1.1875rem !important;
+    background-color: #F5F6FA;
+    border: 1px solid #D5D5D5;
+}
+
+.inputGroup {
+    display: flex;
+}
+
+.searchbarButton {
+    border: none !important;
+}
+
+.searchInput{
+    background-color: #F5F6FA !important;
+}
+
+.searchbar .form-control,
+.rounded {
+    background: #F5F6FA !important;
+}
+
+.searchbar .rounded {
+    border: 0.6px solid #D5D5D5 !important;
+}
+
+.searchInput::placeholder {
+    color: #202224 !important;
+    font-size: 0.875rem !important;
+    line-height: normal !important;
+    opacity: 0.5 !important;
+}
+
+.searchInput:focus {
+    box-shadow: none !important;
+}
+
+.searchbar .input-group input {
+    padding-left: 0;
+}
+
+/* .modal-90w {
+    margin-right: 4rem !important;
+    width: 12.1875rem !important;
+    height: 5.5625rem !important;
+    position: absolute !important;
+} */
+
+.sortBy {
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.modalTitle {
+    font-family: 'Inter' !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #565656 !important;
+    margin-bottom: 0.3rem !important;
+    text-align: center;
+}
+
+.sortTitle {
+    border-bottom: 1px solid #D8D8D8;
+    margin-bottom: 0.4rem;
+}
+
+.checkIcon,
+.checkIconEmpty {
+    color: #3FADBE !important;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 576px) {
+    /* .modal-90w {
+        margin-top: 2rem !important;
+        margin-left: 15rem !important;
+        width: 12.1875rem !important;
+        height: 5.5625rem !important;
+    } */
+
+    @media screen and (max-width: 768x) {
+
+        .searchbarDiv {
+            /* margin-left: 0.7rem; */
+            margin-right: 0.7rem;
+        }
+    }
+}

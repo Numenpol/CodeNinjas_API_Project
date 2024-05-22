@@ -20,6 +20,10 @@ export const StateProvider = ({ children }) => {
     const [showEdit, setShowEdit] = useState(false);
     const [tasksById, setTasksById] = useState([]);
     const [selectedIcon, setSelectedIcon] = useState(null);
+    const [value, setValue] = useState("");
+    const [result, setResult] = useState([]);
+
+    const handleClose = () => setShow(false);
 
     const handleShow = () => setShow(true);
 
@@ -27,7 +31,6 @@ export const StateProvider = ({ children }) => {
       try {
         const {data: {users}} = await getAllUsers();
         setUsers(users);
-        console.log(users);
       } catch (error) {
         setError(error.message);
       }
@@ -98,8 +101,8 @@ export const StateProvider = ({ children }) => {
 
     return (
         <StateContext.Provider value={{users, error, projects,tasks, setUpdate, setIcon, icon, show, setShow, 
-          showMenu, setShowMenu, handleShow, setShowTask, showTask, setprojectId, projectId, setShowEdit, showEdit, 
-          update, tasksById, selectedIcon, setSelectedIcon}}>
+          showMenu, setShowMenu, handleShow,setProjects, setShowTask, showTask, setprojectId, projectId, setShowEdit, showEdit, 
+          update, tasksById, selectedIcon, setSelectedIcon, value, setValue, result, setTasks,setTasksById, setResult}}>
             {children}
             </StateContext.Provider>
     );

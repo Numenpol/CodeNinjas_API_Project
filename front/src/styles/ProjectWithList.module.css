@@ -103,6 +103,8 @@
   height: 3.125rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
 /* .createFirstProjectButton:hover {
@@ -111,6 +113,11 @@
 
 .FolderPlusIcon {
   margin-right: 0.5rem;
+}
+.MyProjectsText {
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 /* .FolderText {
@@ -125,10 +132,12 @@
   color: white;
   border: #3fadbe;
   border-radius: 5px;
-  width: 315px;
+  width: 330px;
   height: 3.125rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
 .CreateProjectButtonPositionDark {
@@ -161,6 +170,9 @@
 
 .MyProjectsTextDark {
   color: #FFF;
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 .FolderTextDark {
@@ -205,6 +217,7 @@
 
   .MyProjectsText {
     margin-left: 10px;
+    font-size: 1.375rem;
   }
 
   .FolderPlusIcon {
@@ -234,11 +247,12 @@
 
 .ProjectListHeaderDark {
   display: flex;
-  justify-content: space-between;
-  height: 3rem;
+    justify-content: space-between;
+    height: 3rem;
 }
 .MyProjectsTextDark {
   margin-left: 10px;
+  font-size: 1.375rem;
 }
 .FolderTextDark {
   font-size: 1.375rem;
@@ -316,15 +330,17 @@
   .projectListList {
     order: 2;
   }
+  .MyProjectsText {
+    font-size: 1.875rem;
+  }
 
   /* Dark theme css */
 
   .CreateProjectButtonPositionDark {
     order: 0;
     align-items: end;
-    margin-right: 1.5rem;
+    margin-right: 0.9rem;
     margin-top: -5rem;
-    border-radius: 0.625rem 0.625rem 0rem 0rem;
   }
 
   .ProjectThingDark {
@@ -343,9 +359,6 @@
     width: 100%;
     gap: 1.06rem;
   }
-  .ProjectListHeader {
-    justify-content: start;
-  }
   .FolderTextDark {
     font-size: 1.875rem;
     margin: 0;
@@ -357,5 +370,13 @@
     background-color: #FFF;
     border-radius: 0rem 0.625rem 0rem 0rem;
     background-color: #1E1E1E;
+  }
+
+  .ProjectListHeaderDark {
+    justify-content: start;
+  }
+
+  .MyProjectsTextDark {
+    font-size: 1.875rem;
   }
 }

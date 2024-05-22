@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPhone from "./MenuProjectListPhone";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
-import SearchBar from "./SearchBar";
+import ProjectsSearchBar from "./ProjectsSearchBar";
 import styles from "../styles/ProjectWithoutList.module.css";
 import { useTheme } from "../utils/ThemeContext";
 
@@ -35,6 +35,7 @@ function ProjectWithoutList() {
     projectListCardDark,
     myProjectsTextDark,
     projectListMenuDark,
+    createFirstProjectButtonDark,
   } = styles;
 
   return (
@@ -60,13 +61,13 @@ function ProjectWithoutList() {
               </div>
             </div>
             <div className={projectListSearchBar}>
-              <SearchBar />
+              <ProjectsSearchBar />
             </div>
           </div>
         </div>
         <div className={createProjectBox}>
           <img src="src\assets\Group 54.svg" alt="" className={chartIcon} />
-          <button className={createFirstProjectButton} onClick={handleShow}>
+          <button className={theme == "light" ? createFirstProjectButton : createFirstProjectButtonDark} onClick={handleShow}>
             Create Your first project
           </button>
         </div>

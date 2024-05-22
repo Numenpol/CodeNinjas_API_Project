@@ -8,28 +8,13 @@ import { StateContext } from "../utils/StateContext";
 import { useTheme } from "../utils/ThemeContext";
 
 function Dashboard() {
-  const [done, setDone] = useState(0);
-  const [inprogress, setInProgress] = useState(0);
-  const [onhold, setOnHold] = useState(0);
-  const [overall, setOverall] = useState(0);
-
-  const { tasks } = useContext(StateContext)
-
+  const { projects } = useContext(StateContext)
   const { theme } = useTheme();
 
-  useEffect(() => {
-    tasks.map((task) => {
-      if (task.status == "Done") {
-        setDone((count) => count + 1 / 2);
-      } else if (task.status == "In progress") {
-        setInProgress((count) => count + 1 / 2);
-      } else if (task.status == "To do") {
-        setOnHold((count) => count + 1 / 2);
-      }
-      setOverall(tasks.length);
-    })
-  }, []);
-
+  const doneCount = projects.filter(project => project.status === 'Done').length;
+  const inProgressCount = projects.filter(project => project.status === 'In progress').length;
+  const onHoldCount = projects.filter(project => project.status === 'On hold').length;
+  const totalProjects = projects.length;
 
   const { dashboard, dashboardTopBoxes, dashboardBox, checkmarkIcon, dashboardDone, dashboardNumber, penandpaperIcon, dashboardInProgress, dashboardBottomBoxes, calendarIcon, dashboardOnHold, statisticIcon, dashboardOverall , dashboardBoxDark, dashboardNumberDark} = styles;
 
@@ -48,7 +33,7 @@ function Dashboard() {
               className={checkmarkIcon}
             />
             <p className={dashboardDone}>Done</p>
-            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{done}</div>
+            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{doneCount}</div>
           </div>
           <div className={theme == "light" ? dashboardBox : dashboardBoxDark}>
             <img
@@ -57,7 +42,7 @@ function Dashboard() {
               className={penandpaperIcon}
             />
             <p className={dashboardInProgress}>In Progress</p>
-            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{inprogress}</div>
+            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{inProgressCount}</div>
           </div>
         </div>
         <div className={dashboardBottomBoxes}>
@@ -69,7 +54,7 @@ function Dashboard() {
             />
 
             <p className={dashboardOnHold}>On Hold</p>
-            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{onhold}</div>
+            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{onHoldCount}</div>
           </div>
           <div className={theme == "light" ? dashboardBox : dashboardBoxDark}>
             <img
@@ -78,7 +63,7 @@ function Dashboard() {
               className={statisticIcon}
             />
             <p className={dashboardOverall}>Overall</p>
-            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{overall}</div>
+            <div className={theme == "light" ? dashboardNumber : dashboardNumberDark}>{totalProjects}</div>
           </div>
         </div>
       </div>

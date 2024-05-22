@@ -15,15 +15,26 @@
     min-height: 15rem;
     height: 80vh;
     margin-top: 27px;
-    /* justify-content: center; */
+}
+
+.projectPopUp .modal-dialog {
+    width: 20rem;
+}
+
+.menuProjectPopUp {
+    width: 2rem;
 }
 
 .homeIcon {
     border-bottom: 1px solid #d8d8d8;
+    /* width: 100vh; */
     color: #565656;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.12rem;
+    margin-left: -1rem;
+    padding-left: 1rem;
+    margin-top: -1rem;
     /* width: 100%; */
 }
 
@@ -44,6 +55,10 @@
 }
 
 .buttonthing {
+    font-family: var(--inter);
+    color: #7A7E81;
+    font-size: 1rem;
+    font-weight: 400;
     padding-left: 1rem;
     border: none;
     background-color: #fff;
@@ -53,8 +68,9 @@
 .closeButton {
     border: none;
     background: none;
-    margin-top: -4.5rem;
+    margin-top: -3rem;
     color: #565656;
+    margin-right: 0.2rem;
 }
 
 .searchThing {
@@ -86,6 +102,7 @@
 }
 
 .myProjectsText {
+    font-family: var(--montserrat);
     color: #7A7E81;
     font-size: 1rem;
     font-weight: 700;
@@ -130,6 +147,12 @@
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0.1rem;
+    font-family: var(--montserrat);
+}
+
+.offcanvasBodyDark {
+    background-color: #1E1E1E;
+    border-radius: 0.4rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -144,6 +167,11 @@
         min-height: 20rem;
         min-width: 22.5rem;
         background-color: #1E1E1E;
+    }
+
+
+    .closeButton {
+        margin-right: 1rem;
     }
 }
 

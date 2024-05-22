@@ -1,19 +1,18 @@
 import Table from "react-bootstrap/Table";
 import "../styles/taskListTable.css";
 import { useForm } from "react-hook-form";
-import { updateDataTask } from "../services/update";
 import { postDataTask } from "../services/post";
 import { useContext, useState, useEffect, useRef } from "react";
 import { StateContext } from "../utils/StateContext";
 import styles from "../styles/StatusDropdown.module.css";
 import styles2 from "../styles/PriorityDropdown.module.css";
 import Ownerstyles from "../styles/Owner.module.css";
+import taskListStyles from "../styles/TaskListTable.module.css";
+import tableFormStyles from "../styles/TaskListTableForm.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
-import { addProjectTask } from "../services/patch";
 import { getOne } from "../services/get";
 import { createPopper } from '@popperjs/core';
-import { updateData } from "../services/update";
 
 
 function TaskListTableForm({
@@ -22,7 +21,6 @@ function TaskListTableForm({
   setSelectedCreationDay,
   selectedCreationDay,
   selectedCompletionDay,
-  setSelectedCompletionDay,
 }) {
   const { tasks, setUpdate, showTask, setShowTask, projectId } =
     useContext(StateContext);
@@ -61,8 +59,14 @@ function TaskListTableForm({
     setProjectInfo(getInfo);
   };
 
+  const getStartFixedDate = (date) => {
+    const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return formattedDate;
+  }
+
   useEffect(() => {
     getMembersNames();
+    setSelectedCreationDay(getStartFixedDate(new Date()));
   }, [projectId]);
 
   useEffect(() => {
@@ -112,17 +116,6 @@ function TaskListTableForm({
     setIsOpenPriority(false);
   };
 
-  const {
-    statusBtn,
-    statusMenu,
-    statusDo,
-    statusProgress,
-    statusDone,
-    selected,
-    statusInProgress,
-    statusDoneSelected,
-  } = styles;
-
   const getInitials = (name) => {
     const initials = name
       .split(" ")
@@ -130,27 +123,6 @@ function TaskListTableForm({
       .join("");
     return initials.toUpperCase();
   };
-
-  const {
-    priorityBtn,
-    priorityMenu,
-    priorityLow,
-    priorityMedium,
-    priorityHigh,
-    selectedPrioLow,
-    selectedPrioMed,
-    selectedPrioHi,
-  } = styles2;
-
-  const {
-    ownerBtn,
-    ownerMenu,
-    ownerList: ownerListStyle,
-    initials: initialsStyle,
-    initialsList,
-    circleIcon
-  } = Ownerstyles;
-
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -167,7 +139,6 @@ function TaskListTableForm({
 
   const formSubmitHandler = async (data) => {
     try {
-      // const { resDataId } =
       await postDataTask({
         ...data,
         status: selectedStatus,
@@ -178,10 +149,6 @@ function TaskListTableForm({
         completiondate: selectedCompletionDay,
         projectId: projectId,
       });
-      
-      const projectData = { status: "in progress"}
-      await updateData(projectId, projectData)
-
       setUpdate((update) => update + 1);
       setShowTask(false);
       reset();
@@ -239,35 +206,38 @@ function TaskListTableForm({
     }
   }, [isOpenStatus, isOpenPriority, isOpenOwner]);
 
+  const { tableBody, tableHeaderKey, keyName, tasklistTaskField, tableHeaderOwnerTh, tableHeaderOwner, tableHeaderStatusTh, tableHeaderStatus, tableHeaderPriorityTh, tableHeaderPriority, tableTimeline, tableHeaderCreationDate, taskCreationDate, tableHeaderCompletionDate, taskCompletionDate } = taskListStyles;
+
+  const { taskNameForm, taskOwner, taskStatus, taskPriority } = tableFormStyles;
 
   return (
     <>
       <div>
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           <Table bordered>
-            <tbody className="table-body">
+            <tbody className={tableBody}>
               <tr>
-                <td className="table-headerKey">
+                <td className={tableHeaderKey}>
                   <p
-                    className="key-name"
+                    className={keyName}
                     id="key"
                     name="key"
                     type="text"
                     {...register("key")}
                   >{tasks.key}</p>
                 </td>
-                <td className="tasklist-task-field">
+                <td className={tasklistTaskField}>
                   <input
-                    className="task-nameForm"
+                    className={taskNameForm}
                     id="task"
                     name="task"
                     type="text"
                     {...register("task")}
                   />
                 </td>
-                <td className="table-headerOwnerTh">
-                  <div className="table-headerOwner">
-                    <div className="task-owner" ref={ownerRef}>
+                <td className={tableHeaderOwnerTh}>
+                  <div className={tableHeaderOwner}>
+                    <div className={taskOwner} ref={ownerRef}>
                       <button
                         type="button"
                         onClick={() => setIsOpenOwner(!isOpenOwner)}
@@ -312,24 +282,23 @@ function TaskListTableForm({
                     </div>
                   </div>
                 </td>
-                <td className="table-headerStatusTh">
-                  <div className="table-headerStatus">
-                    <div className="task-status" ref={statusRef}>
+                <td className={tableHeaderStatusTh}>
+                  <div className={tableHeaderStatus}>
+                    <div className={taskStatus} ref={statusRef}>
                       <button
                         type="button"
                         onClick={() => setIsOpenStatus(!isOpenStatus)}
-                        className={`${styles.statusBtn} ${
-                          selectedStatus && styles.selected
-                        }`}
+                        className={`${styles.statusBtn} ${selectedStatus && styles.selected
+                          }`}
                         style={{
                           backgroundColor:
                             selectedStatus === 'To do'
                               ? '#3372b2'
                               : selectedStatus === 'In progress'
-                              ? '#7f5db6'
-                              : selectedStatus === 'Done'
-                              ? '#00a167'
-                              : '',
+                                ? '#7f5db6'
+                                : selectedStatus === 'Done'
+                                  ? '#00a167'
+                                  : '',
                         }}
                       >
                         {selectedStatus || String.fromCharCode(9662)}
@@ -359,27 +328,26 @@ function TaskListTableForm({
                     </div>
                   </div>
                 </td>
-                <td className="table-headerPriorityTh">
-                  <div className="table-headerPriority">
-                    <div className="task-priority" ref={priorityRef}>
+                <td className={tableHeaderPriorityTh}>
+                  <div className={tableHeaderPriority}>
+                    <div className={taskPriority} ref={priorityRef}>
                       <button
                         type="button"
                         onClick={() => setIsOpenPriority(!isOpenPriority)}
-                        className={`${styles2.priorityBtn} ${
-                          selectedPriority && 
-                            (selectedPriority === 'Low' ? styles2.selectedPrioLow : 
-                            selectedPriority === 'Medium' ? styles2.selectedPrioMed : 
-                            selectedPriority === 'High' ? styles2.selectedPrioHi : '')
-                        }`}
+                        className={`${styles2.priorityBtn} ${selectedPriority &&
+                          (selectedPriority === 'Low' ? styles2.selectedPrioLow :
+                            selectedPriority === 'Medium' ? styles2.selectedPrioMed :
+                              selectedPriority === 'High' ? styles2.selectedPrioHi : '')
+                          }`}
                         style={{
                           backgroundColor:
                             selectedPriority === 'Low'
                               ? '#40ADBE'
                               : selectedPriority === 'Medium'
-                              ? '#FDAB3D'
-                              : selectedPriority === 'High'
-                              ? '#C0417F'
-                              : '',
+                                ? '#FDAB3D'
+                                : selectedPriority === 'High'
+                                  ? '#C0417F'
+                                  : '',
                         }}
                       >
                         {selectedPriority || String.fromCharCode(9662)}
@@ -409,19 +377,15 @@ function TaskListTableForm({
                     </div>
                   </div>
                 </td>
-                <td className="table-timeline">
+                <td className={tableTimeline}>
                   <TaskListTableTimeLine
                     setSelectedTimeLine={setSelectedTimeLine}
-                    setSelectedCreationDay={setSelectedCreationDay}
-                    setSelectedCompletionDay={setSelectedCompletionDay}
-                    selectedTimeLine={selectedTimeLine} 
-                    selectedCreationDay={selectedCreationDay} 
-                    selectedCompletionDay={selectedCompletionDay}
+                    selectedTimeLine={selectedTimeLine}
                   />
                 </td>
-                <td className="table-headerCreationdate">
+                <td className={tableHeaderCreationDate}>
                   <p
-                    className="task-creationdate"
+                    className={taskCreationDate}
                     style={{ border: "none" }}
                     id="creationdate"
                     name="creationdate"
@@ -429,9 +393,9 @@ function TaskListTableForm({
                     {...register("creationdate")}
                   ></p>
                 </td>
-                <td className="table-headerCompletiondate">
+                <td className={tableHeaderCompletionDate}>
                   <p
-                    className="task-completiondate"
+                    className={taskCompletionDate}
                     id="completiondate"
                     name="completiondate"
                     type="text"

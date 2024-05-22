@@ -5,7 +5,7 @@ import folderPlusIcon from "../assets/folderPlusIcon.svg";
 import plusSquareFillIcon from "../assets/plusSquareFillIcon.svg";
 import houseIconPic from "../assets/houseIcon.svg";
 import MenuProjectList from "./MenuProjectList";
-import SearchBar from "./SearchBar";
+import ProjectsSearchBar from "./ProjectsSearchBar";
 import styles from "../styles/MenuProjectListDesktop.module.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "../utils/ThemeContext";
@@ -34,7 +34,7 @@ function MenuProjectListDesktop() {
           </button>
         </div>
         <div className={searchThing}>
-          <SearchBar />
+          <ProjectsSearchBar />
         </div>
         <div className={folderTextThing}>
           <div className={menuMyProjects}>

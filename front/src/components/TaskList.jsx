@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/esm/Button";
 import MenuProjectListPhone from "./MenuProjectListPhone";
-import SearchBar from "./SearchBar";
+import TaskListSearchBar from "./TaskListSearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
 // import Modal from "react-bootstrap/Modal";
@@ -13,7 +13,6 @@ import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
 import CreateProjectForm from "./CreateProjectForm";
 import { getOne } from "../services/get";
-import addMemberStyles from "../styles/AddMemberPopUp.module.css";
 import TaskListExecutionTable from "./TaskListExecution";
 import TaskListDoneTable from "./TaskListDoneTable";
 import { useTheme } from "../utils/ThemeContext";
@@ -42,7 +41,7 @@ function TaskList() {
   //active project
   const getProjectInfo = async () => {
     let projectData = await getOne(projectId);
-  
+
     if (projectData && projectData.data && projectData.data.project && projectData.data.project.projectName) {
       const { projectName, icon } = projectData.data.project;
       setActiveProjectName(projectName);
@@ -94,18 +93,8 @@ function TaskList() {
     taskListDark,
     taskListMenuDark,
     taskListProjectNameDark,
+    taskListAddMemberDark,
   } = styles;
-
-  const {
-    AddMemberPopUpModal,
-    AddMemberPopUpheader,
-    AddMemberPopUpheadertext,
-    AddMemberPopUpbody,
-    AddButtons,
-    AddCloseButton,
-    AddAddButton,
-    AddMemberPopUpfooter,
-  } = addMemberStyles;
 
   const { MenuThing } = styles1;
 
@@ -144,7 +133,7 @@ function TaskList() {
             <p className={taskListStatus}>STATUS</p>
           </div>
           <div className={taskListAddMemberDisplay}>
-            <button className={taskListAddMember} onClick={handleShow}>
+            <button className={theme == "light" ? taskListAddMember : taskListAddMemberDark} onClick={handleShow}>
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +170,7 @@ function TaskList() {
             New task
           </Button>
           <div className={taskListSearch}>
-            <SearchBar />
+            <TaskListSearchBar />
           </div>
         </div>
         <div className={taskListStorage}>

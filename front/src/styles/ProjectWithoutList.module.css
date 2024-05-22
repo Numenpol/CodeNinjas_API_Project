@@ -4,7 +4,7 @@
 
 .projectWithoutList {
   min-width: 360px;
-  background-color: #F5F6FA;
+  background-color: #f5f6fa;
   padding-top: 1.12rem;
   margin-top: 5rem;
   min-height: 93.8vh;
@@ -15,7 +15,7 @@
 }
 
 .projectListCard {
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 0.625rem 0.625rem 0rem 0rem;
   min-height: 92.5vh;
 }
@@ -31,6 +31,15 @@
 }
 
 .folderText {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: -35px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #7a7e81;
+  margin-bottom: 1.88rem;
+  margin-left: 4rem;
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -69,12 +78,18 @@ img.chartIcon {
   width: 299px;
   margin-top: 40px;
   border-radius: 5px;
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
 .createFirstProjectButton:hover {
-  background-color: #3593A2 !important;
+  background-color: #3593a2 !important;
 }
-
+.myProjectsText {
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
+}
 
 
 /* Dark theme css  */
@@ -96,12 +111,26 @@ img.chartIcon {
 
 .myProjectsTextDark{
   color: #FFF;
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 .projectListMenuDark {
   display: none;
 }
 
+.createFirstProjectButtonDark {
+  background: #3372B2;
+  color: white;
+  border: #3fadbe;
+  height: 50px;
+  width: 299px;
+  margin-top: 40px;
+  border-radius: 5px;
+  font-family: var(--inter);
+  font-weight: 400;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -118,14 +147,26 @@ img.chartIcon {
     /* width: 5rem; */
     /* margin-left: -13rem; */
     /* margin-top: 0;
+  .folderText {
+    /* justify-content: flex-start; */
+    /* margin-right: 3rem; */
+    /* left: 50px; */
+    /* width: 5rem; */
+    /* margin-left: -13rem; */
+    /* margin-top: 0;
         margin-bottom: 0; */
     font-size: 1.375rem;
   }
 
   .myProjectsText {
     margin-left: 10px;
+    font-size: 1.375rem;
   }
 
+  .folderIcon1 {
+    width: 2.25rem;
+    margin-right: 0.7rem;
+  }
   .folderIcon1 {
     width: 2.25rem;
     margin-right: 0.7rem;
@@ -139,10 +180,14 @@ img.chartIcon {
 
   .myProjectsTextDark {
     margin-left: 10px;
+    font-size: 1.375rem;
     color: #FFF;
   }
 
 
+  .createProjectBox {
+    margin-top: 0;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -187,6 +232,10 @@ img.chartIcon {
     display: none;
   }
 
+  .myProjectsText {
+    font-size: 1.875rem;
+  }
+
   /* Dark theme css  */
 
   .projectWithoutListDark {
@@ -201,14 +250,23 @@ img.chartIcon {
     width: 100%;
   }
 
-  /* Dark theme css */
-
-
   .projectListMenuDark {
     display: block;
     max-width: 30%;
     background-color: #FFF;
     border-radius: 0rem 0.625rem 0rem 0rem;
     background-color: #1E1E1E;
+  }
+
+  .createFirstProjectButton {
+    margin-right: -1rem;
+  }
+
+  .myProjectsTextDark {
+    font-size: 1.875rem;
+  }
+
+  .createFirstProjectButtonDark {
+    margin-right: -1rem;
   }
 }

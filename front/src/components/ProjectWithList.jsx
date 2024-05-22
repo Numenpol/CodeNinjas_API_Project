@@ -7,7 +7,7 @@ import CreateProjectForm from "./CreateProjectForm";
 import { useContext } from "react";
 import { StateContext } from "../utils/StateContext";
 import MenuProjectListPhone from "./MenuProjectListPhone";
-import SearchBar from "./SearchBar";
+import ProjectsSearchBar from "./ProjectsSearchBar";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { useTheme } from "../utils/ThemeContext";
 
@@ -50,7 +50,11 @@ function ProjectWithList() {
       </div>
       <div className={theme == "light" ? projectListCard : projectListCardDark}>
         <div className={theme == "light" ? ProjectThing : ProjectThingDark}>
-          <div className={theme == "light" ? ProjectListHeader : ProjectListHeaderDark}>
+          <div
+            className={
+              theme == "light" ? ProjectListHeader : ProjectListHeaderDark
+            }
+          >
             <div>
               <div>
                 <button className={MenuThing} onClick={toggleShow}>
@@ -64,12 +68,18 @@ function ProjectWithList() {
                   alt="folderPlusIcon"
                   className={FolderPlusIcon}
                 />
-                <div className={theme == "light" ? MyProjectsText : MyProjectsTextDark}>My Projects</div>
+                <div
+                  className={
+                    theme == "light" ? MyProjectsText : MyProjectsTextDark
+                  }
+                >
+                  My Projects
+                </div>
               </div>
             </div>
             <div>
               <div className={projectListSearchBar}>
-                <SearchBar />
+                <ProjectsSearchBar />
               </div>
             </div>
           </div>
@@ -77,8 +87,21 @@ function ProjectWithList() {
         <div className={ProjectListDashboard}>
           <Dashboard />
         </div>
-        <div className={theme == "light" ? CreateProjectButtonPosition : CreateProjectButtonPositionDark}>
-          <button className={theme == "light" ? createFirstProjectButton : createFirstProjectButtonDark} onClick={handleShow}>
+        <div
+          className={
+            theme == "light"
+              ? CreateProjectButtonPosition
+              : CreateProjectButtonPositionDark
+          }
+        >
+          <button
+            className={
+              theme == "light"
+                ? createFirstProjectButton
+                : createFirstProjectButtonDark
+            }
+            onClick={handleShow}
+          >
             {" "}
             Create Your project{" "}
           </button>

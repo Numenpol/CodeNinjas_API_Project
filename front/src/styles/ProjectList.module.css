@@ -22,44 +22,41 @@
     min-width: 360px;
 }
 
-
 /* .invinsible {
     width: 1rem;
 } */
 
 .projectListName {
     color: #565656;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     overflow: hidden;
     padding-top: 0.5rem;
-    /* text-wrap: nowrap; */
     text-align: start;
     padding-left: 1rem;
     text-wrap: nowrap;
     padding-bottom: 0.5rem;
-   
 }
 
 .projectListStatus {
     color: #565656;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
-    padding-left: 1.3rem;
+    padding-left: 1rem;
     padding-bottom: 0.5rem;
 }
 
 .projectListTasks {
     color: #565656;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
@@ -91,8 +88,7 @@
 }
 
 .projectListNameDark {
-    color:
-        #FFFFFF;
+    color:#FFFFFF;
     font-size: 0.869rem;
     font-style: normal;
     font-weight: 600;
@@ -102,7 +98,9 @@
     text-align: start;
     padding-left: 1rem;
     text-wrap: nowrap;
+    padding-bottom: 0.5rem;
     background-color: #121212;
+    font-family: var(--montserrat);
 }
 
 .projectListStatusDark {
@@ -113,8 +111,10 @@
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
-    padding-left: 1.3rem;
+    padding-left: 1.8rem;
+    padding-bottom: 0.5rem;
     background-color: #121212;
+    font-family: var(--montserrat);
 }
 
 .projectListTasksDark {
@@ -126,7 +126,9 @@
     text-align: start;
     padding-top: 0.5rem;
     padding-left: 1.3rem;
+    padding-bottom: 0.5rem;
     background-color: #121212;
+    font-family: var(--montserrat);
 }
 
 .tableBoxDark {
@@ -178,16 +180,12 @@
         background-color: #121212;
     }
 
-    .projectListTasksDark .projectListNameDark {
+    .projectListTasksDark .projectListStatusDark {
         text-align: center;
-        padding-left: 1.7rem;
+        padding-left: 0;
         background-color: #121212;
     }
 
-    .projectListStatusDark {
-        text-align: center;
-        padding-left: 0;
-    }
 
     .projectListNameDark {
         padding-left: 1.7rem;
@@ -227,16 +225,7 @@
     .projectListStatusDark {
         font-size: 1rem;
         text-align: start;
-        padding-left: 2rem;
+        padding-left: 1.7rem;
         background-color: #121212;
     }
-
-    .projectListTasksDark {
-        font-size: 1rem;
-        background-color: #121212;
-    }
-
-    /* Dark theme css */
-
-
 }
