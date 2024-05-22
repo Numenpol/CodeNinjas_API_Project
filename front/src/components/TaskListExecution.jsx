@@ -149,7 +149,7 @@ function TaskListExecutionTable() {
                     <tr key={task._id}>
                       {/* <td>{index+1}</td> */}
                       <td className={tableHeaderKey}>
-                        <input
+                        <p
                           className={keyName}
                           disabled
                           id={`key-${task._id}`}
@@ -157,7 +157,7 @@ function TaskListExecutionTable() {
                           type="text"
                           defaultValue={task.key}
                           {...register(`key-${task._id}`)}
-                        />
+                        >{task.key}</p>
                       </td>
                       <td className={tasklistTaskField}>
                         <input
@@ -177,7 +177,7 @@ function TaskListExecutionTable() {
                         </span>
                         <span
                           className={pencilTrashIcon}
-                          onClick={() => handleDeleteButtonClick(event, task._id)}
+                          onClick={(event) => handleDeleteButtonClick(event, task._id)}
                         >
                           <Trash />
                         </span>
