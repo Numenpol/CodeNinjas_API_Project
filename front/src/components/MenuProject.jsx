@@ -200,7 +200,7 @@ function MenuProject({ project }) {
         </div>
 
         <Modal
-          cclassName={`mySecondModal ${menuProjectEditModal}`}
+          className={`mySecondModal ${menuProjectEditModal}`}
           show={smShow}
           dialogClassName={modalDialog}
           backdropClassName="backdrop"

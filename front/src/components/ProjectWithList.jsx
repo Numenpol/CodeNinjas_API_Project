@@ -43,6 +43,7 @@ function ProjectWithList() {
     FolderTextDark,
     ProjectListMenuDark,
   } = styles;
+
   return (
     <div className={theme == "light" ? projectList : projectListDark}>
       <div className={theme == "light" ? ProjectListMenu : ProjectListMenuDark}>

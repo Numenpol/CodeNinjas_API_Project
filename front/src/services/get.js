@@ -15,7 +15,12 @@ export const getAllData = async () => {
 }
 
 export const getAllUsers = async () => {
-    const response = await axios.get(API_URLS);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(API_URLS, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     return response.data;
 }
 
@@ -34,12 +39,22 @@ export const getOne = async (_id)=>{
 // Tasks
 
 export const getAllTasks = async () => {
-    const response = await axios.get(API_URLT);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(API_URLT, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     return response.data;
 }
 
 export const getAllTaskById = async (id) => {
-    const response = await axios.get(`${VITE_URLO}/${id}`);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.get(`${VITE_URLO}/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     return response.data;
 }
 

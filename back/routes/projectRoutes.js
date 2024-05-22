@@ -11,14 +11,14 @@ const router = express.Router();
 router.route("/").get(protect, getAllProjects).post(protect,createProject);
 router
     .route("/:id")
-    .get( getProject)
-    .patch(updateProject)
+    .get(protect, getProject)
+    .patch(protect, updateProject)
     .delete(protect, restrictTo("admin", "user"), deleteProject);
 router
     .route("/members/:id")
-    .patch(updateProjectsMembers);
+    .patch(protect, updateProjectsMembers);
 router
     .route("/onetask/:id")
-    .get(getProjectsByTask);
+    .get(protect, getProjectsByTask);
 
 module.exports = router;
