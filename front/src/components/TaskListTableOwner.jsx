@@ -3,7 +3,8 @@ import { StateContext } from "../utils/StateContext";
 import styles from "../styles/Owner.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import { getOne } from "../services/get";
-import { createPopper } from '@popperjs/core';
+import { createPopper } from "@popperjs/core";
+import { useTheme } from "../utils/ThemeContext";
 
 function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
   const { projectId, setUpdate } = useContext(StateContext);
@@ -13,6 +14,7 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
   const [ownerColors, setOwnerColors] = useState([]);
   const [getInfo, setProjectInfo] = useState("");
   const buttonRef = useRef(null);
+  const { theme } = useTheme();
 
   const getMembersNames = async () => {
     let projectData = await getOne(projectId);
@@ -34,7 +36,6 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     const generateOwnerColors = () => {
@@ -90,16 +91,21 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
     ownerList: ownerListStyle,
     initials: initialsStyle,
     initialsList,
-    circleIcon
+    circleIcon,
+    ownerBtnDark,
   } = styles;
 
   useEffect(() => {
     let popperInstance;
 
     if (isOpeno) {
-      popperInstance = createPopper(buttonRef.current, document.querySelector('.ownerMenu'), {
-        placement: 'bottom',
-      });
+      popperInstance = createPopper(
+        buttonRef.current,
+        document.querySelector(".ownerMenu"),
+        {
+          placement: "bottom",
+        }
+      );
     } else {
       if (popperInstance) {
         popperInstance.destroy();
@@ -120,9 +126,9 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -137,11 +143,17 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
           }))
         }
         ref={buttonRef}
-        className={ownerBtn}
+        className={theme === "light" ? ownerBtn : ownerBtnDark}
       >
         {task.owner && task.owner[1] ? (
           <div className={initialsStyle}>
-            <CircleFill className={selectedOwnerColor == "" ? styles[task.owner[1]] : selectedOwnerColor}/>
+            <CircleFill
+              className={
+                selectedOwnerColor == ""
+                  ? styles[task.owner[1]]
+                  : selectedOwnerColor
+              }
+            />
             <div>{getInitials(task.owner)}</div>
           </div>
         ) : (
@@ -151,17 +163,23 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
       {isOpeno[task._id] && (
         <div className={`${ownerMenu} ownerMenu`}>
           <div className={ownerListStyle}>
-            {getInfo && getInfo.members.map((member, index) => (
-              <div key={index}>
-                <div className="{circleIcon}" onClick={() => handleOwnerClick(member.names, ownerColors[index])}>
-                  <div className={initialsList}>
-                    <CircleFill className={ownerColors[index]} />
-                    <div>{getInitials(member.names)}</div>
-                    <span>{member.names}</span>
+            {getInfo &&
+              getInfo.members.map((member, index) => (
+                <div key={index}>
+                  <div
+                    className="{circleIcon}"
+                    onClick={() =>
+                      handleOwnerClick(member.names, ownerColors[index])
+                    }
+                  >
+                    <div className={initialsList}>
+                      <CircleFill className={ownerColors[index]} />
+                      <div>{getInitials(member.names)}</div>
+                      <span>{member.names}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       )}

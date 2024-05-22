@@ -24,7 +24,8 @@ import rocketPic from "../assets/rocket.svg";
 import { useTheme } from "../utils/ThemeContext";
 
 function MenuProject({ project }) {
-  const { setprojectId, setShowMenu, selectedIcon, setIcon } = useContext(StateContext);
+  const { setprojectId, setShowMenu, selectedIcon, setIcon } =
+    useContext(StateContext);
 
   const { setUpdate } = useContext(StateContext);
   const [clickX, setClickX] = useState(null);
@@ -85,7 +86,7 @@ function MenuProject({ project }) {
     if (project) {
       setValue("projectName", project.projectName);
       setValue("description", project.description);
-      setIcon(project.icon)
+      setIcon(project.icon);
     }
   }, [project, setValue]);
 
@@ -113,7 +114,7 @@ function MenuProject({ project }) {
       navigate("/Projects");
       handleClose();
       handleDelClose();
-      setShowMenu(false)
+      setShowMenu(false);
     } catch (error) {
       console.log(error);
     }
@@ -133,6 +134,8 @@ function MenuProject({ project }) {
     menuTrashIcon,
     menuProjectNameDark,
     menuProjectEditModal,
+    menuEditDark,
+    menuTrashDark,
   } = styles;
 
   const {
@@ -169,7 +172,11 @@ function MenuProject({ project }) {
           }}
         >
           <img src={icon} alt="icon" className={menuProjectIcon} />
-          <p className={theme == "light" ? menuProjectName : menuProjectNameDark}>{projectName}</p>
+          <p
+            className={theme == "light" ? menuProjectName : menuProjectNameDark}
+          >
+            {projectName}
+          </p>
         </div>
         <div className={`Thing ${menuProjectProject}`}>
           <div>
@@ -177,22 +184,29 @@ function MenuProject({ project }) {
           </div>
           {show && (
             <Modal
-              className={`myModal ${menuProjectEditDelete}`}
-              // dialogClassName={`${myModal} modal-content`}
+              className={`myModal ${menuProjectEditDelete}${theme}`}
+              // dialogClassName={`myModal modal-content`}
               show={show}
               onHide={handleClose}
               backdropClassName={menuProjectModalBackDrop}
+              contentClassName={theme == "light" ? "" : "modal-content-dark"}
               style={{
                 top: `${clickY + -500}px`,
                 left: `${clickX + -300}px`,
               }}
               backdrop="true"
             >
-              <div className={menuEdit} onClick={handleSmAllClose}>
+              <div
+                className={theme == "light" ? menuEdit : menuEditDark}
+                onClick={handleSmAllClose}
+              >
                 <PencilSquare className={menuPencilsquare} /> Edit project
               </div>
 
-              <div className={menuTrash} onClick={handleDelAllClose}>
+              <div
+                className={theme == "light" ? menuTrash : menuTrashDark}
+                onClick={handleDelAllClose}
+              >
                 <Trash className={menuTrashIcon} /> Delete project
               </div>
             </Modal>
@@ -302,7 +316,9 @@ function MenuProject({ project }) {
           backdrop="true"
         >
           <Modal.Body>
-            <div className={TextThing12}>Are You sure, you want to delete &quot;{projectName}&quot;?</div>
+            <div className={TextThing12}>
+              Are You sure, you want to delete &quot;{projectName}&quot;?
+            </div>
             <button className={xIconButton1} onClick={handleDelClose}>
               <img src={xIcon} alt="xIcon" />
             </button>

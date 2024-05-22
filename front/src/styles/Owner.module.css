@@ -89,3 +89,19 @@ span {
   color: #ececec;
   font-size: 1.7rem;
 }
+
+/* Dark theme css */
+
+.ownerBtnDark {
+  position: relative;
+  border: none;
+  text-align: center;
+  color: #565656;
+  background-color: #202020;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.323rem;
+  margin-left: 0.6rem;
+}

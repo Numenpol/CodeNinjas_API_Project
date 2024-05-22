@@ -7,6 +7,7 @@ import "../styles/TaskListTableTimeLine.css"
 import styles from "../styles/TaskListTableTimeLine.module.css"
 import { updateDataTask } from '../services/update';
 import { StateContext } from "../utils/StateContext";
+import { useTheme } from "../utils/ThemeContext";
 
 
 function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id}) {
@@ -25,8 +26,10 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
 
   const { setUpdate } = useContext(StateContext);
 
+  const { theme } = useTheme();
 
-  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton} = styles;
+
+  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton, taskListTimeLineButtonDark} = styles;
 
   const handleShowCalendar = () => {
     setShowCalendar(showCalendar => !showCalendar);
@@ -163,7 +166,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
 
   return (
     <>
-      <button className={taskListTimeLineButton} type='button'>
+      <button className={theme == "light"  ? taskListTimeLineButton : taskListTimeLineButtonDark} type='button'>
         <ProgressBar now={calculateDaysLeftPercentage()}
         label={calendarDay}
         onClick={handleShowCalendar}

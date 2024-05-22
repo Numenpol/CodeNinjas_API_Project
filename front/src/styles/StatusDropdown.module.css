@@ -74,6 +74,21 @@
   color: #fff;
 }
 
+/* Dark theme css */
+
+.statusBtnDark {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  width: 99%;
+  text-align: center;
+  color: #565656;
+  height: 2.323rem;
+  background-color: #202020 ;
+  color: #fff;
+}
+
 @media screen and (min-width: 768px) {
 
 }
