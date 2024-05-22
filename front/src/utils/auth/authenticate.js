@@ -18,12 +18,6 @@ export const signup = async (values) => {
   localStorage.setItem("user", JSON.stringify(response.data));
 }
 
-export const getLogedInUser = () => {
-  const logedInUser = JSON.parse(localStorage.getItem("user"));
-  if (!logedInUser) return null;
-  return logedInUser;
-};
-
 export const authenticate = () => {
   const logedInUser = getLogedInUser();
   const token = logedInUser ? logedInUser.token : null;
