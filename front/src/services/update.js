@@ -5,14 +5,24 @@ const API_URLM = import.meta.env.VITE_API_URLM;
 
 
 export const updateData = async (id, data) => {
-    const response = await axios.patch(`${API_URL}/${id}`, data);
+  let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.patch(`${API_URL}/${id}`, data, {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  });
     return response.data;
   };
 
   // TASKS
 
   export const updateDataTask = async (id, data) => {
-    const response = await axios.patch(`${API_URLT}/${id}`, data);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.patch(`${API_URLT}/${id}`, data, {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  });
     return response.data;
   }
 
@@ -20,7 +30,12 @@ export const updateData = async (id, data) => {
 
   export const addMembersToProject = async ({ id, emails }) => {
     // Use destructured parameters
-    const response = await axios.patch(`${API_URLM}/${id}`, emails);
+    let token = JSON.parse(localStorage.getItem("user")).token;
+    const response = await axios.patch(`${API_URLM}/${id}`, emails, {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  });
     console.log(response.data);
     return response.data;
   };

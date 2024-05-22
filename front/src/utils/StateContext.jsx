@@ -3,6 +3,7 @@ import { getAllData } from '../services/get';
 import { getAllUsers } from '../services/get';
 import { getAllTasks } from '../services/get';
 import { getAllTaskById } from '../services/get';
+import { useNavigate } from "react-router-dom";
 
 export const StateContext = createContext();
 
@@ -26,6 +27,8 @@ export const StateProvider = ({ children }) => {
     const handleClose = () => setShow(false);
 
     const handleShow = () => setShow(true);
+
+    const navigate = useNavigate();
 
     const fetchUserData = async () => {
       try {
@@ -68,6 +71,16 @@ export const StateProvider = ({ children }) => {
       
     }
 
+    const checkIfUserIsValid = async () => {
+      try {
+      await getAllData();        
+      } catch (error) {
+      if(error){
+        navigate("/");
+      }        
+      }
+    };
+
 
   const handleResize = () => {
       if (window.innerWidth > 1440) {
@@ -79,6 +92,7 @@ export const StateProvider = ({ children }) => {
       fetchUserData();
       fetchData();
       fetchTasks();
+      checkIfUserIsValid();
       const fetchIdData = async () => {
         try {
           let fetchId = projectId;
