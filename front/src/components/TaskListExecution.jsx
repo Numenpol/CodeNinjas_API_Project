@@ -32,7 +32,7 @@ function TaskListExecutionTable() {
 
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
-  const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+
   const [clickX, setClickX] = useState(null);
   const [clickY, setClickY] = useState(null);
 
@@ -60,7 +60,7 @@ function TaskListExecutionTable() {
         owner: [selectedOwner, ownerColor],
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
-        completiondate: selectedCompletionDay,
+        completiondate: "",
       });
       setUpdate((update) => update + 1);
       reset();
@@ -210,10 +210,8 @@ function TaskListExecutionTable() {
                         <TaskListTableTimeLine
                           setSelectedTimeLine={setSelectedTimeLine}
                           setSelectedCreationDay={setSelectedCreationDay}
-                          setSelectedCompletionDay={setSelectedCompletionDay}
                           selectedTimeLine={selectedTimeLine}
                           selectedCreationDay={selectedCreationDay}
-                          selectedCompletionDay={selectedCompletionDay}
                           id={task._id}
                           task={task.timeline}
                         />
