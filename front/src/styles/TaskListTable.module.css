@@ -7,10 +7,11 @@
 .tableHeader th {
     background: #f5f6fa !important;
     text-align: center;
-    color: #565656;
+    color: #565656 !important;
+    font-family: var(--iner) !important;
     font-size: 0.75rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 130%;
 }
 
@@ -45,6 +46,10 @@
 }
 
 .keyName {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #565656;
     width: 3rem;
     text-align: center;
     padding-top: 0.5rem;
@@ -52,12 +57,17 @@
 }
 
 .tasklistTaskField {
+    
     display: flex;
     align-items: center;
     border: none;
 }
 
 .tasklistTaskField input {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #565656;
     flex-grow: 1;
     border: none;
 }
@@ -68,12 +78,15 @@
 }
 
 .taskName {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #565656;
     width: 13rem;
     overflow: hidden;
     text-align: start;
     display: flex;
     padding-left: 1rem;
-    padding-top: 0.5rem;
 }
 
 .pencilTrashIcon {
@@ -88,12 +101,16 @@
 
 .tableHeaderStatus,
 .tableHeaderPriority {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
     position: relative;
     min-width: 6rem;
     padding: 0;
 }
 
 .tableTimeline {
+    
     width: 9rem;
     text-align: center;
     padding-left: 1rem;
@@ -103,8 +120,12 @@
 
 .taskCreationDate,
 .taskCompletionDate {
+    color: #565656;
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
     width: 7.5rem;
-    padding-left: 1rem;
     padding-top: 0.5rem;
     margin-bottom: 0;
 }
@@ -188,5 +209,13 @@
 
     .taskCompletionDate {
         width: 8rem;
+    }
+    .tableHeader th {
+        font-size: 0.875rem !important;
+    }
+    .keyName,    .taskName, .tableHeaderStatus,
+    .tableHeaderPriority, .tasklistTaskField input, .taskCreationDate,
+    .taskCompletionDate  {
+        font-size: 0.875rem
     }
 }
