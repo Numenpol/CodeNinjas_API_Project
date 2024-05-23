@@ -70,6 +70,7 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
     AddCloseButton,
     AddAddButton,
     AddMemberPopUpfooter,
+    mailDiv
   } = styles;
 
   return (
@@ -87,6 +88,7 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
         </Modal.Header>
         <Modal.Body bsPrefix={AddMemberPopUpbody}>
           <Form onSubmit={handleSubmit(formSubmitHandler)}>
+            <div className={mailDiv}>
             <div className="AddMemberPopUpCont">
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className={AddMemberPopUpheadertexts}>
@@ -109,6 +111,7 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
                   {errors.email && errors.email.message}
                 </Form.Control.Feedback>
               </Form.Group>
+            </div>
             </div>
             <div className={AddButtons}>
               <Button

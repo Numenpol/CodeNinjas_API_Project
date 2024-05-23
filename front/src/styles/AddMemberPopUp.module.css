@@ -1,11 +1,4 @@
-.AddMemberPopUpheadertexts {
-    margin-left: 1rem;
-    font-size: 0.875rem;
-    color: #565656;
-    /* font-family: Inter; */
-    font-weight: 400;
-    line-height: 1.25rem;
-}
+
 
 .AddMemberInput {
     display: inline;
@@ -20,7 +13,7 @@
 .AddMemberInput::placeholder {
     color: #adb5bd;
     font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.25rem;
 }
 
@@ -52,12 +45,23 @@
 }
 
 .AddMemberPopUpheadertext {
+    color: #565656;
+    font-family: var(--inter) !important;
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 400 !important;
     line-height: 1.25rem;
     /* font-family: Inter; */
     /* margin-bottom: -1rem; */
-    padding-top: 1rem;
+    padding-top: 1rem ;
+    margin-left: -0.2rem !important;
+}
+.AddMemberPopUpheadertexts {
+    margin-left: 1rem;
+    font-size: 0.875rem;
+    color: #565656;
+    font-family: var(--inter) !important;
+    font-weight: 400 !important;
+    margin-top: -1rem;
 }
 
 .AddMemberPopUpbody {
@@ -73,8 +77,12 @@
     width: 79px;
     height: 32px;
     background-color: #ffffff;
-    border: 0.2px solid #97979794;
+    border: 0.2px solid #D5D5D5;
     border-radius: 0.3125rem;
+    font-family: var(--inter);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #565656;
 }
 
 .AddCloseButton:hover {
@@ -85,10 +93,13 @@
     border-radius: 0.3125rem;
     margin-left: 16px;
     width: 79px;
-    height: 32px;
+    height: 2rem;
     background-color: #3fadbe;
     color: white;
     border: none;
+    font-family: var(--inter);
+    font-size: 0.875rem;
+    font-weight: 400;
 }
 
 .AddAddButton:hover {
@@ -107,7 +118,9 @@
     padding-left: 0.5rem;
     padding-bottom: 0.5rem;
 }
-
+.mailDiv {
+    margin-top: -0.2rem;
+}
 @media screen and (min-width: 768px) {
     .AddMemberInput {
         width: 18.3125rem;
