@@ -14,7 +14,6 @@ function ProjectsSearchBar() {
 
   const { setProjects, projects } = useContext(StateContext);
 
-
   const handleSearchChange = async (e) => {
     setValue(e.target.value);
     await handleSubmit(e);
@@ -24,8 +23,7 @@ function ProjectsSearchBar() {
     e.preventDefault();
     const result = await getSearchByProjectName(value);
     setProjects(result.data.projects);
-  }
-
+  };
 
   const buttonRef = useRef(null);
 
@@ -56,6 +54,8 @@ function ProjectsSearchBar() {
     searchbarButtonDark,
     searchInputDark,
     slidersDark,
+    sortPopupDark,
+    modalTitleDark,
   } = styles;
 
   useEffect(() => {
@@ -118,9 +118,9 @@ function ProjectsSearchBar() {
               } me-3 d-flex align-self-center`}
             />
             {smShow && (
-              <div className={`${sortPopup} sort-popup`}>
+              <div className={`${theme === "light" ? sortPopup : sortPopupDark} sort-popup`}>
                 <div className={sortTitle}>
-                  <p className={modalTitle}>Choose columns to search</p>
+                  <p className={theme === "light" ? modalTitle : modalTitleDark}>Choose columns to search</p>
                 </div>
                 <div
                   onClick={() => handleCheck("projectName")}
@@ -151,4 +151,3 @@ function ProjectsSearchBar() {
 }
 
 export default ProjectsSearchBar;
-

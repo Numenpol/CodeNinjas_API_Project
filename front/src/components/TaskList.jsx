@@ -94,6 +94,7 @@ function TaskList() {
     taskListMenuDark,
     taskListProjectNameDark,
     taskListAddMemberDark,
+    taskListNewTaskDark,
   } = styles;
 
   const { MenuThing } = styles1;
@@ -159,7 +160,7 @@ function TaskList() {
         <div className={taskListHeaderUnderline}></div>
         <div className={taskListHeaderBottom}>
           <Button
-            className={taskListNewTask}
+            className={theme == "light" ? taskListNewTask : taskListNewTaskDark}
             variant="primary"
             onClick={handleShowTask}
             style={{

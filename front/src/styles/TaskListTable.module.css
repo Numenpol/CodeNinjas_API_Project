@@ -244,6 +244,17 @@
     background-color: #202020 !important;
 }
 
+.createBtnDark {
+    padding: 0.625rem 1rem;
+    background: #3372B2 !important;
+    border: none !important;
+    width: 4.9375rem;
+    height: 2rem;
+    margin-top: 0.1rem;
+  }
+
+
+
 @media screen and (min-width: 768px) {
     .allTaskList {
         max-width: 100%;

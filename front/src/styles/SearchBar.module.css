@@ -97,6 +97,8 @@
     margin-right: 0.5rem;
 }
 
+
+
 /* Dark theme css */
 
 .searchbarButtonDark {
@@ -143,6 +145,19 @@
     box-shadow: none !important;
 }
 
+.sortPopupDark {
+    background-color: #121212;
+    color: #FFF;
+}
+
+.modalTitleDark {
+    font-family: 'Inter' !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin-bottom: 0.3rem !important;
+    text-align: center;
+}
 
 @media screen and (max-width: 576px) {
     /* .modal-90w {
