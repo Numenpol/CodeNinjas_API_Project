@@ -17,6 +17,7 @@ import Button from "react-bootstrap/Button";
 import xIcon from "../assets/xIcon.svg";
 import styles from "../styles/TaskListTable.module.css";
 import { useTheme } from "../utils/ThemeContext";
+import OutsideClickHandler from "react-outside-click-handler";
 
 function TaskListExecutionTable() {
   const { setUpdate, showTask, tasksById } = useContext(StateContext);
@@ -128,7 +129,7 @@ function TaskListExecutionTable() {
     (task) => task.status === "In progress"
   );
 
-  const { allTaskList, tableHeader, keyNameDark , createBtnDark ,cancelBtnDark , DeleteModalCloseBtnDark , taskrowDark , taskrow , tableHeaderDark , tasklistTaskFieldDark ,taskCreationDateDark , tableHeaderOwnerThDark,tableHeaderKeyDark ,taskNameDark ,tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDateDark , tableHeaderCompletionDateDark ,tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn , DeleteModalText, DeleteModalTextDark,} = styles;
+  const { allTaskList, tableHeader, keyNameDark, createBtnDark, cancelBtnDark, DeleteModalCloseBtnDark, taskrowDark, taskrow, tableHeaderDark, tasklistTaskFieldDark, taskCreationDateDark, tableHeaderOwnerThDark, tableHeaderKeyDark, taskNameDark, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDateDark, tableHeaderCompletionDateDark, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn, DeleteModalText, DeleteModalTextDark, } = styles;
 
   return (
     <>
@@ -183,12 +184,14 @@ function TaskListExecutionTable() {
                             onClick={() => handlePencilClick(task._id)}
                           />
                         </span>
-                        <span
-                          className={pencilTrashIcon}
-                          onClick={(event) => handleDeleteButtonClick(event, task._id)}
-                        >
-                          <Trash />
-                        </span>
+                        <OutsideClickHandler onOutsideClick={() => setDeleteModalShow(false)}>
+                          <span
+                            className={pencilTrashIcon}
+                            onClick={(event) => handleDeleteButtonClick(event, task._id)}
+                          >
+                            <Trash />
+                          </span>
+                        </OutsideClickHandler>
                       </td>
                       <td className={tableHeaderOwner}>
                         <TaskListTableOwner

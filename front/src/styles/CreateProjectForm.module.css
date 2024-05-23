@@ -368,6 +368,22 @@
   right: 0.2rem;
 }
 
+.cancelBtnDark:hover {
+  background-color: #292929 !important;
+ }
+ 
+ .createBtnDark:hover {
+   background-color: #235586 !important;
+ }
+ 
+ .cancelBtnProjectDark:hover {
+   background-color: #292929 !important;
+ }
+ 
+ .createBtnProjectDark:hover {
+   background-color: #235586 !important;
+ }
+
 @media screen and (min-width: 768px) {
   .modalDialog {
     max-width: 780px !important;
