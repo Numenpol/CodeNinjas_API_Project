@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import styles from "../styles/LoginForm.module.css";
 import codeNinjaLogo from "../assets/Group.svg";
-
+import { useContext } from "react";
+import { StateContext } from "../utils/StateContext";
 
 function LoginForm() {
   const [error, setError] = useState("");
+  const { setUpdate } = useContext(StateContext)
 
   const navigate = useNavigate();
 
@@ -23,6 +25,7 @@ function LoginForm() {
   async function onSubmit(values) {
     try {
       await login(values);
+      setUpdate((update) => update + 1);
       navigate("/projects");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {

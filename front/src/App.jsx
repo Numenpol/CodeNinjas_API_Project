@@ -6,11 +6,12 @@ import ProjectPage from "./pages/ProjectPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import TaskListPage from "./pages/TaskListPage";
 import { ThemeProvider } from "./utils/ThemeContext";
-
+import { StateProvider } from "./utils/StateContext";
 
 function App() {
   return (
-    <>      
+    <>     
+    <StateProvider>
       <ThemeProvider>
         <Routes>
           <Route index element={<LoginPage />}></Route>
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </ThemeProvider>
+    </StateProvider> 
     </>
   );
 }

@@ -33,6 +33,7 @@ function TaskListDoneTable() {
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
 
+  const [timeLineTaskId, setTimeLineTaskId] = useState("");
   const [clickX, setClickX] = useState(null);
   const [clickY, setClickY] = useState(null);
 
@@ -99,6 +100,11 @@ function TaskListDoneTable() {
     setClickX(event.clientX);
     setClickY(event.clientY);
   };
+
+  const handleTimeLineClick = (taskId) => {
+    setTimeLineTaskId(taskId);
+  }
+
   const handleDeleteTask = async () => {
     try {
       await deleteDataTask(taskIdToDelete);
@@ -202,7 +208,7 @@ function TaskListDoneTable() {
                           updateDataTask={updateDataTask}
                         />
                       </td>
-                      <td className={tableTimeline}>
+                      <td className={tableTimeline} onClick={() => handleTimeLineClick(task._id)}>
                         <TaskListTableTimeLine
                           setSelectedTimeLine={setSelectedTimeLine}
                           setSelectedCreationDay={setSelectedCreationDay}

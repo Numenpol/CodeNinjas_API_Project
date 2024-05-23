@@ -7,7 +7,7 @@ import styles from "../styles/SearchBar.module.css";
 
 function TaskListSearchBar() {
     const [smShow, setSmShow] = useState(false);
-    const [checked, setChecked] = useState({ task: true, status: false, priority: false });
+    const [checked, setChecked] = useState({ task: false, status: false, priority: false });
     const [value, setValue] = useState("");
     const { setTasksById } = useContext(StateContext);
 
@@ -54,18 +54,19 @@ function TaskListSearchBar() {
 
     const buttonRef = useRef(null);
 
-    const handleCheck = (name) => {
-        const newChecked = {
-            ...checked,
-            [name]: !checked[name]
-        };
 
-        setChecked(newChecked);
+    const handleCheck = (name) => {
+        setChecked((prevState) => {
+            const newState = { task: false, status: false, priority: false };
+            newState[name] = !prevState[name];
+            return newState;
+        });
         setSmShow(false);
+
         debounceSearch(
             value,
-            name === "priority" ? newChecked.priority : checked.priority,
-            name === "status" ? (newChecked.status ? 'active' : '') : (checked.status ? 'active' : '')
+            name === "priority" ? !checked.priority : false,
+            name === "status" ? (!checked.status ? 'active' : '') : ''
         );
     };
 

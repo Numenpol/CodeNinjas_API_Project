@@ -46,14 +46,16 @@ function ProjectsSearchBar() {
 
   const buttonRef = useRef(null);
 
-  const handleCheck = (name) => {
-    setChecked((prevState) => ({
-      ...prevState,
-      [name]: !prevState[name],
-    }));
-    setSmShow(false);
-    debounceSearch(value, name === "status" ? !checked.status : checked.status);
-  };
+const handleCheck = (name) => {
+  setChecked((prevState) => {
+    const newState = { projectName: false, status: false };
+    newState[name] = !prevState[name];
+    return newState;
+  });
+  setSmShow(false);
+
+  debounceSearch(value, name === "status" ? !checked.status : false);
+};
 
   const { theme } = useTheme();
 

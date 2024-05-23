@@ -18,7 +18,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
     {
       startDate: new Date(),
       endDate: null,
-      key: 'selection'
+      key: `selection`,
     }
   ]);
   const [monthNumberDate, setMonthNumberDate] = useState();
@@ -33,13 +33,33 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
   }
 
   const getStartFixedDate = (date) => {
+    const todayDate = new Date();
     const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
+    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
+    const todayFormattedDate = todayDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const todayDateNumber = todayDate.toLocaleDateString("en-US", { day: 'numeric' });
+    const todayDateMonth = todayDate.toLocaleDateString("en-US", {month: 'short'});
+    if(parseInt(dateNumber)<parseInt(todayDateNumber) && dateMonth == todayDateMonth){
+    return todayFormattedDate;    
+    } else if (dateMonth != todayDateMonth) {
+    return formattedDate;
+    } else
     return formattedDate;
   }
 
   const getNumberFixedDate = (date) => {
+    const todayDate = new Date();
     const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
-    return dateNumber; 
+    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
+    const todayDateNumber = todayDate.toLocaleDateString("en-US", { day: 'numeric' });
+    const todayDateMonth = todayDate.toLocaleDateString("en-US", {month: 'short'});
+    if(parseInt(dateNumber)<parseInt(todayDateNumber) && dateMonth == todayDateMonth){
+    return todayDateNumber;    
+    } else if (dateMonth != todayDateMonth) {
+    return dateNumber;
+    } else
+    return dateNumber;
   }
 
   const getMonthFixedDate = (date) => {
@@ -62,7 +82,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
     }
       const totalDays = endDateDay - startDateDay + 1;
       const daysLeftPercentage = (1 / totalDays) * 100;
-    return daysLeftPercentage;
+      return daysLeftPercentage;
   }
 
   const handleClickOutside = (event) => {
@@ -90,14 +110,14 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
     }
   };
 
-
+  
   useEffect(() => {
     dateSelection.map((stat) => {
       if (task == null || stat.endDate) {
-        let startDate = getStartFixedDate(new Date());
-        let startDateDay = getNumberFixedDate(new Date());
-        let startDateMonth = getMonthFixedDate(new Date());
-        let startDateMonthNumber = getMonthNumberFixedDate(new Date());
+        let startDate = getStartFixedDate(stat.startDate);
+        let startDateDay = getNumberFixedDate(stat.startDate);
+        let startDateMonth = getMonthFixedDate(stat.startDate);
+        let startDateMonthNumber = getMonthNumberFixedDate(stat.startDate);
         if (stat.endDate == null) {
           setCalendarDay(startDate);
         } else {

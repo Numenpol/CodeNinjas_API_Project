@@ -33,6 +33,7 @@ function TaskListExecutionTable() {
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
 
+  const [timeLineTaskId, setTimeLineTaskId] = useState("");
   const [clickX, setClickX] = useState(null);
   const [clickY, setClickY] = useState(null);
 
@@ -110,6 +111,10 @@ function TaskListExecutionTable() {
       console.log(error);
     }
   };
+
+  const handleTimeLineClick = (taskId) => {
+    setTimeLineTaskId(taskId);
+  }
 
   const handleCloseDeleteModal = () => {
     setDeleteModalShow(false);
@@ -206,7 +211,7 @@ function TaskListExecutionTable() {
                           updateDataTask={updateDataTask}
                         />
                       </td>
-                      <td className={tableTimeline}>
+                      <td className={tableTimeline} onClick={() => handleTimeLineClick(task._id)}>
                         <TaskListTableTimeLine
                           setSelectedTimeLine={setSelectedTimeLine}
                           setSelectedCreationDay={setSelectedCreationDay}
