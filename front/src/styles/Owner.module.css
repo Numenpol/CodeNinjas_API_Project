@@ -1,0 +1,130 @@
+.ownerBtn {
+  position: relative;
+  border: none;
+  text-align: center;
+  color: #565656;
+  background-color: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.323rem;
+  margin-left: 0.6rem;
+
+  /* width: ; */
+}
+
+.ownerMenu {
+  position: relative;
+  transform: translateX(-40%);
+  border: 1px solid #d8d8d8;
+  border-radius: 0.625rem;
+  background-color: #ffffff;
+  width: 14rem;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
+}
+
+.ownerList {
+  font-family: var(--inter);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #565656;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+.initials {
+  font-family: var(--inter);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #565656;
+  position: relative;
+}
+
+.initials div {
+  font-family: var(--inter);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+.initialsList {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.initialsList div {
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+span {
+  margin-left: 0.5rem;
+}
+.circleIcon {
+  margin-bottom: 1rem;
+}
+.ownerIconWater {
+  color: #40adbe;
+  font-size: 1.7rem;
+}
+.ownerIconOrange {
+  color: #fdab3d;
+  font-size: 1.7rem;
+}
+
+.ownerIconGrape {
+  color: #7f5db6;
+  font-size: 1.7rem;
+}
+
+.ownerIconBlue {
+  color: #3372b2;
+  font-size: 1.7rem;
+}
+.ownerIconPink {
+  color: #c1427f;
+  font-size: 1.7rem;
+}
+
+.ownerIconEmpty {
+  color: #ececec;
+  font-size: 1.7rem;
+}
+
+/* Dark theme css */
+
+.ownerBtnDark {
+  position: relative;
+  border: none;
+  text-align: center;
+  color: #565656;
+  background-color: #202020;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.323rem;
+  margin-left: 0.6rem;
+}
+
+.ownerMenuDark {
+  position: relative;
+  transform: translateX(-40%);
+  border: 1px solid #d8d8d8;
+  border-radius: 0.625rem;
+  background-color: #202020;
+  width: 14rem;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
+}
+
+.taskListOwnerNameDark {
+  color: #ffffff;
+}

@@ -1,0 +1,72 @@
+.taskNameForm {
+    min-width: 15.6rem;
+}
+
+.taskOwner {
+    width: 3.5rem;
+    position: absolute;
+}
+
+.taskStatus, .taskPriority {
+    width: 6rem;
+    position: absolute;
+}
+
+/* Dark theme css */
+
+.taskNameFormDark {
+    min-width: 15.6rem;
+    background-color: #202020;
+    color: #FFF;
+}
+
+.taskOwnerDark {
+    width: 3.5rem;
+    position: absolute;
+    background-color: #202020;
+}
+
+
+@media screen and (min-width: 768px)  {
+    .taskNameForm {
+        min-width: 27.6rem;
+    }
+
+    .taskNameForm input {
+        width: 15.6rem;
+    }
+
+    .taskOwner  {
+        width: 3.5rem;
+    }
+
+    .taskStatus, .taskPriority {
+        width: 6rem;
+    }
+
+    /* Dark theme css */
+
+    .taskNameFormDark {
+        min-width: 27.6rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .taskNameForm {
+        min-width: 20.6rem;
+    }
+
+    .taskOwner {
+        width: 3rem;
+    }
+
+    .taskStatus, .taskPriority {
+        width: 6rem;
+    }
+
+    /* Dark theme css */
+
+    .taskNameFormDark {
+        min-width: 20.6rem;
+    }
+}

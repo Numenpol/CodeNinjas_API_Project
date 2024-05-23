@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+}
+
+.loginFormError {
+    color: red;
+    font-weight: bold;
+}
+
+.loginButton:hover {
+    background-color: rgba(165, 56, 109, 1);
+}
+
+.newAccountBtn:hover {
+    background-color: rgba(53, 147, 162, 1);
+}
+
+.allLoginPage {
+    min-width: 360px;
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+    .loginFormError {
+        padding-bottom: 15px;
+    }
+}
+
+.loginPhoto {
+    background-image: url("./../assets/projectLoginPhoto.png");
+    height: 29.5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ninjaLogo {
+    height: 60.63px;
+    width: 247px;
+    margin: 2.5rem 0 auto;
+}
+
+.textOnPhoto {
+    color: aliceblue;
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 1rem;
+    font-weight: 300;
+    justify-self: baseline;
+    margin: auto 1.88rem 2.12rem;
+    line-height: 1.875rem
+}
+.textOnPhoto span{
+    font-weight: 600;
+}
+
+.loginPageForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    color: #ADB5BD;
+}
+
+.formBasicEmail {
+    width: 18.75rem;
+    margin-bottom: 0.875rem;
+    margin-top: 1.44rem;
+}
+
+.formBasicPassword {
+    width: 18.75rem;
+    margin-bottom: 0.875rem;
+}
+
+.loginInputHolder {
+    padding: 0.625rem 1rem !important;
+    font-size: 1rem !important;
+}
+
+.loginButton {
+    width: 18.75rem;
+    padding: 0.625rem 1rem !important;
+    height: 3.125rem;
+    border-radius: 0.3125rem;
+    background: #C1427F;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+    color: white;
+    border: none;
+    margin-bottom: 1rem;
+    font-family: var(--inter) !important;
+    font-weight: 400 !important;
+}
+
+.newAccountBtn {
+    width: 18.75rem;
+    height: 3.125rem;
+    padding: 0.625rem 1rem !important;
+    border-radius: 0.3125rem;
+    background: #3FADBE;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+    color: white;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.loginButtonBorder {
+    width: 18.75rem;
+    border-bottom: 1px solid #d8d8d8;
+    padding-bottom: 0.62rem;
+    margin-bottom: 1.19rem;
+}
+
+.loginPageForm input::placeholder {
+    color: #ADB5BD;
+}
+
+@media screen and (min-width: 768px) {
+    .loginPhoto {
+        min-height: 38.375rem;
+    }
+
+    .ninjaLogo {
+        margin-top: 3.5rem;
+        align-self: flex-start;
+        margin-left: 3.125rem;
+    }
+
+    .textOnPhoto {
+        font-size: 1.625rem;
+        line-height: 40px;
+        margin: 0 5.625rem 3.75rem;
+    }
+
+    .formBasicEmail {
+        margin-top: 3rem;
+    }
+
+    .loginButton {
+        margin-top: 1.5rem;
+    }
+
+    .loginButtonBorder {
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .allLoginPage {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .loginPhoto {
+        background-image: url("./../assets/projectLoginDesktopPhoto.svg");
+        min-height: 100vh;
+        margin-bottom: 0;
+        width: 70vw;
+    }
+
+    .ninjaLogo {
+        margin-top: 5rem;
+        margin-left: 5rem;
+    }
+
+    .textOnPhoto {
+        font-size: 2.25rem;
+        margin: 0 7rem 7rem;
+        line-height: 3.75rem;
+    }
+
+    .formBasicEmail {
+        margin-top: 1.44rem;
+    }
+
+    .loginFormDiv {
+        display: flex;
+        align-items: center;
+    }
+
+    .loginPageForm {
+        width: 30vw;
+    }
+
+    .loginButton {
+        margin-top: 1rem;
+    }
+}

@@ -1,0 +1,25 @@
+.projectIcons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.7rem;
+}
+
+.createProjectIcons {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.createProjectIcons:hover {
+    background-color: #D5D5D5;
+    padding: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.createProjectIconsSelected{
+    background-color: #D5D5D5;
+    padding: 1px;
+    border-radius: 5px;
+    width: 1.2rem;
+}
