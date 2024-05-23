@@ -75,6 +75,8 @@ function ProjectsSearchBar() {
     searchbarButtonDark,
     searchInputDark,
     slidersDark,
+    sortPopupDark,
+    modalTitleDark,
   } = styles;
 
   useEffect(() => {
@@ -137,9 +139,9 @@ function ProjectsSearchBar() {
               } me-3 d-flex align-self-center`}
             />
             {smShow && (
-              <div className={`${sortPopup} sort-popup`}>
+              <div className={`${theme === "light" ? sortPopup : sortPopupDark} sort-popup`}>
                 <div className={sortTitle}>
-                  <p className={modalTitle}>Choose columns to search</p>
+                  <p className={theme === "light" ? modalTitle : modalTitleDark}>Choose columns to search</p>
                 </div>
                 <div
                   onClick={() => handleCheck("projectName")}

@@ -16,6 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import xIcon from "../assets/xIcon.svg";
 import styles from "../styles/TaskListTable.module.css";
+import { useTheme } from "../utils/ThemeContext";
 
 function TaskListExecutionTable() {
   const { setUpdate, showTask, tasksById } = useContext(StateContext);
@@ -24,6 +25,8 @@ function TaskListExecutionTable() {
 
   const [isOpens, setIsOpens] = useState({});
   const [selectedPriority, setSelectedPriority] = useState("");
+
+  const { theme } = useTheme();
 
   const [selectedOwner, setSelectedOwner] = useState("");
   const [ownerColor, setOwnerColor] = useState("");
@@ -120,7 +123,7 @@ function TaskListExecutionTable() {
     (task) => task.status === "In progress"
   );
 
-  const { allTaskList, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
+  const { allTaskList, tableHeader, keyNameDark , taskrowDark , taskrow , tableHeaderDark , tasklistTaskFieldDark ,taskCreationDateDark , tableHeaderOwnerThDark,tableHeaderKeyDark ,taskNameDark ,tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDateDark , tableHeaderCompletionDateDark ,tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
 
   return (
     <>
@@ -130,27 +133,27 @@ function TaskListExecutionTable() {
             <form onSubmit={handleSubmit(formSubmitHandler)}>
               <Table bordered>
                 <thead>
-                  <tr className={tableHeader}>
+                  <tr className={theme === "light" ? tableHeader : tableHeaderDark}>
                     {/* <th>Nr.</th> */}
                     <th>Key</th>
                     <th>Task</th>
-                    <th className={tableHeaderOwnerTh}>Owner</th>
+                    <th className={theme === "light" ? tableHeaderOwnerTh : tableHeaderOwnerThDark}>Owner</th>
                     <th className={tableHeaderStatusTh}>Status</th>
                     <th className={tableHeaderPriorityTh}>Priority</th>
                     <th>Timeline</th>
-                    <th className={tableHeaderCreationDate}>Creation date</th>
-                    <th className={tableHeaderCompletionDate}>
+                    <th className={theme === "light" ? tableHeaderCreationDate : tableHeaderCreationDateDark}>Creation date</th>
+                    <th className={theme === "light" ? tableHeaderCompletionDate : tableHeaderCompletionDateDark}>
                       Completion date
                     </th>
                   </tr>
                 </thead>
                 <tbody className={tableBody}>
                   {fitleredTasks.map((task) => (
-                    <tr key={task._id}>
+                    <tr key={task._id} className={theme == "light" ? taskrow : taskrowDark}>
                       {/* <td>{index+1}</td> */}
                       <td className={tableHeaderKey}>
                         <p
-                          className={keyName}
+                          className={theme === "light" ? keyName : keyNameDark}
                           disabled
                           id={`key-${task._id}`}
                           name={`key-${task._id}`}
@@ -159,9 +162,9 @@ function TaskListExecutionTable() {
                           {...register(`key-${task._id}`)}
                         >{task.key}</p>
                       </td>
-                      <td className={tasklistTaskField}>
+                      <td className={theme === "light" ? tasklistTaskField : tasklistTaskFieldDark}>
                         <input
-                          className={taskName}
+                          className={theme === "light" ? taskName : taskNameDark}
                           id={`task-${task._id}`}
                           name={`task-${task._id}`}
                           type="text"
@@ -218,9 +221,9 @@ function TaskListExecutionTable() {
                           task={task.timeline}
                         />
                       </td>
-                      <td className={tableHeaderCreationDate}>
+                      <td className={theme === "light" ? tableHeaderCreationDate : tableHeaderCreationDateDark}>
                         <p
-                          className={taskCreationDate}
+                          className={theme === "light" ? taskCreationDate : taskCreationDateDark}
                           style={{ border: "none" }}
                           id={`creationdate-${task._id}`}
                           name={`creationdate-${task._id}`}
@@ -228,7 +231,7 @@ function TaskListExecutionTable() {
                           defaultValue={task.creationdate}
                           {...register(`creationdate-${task._id}`)}>{task.creationdate}</p>
                       </td>
-                      <td className={tableHeaderCompletionDate}>
+                      <td className={theme === "light" ? tableHeaderCompletionDate : tableHeaderCompletionDateDark}>
                         <p
                           className={taskCompletionDate}
                           id={`completiondate-${task._id}`}

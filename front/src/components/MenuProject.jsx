@@ -24,7 +24,8 @@ import rocketPic from "../assets/rocket.svg";
 import { useTheme } from "../utils/ThemeContext";
 
 function MenuProject({ project }) {
-  const { setprojectId, setShowMenu, selectedIcon, setIcon } = useContext(StateContext);
+  const { setprojectId, setShowMenu, selectedIcon, setIcon } =
+    useContext(StateContext);
 
   const { setUpdate } = useContext(StateContext);
   const [clickX, setClickX] = useState(null);
@@ -85,7 +86,7 @@ function MenuProject({ project }) {
     if (project) {
       setValue("projectName", project.projectName);
       setValue("description", project.description);
-      setIcon(project.icon)
+      setIcon(project.icon);
     }
   }, [project, setValue]);
 
@@ -113,7 +114,7 @@ function MenuProject({ project }) {
       navigate("/Projects");
       handleClose();
       handleDelClose();
-      setShowMenu(false)
+      setShowMenu(false);
     } catch (error) {
       console.log(error);
     }
@@ -133,6 +134,8 @@ function MenuProject({ project }) {
     menuTrashIcon,
     menuProjectNameDark,
     menuProjectEditModal,
+    menuEditDark,
+    menuTrashDark,
   } = styles;
 
   const {
@@ -157,6 +160,24 @@ function MenuProject({ project }) {
     buttonsStupid,
     TextThing12,
     xIconButton1,
+    rocketPictureDark,
+    xIconButtonDark,
+    createProjectFormDark,
+    createProjectHeaderDark,
+    blankSpace,
+    blankSpaceDark,
+    createProjectDark,
+    projectDescriptionField,
+    projectDescriptionFieldDark,
+    projectNameField,
+    projectNameFieldDark,
+    cancelBtnDark,
+    createBtnDark,
+    TextThing12Dark,
+    cancelBtnProjectDark,
+    cancelBtnContentDark,
+    createBtnProjectDark,
+    xIconButton1Dark,
   } = stylesForm;
 
   return (
@@ -169,7 +190,11 @@ function MenuProject({ project }) {
           }}
         >
           <img src={icon} alt="icon" className={menuProjectIcon} />
-          <p className={theme == "light" ? menuProjectName : menuProjectNameDark}>{projectName}</p>
+          <p
+            className={theme == "light" ? menuProjectName : menuProjectNameDark}
+          >
+            {projectName}
+          </p>
         </div>
         <div className={`Thing ${menuProjectProject}`}>
           <div>
@@ -177,22 +202,29 @@ function MenuProject({ project }) {
           </div>
           {show && (
             <Modal
-              className={`myModal ${menuProjectEditDelete}`}
-              // dialogClassName={`${myModal} modal-content`}
+              className={`myModal ${menuProjectEditDelete}${theme}`}
+              // dialogClassName={`myModal modal-content`}
               show={show}
               onHide={handleClose}
               backdropClassName={menuProjectModalBackDrop}
+              contentClassName={theme == "light" ? "" : "modal-content-dark"}
               style={{
                 top: `${clickY + -500}px`,
                 left: `${clickX + -300}px`,
               }}
               backdrop="true"
             >
-              <div className={menuEdit} onClick={handleSmAllClose}>
+              <div
+                className={theme == "light" ? menuEdit : menuEditDark}
+                onClick={handleSmAllClose}
+              >
                 <PencilSquare className={menuPencilsquare} /> Edit project
               </div>
 
-              <div className={menuTrash} onClick={handleDelAllClose}>
+              <div
+                className={theme == "light" ? menuTrash : menuTrashDark}
+                onClick={handleDelAllClose}
+              >
                 <Trash className={menuTrashIcon} /> Delete project
               </div>
             </Modal>
@@ -206,15 +238,28 @@ function MenuProject({ project }) {
           backdropClassName="backdrop"
           onHide={handleSmClose}
         >
-          <div className={createProject}>
-            <button className={xIconButton} onClick={handleSmClose}>
+          <div className={theme == "light" ? createProject : createProjectDark}>
+            <button
+              className={theme == "light" ? xIconButton : xIconButtonDark}
+              onClick={handleSmClose}
+            >
               <img src={xIcon} alt="xIcon" />
             </button>
-            <div>
-              <h1 className={createProjectHeader}>Edit your project</h1>
+            <div className={theme == "light" ? blankSpace : blankSpaceDark}>
+              <h1
+                className={
+                  theme == "light"
+                    ? createProjectHeader
+                    : createProjectHeaderDark
+                }
+              >
+                Edit your project
+              </h1>
               <Form
                 onSubmit={handleSubmit(formSubmitHandler)}
-                className={createProjectForm}
+                className={
+                  theme == "light" ? createProjectForm : createProjectFormDark
+                }
               >
                 <div>
                   <Form.Group
@@ -227,6 +272,11 @@ function MenuProject({ project }) {
                       placeholder="New project"
                       name="projectName"
                       // autoComplete="projectName"
+                      className={
+                        theme == "light"
+                          ? projectNameField
+                          : projectNameFieldDark
+                      }
                       {...register("projectName", {
                         required: "Project name is required",
                         maxLength: {
@@ -259,6 +309,11 @@ function MenuProject({ project }) {
                       rows={3}
                       placeholder="Project description"
                       name="description"
+                      className={
+                        theme == "light"
+                          ? projectDescriptionField
+                          : projectDescriptionFieldDark
+                      }
                       // autoComplete="description"
                       {...register("description", {
                         required: "Project description is required",
@@ -271,14 +326,14 @@ function MenuProject({ project }) {
                   </Form.Group>
                 </div>
                 <div className={createButtons}>
-                  <Button className={cancelBtn} variant="primary">
+                  <Button   className={theme == "light" ? cancelBtn : cancelBtnDark} variant="primary">
                     <div onClick={handleSmClose} className={cancelBtnContent}>
                       Cancel
                     </div>
                   </Button>
                   <Button
                     variant="primary"
-                    className={createBtn}
+                    className={theme == "light" ? createBtn : createBtnDark}
                     type="submit"
                     disabled={isSubmitting}
                   >
@@ -287,7 +342,9 @@ function MenuProject({ project }) {
                 </div>
               </Form>
             </div>
-            <div className={rocketPicture}>
+            <div
+              className={theme == "light" ? rocketPicture : rocketPictureDark}
+            >
               <img src={rocketPic} alt="rocketPicture" className={rocket} />
               <h1 className={rocketSlogan}>Ready? Launch!</h1>
             </div>
@@ -300,18 +357,21 @@ function MenuProject({ project }) {
           style={{ top: `${clickY - 160}px`, left: `${clickX - 100}px` }}
           onHide={handleDelClose}
           backdrop="true"
+          contentClassName={theme == "light" ? "" : "modal-content-dark"}
         >
           <Modal.Body>
-            <div className={TextThing12}>Are You sure, you want to delete &quot;{projectName}&quot;?</div>
-            <button className={xIconButton1} onClick={handleDelClose}>
+            <div className={theme == "light" ? TextThing12 : TextThing12Dark}>
+              Are You sure, you want to delete &quot;{projectName}&quot;?
+            </div>
+            <button className={theme == "light" ? xIconButton1 : xIconButton1Dark} onClick={handleDelClose}>
               <img src={xIcon} alt="xIcon" />
             </button>
             <div className={buttonsStupid}>
-              <Button className={cancelBtnProject} onClick={handleDelClose}>
-                <div className={cancelBtnContent}>Cancel</div>
+              <Button className={theme == "light" ? cancelBtnProject : cancelBtnProjectDark} onClick={handleDelClose}>
+                <div className={theme == "light" ? cancelBtnContent : cancelBtnContentDark}>Cancel</div>
               </Button>
               <Button
-                className={createBtnProject}
+                className={theme == "light" ? createBtnProject : createBtnProjectDark}
                 onClick={() => handleDelete(project._id)}
               >
                 Delete

@@ -83,3 +83,18 @@
   background-color: #00a167;
   color: #fff;
 }
+
+/* Dark theme css */
+
+.priorityBtnDark {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  border-radius: 0rem;
+  width: 99%;
+  text-align: center;
+  background-color: #202020;
+  height: 2.323rem;
+  color: #fff;
+}
