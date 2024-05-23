@@ -121,6 +121,7 @@
     color: #FFF !important;
     background: #1E1E1E !important;
     font-family: var(--iner) !important;
+    font-size: 0.875rem !important;
 }
 
 .searchInputDark::placeholder {

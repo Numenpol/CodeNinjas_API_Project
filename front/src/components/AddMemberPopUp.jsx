@@ -75,29 +75,36 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
     AddAddButton,
     AddMemberPopUpfooter,
     mailDiv,
-    xIconButton
+    xIconButton,
+    xIconButtonDark,
+    AddMemberPopUpheadertextDark,
+    AddMemberPopUpheadertextsDark,
+    AddCloseButtonDark,
+    AddAddButtonDark,
+    AddMemberInputDark,
   } = styles;
 
   return (
     <>
       <Modal
-        className="AddMemberPopUpModal"
+        className=" AddMemberPopUpModal"
         show={showAddMember}
         onHide={handleClose}
         backdrop={true}
+        contentClassName={theme == "light" ? "" : "modal-content-dark"}
       >
-        <div className={AddMemberPopUpheadertext}>Add project member</div>
-        <button className={xIconButton} onClick={handleClose}>
+        <div className={theme == "light" ? AddMemberPopUpheadertext : AddMemberPopUpheadertextDark}>Add project member</div>
+        <button className={theme == "light" ? xIconButton : xIconButtonDark} onClick={handleClose}>
           <img src={xIcon} alt="xIcon" />
         </button>
         <Form onSubmit={handleSubmit(formSubmitHandler)}>
           <div className="AddMemberPopUpCont">
             <Form.Group controlId="formBasicEmail">
-              <Form.Label className={AddMemberPopUpheadertexts}>
+              <Form.Label className={theme == "light" ? AddMemberPopUpheadertexts : AddMemberPopUpheadertextsDark}>
                 User email:
               </Form.Label>
               <Form.Control
-                bsPrefix={AddMemberInput}
+                bsPrefix={theme == "light" ? AddMemberInput : AddMemberInputDark}
                 type="email"
                 placeholder="Enter email"
                 {...register("email", {
@@ -118,13 +125,13 @@ function AddMemberPopUp({ handleClose, showAddMember }) {
             <Button
               variant="primary"
               onClick={handleClose}
-              bsPrefix={AddCloseButton}
+              bsPrefix={theme == "light" ? AddCloseButton : AddCloseButtonDark}
             >
               Cancel
             </Button>
             <Button
               variant="primary"
-              bsPrefix={AddAddButton}
+              bsPrefix={theme == "light" ? AddAddButton : AddAddButtonDark}
               type="submit"
               disabled={isSubmitting}
             >

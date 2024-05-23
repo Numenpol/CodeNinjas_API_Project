@@ -25,6 +25,7 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
     statusBtnDark,
     // statusInProgress,
     // statusDoneSelected,
+    statusMenuDark,
   } = styles;
   useEffect(() => {
     let popperInstance;
@@ -115,7 +116,7 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
         {task.status || String.fromCharCode(9662)}
       </button>
       {isOpen && (
-        <div className={`${statusMenu} statusMenu`}>
+        <div className={`${theme == "light" ? statusMenu : statusMenuDark} statusMenu`}>
           <p
             className={statusDo}
             onClick={() => handleStatusUpdate(task._id, "To do")}

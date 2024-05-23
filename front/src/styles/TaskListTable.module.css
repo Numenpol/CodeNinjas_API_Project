@@ -58,7 +58,7 @@
 }
 
 .tasklistTaskField {
-    
+
     display: flex;
     align-items: center;
     border: none;
@@ -111,7 +111,7 @@
 }
 
 .tableTimeline {
-    
+
     width: 9rem;
     text-align: center;
     padding-left: 1rem;
@@ -156,6 +156,11 @@
 .tableForm {
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.DeleteModalText {
+    font-size: 0.875rem;
+    margin: 0.4rem 0.4rem 0.8rem;
 }
 
 .pencilTrashIcon:hover {
@@ -229,12 +234,15 @@
 
 .taskCreationDateDark,
 .taskCompletionDateDark {
+    background-color: #202020;
+    color: #ffffff;
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
     width: 7.5rem;
-    padding-left: 1rem;
     padding-top: 0.5rem;
     margin-bottom: 0;
-    background-color: #202020 ;
-    color: #ffffff;
 }
 
 .tasklistTaskFieldDark {
@@ -250,6 +258,7 @@
     border: none;
     background-color: #202020;
 }
+
 .tasklistTaskFieldDark span {
     margin-left: 0.1rem;
     margin-right: 0.2rem;
@@ -272,9 +281,49 @@
     width: 4.9375rem;
     height: 2rem;
     margin-top: 0.1rem;
-  }
+}
 
+.DeleteModalTextDark {
+    color: #ffffff;
+}
 
+.DeleteModalCloseBtnDark {
+    background-color: #202224;
+    border: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.5rem;
+}
+
+.cancelBtnDark {
+    margin-right: 1rem;
+    background: #1E1E1E !important;
+    border: 1px solid #D5D5D5 !important;
+    color: #FFF !important;
+    margin-top: 1rem;
+
+}
+
+.createBtnDark {
+    background: #3372B2 !important;
+    border: #3FADBE !important;
+    margin-top: 1rem;
+    height: 2.5rem;
+}
+
+.taskCompletionDate {
+    color: #FFF;
+}
+
+.cancelBtnDark:hover {
+    background-color: #292929 !important;
+}
+
+.createBtnDark:hover {
+    background-color: #235586 !important;
+}
 
 @media screen and (min-width: 768px) {
     .allTaskList {
@@ -333,12 +382,18 @@
     .taskCompletionDate {
         width: 8rem;
     }
+
     .tableHeader th {
         font-size: 0.875rem !important;
     }
-    .keyName,    .taskName, .tableHeaderStatus,
-    .tableHeaderPriority, .tasklistTaskField input, .taskCreationDate,
-    .taskCompletionDate  {
+
+    .keyName,
+    .taskName,
+    .tableHeaderStatus,
+    .tableHeaderPriority,
+    .tasklistTaskField input,
+    .taskCreationDate,
+    .taskCompletionDate {
         font-size: 0.875rem
     }
 
@@ -357,5 +412,11 @@
 
     .taskCreationDateDark {
         width: 7rem;
+        font-size: 0.875rem
     }
+
+    .tableHeaderDark th {
+        font-size: 0.875rem
+    }
+    
 }

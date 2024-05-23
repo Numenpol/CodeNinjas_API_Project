@@ -17,6 +17,7 @@ function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
     priorityMedium,
     priorityHigh,
     priorityBtnDark,
+    priorityMenuDark,
   } = styles2;
 
   useEffect(() => {
@@ -92,7 +93,7 @@ function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
         {task.priority || String.fromCharCode(9662)}
       </button>
       {isOpens && (
-        <div className={`${priorityMenu} priorityMenu`}>
+        <div className={`${theme == "light" ? priorityMenu : priorityMenuDark} priorityMenu`}>
           <p className={priorityLow} onClick={() => handlePriorityUpdate(task._id, "Low")}>Low</p>
           <p className={priorityMedium} onClick={() => handlePriorityUpdate(task._id, "Medium")}>Medium</p>
           <p className={priorityHigh} onClick={() => handlePriorityUpdate(task._id, "High")}>High</p>

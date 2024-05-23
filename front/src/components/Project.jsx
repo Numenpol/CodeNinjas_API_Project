@@ -65,6 +65,7 @@ function Project({ project }) {
 
   const {
     projectListProject,
+    projectListProjectDark,
     projectIcon,
     projectListIcon,
     projectListName,
@@ -94,7 +95,7 @@ function Project({ project }) {
 
   return (
     <tr
-      className={projectListProject}
+    className={theme === "light" ? projectListProject : projectListProjectDark}
       data-gloss={description}
       onClick={() => {
         projectClickHandler(project);
