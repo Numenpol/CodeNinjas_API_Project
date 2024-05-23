@@ -123,7 +123,7 @@ function TaskListExecutionTable() {
     (task) => task.status === "In progress"
   );
 
-  const { allTaskList, tableHeader, keyNameDark , taskrowDark , taskrow , tableHeaderDark , tasklistTaskFieldDark ,taskCreationDateDark , tableHeaderOwnerThDark,tableHeaderKeyDark ,taskNameDark ,tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDateDark , tableHeaderCompletionDateDark ,tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
+  const { allTaskList, tableHeader, keyNameDark , createBtnDark ,cancelBtnDark , DeleteModalCloseBtnDark , taskrowDark , taskrow , tableHeaderDark , tasklistTaskFieldDark ,taskCreationDateDark , tableHeaderOwnerThDark,tableHeaderKeyDark ,taskNameDark ,tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDateDark , tableHeaderCompletionDateDark ,tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn , DeleteModalText, DeleteModalTextDark,} = styles;
 
   return (
     <>
@@ -252,20 +252,21 @@ function TaskListExecutionTable() {
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
             style={{ top: `${clickY + 290}px`, left: `${clickX - 600}px` }}
+            contentClassName={theme == "light" ? "" : "modal-content-dark"}
           >
             <Modal.Body>
-              <div>Are you sure you want to delete this task?</div>
+              <div className={theme == "light" ? DeleteModalText : DeleteModalTextDark}>Are you sure you want to delete this task?</div>
               <button
-                className={DeleteModalCloseBtn}
+                className={theme == "light" ? DeleteModalCloseBtn : DeleteModalCloseBtnDark}
                 onClick={handleCloseDeleteModal}
               >
                 <img src={xIcon} alt="xIcon" />
               </button>
               <div></div>
-              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
+              <Button className={theme == "light" ? cancelBtn : cancelBtnDark} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className={createBtn} onClick={handleDeleteTask}>
+              <Button className={theme == "light" ? createBtn : createBtnDark} onClick={handleDeleteTask}>
                 Delete
               </Button>
             </Modal.Body>

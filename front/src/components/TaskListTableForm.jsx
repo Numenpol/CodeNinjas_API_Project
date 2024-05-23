@@ -12,9 +12,8 @@ import tableFormStyles from "../styles/TaskListTableForm.module.css";
 import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import { getOne } from "../services/get";
-import { createPopper } from '@popperjs/core';
+import { createPopper } from "@popperjs/core";
 import { useTheme } from "../utils/ThemeContext";
-
 
 function TaskListTableForm({
   selectedTimeLine,
@@ -45,7 +44,7 @@ function TaskListTableForm({
   const [isOpenOwner, setIsOpenOwner] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState("");
   const [selectedOwnerColor, setSelectedOwnerColor] = useState("");
-  const [ownerColor, setOwnerColor] = useState("")
+  const [ownerColor, setOwnerColor] = useState("");
   const [ownerColors, setOwnerColors] = useState([]);
   const [getInfo, setProjectInfo] = useState("");
 
@@ -63,9 +62,12 @@ function TaskListTableForm({
   };
 
   const getStartFixedDate = (date) => {
-    const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const formattedDate = date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    });
     return formattedDate;
-  }
+  };
 
   useEffect(() => {
     getMembersNames();
@@ -165,53 +167,97 @@ function TaskListTableForm({
 
   const handleClickOutside = (event) => {
     if (
-      statusRef.current && !statusRef.current.contains(event.target) &&
-      statusMenuRef.current && !statusMenuRef.current.contains(event.target)
+      statusRef.current &&
+      !statusRef.current.contains(event.target) &&
+      statusMenuRef.current &&
+      !statusMenuRef.current.contains(event.target)
     ) {
       setIsOpenStatus(false);
     }
     if (
-      priorityRef.current && !priorityRef.current.contains(event.target) &&
-      priorityMenuRef.current && !priorityMenuRef.current.contains(event.target)
+      priorityRef.current &&
+      !priorityRef.current.contains(event.target) &&
+      priorityMenuRef.current &&
+      !priorityMenuRef.current.contains(event.target)
     ) {
       setIsOpenPriority(false);
     }
     if (
-      ownerRef.current && !ownerRef.current.contains(event.target) &&
-      ownerMenuRef.current && !ownerMenuRef.current.contains(event.target)
+      ownerRef.current &&
+      !ownerRef.current.contains(event.target) &&
+      ownerMenuRef.current &&
+      !ownerMenuRef.current.contains(event.target)
     ) {
       setIsOpenOwner(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
   useEffect(() => {
     if (isOpenStatus) {
       createPopper(statusRef.current, statusMenuRef.current, {
-        placement: 'bottom',
+        placement: "bottom",
       });
     }
     if (isOpenPriority) {
       createPopper(priorityRef.current, priorityMenuRef.current, {
-        placement: 'bottom',
+        placement: "bottom",
       });
     }
     if (isOpenOwner) {
       createPopper(ownerRef.current, ownerMenuRef.current, {
-        placement: 'bottom',
+        placement: "bottom",
       });
     }
   }, [isOpenStatus, isOpenPriority, isOpenOwner]);
 
-  const { tableBody, tableHeaderKey, tableHeaderKeyDark , keyNameDark , ownerBtnDark ,keyName, priorityBtnDark , statusBtnDark,tableTimelineDark , tasklistTaskField, tasklistTaskFieldDark ,tableHeaderCompletionDateDark , tableHeaderCreationDateDark , tableHeaderOwnerThDark , tableHeaderOwnerTh, TaskListTableFormBackground , TaskListTableFormBackgroundDark , tableHeaderOwner, tableHeaderStatusTh, tableHeaderStatus, tableHeaderPriorityTh, tableHeaderPriority, tableTimeline, tableHeaderCreationDate, taskCreationDate, tableHeaderCompletionDate, taskCompletionDate } = taskListStyles;
+  const {
+    tableBody,
+    tableHeaderKey,
+    tableHeaderKeyDark,
+    keyNameDark,
+    ownerBtnDark,
+    keyName,
+    priorityBtnDark,
+    statusBtnDark,
+    tableTimelineDark,
+    tasklistTaskField,
+    tasklistTaskFieldDark,
+    tableHeaderCompletionDateDark,
+    tableHeaderCreationDateDark,
+    tableHeaderOwnerThDark,
+    tableHeaderOwnerTh,
+    TaskListTableFormBackground,
+    TaskListTableFormBackgroundDark,
+    tableHeaderOwner,
+    tableHeaderStatusTh,
+    tableHeaderStatus,
+    tableHeaderPriorityTh,
+    tableHeaderPriority,
+    tableTimeline,
+    tableHeaderCreationDate,
+    taskCreationDate,
+    tableHeaderCompletionDate,
+    taskCompletionDate,
+    ownerMenuDark,
+    statusMenuDark,
+    statusMenu,
+  } = taskListStyles;
 
-  const { taskNameForm, taskOwner, taskOwnerDark , taskStatus, taskPriority , taskNameFormDark ,} = tableFormStyles;
+  const {
+    taskNameForm,
+    taskOwner,
+    taskOwnerDark,
+    taskStatus,
+    taskPriority,
+    taskNameFormDark,
+  } = tableFormStyles;
 
   return (
     <>
@@ -220,31 +266,56 @@ function TaskListTableForm({
           <Table bordered>
             <tbody className={tableBody}>
               <tr>
-                <td className={theme == "light" ? tableHeaderKey : tableHeaderKeyDark}>
+                <td
+                  className={
+                    theme == "light" ? tableHeaderKey : tableHeaderKeyDark
+                  }
+                >
                   <p
                     className={theme == "light" ? keyName : keyNameDark}
                     id="key"
                     name="key"
                     type="text"
                     {...register("key")}
-                  >{tasks.key}</p>
+                  >
+                    {tasks.key}
+                  </p>
                 </td>
-                <td className={theme == "light" ? tasklistTaskField : tasklistTaskFieldDark}>
+                <td
+                  className={
+                    theme == "light" ? tasklistTaskField : tasklistTaskFieldDark
+                  }
+                >
                   <input
-                    className={theme == "light" ? taskNameForm : taskNameFormDark}
+                    className={
+                      theme == "light" ? taskNameForm : taskNameFormDark
+                    }
                     id="task"
                     name="task"
                     type="text"
                     {...register("task")}
                   />
                 </td>
-                <td className={theme == "light" ? tableHeaderOwnerTh : tableHeaderOwnerThDark}>
+                <td
+                  className={
+                    theme == "light"
+                      ? tableHeaderOwnerTh
+                      : tableHeaderOwnerThDark
+                  }
+                >
                   <div className={tableHeaderOwner}>
-                    <div className={theme == "light" ? taskOwner : taskOwnerDark} ref={ownerRef}>
+                    <div
+                      className={theme == "light" ? taskOwner : taskOwnerDark}
+                      ref={ownerRef}
+                    >
                       <button
                         type="button"
                         onClick={() => setIsOpenOwner(!isOpenOwner)}
-                        className={theme == "light" ? Ownerstyles.ownerBtn : Ownerstyles.ownerBtnDark}
+                        className={
+                          theme == "light"
+                            ? Ownerstyles.ownerBtn
+                            : Ownerstyles.ownerBtnDark
+                        }
                       >
                         {selectedOwner ? (
                           <div className={Ownerstyles.initials}>
@@ -252,11 +323,20 @@ function TaskListTableForm({
                             <div>{getInitials(selectedOwner)}</div>
                           </div>
                         ) : (
-                          <PersonCircle className={Ownerstyles.ownerIconEmpty} />
+                          <PersonCircle
+                            className={Ownerstyles.ownerIconEmpty}
+                          />
                         )}
                       </button>
                       {isOpenOwner && (
-                        <div ref={ownerMenuRef} className={Ownerstyles.ownerMenu}>
+                        <div
+                          ref={ownerMenuRef}
+                          className={
+                            theme == "light"
+                              ? Ownerstyles.ownerMenu
+                              : Ownerstyles.ownerMenuDark
+                          }
+                        >
                           <div className={Ownerstyles.ownerList}>
                             {getInfo &&
                               getInfo.members.map((member, index) => (
@@ -291,38 +371,48 @@ function TaskListTableForm({
                       <button
                         type="button"
                         onClick={() => setIsOpenStatus(!isOpenStatus)}
-                        className={`${theme == "light" ? styles.statusBtn : styles.statusBtnDark} ${selectedStatus && styles.selected
-                          }`}
+                        className={`${
+                          theme == "light"
+                            ? styles.statusBtn
+                            : styles.statusBtnDark
+                        } ${selectedStatus && styles.selected}`}
                         style={{
                           backgroundColor:
-                            selectedStatus === 'To do'
-                              ? '#3372b2'
-                              : selectedStatus === 'In progress'
-                                ? '#7f5db6'
-                                : selectedStatus === 'Done'
-                                  ? '#00a167'
-                                  : '',
+                            selectedStatus === "To do"
+                              ? "#3372b2"
+                              : selectedStatus === "In progress"
+                              ? "#7f5db6"
+                              : selectedStatus === "Done"
+                              ? "#00a167"
+                              : "",
                         }}
                       >
                         {selectedStatus || String.fromCharCode(9662)}
                       </button>
                       {isOpenStatus && (
-                        <div ref={statusMenuRef} className={styles.statusMenu}>
+                        <div
+                          ref={statusMenuRef}
+                          className={
+                            theme == "light"
+                              ? styles.statusMenu
+                              : styles.statusMenuDark
+                          }
+                        >
                           <p
                             className={styles.statusDo}
-                            onClick={() => handleStatusClick('To do')}
+                            onClick={() => handleStatusClick("To do")}
                           >
                             To do
                           </p>
                           <p
                             className={styles.statusProgress}
-                            onClick={() => handleStatusClick('In progress')}
+                            onClick={() => handleStatusClick("In progress")}
                           >
                             In progress
                           </p>
                           <p
                             className={styles.statusDone}
-                            onClick={() => handleStatusClick('Done')}
+                            onClick={() => handleStatusClick("Done")}
                           >
                             Done
                           </p>
@@ -337,41 +427,53 @@ function TaskListTableForm({
                       <button
                         type="button"
                         onClick={() => setIsOpenPriority(!isOpenPriority)}
-                        className={`${theme == "light" ? styles2.priorityBtn : styles2.priorityBtnDark} ${selectedPriority &&
-                          (selectedPriority === 'Low' ? styles2.selectedPrioLow :
-                            selectedPriority === 'Medium' ? styles2.selectedPrioMed :
-                              selectedPriority === 'High' ? styles2.selectedPrioHi : '')
-                          }`}
+                        className={`${
+                          theme == "light"
+                            ? styles2.priorityBtn
+                            : styles2.priorityBtnDark
+                        } ${
+                          selectedPriority &&
+                          (selectedPriority === "Low"
+                            ? styles2.selectedPrioLow
+                            : selectedPriority === "Medium"
+                            ? styles2.selectedPrioMed
+                            : selectedPriority === "High"
+                            ? styles2.selectedPrioHi
+                            : "")
+                        }`}
                         style={{
                           backgroundColor:
-                            selectedPriority === 'Low'
-                              ? '#40ADBE'
-                              : selectedPriority === 'Medium'
-                                ? '#FDAB3D'
-                                : selectedPriority === 'High'
-                                  ? '#C0417F'
-                                  : '',
+                            selectedPriority === "Low"
+                              ? "#40ADBE"
+                              : selectedPriority === "Medium"
+                              ? "#FDAB3D"
+                              : selectedPriority === "High"
+                              ? "#C0417F"
+                              : "",
                         }}
                       >
                         {selectedPriority || String.fromCharCode(9662)}
                       </button>
                       {isOpenPriority && (
-                        <div ref={priorityMenuRef} className={styles2.priorityMenu}>
+                        <div
+                          ref={priorityMenuRef}
+                          className={theme == "light" ? styles2.priorityMenu : styles2.priorityMenuDark}
+                        >
                           <p
                             className={styles2.priorityLow}
-                            onClick={() => handlePriorityClick('Low')}
+                            onClick={() => handlePriorityClick("Low")}
                           >
                             Low
                           </p>
                           <p
                             className={styles2.priorityMedium}
-                            onClick={() => handlePriorityClick('Medium')}
+                            onClick={() => handlePriorityClick("Medium")}
                           >
                             Medium
                           </p>
                           <p
                             className={styles2.priorityHigh}
-                            onClick={() => handlePriorityClick('High')}
+                            onClick={() => handlePriorityClick("High")}
                           >
                             High
                           </p>
@@ -380,13 +482,23 @@ function TaskListTableForm({
                     </div>
                   </div>
                 </td>
-                <td className={theme == "light" ? tableTimeline : tableTimelineDark}>
+                <td
+                  className={
+                    theme == "light" ? tableTimeline : tableTimelineDark
+                  }
+                >
                   <TaskListTableTimeLine
                     setSelectedTimeLine={setSelectedTimeLine}
                     selectedTimeLine={selectedTimeLine}
                   />
                 </td>
-                <td className={theme == "light" ?  tableHeaderCreationDate : tableHeaderCreationDateDark}>
+                <td
+                  className={
+                    theme == "light"
+                      ? tableHeaderCreationDate
+                      : tableHeaderCreationDateDark
+                  }
+                >
                   <p
                     className={taskCreationDate}
                     style={{ border: "none" }}
@@ -396,7 +508,13 @@ function TaskListTableForm({
                     {...register("creationdate")}
                   ></p>
                 </td>
-                <td className={theme == "light" ? tableHeaderCompletionDate : tableHeaderCompletionDateDark}>
+                <td
+                  className={
+                    theme == "light"
+                      ? tableHeaderCompletionDate
+                      : tableHeaderCompletionDateDark
+                  }
+                >
                   <p
                     className={taskCompletionDate}
                     id="completiondate"

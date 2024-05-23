@@ -124,7 +124,7 @@ function TaskListTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "To do" || task.status === "");
 
-  const { allTaskList, taskNameDark ,taskrow , tableHeaderOwnerThDark , tasklistTaskFieldDark ,tableHeaderKeyDark , taskCreationDateDark ,keyNameDark ,tableHeader, tableHeaderCreationDateDark ,taskrowDark, tableHeaderCompletionDateDark ,tableHeaderDark , tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn, tableForm } = styles;
+  const { allTaskList, taskNameDark , DeleteModalText, DeleteModalTextDark , createBtnDark ,cancelBtnDark ,deleteModalCloseBtn ,DeleteModalCloseBtnDark , taskrow , tableHeaderOwnerThDark , tasklistTaskFieldDark ,tableHeaderKeyDark , taskCreationDateDark ,keyNameDark ,tableHeader, tableHeaderCreationDateDark ,taskrowDark, tableHeaderCompletionDateDark ,tableHeaderDark , tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn, tableForm } = styles;
 
   return (
     <>
@@ -237,20 +237,21 @@ function TaskListTable() {
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
             style={{ top: `${clickY + 290}px`, left: `${clickX - 600}px` }}
+            contentClassName={theme == "light" ? "" : "modal-content-dark"}
           >
             <Modal.Body>
-              <div>Are you sure you want to delete this task?</div>
+            <div className={theme == "light" ? DeleteModalText : DeleteModalTextDark}>Are you sure you want to delete this task?</div>
               <button
-                className={DeleteModalCloseBtn}
+                className={theme == "light" ? deleteModalCloseBtn : DeleteModalCloseBtnDark}
                 onClick={handleCloseDeleteModal}
               >
                 <img src={xIcon} alt="xIcon" />
               </button>
               <div></div>
-              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
+              <Button className={theme == "light" ? cancelBtn : cancelBtnDark} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className={createBtn} onClick={handleDeleteTask}>
+              <Button className={theme == "light" ? createBtn : createBtnDark} onClick={handleDeleteTask}>
                 Delete
               </Button>
             </Modal.Body>
