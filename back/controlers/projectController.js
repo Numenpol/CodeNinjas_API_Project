@@ -1,39 +1,117 @@
 const Project = require("../models/projectModel");
 const User = require("../models/userModel");
 
-exports.getAllProjects = async (req, res) => {
-  let searchParams = req.query;
+// exports.getAllProjects = async (req, res) => {
+//   let searchParams = req.query;
 
+//   try {
+//     let projectsCreated;
+//     if (req.user.role === "admin") {
+//       projectsCreated = await Project.find();
+//     } else {
+//       const userId = req.user._id;
+//       projectsCreated = await Project.find({ user: userId });
+//     }
+
+//     let userWithProjects = await User.findById(req.user._id).populate("membersProject");
+    
+//     let allProjects = [
+//       ...userWithProjects.membersProject,
+//       ...projectsCreated,
+//     ];
+
+//     let filteredProjects = allProjects.filter((project) => {
+//       let matchesName = true;
+//       let matchesStatus = true;
+
+//       if (searchParams.projectName) {
+//         matchesName = project.projectName.toLowerCase().includes(searchParams.projectName.toLowerCase());
+//       }
+      
+//       if (searchParams.status && searchParams.status === "active") {
+//         matchesStatus = ["In progress", "Done"].includes(project.status);
+//       }
+
+//       return matchesName && matchesStatus;
+//     });
+
+//     if (searchParams.projectName && filteredProjects.length === 0) {
+//       filteredProjects = allProjects;
+//     }
+
+//     res.status(200).json({
+//       status: "success",
+//       results: filteredProjects.length,
+//       data: {
+//         projects: filteredProjects,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(404).json({
+//       status: "fail",
+//       message: error.message,
+//     });
+//   }
+// };
+exports.getAllProjects = async (req, res) => {
   try {
-    let projetsCreated;
-    if (req.user.role === "admin") {
-      projetsCreated = await Project.find();
+    // Extract pagination parameters from query
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const skip = (page - 1) * limit;
+
+    // Check if the requested page is valid
+    const numProjects = await Project.countDocuments();
+    if (skip >= numProjects && numProjects > 0) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'This page does not exist',
+      });
+    }
+
+    // Get user-specific projects
+    let projectsCreated;
+    if (req.user.role === 'admin') {
+      projectsCreated = await Project.find().skip(skip).limit(limit);
     } else {
       const userId = req.user._id;
-      projetsCreated = await Project.find({ user: userId });
+      projectsCreated = await Project.find({ user: userId }).skip(skip).limit(limit);
     }
 
-    let userWithProjects = await User.findById(req.user._id).populate("membersProject");
-    
+    // Populate user projects
+    const userWithProjects = await User.findById(req.user._id).populate('membersProject');
+    const userProjects = userWithProjects.membersProject.slice(skip, skip + limit);
+
+    // Combine user projects and created projects
     let allProjects = [
-      ...userWithProjects.membersProject,
-      ...projetsCreated,
+      ...userProjects,
+      ...projectsCreated,
     ];
 
+    // Filtering logic
+    const { projectName, status } = req.query;
     let filteredProjects = allProjects.filter((project) => {
-      if (searchParams.projectName) {
-        return project.projectName.toLowerCase().includes(searchParams.projectName.toLowerCase());
-      } else {
-        return true;
+      let matchesName = true;
+      let matchesStatus = true;
+
+      if (projectName) {
+        matchesName = project.projectName.toLowerCase().includes(projectName.toLowerCase());
       }
+
+      if (status) {
+        if (status === 'active') {
+          matchesStatus = ['In progress', 'Done'].includes(project.status);
+        } else {
+          matchesStatus = project.status === status;
+        }
+      }
+
+      return matchesName && matchesStatus;
     });
 
-    if (searchParams.projectName && filteredProjects.length === 0) {
-      filteredProjects = allProjects;
-    }
-
+    // Send the response
     res.status(200).json({
-      status: "success",
+      status: 'success',
       results: filteredProjects.length,
       data: {
         projects: filteredProjects,
@@ -41,11 +119,13 @@ exports.getAllProjects = async (req, res) => {
     });
   } catch (error) {
     res.status(404).json({
-      status: "fail",
+      status: 'fail',
       message: error.message,
     });
   }
 };
+
+
 
 exports.getProject = async (req, res) => {
   try {
@@ -64,79 +144,67 @@ exports.getProject = async (req, res) => {
   }
 };
 
-// get projects by task
-// exports.getProjectsByTask = async (req, res) => {
-//  let searchParamstask = req.query;
-
-//   try {
-//     // const { taskId } = req.params;
-//     // const projects = await Project.find({ tasks: taskId }).populate("tasks");
-//     // const filteredProjects = projects.filter(project => project.tasks.includes(taskId));
-//     const projectId = req.params.id;
-//     const project = await Project.findById(projectId).populate("tasks");
-//     const projectTasks = project.tasks;
-
-//     res.status(200).json({
-//       status: "success",
-//       data: {
-//         tasks: projectTasks,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(404).json({
-//       status: "fail",
-//       message: error.message,
-//     });
-//   }
-// };
-
 exports.getProjectsByTask = async (req, res) => {
   let searchParams = req.query;
 
   try {
-    const projectId = req.params.id;
-    const project = await Project.findById(projectId).populate("tasks");
+      const projectId = req.params.id;
+      const project = await Project.findById(projectId).populate('tasks');
 
-    if (!project) {
-      return res.status(404).json({
-        status: "fail",
-        message: "Project not found",
-      });
-    }
-
-    let filteredTasks = project.tasks.filter(task => {
-      let matches = true;
-      for (const key in searchParams) {
-        if (
-          searchParams[key] && 
-          task[key] && 
-          !task[key].toString().toLowerCase().includes(searchParams[key].toLowerCase())
-        ) {
-          matches = false;
-          break;
-        }
+      if (!project) {
+          return res.status(404).json({
+              status: 'fail',
+              message: 'Project not found',
+          });
       }
-      return matches;
-    });
 
-    if (filteredTasks.length === 0) {
-      filteredTasks = project.tasks;
-    }
+      let filteredTasks = project.tasks.filter((task) => {
+          let matches = true;
 
-    res.status(200).json({
-      status: "success",
-      results: filteredTasks.length,
-      data: {
-        tasks: filteredTasks,
-      },
-    });
+          if (searchParams.task) {
+              matches = task.task.toLowerCase().includes(searchParams.task.toLowerCase());
+          }
+
+          if (matches && searchParams.status) {
+              if (searchParams.status === 'active') {
+                  matches = ['in progress', 'done', 'to do'].includes(task.status.toLowerCase());
+              } else {
+                  matches = task.status.toLowerCase() === searchParams.status.toLowerCase();
+              }
+          }
+
+          if (matches && searchParams.priority) {
+              matches = ['low', 'medium', 'high'].includes(task.priority.toLowerCase());
+          }
+
+          return matches;
+      });
+
+      if (searchParams.status && filteredTasks.length === 0) {
+        filteredTasks = project.tasks;
+      }
+  
+      if (searchParams.priority && filteredTasks.length === 0) {
+        filteredTasks = project.tasks;
+      }
+  
+  
+
+      res.status(200).json({
+          status: 'success',
+          results: filteredTasks.length,
+          data: {
+              tasks: filteredTasks,
+          },
+      });
   } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error.message,
-    });
+      res.status(404).json({
+          status: 'fail',
+          message: error.message,
+      });
   }
 };
+
 
 
 exports.createProject = async (req, res) => {

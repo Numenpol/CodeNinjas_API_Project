@@ -141,7 +141,9 @@ function CreateProjectForm() {
             >
               <div>
                 <Form.Group
-                  className={theme == "light" ? newProjectName : newProjectNameDark}
+                  className={
+                    theme == "light" ? newProjectName : newProjectNameDark
+                  }
                   controlId="exampleForm.ControlInput1"
                 >
                   <p className={theme == "light" ? formLabel : formLabelDark}>

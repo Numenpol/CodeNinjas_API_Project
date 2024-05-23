@@ -7,10 +7,11 @@
 .tableHeader th {
     background: #f5f6fa !important;
     text-align: center;
-    color: #565656;
+    color: #565656 !important;
+    font-family: var(--iner) !important;
     font-size: 0.75rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 130%;
 }
 
@@ -45,19 +46,29 @@
 }
 
 .keyName {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #565656;
     width: 3rem;
     text-align: center;
     padding-top: 0.5rem;
     margin-bottom: 0;
+    background-color: #ffffff;
 }
 
 .tasklistTaskField {
+    
     display: flex;
     align-items: center;
     border: none;
 }
 
 .tasklistTaskField input {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #565656;
     flex-grow: 1;
     border: none;
 }
@@ -68,12 +79,15 @@
 }
 
 .taskName {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #565656;
     width: 13rem;
     overflow: hidden;
     text-align: start;
     display: flex;
     padding-left: 1rem;
-    padding-top: 0.5rem;
 }
 
 .pencilTrashIcon {
@@ -88,12 +102,16 @@
 
 .tableHeaderStatus,
 .tableHeaderPriority {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
     position: relative;
     min-width: 6rem;
     padding: 0;
 }
 
 .tableTimeline {
+    
     width: 9rem;
     text-align: center;
     padding-left: 1rem;
@@ -103,8 +121,12 @@
 
 .taskCreationDate,
 .taskCompletionDate {
+    color: #565656;
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
     width: 7.5rem;
-    padding-left: 1rem;
     padding-top: 0.5rem;
     margin-bottom: 0;
 }
@@ -149,6 +171,111 @@
     background-color: #3593A2 !important;
 }
 
+/* Dark theme css */
+
+.tableHeaderDark th {
+    background: #121212 !important;
+    color: #ffffff !important;
+    text-align: center;
+    color: #565656;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+}
+
+.taskrowDark td {
+    background-color: #202020 !important;
+    color: #ffffff !important;
+}
+
+.taskNameDark {
+    width: 13rem;
+    overflow: hidden;
+    text-align: start;
+    display: flex;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.tableHeaderCreationDateDark,
+.tableHeaderCompletionDateDark {
+    width: 6rem;
+    background-color: #202020 !important;
+    color: #ffffff !important;
+}
+
+.tableHeaderKeyDark {
+    width: 3rem;
+    background-color: #202020 !important;
+}
+
+.tableHeaderOwnerThDark {
+    position: relative;
+    width: 3.5rem;
+    background-color: #202020 !important;
+}
+
+.keyNameDark {
+    width: 3rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.taskCreationDateDark,
+.taskCompletionDateDark {
+    width: 7.5rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
+    background-color: #202020 ;
+    color: #ffffff;
+}
+
+.tasklistTaskFieldDark {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.tasklistTaskFieldDark input {
+    flex-grow: 1;
+    border: none;
+    background-color: #202020;
+}
+.tasklistTaskFieldDark span {
+    margin-left: 0.1rem;
+    margin-right: 0.2rem;
+    background-color: #202020;
+}
+
+.tableTimelineDark {
+    width: 9rem;
+    text-align: center;
+    padding-left: 1rem;
+    vertical-align: middle;
+    position: relative;
+    background-color: #202020 !important;
+}
+
+.createBtnDark {
+    padding: 0.625rem 1rem;
+    background: #3372B2 !important;
+    border: none !important;
+    width: 4.9375rem;
+    height: 2rem;
+    margin-top: 0.1rem;
+  }
+
+
+
 @media screen and (min-width: 768px) {
     .allTaskList {
         max-width: 100%;
@@ -166,6 +293,23 @@
 
     .taskCreationDate,
     .taskCompletionDate {
+        width: 7.5rem;
+    }
+
+    /* Dark theme css */
+
+    .taskNameDark {
+        width: 25rem;
+        overflow: hidden;
+        text-align: start;
+    }
+
+    .keyNameDark {
+        width: 3rem;
+    }
+
+    .taskCreationDateDark,
+    .taskCompletionDateDark {
         width: 7.5rem;
     }
 }
@@ -188,5 +332,30 @@
 
     .taskCompletionDate {
         width: 8rem;
+    }
+    .tableHeader th {
+        font-size: 0.875rem !important;
+    }
+    .keyName,    .taskName, .tableHeaderStatus,
+    .tableHeaderPriority, .tasklistTaskField input, .taskCreationDate,
+    .taskCompletionDate  {
+        font-size: 0.875rem
+    }
+
+    /* Dark theme css */
+
+    .taskNameDark {
+        width: 18rem;
+        overflow: hidden;
+        text-align: start;
+    }
+
+    .keyNameDark {
+        width: 2.5rem;
+        text-align: center;
+    }
+
+    .taskCreationDateDark {
+        width: 7rem;
     }
 }

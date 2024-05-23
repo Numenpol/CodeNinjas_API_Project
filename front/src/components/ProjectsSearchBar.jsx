@@ -6,6 +6,7 @@ import { getSearchByProjectName } from "../services/get";
 import { StateContext } from "../utils/StateContext";
 import styles from "../styles/SearchBar.module.css";
 import { useTheme } from "../utils/ThemeContext";
+import OutsideClickHandler from 'react-outside-click-handler';
 
 function ProjectsSearchBar() {
   const [smShow, setSmShow] = useState(false);
@@ -25,33 +26,37 @@ function ProjectsSearchBar() {
     };
   };
 
-  const handleSearchChange = (e) => {
-    setValue(e.target.value);
-    debounceSearch(e.target.value);
-  };
-
   const debounceSearch = useCallback(
-    debounce(async (searchValue) => {
-      const result = await getSearchByProjectName(searchValue);
+    debounce(async (searchValue, includeStatus) => {
+      const result = await getSearchByProjectName(searchValue, includeStatus);
       setProjects(result.data.projects);
     }, 400),
     []
   );
 
+  const handleSearchChange = (e) => {
+    setValue(e.target.value);
+    debounceSearch(e.target.value, checked.status);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await getSearchByProjectName(value);
+    const result = await getSearchByProjectName(value, checked.status);
     setProjects(result.data.projects);
   };
 
   const buttonRef = useRef(null);
 
-  const handleCheck = (name) => {
-    setChecked((prevState) => ({
-      ...prevState,
-      [name]: !prevState[name],
-    }));
-  };
+const handleCheck = (name) => {
+  setChecked((prevState) => {
+    const newState = { projectName: false, status: false };
+    newState[name] = !prevState[name];
+    return newState;
+  });
+  setSmShow(false);
+
+  debounceSearch(value, name === "status" ? !checked.status : false);
+};
 
   const { theme } = useTheme();
 
@@ -73,6 +78,8 @@ function ProjectsSearchBar() {
     searchbarButtonDark,
     searchInputDark,
     slidersDark,
+    sortPopupDark,
+    modalTitleDark,
   } = styles;
 
   useEffect(() => {
@@ -111,9 +118,8 @@ function ProjectsSearchBar() {
             <button
               id="button-addon"
               type="submit"
-              className={`btn ${
-                theme === "light" ? searchbarButton : searchbarButtonDark
-              }`}
+              className={`btn ${theme === "light" ? searchbarButton : searchbarButtonDark
+                }`}
             >
               <Search className={searchIcon} />
             </button>
@@ -121,44 +127,44 @@ function ProjectsSearchBar() {
               type="search"
               placeholder="Search"
               aria-describedby="button-addon"
-              className={`form-control rounded-pill border-0 color ${
-                theme === "light" ? searchInput : searchInputDark
-              }`}
+              className={`form-control rounded-pill border-0 color ${theme === "light" ? searchInput : searchInputDark
+                }`}
               value={value}
               onChange={handleSearchChange}
             />
             <Sliders
               ref={buttonRef}
               onClick={handleClick}
-              className={`${
-                theme === "light" ? sliders : slidersDark
-              } me-3 d-flex align-self-center`}
+              className={`${theme === "light" ? sliders : slidersDark
+                } me-3 d-flex align-self-center`}
             />
             {smShow && (
-              <div className={`${sortPopup} sort-popup`}>
-                <div className={sortTitle}>
-                  <p className={modalTitle}>Choose columns to search</p>
+              <OutsideClickHandler onOutsideClick={() => setSmShow(!smShow)}>
+                <div className={`${theme === "light" ? sortPopup : sortPopupDark} sort-popup`}>
+                  <div className={sortTitle}>
+                    <p className={theme === "light" ? modalTitle : modalTitleDark}>Choose columns to search</p>
+                  </div>
+                  <div
+                    onClick={() => handleCheck("projectName")}
+                    className={sortBy}
+                  >
+                    {checked.projectName ? (
+                      <CheckCircleFill className={checkIcon} />
+                    ) : (
+                      <Circle className={checkIconEmpty} />
+                    )}
+                    Project name
+                  </div>
+                  <div onClick={() => handleCheck("status")} className={sortBy}>
+                    {checked.status ? (
+                      <CheckCircleFill className={checkIcon} />
+                    ) : (
+                      <Circle className={checkIconEmpty} />
+                    )}
+                    Status
+                  </div>
                 </div>
-                <div
-                  onClick={() => handleCheck("projectName")}
-                  className={sortBy}
-                >
-                  {checked.projectName ? (
-                    <CheckCircleFill className={checkIcon} />
-                  ) : (
-                    <Circle className={checkIconEmpty} />
-                  )}
-                  Project name
-                </div>
-                <div onClick={() => handleCheck("status")} className={sortBy}>
-                  {checked.status ? (
-                    <CheckCircleFill className={checkIcon} />
-                  ) : (
-                    <Circle className={checkIconEmpty} />
-                  )}
-                  Status
-                </div>
-              </div>
+              </OutsideClickHandler>
             )}
           </div>
         </div>

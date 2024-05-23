@@ -1,11 +1,4 @@
-.AddMemberPopUpheadertexts {
-    margin-left: 1rem;
-    font-size: 0.875rem;
-    color: #565656;
-    /* font-family: Inter; */
-    font-weight: 400;
-    line-height: 1.25rem;
-}
+
 
 .AddMemberInput {
     display: inline;
@@ -13,15 +6,23 @@
     border-radius: 5px;
     border: 1px solid #dee2e6;
     height: 2rem;
-    margin-left: 1rem;
+    margin-left: 1.81rem;
     padding: 0.3rem 0.5rem;
 }
 
 .AddMemberInput::placeholder {
     color: #adb5bd;
     font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.25rem;
+}
+.xIconButton{
+    position: absolute;
+    background-color: #f5f6fa;
+    border: none;
+    width: 1rem;
+    right: 1.5rem;
+    top: 0.59rem;
 }
 
 .addMemberSelect {
@@ -52,12 +53,23 @@
 }
 
 .AddMemberPopUpheadertext {
+    color: #565656;
+    font-family: var(--inter) !important;
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 400 !important;
     line-height: 1.25rem;
     /* font-family: Inter; */
     /* margin-bottom: -1rem; */
-    padding-top: 1rem;
+    padding-top: 2.06rem ;
+    margin-left: 1.81rem !important;
+}
+.AddMemberPopUpheadertexts {
+    margin-left: 1.81rem;
+    font-size: 0.875rem;
+    color: #565656;
+    font-family: var(--inter) !important;
+    font-weight: 400 !important;
+    margin-top: 1rem;
 }
 
 .AddMemberPopUpbody {
@@ -66,15 +78,19 @@
 
 .AddButtons {
     margin-top: 15px;
-    margin-left: 1rem;
+    margin-left: 1.81rem;
 }
 
 .AddCloseButton {
     width: 79px;
     height: 32px;
     background-color: #ffffff;
-    border: 0.2px solid #97979794;
+    border: 0.2px solid #D5D5D5;
     border-radius: 0.3125rem;
+    font-family: var(--inter);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #565656;
 }
 
 .AddCloseButton:hover {
@@ -85,10 +101,13 @@
     border-radius: 0.3125rem;
     margin-left: 16px;
     width: 79px;
-    height: 32px;
+    height: 2rem;
     background-color: #3fadbe;
     color: white;
     border: none;
+    font-family: var(--inter);
+    font-size: 0.875rem;
+    font-weight: 400;
 }
 
 .AddAddButton:hover {
@@ -96,7 +115,7 @@
 }
 
 .AddMemberPopUpfooter {
-    /* margin-left: 1.3rem; */
+    margin-left: 1.3rem;
     font-size: 32px;
     font-style: normal;
     font-weight: 800;
@@ -105,9 +124,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     padding-left: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
 }
-
+.mailDiv {
+    margin-top: -0.2rem;
+}
 @media screen and (min-width: 768px) {
     .AddMemberInput {
         width: 18.3125rem;

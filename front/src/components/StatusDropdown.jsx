@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../styles/StatusDropdown.module.css';
-
+import { useTheme } from "../utils/ThemeContext";
 
 function StatusDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
+  
+  const { theme } = useTheme();
 
   const handleStatusClick = (status) => {
     setSelectedStatus(status);

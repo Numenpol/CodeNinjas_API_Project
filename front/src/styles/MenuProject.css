@@ -4,6 +4,13 @@
 .MenuPopUpBody {
   margin-left: -1rem;
 }
+div[class="mt-5 mb-5 rounded-3 shadow border-0"]{
+  width: 10rem;
+}
+.offcanvas.show:not(.hiding){
+  width: 20.5rem;
+
+}
 
 ._menuProjectList_1pt6d_9 {
   display: flex;
@@ -30,6 +37,11 @@ div[class="fade offcanvas-backdrop EpicBack show"] {
   padding-right: 0.8rem;
   width: 10rem !important;
   height: 4rem !important;
+}
+
+.modal-content-dark{
+  background-color: #202224 !important;
+  border: 1px solid white !important;
 }
 
 .myModal .modal-dialog {
@@ -92,23 +104,6 @@ div[class="fade myTaskDeleteModal modal show"] {
 
 }
 
-
-.sort-popup {
-  /* position: absolute; */
-  /* left: 8rem; */
-  /* right: 2rem; */
-  /* top: 100%; */
-  /* transform: translateX(-50%); */
-  border: 1px solid #d8d8d8;
-  background-color: #ffffff;
-  border-radius: 0.625rem !important;
-  width: 13rem;
-  padding: 0.5rem 0;
-  z-index: 9999;
-  box-shadow: 0 2px 5px 3px #0000001a;
-  margin-right: 1rem;
-}
-
 .sort-popup {
   /* position: absolute; */
   /* left: 8rem; */
@@ -141,6 +136,9 @@ div[class="fade myTaskDeleteModal modal show"] {
     width: 22.875rem !important;
     left: -2rem;
   }
+  .offcanvas.show:not(.hiding){
+    width: 22rem;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -152,5 +150,8 @@ div[class="fade myTaskDeleteModal modal show"] {
     top: 1rem;
     left: -20%;
 
+  }
+  .offcanvas.show:not(.hiding){
+    width: 22rem;
   }
 }

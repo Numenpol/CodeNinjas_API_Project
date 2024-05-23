@@ -8,6 +8,7 @@
   color: #565656;
   background-color: #ffffff;
   height: 2.323rem;
+  font-weight: 500;
 }
 
 .statusMenu {
@@ -17,7 +18,7 @@
   border: 1px solid #d8d8d8;
   background-color: #ffffff;
   border-radius: 0.625rem;
-  width: 7rem;
+  width: 6.5rem;
   z-index: 9999;
   box-shadow: 0 2px 5px 3px #0000001a;
 }
@@ -29,6 +30,7 @@
   color: #fff; 
   border: none;
   border-radius: 0.3rem;
+  padding: 0.1rem;
 }
 .statusDo:hover {
   background-color: #3372b2;
@@ -41,6 +43,7 @@
   color: #fff;
   border: none;
   border-radius: 0.3rem;
+  padding: 0.1rem;
 }
 .statusProgress:hover {
   background-color: #6a4d98;
@@ -54,6 +57,7 @@
   color: #fff;
   border: none;
   border-radius: 0.3rem;
+  padding: 0.1rem;
 }
 .statusDone:hover {
   background-color: #008453;
@@ -73,6 +77,22 @@
   background-color: #00a167;
   color: #fff;
 }
+
+/* Dark theme css */
+
+.statusBtnDark {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  width: 99%;
+  text-align: center;
+  color: #565656;
+  height: 2.323rem;
+  background-color: #202020 ;
+  color: #fff;
+}
+
 
 @media screen and (min-width: 768px) {
 

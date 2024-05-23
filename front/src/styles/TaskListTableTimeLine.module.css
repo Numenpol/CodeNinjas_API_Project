@@ -15,3 +15,11 @@
     border: none;
     background-color: #fff;
 }
+
+/* Dark theme css */
+
+.taskListTimeLineButtonDark {
+  width: 100%;
+  border: none;
+  background-color: #202020;
+}

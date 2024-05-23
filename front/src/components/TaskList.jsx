@@ -16,6 +16,7 @@ import { getOne } from "../services/get";
 import TaskListExecutionTable from "./TaskListExecution";
 import TaskListDoneTable from "./TaskListDoneTable";
 import { useTheme } from "../utils/ThemeContext";
+import statusStyles from "../styles/Project.module.css";
 
 function TaskList() {
   const { setShowTask, setShowMenu, projectId, update, users } = useContext(StateContext);
@@ -25,8 +26,9 @@ function TaskList() {
   const handleShow = () => setShowAddMember(true);
   const [activeProjectName, setActiveProjectName] = useState("");
   const [activeProjectIcon, setActiveProjectIcon] = useState("");
+  const [activeProjectStatus, setActiveProjectStatus] = useState("");
   const { theme } = useTheme();
-  
+
   const handleShowTask = () => {
     setShowTask((showTask) => !showTask);
   };
@@ -43,9 +45,10 @@ function TaskList() {
     let projectData = await getOne(projectId);
 
     if (projectData && projectData.data && projectData.data.project && projectData.data.project.projectName) {
-      const { projectName, icon } = projectData.data.project;
+      const { projectName, icon, status } = projectData.data.project;
       setActiveProjectName(projectName);
       setActiveProjectIcon(icon);
+      setActiveProjectStatus(status);
     } else {
       return;
     }
@@ -60,6 +63,19 @@ function TaskList() {
   };
   const toggleTableDone = () => {
     setShowTableDone((prevState) => !prevState);
+  };
+
+  const { projectDone, projectDoneDark, projectOnHold, projectOnHoldDark, projectInProgress, projectInProgressDark } = statusStyles;
+
+  const getStatusClass = () => {
+    if (activeProjectStatus === "Done") {
+      return theme === "light" ? projectDone : projectDoneDark;
+    } else if (activeProjectStatus === "On hold") {
+      return theme === "light" ? projectOnHold : projectOnHoldDark;
+    } else if (activeProjectStatus === "In progress") {
+      return theme === "light" ? projectInProgress : projectInProgressDark;
+    }
+    return "";
   };
 
   const {
@@ -94,6 +110,7 @@ function TaskList() {
     taskListMenuDark,
     taskListProjectNameDark,
     taskListAddMemberDark,
+    taskListNewTaskDark,
   } = styles;
 
   const { MenuThing } = styles1;
@@ -130,7 +147,10 @@ function TaskList() {
             </div>
           </div>
           <div className={taskListStatusDisplay}>
-            <p className={taskListStatus}>STATUS</p>
+            <p
+              // className={taskListStatus}
+              className={getStatusClass()}
+            >{activeProjectStatus}</p>
           </div>
           <div className={taskListAddMemberDisplay}>
             <button className={theme == "light" ? taskListAddMember : taskListAddMemberDark} onClick={handleShow}>
@@ -148,7 +168,7 @@ function TaskList() {
                   fill="#565656"
                 />
               </svg>
-              Add
+              <span>Add</span>
             </button>
           </div>
           <AddMemberPopUp
@@ -159,7 +179,7 @@ function TaskList() {
         <div className={taskListHeaderUnderline}></div>
         <div className={taskListHeaderBottom}>
           <Button
-            className={taskListNewTask}
+            className={theme == "light" ? taskListNewTask : taskListNewTaskDark}
             variant="primary"
             onClick={handleShowTask}
             style={{
