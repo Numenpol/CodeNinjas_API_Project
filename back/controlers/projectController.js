@@ -1,117 +1,46 @@
 const Project = require("../models/projectModel");
 const User = require("../models/userModel");
 
-// exports.getAllProjects = async (req, res) => {
-//   let searchParams = req.query;
-
-//   try {
-//     let projectsCreated;
-//     if (req.user.role === "admin") {
-//       projectsCreated = await Project.find();
-//     } else {
-//       const userId = req.user._id;
-//       projectsCreated = await Project.find({ user: userId });
-//     }
-
-//     let userWithProjects = await User.findById(req.user._id).populate("membersProject");
-    
-//     let allProjects = [
-//       ...userWithProjects.membersProject,
-//       ...projectsCreated,
-//     ];
-
-//     let filteredProjects = allProjects.filter((project) => {
-//       let matchesName = true;
-//       let matchesStatus = true;
-
-//       if (searchParams.projectName) {
-//         matchesName = project.projectName.toLowerCase().includes(searchParams.projectName.toLowerCase());
-//       }
-      
-//       if (searchParams.status && searchParams.status === "active") {
-//         matchesStatus = ["In progress", "Done"].includes(project.status);
-//       }
-
-//       return matchesName && matchesStatus;
-//     });
-
-//     if (searchParams.projectName && filteredProjects.length === 0) {
-//       filteredProjects = allProjects;
-//     }
-
-//     res.status(200).json({
-//       status: "success",
-//       results: filteredProjects.length,
-//       data: {
-//         projects: filteredProjects,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(404).json({
-//       status: "fail",
-//       message: error.message,
-//     });
-//   }
-// };
 exports.getAllProjects = async (req, res) => {
+  let searchParams = req.query;
+
   try {
-    // Extract pagination parameters from query
-    const page = parseInt(req.query.page, 10) || 1;
-    const limit = parseInt(req.query.limit, 10) || 10;
-    const skip = (page - 1) * limit;
-
-    // Check if the requested page is valid
-    const numProjects = await Project.countDocuments();
-    if (skip >= numProjects && numProjects > 0) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'This page does not exist',
-      });
-    }
-
-    // Get user-specific projects
     let projectsCreated;
-    if (req.user.role === 'admin') {
-      projectsCreated = await Project.find().skip(skip).limit(limit);
+    if (req.user.role === "admin") {
+      projectsCreated = await Project.find();
     } else {
-      const userId = req.user._id;
-      projectsCreated = await Project.find({ user: userId }).skip(skip).limit(limit);
+      const userId = req.user._id;git 
+      projectsCreated = await Project.find({ user: userId });
     }
 
-    // Populate user projects
-    const userWithProjects = await User.findById(req.user._id).populate('membersProject');
-    const userProjects = userWithProjects.membersProject.slice(skip, skip + limit);
-
-    // Combine user projects and created projects
+    let userWithProjects = await User.findById(req.user._id).populate("membersProject");
+    
     let allProjects = [
-      ...userProjects,
+      ...userWithProjects.membersProject,
       ...projectsCreated,
     ];
 
-    // Filtering logic
-    const { projectName, status } = req.query;
     let filteredProjects = allProjects.filter((project) => {
       let matchesName = true;
       let matchesStatus = true;
 
-      if (projectName) {
-        matchesName = project.projectName.toLowerCase().includes(projectName.toLowerCase());
+      if (searchParams.projectName) {
+        matchesName = project.projectName.toLowerCase().includes(searchParams.projectName.toLowerCase());
       }
-
-      if (status) {
-        if (status === 'active') {
-          matchesStatus = ['In progress', 'Done'].includes(project.status);
-        } else {
-          matchesStatus = project.status === status;
-        }
+      
+      if (searchParams.status && searchParams.status === "active") {
+        matchesStatus = ["In progress", "Done"].includes(project.status);
       }
 
       return matchesName && matchesStatus;
     });
 
-    // Send the response
+    if (searchParams.projectName && filteredProjects.length === 0) {
+      filteredProjects = allProjects;
+    }
+
     res.status(200).json({
-      status: 'success',
+      status: "success",
       results: filteredProjects.length,
       data: {
         projects: filteredProjects,
@@ -119,11 +48,81 @@ exports.getAllProjects = async (req, res) => {
     });
   } catch (error) {
     res.status(404).json({
-      status: 'fail',
+      status: "fail",
       message: error.message,
     });
   }
 };
+// exports.getAllProjects = async (req, res) => {
+//   try {
+  
+//     const page = parseInt(req.query.page, 10) || 1;
+//     const limit = parseInt(req.query.limit, 12) || 12;
+//     const skip = (page - 1) * limit;
+
+    
+//     const numProjects = await Project.countDocuments();
+//     if (skip >= numProjects && numProjects > 0) {
+//       return res.status(404).json({
+//         status: 'fail',
+//         message: 'This page does not exist',
+//       });
+//     }
+
+   
+//     let projectsCreated;
+//     if (req.user.role === 'admin') {
+//       projectsCreated = await Project.find().skip(skip).limit(limit);
+//     } else {
+//       const userId = req.user._id;
+//       projectsCreated = await Project.find({ user: userId }).skip(skip).limit(limit);
+//     }
+
+ 
+//     const userWithProjects = await User.findById(req.user._id).populate('membersProject');
+//     const userProjects = userWithProjects.membersProject.slice(skip, skip + limit);
+
+   
+//     let allProjects = [
+//       ...userProjects,
+//       ...projectsCreated,
+//     ];
+
+   
+//     const { projectName, status } = req.query;
+//     let filteredProjects = allProjects.filter((project) => {
+//       let matchesName = true;
+//       let matchesStatus = true;
+
+//       if (projectName) {
+//         matchesName = project.projectName.toLowerCase().includes(projectName.toLowerCase());
+//       }
+
+//       if (status) {
+//         if (status === 'active') {
+//           matchesStatus = ['In progress', 'Done'].includes(project.status);
+//         } else {
+//           matchesStatus = project.status === status;
+//         }
+//       }
+
+//       return matchesName && matchesStatus;
+//     });
+
+//     res.status(200).json({
+//       status: 'success',
+//       results: filteredProjects.length,
+//       data: {
+//         projects: filteredProjects,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(404).json({
+//       status: 'fail',
+//       message: error.message,
+//     });
+//   }
+// };
 
 
 
