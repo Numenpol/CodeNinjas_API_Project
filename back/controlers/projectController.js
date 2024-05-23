@@ -9,7 +9,7 @@ exports.getAllProjects = async (req, res) => {
     if (req.user.role === "admin") {
       projectsCreated = await Project.find();
     } else {
-      const userId = req.user._id;git 
+      const userId = req.user._id;
       projectsCreated = await Project.find({ user: userId });
     }
 
