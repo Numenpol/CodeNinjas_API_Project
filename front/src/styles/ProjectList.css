@@ -1,0 +1,22 @@
+.pagination {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 3rem !important;
+}
+
+.pagination .page-item .page-link { 
+    color: #3FADBE;                 
+    border: 1px solid #dee2e6;       
+  }
+ 
+  
+  .pagination .page-item.active .page-link {
+    background-color: #3FADBE !important; 
+    border-color: #3FADBE !important;     
+    color: white !important;              
+  }
+  
+  
+  
+
+

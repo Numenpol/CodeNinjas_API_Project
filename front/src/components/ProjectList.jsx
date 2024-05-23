@@ -3,6 +3,7 @@ import Project from "./Project";
 import { StateContext } from "../utils/StateContext";
 import { useTheme } from "../utils/ThemeContext";
 import styles from "../styles/ProjectList.module.css";
+import "../styles/ProjectList.css"; // Import the custom CSS file
 import Pagination from 'react-bootstrap/Pagination';
 
 function ProjectList() {
@@ -23,12 +24,11 @@ function ProjectList() {
     projectListTasks,
     tableBodyBox,
     projectListList,
-    cornerGapsDark
+    cornerGapsDark,
   } = styles;
 
-
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 14;
+  const itemsPerPage = 12;
   const indexOfLastProject = currentPage * itemsPerPage;
   const indexOfFirstProject = indexOfLastProject - itemsPerPage;
   const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
@@ -86,7 +86,7 @@ function ProjectList() {
           ))}
         </tbody>
       </table>
-      <Pagination className="d-flex justify-content-center mt-5">{renderPaginationItems()}</Pagination>
+      <Pagination>{renderPaginationItems()}</Pagination>
     </div>
   );
 }
