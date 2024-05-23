@@ -85,6 +85,17 @@
     font-weight: 400;
 }
 
+.menuEditDark, .menuTrashDark{
+    font-family: var(--inter);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 300;
+    cursor: pointer;
+    padding-bottom: 0.2rem;
+    background-color: #1E1E1E;
+}
+
+
 @media screen and (min-width: 1440px) {
     .menuProjectName {
         font-size: 1rem;
@@ -94,4 +105,12 @@
     .menuTrash {
         font-size: 0.97rem;
     }
+
+    /* Dark theme css */
+
+    .menuEditDark,
+    .menuTrashDark {
+        font-size: 0.97rem;
+    }
+
 }

@@ -2,11 +2,13 @@ import styles2 from "../styles/PriorityDropdown.module.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { StateContext } from "../utils/StateContext";
 import { createPopper } from '@popperjs/core';
+import { useTheme } from "../utils/ThemeContext";
 
 function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
   const [isOpens, setIsOpens] = useState(false);
   const { setUpdate } = useContext(StateContext);
   const buttonRef = useRef(null);
+  const { theme } = useTheme();
 
   const {
     priorityBtn,
@@ -14,6 +16,7 @@ function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
     priorityLow,
     priorityMedium,
     priorityHigh,
+    priorityBtnDark,
   } = styles2;
 
   useEffect(() => {
@@ -73,7 +76,7 @@ function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
       <button
         type="button"
         onClick={() => handlePriorityClick(task._id)}
-        className={`${priorityBtn} ${selectedPriority && 'selected'}`}
+        className={`${theme == "light" ? priorityBtn : priorityBtnDark} ${selectedPriority && 'selected'}`}
         ref={buttonRef}
         style={{
           backgroundColor:
@@ -83,7 +86,7 @@ function TaskListTablePriority({ selectedPriority, task, updateDataTask }) {
           color:
             task.priority === "Low" ? "white" :
             task.priority === "Medium" ? "white" :
-            task.priority === "High" ? "white" : "black",
+            task.priority === "High" ? "white" : "",
         }}
       >
         {task.priority || String.fromCharCode(9662)}
