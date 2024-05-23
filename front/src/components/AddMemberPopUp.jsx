@@ -7,9 +7,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from "../styles/AddMemberPopUp.module.css";
 import { login } from "../utils/auth/authenticate";
+import { useTheme } from "../utils/ThemeContext";
 
 function AddMemberPopUp({ handleClose, showAddMember }) {
   const { users } = useContext(StateContext);
+
+  const { theme } = useTheme();
 
   const {
     handleSubmit,

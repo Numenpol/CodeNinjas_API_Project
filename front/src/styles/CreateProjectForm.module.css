@@ -17,7 +17,6 @@
   /* margin-top: 0.5rem; */
   font-size: 0.875rem;
   margin: 0.4rem 0.4rem 0.8rem
-
 } 
 
 .createProject {
@@ -206,6 +205,8 @@
   background-color: #3593a2 !important;
 }
 
+
+
 /* Dark theme css */
 
 .rocketPictureDark {
@@ -307,6 +308,9 @@
   padding: 0.625rem 1rem;
   background: #3372B2 !important;
   border: none !important;
+  width: 4.9375rem;
+  height: 2rem;
+  margin-top: 0.1rem;
 }
 
 .cancelBtnDark {
@@ -317,6 +321,49 @@
   padding: 0.625rem 1rem;
 }
 
+.TextThing12Dark{
+  /* margin-top: 0.5rem; */
+  font-size: 0.875rem;
+  margin: 0.4rem 0.4rem 0.8rem;
+  background-color: #202020;
+  color: #fff;
+} 
+
+.cancelBtnProjectDark {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #1E1E1E !important;
+  border: 0.2px solid #565656 !important;
+  margin-right: 0.5rem;
+}
+.cancelBtnContentDark {
+  color: #FFF;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: var(--inter);
+}
+
+.createBtnProjectDark {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #3372B2 !important;
+  border: none !important;
+  color: #FFF !important;
+}
+
+.xIconButton1Dark{
+  border: none;
+  background-color: #202020;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.2rem;
+}
 
 @media screen and (min-width: 768px) {
   .modalDialog {

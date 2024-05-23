@@ -13,6 +13,7 @@ import { PersonCircle, CircleFill } from "react-bootstrap-icons";
 import TaskListTableTimeLine from "./TaskListTableTimeLine";
 import { getOne } from "../services/get";
 import { createPopper } from '@popperjs/core';
+import { useTheme } from "../utils/ThemeContext";
 
 
 function TaskListTableForm({
@@ -29,6 +30,8 @@ function TaskListTableForm({
   const [isOpenStatus, setIsOpenStatus] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("");
   // const [open, setOpen] = useState(false);
+
+  const { theme } = useTheme();
 
   //Priority
   // const [isOpens, setIsOpens] = useState({});
@@ -206,9 +209,9 @@ function TaskListTableForm({
     }
   }, [isOpenStatus, isOpenPriority, isOpenOwner]);
 
-  const { tableBody, tableHeaderKey, keyName, tasklistTaskField, tableHeaderOwnerTh, tableHeaderOwner, tableHeaderStatusTh, tableHeaderStatus, tableHeaderPriorityTh, tableHeaderPriority, tableTimeline, tableHeaderCreationDate, taskCreationDate, tableHeaderCompletionDate, taskCompletionDate } = taskListStyles;
+  const { tableBody, tableHeaderKey, tableHeaderKeyDark , keyNameDark , ownerBtnDark ,keyName, priorityBtnDark , statusBtnDark,tableTimelineDark , tasklistTaskField, tasklistTaskFieldDark ,tableHeaderCompletionDateDark , tableHeaderCreationDateDark , tableHeaderOwnerThDark , tableHeaderOwnerTh, TaskListTableFormBackground , TaskListTableFormBackgroundDark , tableHeaderOwner, tableHeaderStatusTh, tableHeaderStatus, tableHeaderPriorityTh, tableHeaderPriority, tableTimeline, tableHeaderCreationDate, taskCreationDate, tableHeaderCompletionDate, taskCompletionDate } = taskListStyles;
 
-  const { taskNameForm, taskOwner, taskStatus, taskPriority } = tableFormStyles;
+  const { taskNameForm, taskOwner, taskOwnerDark , taskStatus, taskPriority , taskNameFormDark ,} = tableFormStyles;
 
   return (
     <>
@@ -217,31 +220,31 @@ function TaskListTableForm({
           <Table bordered>
             <tbody className={tableBody}>
               <tr>
-                <td className={tableHeaderKey}>
+                <td className={theme == "light" ? tableHeaderKey : tableHeaderKeyDark}>
                   <p
-                    className={keyName}
+                    className={theme == "light" ? keyName : keyNameDark}
                     id="key"
                     name="key"
                     type="text"
                     {...register("key")}
                   >{tasks.key}</p>
                 </td>
-                <td className={tasklistTaskField}>
+                <td className={theme == "light" ? tasklistTaskField : tasklistTaskFieldDark}>
                   <input
-                    className={taskNameForm}
+                    className={theme == "light" ? taskNameForm : taskNameFormDark}
                     id="task"
                     name="task"
                     type="text"
                     {...register("task")}
                   />
                 </td>
-                <td className={tableHeaderOwnerTh}>
+                <td className={theme == "light" ? tableHeaderOwnerTh : tableHeaderOwnerThDark}>
                   <div className={tableHeaderOwner}>
-                    <div className={taskOwner} ref={ownerRef}>
+                    <div className={theme == "light" ? taskOwner : taskOwnerDark} ref={ownerRef}>
                       <button
                         type="button"
                         onClick={() => setIsOpenOwner(!isOpenOwner)}
-                        className={Ownerstyles.ownerBtn}
+                        className={theme == "light" ? Ownerstyles.ownerBtn : Ownerstyles.ownerBtnDark}
                       >
                         {selectedOwner ? (
                           <div className={Ownerstyles.initials}>
@@ -288,7 +291,7 @@ function TaskListTableForm({
                       <button
                         type="button"
                         onClick={() => setIsOpenStatus(!isOpenStatus)}
-                        className={`${styles.statusBtn} ${selectedStatus && styles.selected
+                        className={`${theme == "light" ? styles.statusBtn : styles.statusBtnDark} ${selectedStatus && styles.selected
                           }`}
                         style={{
                           backgroundColor:
@@ -334,7 +337,7 @@ function TaskListTableForm({
                       <button
                         type="button"
                         onClick={() => setIsOpenPriority(!isOpenPriority)}
-                        className={`${styles2.priorityBtn} ${selectedPriority &&
+                        className={`${theme == "light" ? styles2.priorityBtn : styles2.priorityBtnDark} ${selectedPriority &&
                           (selectedPriority === 'Low' ? styles2.selectedPrioLow :
                             selectedPriority === 'Medium' ? styles2.selectedPrioMed :
                               selectedPriority === 'High' ? styles2.selectedPrioHi : '')
@@ -377,13 +380,13 @@ function TaskListTableForm({
                     </div>
                   </div>
                 </td>
-                <td className={tableTimeline}>
+                <td className={theme == "light" ? tableTimeline : tableTimelineDark}>
                   <TaskListTableTimeLine
                     setSelectedTimeLine={setSelectedTimeLine}
                     selectedTimeLine={selectedTimeLine}
                   />
                 </td>
-                <td className={tableHeaderCreationDate}>
+                <td className={theme == "light" ?  tableHeaderCreationDate : tableHeaderCreationDateDark}>
                   <p
                     className={taskCreationDate}
                     style={{ border: "none" }}
@@ -393,7 +396,7 @@ function TaskListTableForm({
                     {...register("creationdate")}
                   ></p>
                 </td>
-                <td className={tableHeaderCompletionDate}>
+                <td className={theme == "light" ? tableHeaderCompletionDate : tableHeaderCompletionDateDark}>
                   <p
                     className={taskCompletionDate}
                     id="completiondate"

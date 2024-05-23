@@ -2,6 +2,7 @@ import styles from "../styles/StatusDropdown.module.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { StateContext } from "../utils/StateContext";
 import { createPopper } from '@popperjs/core';
+import { useTheme } from "../utils/ThemeContext";
 
 
 function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
@@ -12,6 +13,8 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
   const dateToday = new Date();
   const formattedDate = dateToday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
+  const { theme } = useTheme();
+
   const {
     statusBtn,
     statusMenu,
@@ -19,6 +22,7 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
     statusProgress,
     statusDone,
     selected,
+    statusBtnDark,
     // statusInProgress,
     // statusDoneSelected,
   } = styles;
@@ -87,7 +91,7 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
       <button
         type="button"
         onClick={() => handleStatusClick(task._id)}
-        className={`${statusBtn} ${selectedStatus && selected}`}
+        className={`${theme == "light" ? statusBtn : statusBtnDark} ${selectedStatus && selected}`}
         ref={buttonRef}
         style={{
           backgroundColor:
@@ -105,7 +109,7 @@ function TaskListTableStatus({ selectedStatus,  task, updateDataTask }) {
               ? "white"
               : task.status === "Done"
               ? "white"
-              : "black",
+              : "",
         }}
       >
         {task.status || String.fromCharCode(9662)}

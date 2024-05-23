@@ -111,7 +111,7 @@
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
-    padding-left: 1.8rem;
+    padding-left: 1rem;
     padding-bottom: 0.5rem;
     background-color: #121212;
     font-family: var(--montserrat);
@@ -182,8 +182,11 @@
 
     .projectListTasksDark .projectListStatusDark {
         text-align: center;
-        padding-left: 0;
+        padding-left: 0rem;
         background-color: #121212;
+    }
+    .projectListStatusDark {
+        padding-left: 1.6rem;
     }
 
 
