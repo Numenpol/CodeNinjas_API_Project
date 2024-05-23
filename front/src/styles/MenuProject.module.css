@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+.menuProjectList {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.menuProjectIcon {
+    width: 1.125rem;
+    margin-left: 2rem;
+}
+
+.menuProjectName {
+    font-family: var(--montserrat);
+    margin-bottom: 0.3rem;
+    margin-left: 0.81rem;
+    color: #565656;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.menuProjectModalBackDrop {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.menuProjectList:hover {
+    background-color: #C7D7FA;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/* ----  edit icon --- */
+
+.editIcon {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    color: #7a7e8133;
+    margin-right: 1.8rem;
+}
+
+.menuTrashIcon,
+.menuPencilsquare {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.menuEdit,
+.menuTrash {
+    font-family: var(--inter);
+    color: #565656;
+    font-size: 0.875rem;
+    font-weight: 300;
+    cursor: pointer;
+    padding-bottom: 0.2rem;
+}
+
+
+.editIcon:hover {
+    cursor: pointer;
+    background-color: #D5D5D5;
+}
+
+.menuEdit:hover,
+.menuPencilsquare:hover,
+.menuTrash:hover,
+.menuTrashIcon:hover {
+    background-color: #C7D7FA;
+    border-radius: 0.3rem;
+}
+
+/* Dark theme css */
+
+.menuProjectListDark {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.menuProjectNameDark {
+    margin-bottom: 0.3rem;
+    margin-left: 0.81rem;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--montserrat);
+    font-weight: 400;
+}
+
+.editIconDark{
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    color: #7a7e8133;
+    margin-right: 1.8rem;
+}
+
+.menuEditDark, .menuTrashDark{
+    font-family: var(--inter);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 300;
+    cursor: pointer;
+    padding-bottom: 0.2rem;
+    background-color: #1E1E1E;
+}
+
+.menuProjectListDark:hover {
+    background-color: #292929;
+}
+
+.editIconDark:hover {
+    background-color: #3b3b3b;
+}
+
+.menuEditDark:hover {
+    background-color: #292929;
+}
+
+.menuTrashDark:hover {
+    background-color: #292929;
+}
+
+@media screen and (min-width: 1440px) {
+    .menuProjectName {
+        font-size: 1rem;
+    }
+
+    .menuEdit,
+    .menuTrash {
+        font-size: 0.97rem;
+    }
+
+    /* Dark theme css */
+
+    .menuEditDark,
+    .menuTrashDark {
+        font-size: 0.97rem;
+    }
+
+}

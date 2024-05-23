@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+.headerNavigation {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  background-image: linear-gradient(90deg, #3fadbe, #3372b2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 360px;
+}
+
+.headerTabletIcon {
+  display: none;
+}
+
+.headerRightSide {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerThemeButton {
+  /* width: 100px; */
+  border-radius: 19px;
+  border: none;
+  padding: 3px 10px;
+  width: 60px;
+  background-color: #fff;
+  height: 38px;
+  margin-right: 0.3rem;
+}
+
+.headerUserName {
+  display: none;
+}
+
+.headerUserRole {
+  display: none;
+}
+
+.headerLogOutButton {
+  border: none;
+  padding: 10px 16px;
+  margin-right: 10px;
+  font-size: 0.875rem;
+  color: #565656;
+  font-family: var(--inter);
+  font-weight: 400;
+  border-radius: 0.3125rem;
+  background: #F5F6FA;
+  border: 0.5px solid #565656;
+
+}
+
+.headerThemeButton:hover {
+  background-color: #f5f6fa;
+}
+
+.headerLogOutButton:hover {
+  background-color: #d5d5d5;
+}
+
+.darkThemeButton {
+  background-color: black;
+  border-radius: 19px;
+  border: none;
+  padding: 3px 10px;
+  width: 60px;
+  height: 38px;
+}
+
+.lightThemeButton {
+  background-color: white;
+  border-radius: 19px;
+  border: none;
+  padding: 3px 10px;
+  width: 60px;
+  height: 38px;
+}
+
+.lightThemeButton:hover {
+  background-color: #F5F6FA;
+}
+
+/* Dark theme css */
+
+.headerNavigationDark {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  background: linear-gradient(270deg, #121212 0%, #3372B2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 360px;
+}
+
+.headerLogOutButtonDark {
+  border-radius: 5px;
+  border: none;
+  padding: 10px 16px;
+  margin-right: 10px;
+  background-color: #f5f6fa;
+  font-size: 14px;
+  color: #565656;
+  border-radius: 0.3125rem;
+  border: 0.5px solid #565656;
+  background: #1E1E1E;
+  color: #fff;
+  font-size: 0.875rem;
+  font-family: var(--inter);
+  font-weight: 400;
+}
+
+.headerLogOutButtonDark:hover {
+  background-color: #292929;
+}
+
+.darkThemeButton:hover {
+  background-color: #292929;
+}
+
+@media (min-width: 768px) {
+  .headerNavigation {
+    padding-left: 10px;
+  }
+
+  .headerMobileIcon {
+    display: none;
+  }
+
+  .headerTabletIcon {
+    display: inline-block;
+  }
+
+  .headerRightSide {
+    gap: 20px;
+  }
+
+  .headerThemeButton {
+    margin-right: -0.3rem;
+  }
+
+  .headerUserName {
+    display: block;
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: var(--inter);
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .headerUserRole {
+    display: block;
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: var(--inter);
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #f5f6fa;
+  }
+
+  .headerLogOutButton {
+    margin-right: 15px;
+  }
+
+  /* Dark theme css */
+
+  .headerNavigationDark {
+    padding-left: 10px;
+  }
+
+  .headerLogOutButtonDark {
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .headerNavigation {
+    padding-left: 90px;
+  }
+
+  .headerThemeButton {
+    margin-right: 60px;
+  }
+
+  /* Dark theme css */
+
+  .headerNavigationDark {
+    padding-left: 90px;
+  }
+
+}

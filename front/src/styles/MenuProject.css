@@ -1,0 +1,157 @@
+.myTaskDeleteModal {
+  text-align: center;
+}
+.MenuPopUpBody {
+  margin-left: -1rem;
+}
+div[class="mt-5 mb-5 rounded-3 shadow border-0"]{
+  width: 10rem;
+}
+.offcanvas.show:not(.hiding){
+  width: 20.5rem;
+
+}
+
+._menuProjectList_1pt6d_9 {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start !important;
+
+}
+
+div[class="fade offcanvas-backdrop EpicBack show"] {
+  opacity: 0 !important;
+}
+
+.myTaskDeleteModal .modal-dialog {
+  width: 20.8rem !important;
+  height: 6.75rem !important;
+  position: relative;
+  left: -0.5rem;
+  top: 2.3rem;
+}
+
+.myModal .modal-content {
+  padding-left: 0.8rem;
+  padding-top: 0.4rem;
+  padding-right: 0.8rem;
+  width: 10rem !important;
+  height: 4rem !important;
+}
+
+.modal-content-dark{
+  background-color: #202224 !important;
+  border: 1px solid white !important;
+}
+
+.myModal .modal-dialog {
+  position: fixed;
+  left: 150px;
+  margin-top: 500px;
+}
+
+.invalid-feedback {
+  color: #C1427F !important;
+}
+
+.form-label {
+  font-family: var(--inter) !important;
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  margin-top: 1rem;
+}
+
+.form-control::placeholder {
+  font-family: var(--inter) !important;
+  color: #ADB5BD !important;
+  font-weight: 400 !important;
+  font-size: 0.8125rem !important;
+}
+
+
+div [class="fade myModal modal show"] {
+  display: none !important;
+  position: absolute;
+  width: 100vh !important;
+}
+
+div[class="fade modal-backdrop show"] {
+  display: none !important;
+}
+
+div[class="fade myDeleteModal modal show"] {
+  margin-left: -14rem !important;
+}
+
+div[class="fade myTaskDeleteModal modal show"] {
+  width: 100% !important;
+  margin-top: -21rem;
+  margin-left: 20rem;
+}
+
+.myDeleteModal .modal-dialog {
+  position: absolute;
+  top: 150px;
+}
+
+.myDeleteModal .modal-body {
+  text-align: center !important;
+}
+
+.myDeleteModal .modal-content {
+  min-width: 20rem !important;
+  max-width: 22.875rem !important;
+
+}
+
+.sort-popup {
+  /* position: absolute; */
+  /* left: 8rem; */
+  /* right: 2rem; */
+  /* top: 100%; */
+  /* transform: translateX(-50%); */
+  border: 1px solid #d8d8d8;
+  background-color: #ffffff;
+  border-radius: 0.625rem !important;
+  width: 13rem;
+  padding: 0.5rem 0;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
+  margin-right: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+
+@media screen and (min-width: 768px) {
+  .myDeleteModal .modal-dialog {
+    position: absolute;
+    left: 200px;
+  }
+
+  .myTaskDeleteModal .modal-dialog {
+    top: -1rem;
+    width: 22.875rem !important;
+    left: -2rem;
+  }
+  .offcanvas.show:not(.hiding){
+    width: 22rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .myDeleteModal .modal-dialog {
+    position: absolute;
+  }
+
+  .myTaskDeleteModal .modal-dialog {
+    top: 1rem;
+    left: -20%;
+
+  }
+  .offcanvas.show:not(.hiding){
+    width: 22rem;
+  }
+}

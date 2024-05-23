@@ -1,0 +1,386 @@
+* {
+  box-sizing: border-box;
+}
+
+.projectList {
+  min-width: 360px;
+  background-color: #F5F6FA;
+  padding-top: 1.12rem;
+  margin-top: 5rem;
+  /* height: 100%; */
+  /* height: 90vh; */
+  /* overflow-y: hidden; */
+}
+
+.ProjectListMenu {
+  display: none;
+}
+
+.projectListCard {
+  background-color: #FFF;
+  border-radius: 0.625rem 0.625rem 0rem 0rem;
+  /* height: 100vh; */
+}
+
+.ProjectThing {
+  padding: 15px;
+}
+
+.MenuThing {
+  border: none;
+  background: none;
+  color: #3fadbe;
+  margin-left: -0.5rem;
+}
+
+.FolderText {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: -35px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #7a7e81;
+  margin-bottom: 1.88rem;
+  justify-content: start;
+  margin-left: 4rem;
+}
+
+.FolderIcon1 {
+  color: #3fadbe;
+  width: 1.875rem;
+  margin-right: 1rem;
+}
+
+.searchbarGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.SearcbarProjectList {
+  margin-top: 10px;
+  min-width: 21.125rem;
+  max-width: 30rem;
+}
+
+.InputBoxCss {
+  border-top-right-radius: 19px !important;
+  border-bottom-right-radius: 20px !important;
+  border-left: none;
+}
+
+.CreateProjectButtonPosition {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#inputGroup-sizing-sm {
+  background-color: White;
+  border-right: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.SearcbarProjectList input::placeholder {
+  color: #202224;
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+.SearcbarProjectList svg {
+  color: #202224;
+  opacity: 0.5;
+}
+
+.createFirstProjectButton {
+  background-color: #3fadbe;
+  color: white;
+  border: #3fadbe;
+  border-radius: 5px;
+  width: 330px;
+  height: 3.125rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--inter);
+  font-weight: 400;
+}
+
+.createFirstProjectButton:hover {
+  background-color: #3593A2 !important;
+}
+
+.FolderPlusIcon {
+  margin-right: 0.5rem;
+}
+.MyProjectsText {
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+/* .FolderText {
+  justify-content: start;
+  margin-left: 4rem;
+} */
+
+/* Dark theme css */
+
+.createFirstProjectButtonDark {
+  background-color: #3372B2;
+  color: white;
+  border: #3fadbe;
+  border-radius: 5px;
+  width: 330px;
+  height: 3.125rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--inter);
+  font-weight: 400;
+}
+
+.CreateProjectButtonPositionDark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1E1E1E;
+}
+
+.ProjectThingDark {
+  padding: 15px;
+  background-color: #1E1E1E;
+   border-radius: 0.625rem 0.625rem 0rem 0rem;
+}
+
+.projectListCardDark {
+  border-radius: 0.625rem 0.625rem 0rem 0rem;
+  background-color: #1E1E1E;
+
+}
+
+.projectListDark {
+  min-width: 360px;
+  background-color: #F5F6FA;
+  padding-top: 1.12rem;
+  margin-top: 5rem;
+  background-color: #000000;
+}
+
+.MyProjectsTextDark {
+  color: #FFF;
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.FolderTextDark {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: -35px;
+  font-size: 1.25rem;
+  font-weight: 300;
+ color: #FFF;
+  margin-bottom: 1.88rem;
+  justify-content: start;
+  margin-left: 4rem;
+}
+
+.ProjectListMenuDark {
+  display: none;
+}
+
+.createFirstProjectButtonDark:hover {
+  background-color: #235586;
+}
+
+@media screen and (min-width: 768px) {
+  .ProjectListHeader {
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: start; */
+    /* margin-bottom: 15.44rem; */
+    height: 3rem;
+  }
+
+
+
+  .SearcbarProjectList {
+    max-width: 18rem;
+  }
+
+  .FolderText {
+    /* margin-top: 0;
+    margin-bottom: 0; */
+    font-size: 1.375rem;
+    /* justify-content: start; */
+    /* margin-bottom: 4rem; */
+  }
+
+  .MyProjectsText {
+    margin-left: 10px;
+    font-size: 1.375rem;
+  }
+
+  .FolderPlusIcon {
+    width: 2.25rem;
+    margin-right: 0.7rem;
+  }
+
+  .SearcbarProjectList {
+    margin-left: 1rem;
+  }
+
+  .searchbarGroup {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .CreateProjectThing {
+    margin-top: 1, 35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .MenuThing {
+    margin-left: -0.2rem;
+  }
+
+  /* Dark theme css */
+
+.ProjectListHeaderDark {
+  display: flex;
+    justify-content: space-between;
+    height: 3rem;
+}
+.MyProjectsTextDark {
+  margin-left: 10px;
+  font-size: 1.375rem;
+}
+.FolderTextDark {
+  font-size: 1.375rem;
+}
+
+}
+
+@media screen and (min-width: 1440px) {
+  .MenuThing {
+    display: none;
+  }
+
+  .projectList {
+    display: flex;
+    width: 100%;
+    gap: 1.06rem;
+  }
+
+  .ProjectListMenu {
+    display: block;
+    max-width: 25%;
+    background-color: #FFF;
+    border-radius: 0rem 0.625rem 0rem 0rem;
+  }
+
+  .projectListCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ProjectListHeader {
+    /* padding-right: 0; */
+    justify-content: start;
+  }
+
+  .ProjectThing {
+    padding-right: 0;
+    order: 0;
+  }
+
+  .FolderPlusIcon {
+    width: 3.5rem;
+  }
+
+  .FolderText {
+    font-size: 1.875rem;
+    margin: 0;
+    /* justify-content: flex-start; */
+  }
+
+  .projectListSearchBar {
+    display: none;
+  }
+
+  .CreateProjectThing {
+    display: none;
+  }
+
+  .CreateProjectButtonPosition {
+    /* display: none; */
+    order: 0;
+    align-items: end;
+    margin-right: 0.9rem;
+    margin-top: -5rem;
+  }
+
+
+
+  .ProjectListDashboard {
+    flex-basis: auto;
+    order: 1;
+  }
+
+  .projectListList {
+    order: 2;
+  }
+  .MyProjectsText {
+    font-size: 1.875rem;
+  }
+
+  /* Dark theme css */
+
+  .CreateProjectButtonPositionDark {
+    order: 0;
+    align-items: end;
+    margin-right: 0.9rem;
+    margin-top: -5rem;
+  }
+
+  .ProjectThingDark {
+    padding-right: 0;
+    order: 0;
+  }
+
+  .projectListCardDark {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projectListDark {
+    display: flex;
+    width: 100%;
+    gap: 1.06rem;
+  }
+  .FolderTextDark {
+    font-size: 1.875rem;
+    margin: 0;
+    position: absolute;
+  }
+  .ProjectListMenuDark {
+    display: block;
+    max-width: 25%;
+    background-color: #FFF;
+    border-radius: 0rem 0.625rem 0rem 0rem;
+    background-color: #1E1E1E;
+  }
+
+  .ProjectListHeaderDark {
+    justify-content: start;
+  }
+
+  .MyProjectsTextDark {
+    font-size: 1.875rem;
+  }
+}

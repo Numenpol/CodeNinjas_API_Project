@@ -1,0 +1,497 @@
+* {
+  box-sizing: border-box;
+}
+
+.modalDialog {
+  max-width: 400px !important;
+  margin: 3rem auto !important;
+}
+.xIconButton1{
+  border: none;
+  background-color: #ffff;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.2rem;
+}
+.TextThing12{
+  /* margin-top: 0.5rem; */
+  font-size: 0.875rem;
+  margin: 0.4rem 0.4rem 0.8rem
+} 
+
+.createProject {
+  display: flex;
+  flex-direction: column;
+  min-width: 360px;
+  background-color: #f5f6fa;
+  border-radius: 0.625rem;
+}
+
+.xIconButton {
+  border: none;
+  background-color: #f5f6fa;
+  text-align: end;
+  border-radius: 0.625rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  padding-left: 0;
+}
+
+.createProjectHeader {
+  font-family: var(--inter);
+  font-size: 1.5rem;
+  color: #565656;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-bottom: -0.5rem;
+  padding-left: 2rem;
+}
+
+.createProjectForm {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.newProjectName {
+  color: #565656;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-top: 0.69rem;
+}
+
+.createProjectFormError {
+  color: #C1427F;
+}
+
+.createChooseIcon {
+  color: #565656;
+  font-family: var(--inter);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.69rem;
+}
+
+.newProjectDesc {
+  color: #565656;
+  font-family: var(--inter);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.69rem;
+}
+
+.createButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-bottom: 0.62rem;
+}
+
+.cancelBtn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  background-color: #fff !important;
+  border: 0.2px solid #97979769 !important;
+}
+
+.cancelBtnContent {
+  color: #565656;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: var(--inter);
+}
+
+.createBtn {
+  width: 4.9375rem;
+  height: 2rem;
+  background: #3fadbe !important;
+  border: none !important;
+}
+.deleteBtn {
+  background-color: #3fadbe !important;
+  border: none !important;
+}
+
+.createBtnContent {
+  font-family: var(--inter);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.rocketPicture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0 0 0.65rem 0.625rem;
+}
+
+.rocket {
+  width: 8.0625rem;
+  height: 8.375rem;
+  margin: 1rem auto 0.81rem;
+}
+
+.rocketSlogan {
+  background: linear-gradient(90deg, #3fadbe 0%, #4067f6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--inter);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.newProjectName input::placeholder {
+  color: #adb5bd;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.25rem;
+  font-family: var(--inter) !important;
+}
+
+
+.newProjectDesc input::placeholder {
+  color: #adb5bd;
+  color: #4067f6 !important;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.25rem;
+  font-family: var(--inter) !important;
+}
+
+.cancelBtn:hover {
+  background-color: #f5f6fa !important;
+}
+
+.createBtn:hover {
+  background-color: #3593a2 !important;
+}
+.cancelBtnProject {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  background-color: #fff !important;
+  border: 0.2px solid #97979769 !important;
+  margin-right: 0.5rem;
+}
+.createBtnProject {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #3fadbe !important;
+  border: none !important;
+}
+.cancelBtnProject:hover {
+  background-color: #f5f6fa !important;
+}
+
+.createBtnProject:hover {
+  background-color: #3593a2 !important;
+}
+
+
+
+/* Dark theme css */
+
+.rocketPictureDark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #1E1E1E;
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.createProjectFormDark {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  background-color: #121212;
+}
+
+.createProjectHeaderDark {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  background-color: #121212;
+  border-radius: 0.3rem;
+}
+
+.blankSpaceDark {
+  background-color: #121212;
+  border-radius: 1rem;
+}
+
+.formLabelDark {
+  color: #FFFFFF;
+}
+
+.createChooseIconDark {
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-bottom: 0;
+  margin-top: 0.69rem;
+}
+
+.formLabelProjectDescriptionDark {
+  color: #FFFFFF;
+}
+
+.xIconButtonDark {
+  border: none;
+  background-color: #f5f6fa;
+  text-align: end;
+  border-radius: 0.3rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  padding-left: 0;
+  background-color: #121212;
+}
+
+.createProjectDark {
+  display: flex;
+  flex-direction: column;
+  min-width: 360px;
+  background-color: #121212;
+  border-radius: 0.625rem;
+}
+
+.projectNameFieldDark {
+  background: #1E1E1E !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid #565656 !important;
+  background: #1E1E1E !important;
+  color: #FFFFFF !important;
+}
+
+.projectDescriptionFieldDark {
+  background: #1E1E1E !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid #565656 !important;
+  background: #1E1E1E !important;
+  color: #FFFFFF !important;
+}
+
+.newProjectNameDark input::placeholder {
+  color: #adb5bd;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.modal-content {
+  border-radius: 1rem !important;
+}
+
+.createBtnDark {
+  padding: 0.625rem 1rem;
+  background: #3372B2 !important;
+  border: none !important;
+  width: 4.9375rem;
+  height: 2rem;
+  margin-top: 0.1rem;
+}
+
+.cancelBtnDark {
+  border: 0.2px solid #565656 !important;
+  background: #1E1E1E !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  margin-top: 0.1rem;
+}
+
+.TextThing12Dark{
+  /* margin-top: 0.5rem; */
+  font-size: 0.875rem;
+  margin: 0.4rem 0.4rem 0.8rem;
+  background-color: #202020;
+  color: #fff;
+} 
+
+.cancelBtnProjectDark {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #1E1E1E !important;
+  border: 0.2px solid #565656 !important;
+  margin-right: 0.5rem;
+}
+.cancelBtnContentDark {
+  color: #FFF;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: var(--inter);
+}
+
+.createBtnProjectDark {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 4.9375rem;
+  height: 2rem;
+  background: #3372B2 !important;
+  border: none !important;
+  color: #FFF !important;
+}
+
+.xIconButton1Dark{
+  border: none;
+  background-color: #202020;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.2rem;
+}
+
+.cancelBtnDark:hover {
+  background-color: #292929 !important;
+ }
+ 
+ .createBtnDark:hover {
+   background-color: #235586 !important;
+ }
+ 
+ .cancelBtnProjectDark:hover {
+   background-color: #292929 !important;
+ }
+ 
+ .createBtnProjectDark:hover {
+   background-color: #235586 !important;
+ }
+
+@media screen and (min-width: 768px) {
+  .modalDialog {
+    max-width: 780px !important;
+    margin-top: 13rem !important;
+  }
+
+  .createProject {
+    flex-direction: row;
+    border-radius: 0.625rem;
+  }
+
+  .xIconButton {
+    order: 2;
+    padding-bottom: 24.5rem;
+    background: #fff;
+    border-radius: 0 0.625rem 0.625rem 0;
+  }
+
+  .createProjectHeader {
+    padding-top: 2rem;
+    padding-left: 3.5rem;
+    margin-bottom: 0.69rem;
+  }
+
+  .createProjectForm {
+    padding: 0 4rem 0 3.5rem;
+  }
+
+  .createButtons {
+    padding-bottom: 1.5rem;
+  }
+
+  .rocketPicture {
+    border-radius: 0;
+  }
+
+  .rocket {
+    width: 15.125rem;
+    height: 15.75rem;
+    margin: 3.5rem 0.7rem 0.62rem 3.5rem;
+  }
+
+  .rocketSlogan {
+    margin-bottom: 3rem;
+    margin-left: 2.9rem;
+  }
+  .newProjectName {
+    margin-top: -0.4rem;
+  }
+
+  /* Dark theme css */
+
+  .rocketPictureDark {
+    border-radius: 0;
+  }
+
+  .createProjectFormDark {
+    padding: 0 4rem 0 3.5rem;
+    border-radius: 0.3rem;
+  }
+
+  .createProjectHeaderDark {
+    padding-top: 2rem;
+    padding-left: 3.5rem;
+    margin-bottom: 0.69rem;
+  }
+
+  .xIconButtonDark {
+    order: 2;
+    padding-bottom: 24.5rem;
+    border-radius: 0 0.625rem 0.625rem 0;
+    background-color: #1E1E1E;
+  }
+
+  .createProjectDark {
+    flex-direction: row;
+    border-radius: 0.3rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modalDialog {
+    max-width: 820px !important;
+  }
+
+  .xIconButton {
+    padding-bottom: 29rem;
+  }
+
+  .createProjectHeader {
+    font-size: 1.875rem;
+    padding-top: 4rem;
+  }
+
+  .rocket {
+    width: 18.6875rem;
+    height: 18.6875rem;
+    margin-top: 5rem;
+  }
+
+  .rocketSlogan {
+    font-size: 2.25rem;
+    margin-bottom: 4rem;
+  }
+
+  /* Dark theme css */
+
+  .xIconButtonDark {
+    padding-bottom: 29rem;
+  }
+}

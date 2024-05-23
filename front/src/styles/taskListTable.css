@@ -1,0 +1,87 @@
+.myTaskDeleteModalText {
+    margin-bottom: 1rem;
+}
+.AddMemberPopUpModal .modal-content{
+    background-color: #f5f6fa;
+    width: 19.3rem;
+}
+.AddMemberPopUpModal .modal-dialog{
+    position: fixed;
+    top: 11rem;
+    right:0.1rem;
+}
+
+.showTaskExecutionForm {
+    display: none;
+}
+
+.table-headerPriorityForm {
+    position: relative;
+    width: 6rem;
+    padding: 0;
+}
+
+.table-headerTimeline {
+    width: 10rem;
+}
+
+.pencil {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.task-statusForm {
+    width: 6rem;
+    position: absolute;
+}
+
+.task-priority {
+    width: 6rem;
+    position: absolute;
+}
+
+.task-priorityForm {
+    width: 6rem;
+    position: absolute;
+}
+
+.taskListTimeLineButton {
+    border: none;
+    background: none;
+}
+
+@media screen and (min-width: 768px) {
+    .pencil {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .task-timeline {
+        width: 9rem;
+    }
+    .AddMemberPopUpModal .modal-content{
+        width: 22rem;
+    }
+    .AddMemberPopUpModal .modal-dialog{
+        top: 9rem;
+        right: 1rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .pencil {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .task-timeline {
+        width: 9rem;
+    }
+    .AddMemberPopUpModal .modal-dialog{
+
+    }
+}

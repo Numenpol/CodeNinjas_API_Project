@@ -1,0 +1,203 @@
+* {
+    box-sizing: border-box;
+}
+
+.menuProjectPopUp {
+    border-radius: 50px;
+    /* min-width: 360px; */
+
+}
+
+.offcanvasBody {
+    width: 20rem;
+}
+
+.projectPopUp {
+    display: flex;
+    flex-direction: column;
+    margin-top: 26px;
+    margin-left: -1rem;
+    min-width: 21rem;
+}
+
+.projectPopUp .modal-dialog {
+    width: 20rem;
+}
+
+.menuProjectPopUp {
+    width: 2rem;
+}
+
+.homeIcon {
+    border-bottom: 1px solid #d8d8d8;
+    /* width: 100vh; */
+    color: #565656;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.12rem;
+    margin-left: 0rem;
+    padding-left: -1rem;
+    margin-top: -1rem;
+    /* width: 100%; */
+}
+
+.houseIconText {
+    gap: 10px;
+    text-align: start;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #7A7E81;
+}
+
+.houseIcon {
+    width: 24.9px;
+    height: 24px;
+    color: #565656;
+    margin-left: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.buttonthing {
+    font-family: var(--inter);
+    color: #7A7E81;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 0rem;
+    padding-left: -1rem;
+    border: none;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.closeButton {
+    border: none;
+    background: none;
+    margin-top: -2rem;
+    color: #565656;
+    margin-right: 1rem;
+}
+
+.searchThing {
+    /* margin-left: 5px; */
+    /* width: 340px; */
+    /* text-align: center; */
+    /* justify-self: center; */
+    /* border-radius: 1.1875rem; */
+    margin: 0 1rem 1rem;
+}
+
+.folderTextThing {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1.23rem 0.5rem;
+}
+
+.menuMyProjects {
+    display: flex;
+}
+
+.folderIcon2 {
+    color: #3fadbe;
+    width: 1.55606rem;
+    height: 1.5rem;
+    margin-right: 0.65rem;
+    /* margin: 1rem; */
+    /* margin-bottom: 64px; */
+}
+
+.myProjectsText {
+    font-family: var(--montserrat);
+    color: #7A7E81;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+}
+
+.addProjectButton {
+    border: none;
+    background: none;
+    color: #3fadbe;
+    display: flex;
+}
+
+.addProjectButton:hover {
+    color: #3593A2 !important;
+}
+
+/* Dark theme css */
+
+
+.projectPopUpDark {
+    min-width: 22.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 26px;
+    margin-left: -1rem;
+    min-width: 21rem;
+    background-color: #1E1E1E;
+}
+
+.buttonthingDark {
+    border: none;
+    background-color: #fff;
+    text-decoration: none;
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+    font-family: var(--inter);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 0rem;
+    padding-left: -1rem;
+    text-decoration: none;
+}
+
+.myProjectsTextDark {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+    font-family: var(--montserrat);
+}
+
+.offcanvasBodyDark {
+    background-color: #1E1E1E;
+    border-radius: 0.4rem;
+}
+
+@media screen and (min-width: 768px) {
+    .projectPopUp {
+        min-height: 20rem;
+        min-width: 22rem;
+    }
+
+    .offcanvasBody {
+        width: 22rem;
+    }
+
+    /* Dark theme css */
+
+    .projectPopUpDark {
+        min-height: 20rem;
+        min-width: 22rem;
+        background-color: #1E1E1E;
+    }
+
+
+    .closeButton {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .closeButton {
+        display: none;
+    }
+
+    .projectPopUp {
+        padding-left: 1rem;
+    }
+
+    .projectPopUpDark {
+        padding-left: 1rem;
+    }
+}

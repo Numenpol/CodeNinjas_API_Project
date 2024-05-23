@@ -1,0 +1,237 @@
+.cornerGaps {
+    overflow-x: auto;
+    background-color: #f5f6fa;
+    padding-bottom: 3rem;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    min-height: 52.1vh;
+}
+
+.tableBox {
+    background: #f5f6fa;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    min-width: 344px;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 0.7rem;
+}
+
+.tableHeader {
+    min-width: 360px;
+}
+
+/* .invinsible {
+    width: 1rem;
+} */
+
+.projectListName {
+    color: #565656;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: normal;
+    overflow: hidden;
+    padding-top: 0.5rem;
+    text-align: start;
+    padding-left: 1rem;
+    text-wrap: nowrap;
+    padding-bottom: 0.5rem;
+}
+
+.projectListStatus {
+    color: #565656;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.projectListTasks {
+    color: #565656;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1.3rem;
+    padding-bottom: 0.5rem;
+}
+
+.tableBodyBox {
+    border-left: #f5f6fa 20px solid;
+    border-right: #f5f6fa 20px solid;
+}
+
+.projectListList {
+    padding-left: 1rem;
+    border-bottom: 1px solid #565656;
+}
+
+/* Dark theme css */
+
+
+.cornerGapsDark {
+    overflow-x: auto;
+    background-color: #121212;
+    padding-bottom: 3rem;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    min-height: 52.1vh;
+}
+
+.projectListNameDark {
+    color:#FFFFFF;
+    font-size: 0.869rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    overflow: hidden;
+    padding-top: 0.5rem;
+    text-align: start;
+    padding-left: 1rem;
+    text-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    background-color: #121212;
+    font-family: var(--montserrat);
+}
+
+.projectListStatusDark {
+    color: #FFFFFF;
+    font-size: 0.869rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    background-color: #121212;
+    font-family: var(--montserrat);
+}
+
+.projectListTasksDark {
+    color: #FFFFFF;
+    background-color: #121212;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: normal;
+    text-align: start;
+    padding-top: 0.5rem;
+    padding-left: 1.3rem;
+    padding-bottom: 0.5rem;
+}
+
+.tableBoxDark {
+    background-color: #121212;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    min-width: 344px;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 0.7rem;
+}
+
+.tableBodyBoxDark {
+    border-left: #121212 20px solid;
+    border-right: #121212 20px solid;
+}
+
+@media screen and (min-width: 768px) {
+    .cornerGaps {
+        margin: 0 1rem;
+        min-height: 66.2vh;
+    }
+
+    .projectListStatus,
+    .projectListTasks {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .projectListTasks {
+        padding-right: 0.5rem;
+    }
+
+    /* .project-list-box {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      } */
+
+
+    .projectListName {
+        padding-left: 1.7rem;
+    }
+
+    /* Dark theme css */
+
+    .cornerGapsDark {
+        margin: 0 1rem;
+        min-height: 66.2vh;
+        background-color: #121212;
+    }
+
+    .projectListTasksDark .projectListStatusDark {
+        text-align: center;
+        padding-left: 0rem;
+        background-color: #121212;
+    }
+    .projectListStatusDark {
+        padding-left: 1.6rem;
+    }
+
+
+    .projectListNameDark {
+        padding-left: 1.7rem;
+    }
+
+    .projectListTasksDark {
+        padding-right: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .cornerGaps {
+        min-height: 72.5vh;
+    }
+
+    .projectListName,
+    .projectListTasks {
+        font-size: 1rem;
+    }
+
+    .projectListStatus {
+        font-size: 1rem;
+        text-align: start;
+        padding-left: 1.7rem;
+    }
+
+    /* Dark theme css */
+
+
+    .cornerGapsDark {
+        min-height: 72.5vh;
+        background-color: #121212;
+    }
+
+    .projectListNameDark,
+    .projectListTasksDark {
+        font-size: 1rem;
+        background-color: #121212;
+    }
+
+    .projectListStatusDark {
+        font-size: 1rem;
+        text-align: start;
+        padding-left: 1.7rem;
+        background-color: #121212;
+    }
+}

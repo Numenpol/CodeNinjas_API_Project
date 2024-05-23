@@ -1,0 +1,22 @@
+.progress {
+    --bs-progress-bg: rgba(86, 86, 86, 255) !important;
+    --bs-progress-height: 20px !important;
+    --bs-progress-border-radius: 20px !important;
+}
+
+.progress-bar {
+    font-family: var(--inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 2;
+    overflow: visible !important;
+    padding: 0 1rem;
+}
+
+.rdrStartEdge, .rdrInRange, .rdrEndEdge {
+    background-color: #3372B2;
+}
+
+.offcanvas-body {
+    overflow-x: hidden;
+}
