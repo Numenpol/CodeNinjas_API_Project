@@ -167,7 +167,7 @@ function TaskList() {
                   fill="#565656"
                 />
               </svg>
-              Add
+              <span>Add</span>
             </button>
           </div>
           <AddMemberPopUp

@@ -10,6 +10,7 @@
   align-items: center;
   height: 2.323rem;
   margin-left: 0.6rem;
+
   /* width: ; */
 }
 
@@ -25,14 +26,23 @@
 }
 
 .ownerList {
+  font-family: var(--inter);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #565656;
   margin-left: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .initials {
+  font-family: var(--inter);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #565656;
   position: relative;
 }
 
 .initials div {
+  font-family: var(--inter);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -53,7 +63,6 @@
   transform: translate(-50%, -50%);
   color: white;
   font-size: 12px;
-  
 }
 span {
   margin-left: 0.5rem;
@@ -64,7 +73,6 @@ span {
 .ownerIconWater {
   color: #40adbe;
   font-size: 1.7rem;
-  
 }
 .ownerIconOrange {
   color: #fdab3d;

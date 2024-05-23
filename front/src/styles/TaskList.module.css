@@ -96,8 +96,9 @@
 
 .taskListNewTask {
     font-size: 0.875rem !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     color: #fff !important;
+    font-family: var(--inter) !important;
     /* padding: 0.625rem 1rem !important; */
 }
 
@@ -114,6 +115,13 @@
     border-radius: 0.3125rem;
     background-color: #FFF;
     height: 2rem;
+    font-family: var(--inter);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #565656;
+}
+.taskListAdd {
+    width: 20px;
 }
 
 .taskListPlanning {
@@ -201,8 +209,14 @@
     grid-column: 3/11;
     display: flex;
     justify-content: end;
-    margin-top: 0.5rem;
+    align-items: center;
     margin-right: 0.5rem;
+}
+
+.taskListStatusDisplay p {
+display: grid;
+align-items: center;
+padding-bottom: 0.4rem;
 }
 
 .taskListAddMemberDisplay {
