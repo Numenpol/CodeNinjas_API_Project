@@ -93,6 +93,9 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
     initialsList,
     circleIcon,
     ownerBtnDark,
+    ownerMenuDark,
+    taskListOwnerNameDark,
+    taskListOwnerName,
   } = styles;
 
   useEffect(() => {
@@ -161,7 +164,7 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
         )}
       </button>
       {isOpeno[task._id] && (
-        <div className={`${ownerMenu} ownerMenu`}>
+        <div className={`${theme == "light" ? ownerMenu : ownerMenuDark} ownerMenu`}>
           <div className={ownerListStyle}>
             {getInfo &&
               getInfo.members.map((member, index) => (
@@ -175,7 +178,7 @@ function TaskListTableOwner({ task, updateDataTask, setOwnerColor }) {
                     <div className={initialsList}>
                       <CircleFill className={ownerColors[index]} />
                       <div>{getInitials(member.names)}</div>
-                      <span>{member.names}</span>
+                      <span className={theme === "light" ? taskListOwnerName : taskListOwnerNameDark}>{member.names}</span>
                     </div>
                   </div>
                 </div>

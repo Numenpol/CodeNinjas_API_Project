@@ -17,6 +17,7 @@ import Button from "react-bootstrap/Button";
 import xIcon from "../assets/xIcon.svg";
 import styles from "../styles/TaskListTable.module.css";
 import { useTheme } from "../utils/ThemeContext";
+import OutsideClickHandler from "react-outside-click-handler";
 
 function TaskListDoneTable() {
   const { setUpdate, showTask, tasksById } = useContext(StateContext);
@@ -33,7 +34,8 @@ function TaskListDoneTable() {
 
   const [selectedTimeLine, setSelectedTimeLine] = useState();
   const [selectedCreationDay, setSelectedCreationDay] = useState();
-  const [selectedCompletionDay, setSelectedCompletionDay] = useState();
+
+  const [timeLineTaskId, setTimeLineTaskId] = useState("");
   const [clickX, setClickX] = useState(null);
   const [clickY, setClickY] = useState(null);
 
@@ -61,7 +63,7 @@ function TaskListDoneTable() {
         owner: [selectedOwner, ownerColor],
         timeline: selectedTimeLine,
         creationdate: selectedCreationDay,
-        completiondate: selectedCompletionDay,
+        completiondate: "",
       });
       setUpdate((update) => update + 1);
       reset();
@@ -101,6 +103,11 @@ function TaskListDoneTable() {
     setClickX(event.clientX);
     setClickY(event.clientY);
   };
+
+  const handleTimeLineClick = (taskId) => {
+    setTimeLineTaskId(taskId);
+  }
+
   const handleDeleteTask = async () => {
     try {
       await deleteDataTask(taskIdToDelete);
@@ -118,7 +125,7 @@ function TaskListDoneTable() {
 
   const fitleredTasks = tasksById.filter((task) => task.status === "Done");
 
-  const { allTaskList, tableHeaderCreationDateDark, keyNameDark ,taskrow , taskrowDark , taskNameDark , tasklistTaskFieldDark , tableHeaderOwnerThDark , taskCreationDateDark ,tableHeaderDark  ,tableHeaderKeyDark , tableHeaderCompletionDateDark ,tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
+  const { allTaskList, tableHeaderCreationDateDark, DeleteModalCloseBtnDark, DeleteModalTextDark, DeleteModalText, createBtnDark, cancelBtnDark, keyNameDark, taskrow, taskrowDark, taskNameDark, tasklistTaskFieldDark, tableHeaderOwnerThDark, taskCreationDateDark, tableHeaderDark, tableHeaderKeyDark, tableHeaderCompletionDateDark, tableHeader, tableHeaderOwnerTh, tableHeaderStatusTh, tableHeaderPriorityTh, tableHeaderCreationDate, tableHeaderCompletionDate, tableBody, tableHeaderKey, keyName, tasklistTaskField, taskName, pencilTrashIcon, tableHeaderOwner, tableHeaderStatus, tableHeaderPriority, tableTimeline, taskCreationDate, taskCompletionDate, DeleteModalCloseBtn, cancelBtn, createBtn } = styles;
 
   return (
     <>
@@ -173,12 +180,14 @@ function TaskListDoneTable() {
                             onClick={() => handlePencilClick(task._id)}
                           />
                         </span>
-                        <span
-                          className={pencilTrashIcon}
-                          onClick={(event) => handleDeleteButtonClick(event, task._id)}
-                        >
-                          <Trash />
-                        </span>
+                        <OutsideClickHandler onOutsideClick={() => setDeleteModalShow(false)}>
+                          <span
+                            className={pencilTrashIcon}
+                            onClick={(event) => handleDeleteButtonClick(event, task._id)}
+                          >
+                            <Trash />
+                          </span>
+                        </OutsideClickHandler>
                       </td>
                       <td className={tableHeaderOwner}>
                         <TaskListTableOwner
@@ -204,16 +213,15 @@ function TaskListDoneTable() {
                           updateDataTask={updateDataTask}
                         />
                       </td>
-                      <td className={tableTimeline}>
+                      <td className={tableTimeline} onClick={() => handleTimeLineClick(task._id)}>
                         <TaskListTableTimeLine
                           setSelectedTimeLine={setSelectedTimeLine}
                           setSelectedCreationDay={setSelectedCreationDay}
-                          setSelectedCompletionDay={setSelectedCompletionDay}
                           selectedTimeLine={selectedTimeLine}
                           selectedCreationDay={selectedCreationDay}
-                          selectedCompletionDay={selectedCompletionDay}
-                          id={task._id}
-                          task={task.timeline}
+                          id={timeLineTaskId}
+                          taskTimeline={task.timeline}
+                          task={task}
                         />
                       </td>
                       <td className={theme == "light" ? tableHeaderCreationDate : tableHeaderCreationDateDark}>
@@ -247,20 +255,21 @@ function TaskListDoneTable() {
             show={deleteModalShow}
             onHide={handleCloseDeleteModal}
             style={{ top: `${clickY + 290}px`, left: `${clickX - 600}px` }}
+            contentClassName={theme == "light" ? "" : "modal-content-dark"}
           >
             <Modal.Body>
-              <div>Are you sure you want to delete this task?</div>
+              <div className={theme == "light" ? DeleteModalText : DeleteModalTextDark}>Are you sure you want to delete this task?</div>
               <button
-                className={DeleteModalCloseBtn}
+                className={theme == "light" ? DeleteModalCloseBtn : DeleteModalCloseBtnDark}
                 onClick={handleCloseDeleteModal}
               >
                 <img src={xIcon} alt="xIcon" />
               </button>
               <div></div>
-              <Button className={cancelBtn} onClick={handleCloseDeleteModal}>
+              <Button className={theme == "light" ? cancelBtn : cancelBtnDark} onClick={handleCloseDeleteModal}>
                 Cancel
               </Button>
-              <Button className={createBtn} onClick={handleDeleteTask}>
+              <Button className={theme == "light" ? createBtn : createBtnDark} onClick={handleDeleteTask}>
                 Delete
               </Button>
             </Modal.Body>

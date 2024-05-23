@@ -287,6 +287,16 @@ padding-bottom: 0.4rem;
     font-weight: 500 !important;
     color: #fff !important;
     background: #5086BD !important;
+    font-family: var(--inter) !important;
+    background: #3372B2 !important;
+}
+
+.taskListAddMemberDark:hover {
+    background-color: #292929;
+}
+
+.taskListNewTaskDark:hover {
+    background-color: #235586 !important; 
 }
 
 @media screen and (min-width: 768px) {
@@ -296,8 +306,6 @@ padding-bottom: 0.4rem;
         /* padding-top: 1rem; */
         height: 5rem;
     }
-
-
 
     .taskListProjectIcon {
         margin-bottom: 0.9rem;
@@ -311,7 +319,6 @@ padding-bottom: 0.4rem;
         font-weight: 500;
         line-height: normal;
     }
-
 
     .taskListNameIcon {
         order: 1;
@@ -379,7 +386,7 @@ padding-bottom: 0.4rem;
 
     .taskListMenu {
         display: block;
-        max-width: 30%;
+        max-width: 25%;
         background-color: #FFF;
         border-radius: 0rem 0.625rem 0rem 0rem;
     }
@@ -423,6 +430,11 @@ padding-bottom: 0.4rem;
         font-weight: 500;
         line-height: normal;
     }
+    
+    .taskListStatusDisplay {
+        justify-content: start;
+        grid-column: 6/10;
+    }
 
     /* Dark theme css */
 
@@ -439,7 +451,7 @@ padding-bottom: 0.4rem;
 
     .taskListMenuDark {
         display: block;
-        max-width: 30%;
+        max-width: 25%;
         background-color: #202020;
         border-radius: 0rem 0.625rem 0rem 0rem;
     }

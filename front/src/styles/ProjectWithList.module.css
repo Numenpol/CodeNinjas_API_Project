@@ -107,9 +107,9 @@
   font-weight: 400;
 }
 
-/* .createFirstProjectButton:hover {
+.createFirstProjectButton:hover {
   background-color: #3593A2 !important;
-} */
+}
 
 .FolderPlusIcon {
   margin-right: 0.5rem;
@@ -190,6 +190,10 @@
 
 .ProjectListMenuDark {
   display: none;
+}
+
+.createFirstProjectButtonDark:hover {
+  background-color: #235586;
 }
 
 @media screen and (min-width: 768px) {
@@ -273,7 +277,7 @@
 
   .ProjectListMenu {
     display: block;
-    max-width: 30%;
+    max-width: 25%;
     background-color: #FFF;
     border-radius: 0rem 0.625rem 0rem 0rem;
   }
@@ -366,7 +370,7 @@
   }
   .ProjectListMenuDark {
     display: block;
-    max-width: 30%;
+    max-width: 25%;
     background-color: #FFF;
     border-radius: 0rem 0.625rem 0rem 0rem;
     background-color: #1E1E1E;

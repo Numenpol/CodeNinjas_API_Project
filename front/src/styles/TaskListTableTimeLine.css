@@ -13,6 +13,10 @@
     padding: 0 1rem;
 }
 
+.rdrStartEdge, .rdrInRange, .rdrEndEdge {
+    background-color: #3372B2;
+}
+
 .offcanvas-body {
     overflow-x: hidden;
 }

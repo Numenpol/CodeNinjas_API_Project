@@ -84,6 +84,10 @@
   height: 38px;
 }
 
+.lightThemeButton:hover {
+  background-color: #F5F6FA;
+}
+
 /* Dark theme css */
 
 .headerNavigationDark {
@@ -116,7 +120,13 @@
   font-weight: 400;
 }
 
+.headerLogOutButtonDark:hover {
+  background-color: #292929;
+}
 
+.darkThemeButton:hover {
+  background-color: #292929;
+}
 
 @media (min-width: 768px) {
   .headerNavigation {

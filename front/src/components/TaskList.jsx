@@ -3,8 +3,7 @@ import MenuProjectListPhone from "./MenuProjectListPhone";
 import TaskListSearchBar from "./TaskListSearchBar";
 import styles from "../styles/TaskList.module.css";
 import TaskListTable from "./TaskListTable";
-// import Modal from "react-bootstrap/Modal";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import AddMemberPopUp from "./AddMemberPopUp";
 import { StateContext } from "../utils/StateContext";
 import styles1 from "../styles/ProjectWithList.module.css";
@@ -12,14 +11,15 @@ import burgerIcon from "../assets/burgerIcon.svg";
 import MenuProjectListDesktop from "./MenuProjectListDesktop";
 import { ChevronDown, ChevronRight } from "react-bootstrap-icons";
 import CreateProjectForm from "./CreateProjectForm";
-import { getOne } from "../services/get";
+import { getOne, getAllTaskById } from "../services/get";
 import TaskListExecutionTable from "./TaskListExecution";
 import TaskListDoneTable from "./TaskListDoneTable";
 import { useTheme } from "../utils/ThemeContext";
 import statusStyles from "../styles/Project.module.css";
+import { updateData } from "../services/update";
 
 function TaskList() {
-  const { setShowTask, setShowMenu, projectId, update, users } = useContext(StateContext);
+  const { setShowTask, setShowMenu, projectId, update, setUpdate, users } = useContext(StateContext);
   const toggleShow = () => setShowMenu((s) => !s);
   const [showAddMember, setShowAddMember] = useState(false);
   const handleClose = () => setShowAddMember(false);
@@ -40,23 +40,62 @@ function TaskList() {
     setShowTable((prevState) => !prevState);
   };
 
-  //active project
   const getProjectInfo = async () => {
-    let projectData = await getOne(projectId);
+    if (!projectId) return;
 
-    if (projectData && projectData.data && projectData.data.project && projectData.data.project.projectName) {
+    const projectData = await getOne(projectId);
+    if (projectData && projectData.data && projectData.data.project) {
       const { projectName, icon, status } = projectData.data.project;
       setActiveProjectName(projectName);
       setActiveProjectIcon(icon);
       setActiveProjectStatus(status);
-    } else {
-      return;
     }
   };
 
   useEffect(() => {
     getProjectInfo();
   }, [projectId, update]);
+
+  const calculateCounts = useCallback(async () => {
+    if (!projectId) return { doneCount: 0, inProgressCount: 0 };
+
+    const { data: { tasks } } = await getAllTaskById(projectId);
+    let doneCount = 0;
+    let inProgressCount = 0;
+    tasks.forEach((task) => {
+      if (task.status === "Done") doneCount++;
+      if (task.status === "In progress") inProgressCount++;
+    });
+    return { doneCount, inProgressCount, tasks };
+  }, [projectId]);
+
+  const projectStatusCheck = useCallback(async ({ doneCount, inProgressCount, tasks }) => {
+    if (!tasks) return;
+
+    let newStatus = "";
+
+    if (tasks.length === 0 || (inProgressCount === 0 && doneCount < tasks.length)) {
+      newStatus = "On hold";
+    } else if (inProgressCount > 0) {
+      newStatus = "In progress";
+    } else if (doneCount === tasks.length && tasks.length > 0) {
+      newStatus = "Done";
+    }
+
+    if (newStatus && newStatus !== activeProjectStatus) {
+      await updateData(projectId, { status: newStatus });
+      setUpdate((update) => update + 1);
+    }
+  }, [activeProjectStatus, projectId, setUpdate]);
+
+  useEffect(() => {
+    const updateProjectStatus = async () => {
+      const counts = await calculateCounts();
+      projectStatusCheck(counts);
+    };
+
+    updateProjectStatus();
+  }, [calculateCounts, projectStatusCheck, update]);
 
   const toggleTableExecution = () => {
     setShowTableExecution((prevState) => !prevState);
@@ -116,8 +155,8 @@ function TaskList() {
   const { MenuThing } = styles1;
 
   return (
-    <div className={theme == "light" ? taskList : taskListDark}>
-      <div className={theme == "light" ? taskListMenu : taskListMenuDark}>
+    <div className={theme === "light" ? taskList : taskListDark}>
+      <div className={theme === "light" ? taskListMenu : taskListMenuDark}>
         <MenuProjectListDesktop />
       </div>
       <div>
@@ -125,7 +164,7 @@ function TaskList() {
           <CreateProjectForm />
         </div>
       </div>
-      <div className={theme == "light" ? taskListCard : taskListCardDark}>
+      <div className={theme === "light" ? taskListCard : taskListCardDark}>
         <div className={container}>
           <div className={taskListBugerButton}>
             <button className={MenuThing} onClick={toggleShow}>
@@ -135,26 +174,19 @@ function TaskList() {
           </div>
           <div className={taskListNameIcon}>
             <div className={taskListProjectIcon}>
-              <img
-                src={activeProjectIcon}
-                alt="project icon"
-              />
+              <img src={activeProjectIcon} alt="project icon" />
             </div>
             <div className={taskListNameBox}>
-              <h2 className={theme == "light" ? taskListProjectName : taskListProjectNameDark}>
+              <h2 className={theme === "light" ? taskListProjectName : taskListProjectNameDark}>
                 {activeProjectName}
               </h2>
             </div>
           </div>
           <div className={taskListStatusDisplay}>
-            <p
-              // className={taskListStatus}
-              className={getStatusClass()}
-            >{activeProjectStatus}</p>
+            <p className={getStatusClass()}>{activeProjectStatus}</p>
           </div>
           <div className={taskListAddMemberDisplay}>
-            <button className={theme == "light" ? taskListAddMember : taskListAddMemberDark} onClick={handleShow}>
-              {" "}
+            <button className={theme === "light" ? taskListAddMember : taskListAddMemberDark} onClick={handleShow}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -171,15 +203,12 @@ function TaskList() {
               <span>Add</span>
             </button>
           </div>
-          <AddMemberPopUp
-            handleClose={handleClose}
-            showAddMember={showAddMember}
-          />
+          <AddMemberPopUp handleClose={handleClose} showAddMember={showAddMember} />
         </div>
         <div className={taskListHeaderUnderline}></div>
         <div className={taskListHeaderBottom}>
           <Button
-            className={theme == "light" ? taskListNewTask : taskListNewTaskDark}
+            className={theme === "light" ? taskListNewTask : taskListNewTaskDark}
             variant="primary"
             onClick={handleShowTask}
             style={{
@@ -197,15 +226,9 @@ function TaskList() {
           <div>
             <div className={taskListPlanning}>
               {showTable ? (
-                <ChevronDown
-                  className={taskListPlanningIcon}
-                  onClick={toggleTable}
-                />
+                <ChevronDown className={taskListPlanningIcon} onClick={toggleTable} />
               ) : (
-                <ChevronRight
-                  className={taskListPlanningIcon}
-                  onClick={toggleTable}
-                />
+                <ChevronRight className={taskListPlanningIcon} onClick={toggleTable} />
               )}
               Planning
             </div>
@@ -214,15 +237,9 @@ function TaskList() {
           <div>
             <div className={TaskListExecution}>
               {showTableExecution ? (
-                <ChevronDown
-                  className={taskListPlanningIcon}
-                  onClick={toggleTableExecution}
-                />
+                <ChevronDown className={taskListPlanningIcon} onClick={toggleTableExecution} />
               ) : (
-                <ChevronRight
-                  className={taskListPlanningIcon}
-                  onClick={toggleTableExecution}
-                />
+                <ChevronRight className={taskListPlanningIcon} onClick={toggleTableExecution} />
               )}
               Execution
             </div>
@@ -231,15 +248,9 @@ function TaskList() {
           <div>
             <div className={TaskListDone}>
               {showTableDone ? (
-                <ChevronDown
-                  className={taskListPlanningIcon}
-                  onClick={toggleTableDone}
-                />
+                <ChevronDown className={taskListPlanningIcon} onClick={toggleTableDone} />
               ) : (
-                <ChevronRight
-                  className={taskListPlanningIcon}
-                  onClick={toggleTableDone}
-                />
+                <ChevronRight className={taskListPlanningIcon} onClick={toggleTableDone} />
               )}
               Done
             </div>
