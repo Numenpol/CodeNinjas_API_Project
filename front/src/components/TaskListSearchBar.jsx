@@ -1,9 +1,4 @@
-import {
-  CheckCircleFill,
-  Circle,
-  Search,
-  Sliders,
-} from "react-bootstrap-icons";
+import { CheckCircleFill, Circle, Search, Sliders } from "react-bootstrap-icons";
 import { useEffect, useRef, useState, useContext, useCallback } from "react";
 import { createPopper } from "@popperjs/core";
 import { getSearchByTaskName } from "../services/get";
@@ -140,6 +135,8 @@ function TaskListSearchBar() {
   const handleClick = () => {
     setSmShow(!smShow);
   };
+
+  const { theme } = useTheme();
 
   return (
     <>
