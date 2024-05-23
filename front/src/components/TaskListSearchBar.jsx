@@ -7,7 +7,7 @@ import styles from "../styles/SearchBar.module.css";
 
 function TaskListSearchBar() {
     const [smShow, setSmShow] = useState(false);
-    const [checked, setChecked] = useState({ projectName: false, status: false });
+    const [checked, setChecked] = useState({ task: true, status: false, priority: false });
     const [value, setValue] = useState("");
     const { setTasksById } = useContext(StateContext);
 
@@ -24,13 +24,13 @@ function TaskListSearchBar() {
     };
 
     const debounceSearch = useCallback(
-        debounce(async (searchValue) => {
+        debounce(async (searchValue, priority, status) => {
             try {
                 let projectId = sessionStorage.getItem('projectid');
-                const result = await getSearchByTaskName(projectId, searchValue);
+                const result = await getSearchByTaskName(projectId, searchValue, priority, status);
                 setTasksById(result.data.tasks);
             } catch (error) {
-                console.error("Error fetching tasks:", error);
+                console.error('Error fetching tasks:', error);
             }
         }, 400),
         []
@@ -38,14 +38,14 @@ function TaskListSearchBar() {
 
     const handleSearchChange = (e) => {
         setValue(e.target.value);
-        debounceSearch(e.target.value);
+        debounceSearch(e.target.value, checked.priority, checked.status ? 'active' : '');
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             let projectId = sessionStorage.getItem('projectid');
-            const result = await getSearchByTaskName(projectId, value);
+            const result = await getSearchByTaskName(projectId, value, checked.priority, checked.status ? 'active' : '');
             setTasksById(result.data.tasks);
         } catch (error) {
             console.error("Error fetching tasks:", error);
@@ -55,10 +55,18 @@ function TaskListSearchBar() {
     const buttonRef = useRef(null);
 
     const handleCheck = (name) => {
-        setChecked(prevState => ({
-            ...prevState,
-            [name]: !prevState[name]
-        }));
+        const newChecked = {
+            ...checked,
+            [name]: !checked[name]
+        };
+
+        setChecked(newChecked);
+        setSmShow(false);
+        debounceSearch(
+            value,
+            name === "priority" ? newChecked.priority : checked.priority,
+            name === "status" ? (newChecked.status ? 'active' : '') : (checked.status ? 'active' : '')
+        );
     };
 
     const {
@@ -116,13 +124,17 @@ function TaskListSearchBar() {
                                 <div className={sortTitle}>
                                     <p className={modalTitle}>Choose columns to search</p>
                                 </div>
-                                <div onClick={() => handleCheck('projectName')} className={sortBy}>
-                                    {checked.projectName ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
-                                    Project name
+                                <div onClick={() => handleCheck('task')} className={sortBy}>
+                                    {checked.task ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
+                                    Task
                                 </div>
                                 <div onClick={() => handleCheck('status')} className={sortBy}>
                                     {checked.status ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
                                     Status
+                                </div>
+                                <div onClick={() => handleCheck('priority')} className={sortBy}>
+                                    {checked.priority ? <CheckCircleFill className={checkIcon} /> : <Circle className={checkIconEmpty} />}
+                                    Priority 
                                 </div>
                             </div>
                         )}

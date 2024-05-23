@@ -171,7 +171,7 @@ function TaskListTable() {
                             onClick={() => handlePencilClick(task._id)}
                           />
                         </span>
-                        <span className={pencilTrashIcon} onClick={() => handleDeleteButtonClick(event, task._id)}>
+                        <span className={pencilTrashIcon} onClick={(event) => handleDeleteButtonClick(event, task._id)}>
                           <Trash />
                         </span>
                       </td>
