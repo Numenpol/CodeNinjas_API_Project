@@ -5,7 +5,7 @@
 - [Info](#info)
 - [Technologies](#technologies)
 - [Tools](#tools)
-
+- [Getting Started](#getting-started)
 
 ## Info
 
