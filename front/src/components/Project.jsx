@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import styles from "../styles/Project.module.css";
 import { StateContext } from "../utils/StateContext";
 import { useNavigate } from "react-router-dom";
@@ -7,31 +7,28 @@ import { getAllTaskById } from "../services/get";
 import { updateData } from "../services/update";
 
 function Project({ project }) {
-  const [statusCheck, setStatusCheck] = useState("");
-  const [countDone, setCountDone] = useState(0);
-  const { setprojectId, setShowMenu, setUpdate} = useContext(StateContext)
+  const { setprojectId, setShowMenu, setUpdate } = useContext(StateContext);
+  const { theme } = useTheme();
+  const navigate = useNavigate();
 
   const { projectName, icon, description, status, tasks, _id } = project;
 
-  const { theme } = useTheme();
+  const [countDone, setCountDone] = useState(() => {
+    return tasks.filter(task => task.status === "Done").length;
+  });
 
-
-  const calculateCounts = async () => {
+  const calculateCounts = useCallback(async () => {
     const { data: { tasks } } = await getAllTaskById(_id);
     let doneCount = 0;
     let inProgressCount = 0;
-    tasks.map((task) => {
-      if (task.status === "Done") {
-        doneCount++;
-      } else if (task.status === "In progress") {
-        inProgressCount++;
-      }
+    tasks.forEach((task) => {
+      if (task.status === "Done") doneCount++;
+      if (task.status === "In progress") inProgressCount++;
     });
-    setCountDone(doneCount)
     return { doneCount, inProgressCount };
-  };
+  }, [_id]);
 
-  const projectStatusCheck = async ({ doneCount, inProgressCount }) => {
+  const projectStatusCheck = useCallback(async ({ doneCount, inProgressCount }) => {
     let newStatus = "";
 
     if (tasks.length === 0 || (inProgressCount === 0 && doneCount < tasks.length)) {
@@ -42,12 +39,13 @@ function Project({ project }) {
       newStatus = "Done";
     }
 
-    if (newStatus && newStatus !== statusCheck) {
+    if (newStatus && newStatus !== status) {
       await updateData(_id, { status: newStatus });
-      setStatusCheck(newStatus);
       setUpdate((update) => update + 1);
     }
-  };
+
+    setCountDone(doneCount);
+  }, [status, tasks.length, _id, setUpdate]);
 
   useEffect(() => {
     const updateProjectStatus = async () => {
@@ -55,14 +53,15 @@ function Project({ project }) {
       projectStatusCheck(counts);
     };
 
-    if (status !== statusCheck) {
-      updateProjectStatus();
-    }
-  }, [status, tasks.length]);
+    updateProjectStatus();
+  }, [calculateCounts, projectStatusCheck]);
 
-  useEffect(() => {
-    setStatusCheck(status);
-  }, [status]);
+  const projectClickHandler = () => {
+    sessionStorage.setItem("projectid", _id);
+    setprojectId(_id);
+    setShowMenu(false);
+    navigate("/tasklist");
+  };
 
   const {
     projectListProject,
@@ -82,21 +81,12 @@ function Project({ project }) {
     overallBoxDark,
   } = styles;
 
-  const navigate = useNavigate();
-
-  const projectClickHandler = (project) => {
-    sessionStorage.setItem("projectid", project._id);
-    setprojectId(project._id);
-    setShowMenu(false);
-    navigate("/tasklist");
-  };
-
   const getStatusClass = () => {
-    if (statusCheck === "Done") {
+    if (status === "Done") {
       return theme === "light" ? projectDone : projectDoneDark;
-    } else if (statusCheck === "On hold") {
+    } else if (status === "On hold") {
       return theme === "light" ? projectOnHold : projectOnHoldDark;
-    } else if (statusCheck === "In progress") {
+    } else if (status === "In progress") {
       return theme === "light" ? projectInProgress : projectInProgressDark;
     }
     return "";

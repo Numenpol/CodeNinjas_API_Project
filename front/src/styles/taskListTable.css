@@ -1,6 +1,15 @@
 .myTaskDeleteModalText {
     margin-bottom: 1rem;
 }
+.AddMemberPopUpModal .modal-content{
+    background-color: #f5f6fa;
+    width: 19.3rem;
+}
+.AddMemberPopUpModal .modal-dialog{
+    position: fixed;
+    top: 11rem;
+    right:0.1rem;
+}
 
 .showTaskExecutionForm {
     display: none;
@@ -52,6 +61,13 @@
     .task-timeline {
         width: 9rem;
     }
+    .AddMemberPopUpModal .modal-content{
+        width: 22rem;
+    }
+    .AddMemberPopUpModal .modal-dialog{
+        top: 9rem;
+        right: 1rem;
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -64,5 +80,8 @@
 
     .task-timeline {
         width: 9rem;
+    }
+    .AddMemberPopUpModal .modal-dialog{
+
     }
 }
