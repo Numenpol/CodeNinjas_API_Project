@@ -216,8 +216,9 @@ function TaskListDoneTable() {
                           setSelectedCreationDay={setSelectedCreationDay}
                           selectedTimeLine={selectedTimeLine}
                           selectedCreationDay={selectedCreationDay}
-                          id={task._id}
-                          task={task.timeline}
+                          id={timeLineTaskId}
+                          taskTimeline={task.timeline}
+                          task={task}
                         />
                       </td>
                       <td className={theme == "light" ? tableHeaderCreationDate : tableHeaderCreationDateDark}>

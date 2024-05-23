@@ -2,7 +2,31 @@
     min-width: 120px;
     display: flex;
     text-align: center;
+    --bs-progress-bg: rgba(86, 86, 86, 255) !important;
+    --bs-progress-height: 20px !important;
+    --bs-progress-border-radius: 20px !important;
+    --bs-progress-bar-bg: #3372B2 !important;
   }
+
+.taskListProgressBarExecution{
+  min-width: 120px;
+  display: flex;
+  text-align: center;
+  --bs-progress-bg: rgba(86, 86, 86, 255) !important;
+  --bs-progress-height: 20px !important;
+  --bs-progress-border-radius: 20px !important;
+  --bs-progress-bar-bg: #7f5eb4 !important;
+}
+
+.taskListProgressBarDone{
+  min-width: 120px;
+  display: flex;
+  text-align: center;
+  --bs-progress-bg: rgba(86, 86, 86, 255) !important;
+  --bs-progress-height: 20px !important;
+  --bs-progress-border-radius: 20px !important;
+  --bs-progress-bar-bg: #2fa068 !important;
+}
 
   .taskListProgressBarRange {
     position: fixed;

@@ -24,6 +24,7 @@ export const StateProvider = ({ children }) => {
     const [value, setValue] = useState("");
     const [result, setResult] = useState([]);
 
+
     const handleClose = () => setShow(false);
 
     const handleShow = () => setShow(true);
