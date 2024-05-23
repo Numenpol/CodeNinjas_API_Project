@@ -10,7 +10,7 @@ import { StateContext } from "../utils/StateContext";
 import { useTheme } from "../utils/ThemeContext";
 import OutsideClickHandler from 'react-outside-click-handler';
 
-function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id }) {
+function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTimeLine, id, task }) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
   const [endDateDay, setEndDateDay] = useState(0);
@@ -23,13 +23,16 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
     }
   ]);
   const [monthNumberDate, setMonthNumberDate] = useState();
+  const [timeLineState, setTimeLineState] = useState();
+
 
   const { setUpdate } = useContext(StateContext);
 
   const { theme } = useTheme();
 
 
-  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton, taskListTimeLineButtonDark } = styles;
+  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton, taskListTimeLineButtonDark, 
+    taskListProgressBarExecution, taskListProgressBarDone } = styles;
 
   const handleShowCalendar = () => {
     setShowCalendar(showCalendar => !showCalendar);
@@ -88,15 +91,6 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
       return daysLeftPercentage;
   }
 
-  const handleClickOutside = (event) => {
-    if (
-      !event.target.closest(`.${taskListProgressBar}`) &&
-      !event.target.closest(`.${showCalendarElementClass}`)
-    ) {
-      setShowCalendar(false);
-    }
-  };
-
   const showCalendarElementClass = "taskListTimeLineCalendar";
 
 
@@ -113,10 +107,23 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
     }
   };
 
+  const getStatusClass = () => {
+    if (!task || !task.status) {
+      return '';
+    }
+    if(task.status === "On hold"){
+      setTimeLineState(taskListProgressBar);
+    } else if(task.status === "In progress"){
+      setTimeLineState(taskListProgressBarExecution);
+    } else if (task.status === "Done"){
+      setTimeLineState(taskListProgressBarDone);
+    }
+  }
   
   useEffect(() => {
+    getStatusClass()
     dateSelection.map((stat) => {
-      if (task == null || stat.endDate) {
+      if (taskTimeline == null || stat.endDate) {
         let startDate = getStartFixedDate(stat.startDate);
         let startDateDay = getNumberFixedDate(stat.startDate);
         let startDateMonth = getMonthFixedDate(stat.startDate);
@@ -149,8 +156,8 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
           setSelectedTimeLine(calendarDay);
         }
       } else {
-        const dateNumbers = task.match(/\d+/g);
-        const dateMonths = task.match(/[A-Za-z]+/g);
+        const dateNumbers = taskTimeline.match(/\d+/g);
+        const dateMonths = taskTimeline.match(/[A-Za-z]+/g);
 
         const startDateDay = dateNumbers[0];
         const endDateDay = dateNumbers[1];
@@ -167,12 +174,8 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
         }
         setStartDateDay(startDateDay);
         setEndDateDay(endDateDay);
-        setCalendarDay(task);
+        setCalendarDay(taskTimeline);
       }
-      document.addEventListener('click', handleClickOutside);
-      return () => {
-        document.removeEventListener('click', handleClickOutside);
-      };
     })
       , []
   });
@@ -191,7 +194,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
           <ProgressBar now={calculateDaysLeftPercentage()}
             label={calendarDay}
             onClick={handleShowCalendar}
-            className={taskListProgressBar} />
+            className={timeLineState}/>
         </button>
         <div className={showCalendar ? showCalendarElementClass : "hidden"}>
           <DateRange

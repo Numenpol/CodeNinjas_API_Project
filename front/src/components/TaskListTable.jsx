@@ -202,7 +202,7 @@ function TaskListTable() {
                         />
                       </td>
                       <td className={tableTimeline} onClick={() => handleTimeLineClick(task._id)}>
-                        <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} task={task.timeline} selectedTimeLine={selectedTimeLine} id={timeLineTaskId} />
+                        <TaskListTableTimeLine setSelectedTimeLine={setSelectedTimeLine} taskTimeline={task.timeline} selectedTimeLine={selectedTimeLine} id={timeLineTaskId} task={task}/>
                       </td>
                       <td className={theme == "light" ? tableHeaderCreationDate : tableHeaderCreationDateDark}>
                         <p
