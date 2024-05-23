@@ -93,6 +93,18 @@
   color: #fff;
 }
 
+.statusMenuDark {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #d8d8d8;
+  background-color: #202020;
+  border-radius: 0.625rem;
+  width: 6.5rem;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
+}
+
 
 @media screen and (min-width: 768px) {
 

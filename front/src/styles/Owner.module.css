@@ -113,3 +113,18 @@ span {
   height: 2.323rem;
   margin-left: 0.6rem;
 }
+
+.ownerMenuDark {
+  position: relative;
+  transform: translateX(-40%);
+  border: 1px solid #d8d8d8;
+  border-radius: 0.625rem;
+  background-color: #202020;
+  width: 14rem;
+  z-index: 9999;
+  box-shadow: 0 2px 5px 3px #0000001a;
+}
+
+.taskListOwnerNameDark {
+  color: #ffffff;
+}
