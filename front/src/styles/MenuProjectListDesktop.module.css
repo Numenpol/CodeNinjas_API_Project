@@ -7,7 +7,8 @@
     /* min-width: 360px; */
 
 }
-.offcanvasBody{
+
+.offcanvasBody {
     width: 20rem;
 }
 
@@ -137,12 +138,17 @@
 }
 
 .buttonthingDark {
-    padding-left: 1rem;
     border: none;
     background-color: #fff;
     text-decoration: none;
     background-color: #1E1E1E;
     color: #FFFFFF;
+    font-family: var(--inter);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 0rem;
+    padding-left: -1rem;
+    text-decoration: none;
 }
 
 .myProjectsTextDark {
@@ -163,7 +169,8 @@
         min-height: 20rem;
         min-width: 22rem;
     }
-    .offcanvasBody{
+
+    .offcanvasBody {
         width: 22rem;
     }
 
@@ -171,7 +178,7 @@
 
     .projectPopUpDark {
         min-height: 20rem;
-        min-width: 22.5rem;
+        min-width: 22rem;
         background-color: #1E1E1E;
     }
 
@@ -185,10 +192,12 @@
     .closeButton {
         display: none;
     }
-    .projectPopUp{
+
+    .projectPopUp {
         padding-left: 1rem;
     }
-    .projectPopUpDark{
+
+    .projectPopUpDark {
         padding-left: 1rem;
     }
 }

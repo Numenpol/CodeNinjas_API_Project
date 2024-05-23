@@ -12,7 +12,7 @@ function StatusDropdown() {
     setSelectedStatus(status);
     setIsOpen(false);
   };
-  const { statusBtn, statusMenu, statusDo, statusProgress, statusDone, selected, statusInProgress, statusDoneSelected } = styles;
+  const { statusBtn, statusMenu, statusDo, statusMenuDark , statusProgress, statusDone, selected, statusInProgress, statusDoneSelected } = styles;
 
   return (
     <div>
@@ -20,7 +20,7 @@ function StatusDropdown() {
   {selectedStatus || String.fromCharCode(9662)}
 </button>
       {isOpen && (
-        <div className={statusMenu}>
+        <div className={theme == "light" ? statusMenu : statusMenuDark}>
           <p className={statusDo} onClick={() => handleStatusClick("To do")}>To do</p>
           <p className={statusProgress} onClick={() => handleStatusClick("In progress")}>In progress</p>
           <p className={statusDone} onClick={() => handleStatusClick("Done")}>Done</p>

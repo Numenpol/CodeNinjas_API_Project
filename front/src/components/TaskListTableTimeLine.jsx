@@ -1,14 +1,14 @@
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
-import { useState, useEffect, useContext } from 'react'
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import "../styles/TaskListTableTimeLine.css"
-import styles from "../styles/TaskListTableTimeLine.module.css"
-import { updateDataTask } from '../services/update';
+import { useState, useEffect, useContext } from "react";
+import ProgressBar from "react-bootstrap/ProgressBar";
+import "../styles/TaskListTableTimeLine.css";
+import styles from "../styles/TaskListTableTimeLine.module.css";
+import { updateDataTask } from "../services/update";
 import { StateContext } from "../utils/StateContext";
 import { useTheme } from "../utils/ThemeContext";
-import OutsideClickHandler from 'react-outside-click-handler';
+import OutsideClickHandler from "react-outside-click-handler";
 
 function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTimeLine, id, task }) {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -20,7 +20,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
       startDate: new Date(),
       endDate: null,
       key: `selection`,
-    }
+    },
   ]);
   const [monthNumberDate, setMonthNumberDate] = useState();
   const [timeLineState, setTimeLineState] = useState();
@@ -35,53 +35,72 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
     taskListProgressBarExecution, taskListProgressBarDone } = styles;
 
   const handleShowCalendar = () => {
-    setShowCalendar(showCalendar => !showCalendar);
-  }
+    setShowCalendar((showCalendar) => !showCalendar);
+  };
 
   const getStartFixedDate = (date) => {
     const todayDate = new Date();
-    const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
-    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
-    const todayFormattedDate = todayDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    const todayDateNumber = todayDate.toLocaleDateString("en-US", { day: 'numeric' });
-    const todayDateMonth = todayDate.toLocaleDateString("en-US", {month: 'short'});
-    if(parseInt(dateNumber)<parseInt(todayDateNumber) && dateMonth == todayDateMonth){
-    return todayFormattedDate;    
+    const formattedDate = date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    });
+    const dateNumber = date.toLocaleDateString("en-US", { day: "numeric" });
+    const dateMonth = date.toLocaleDateString("en-US", { month: "short" });
+    const todayFormattedDate = todayDate.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    });
+    const todayDateNumber = todayDate.toLocaleDateString("en-US", {
+      day: "numeric",
+    });
+    const todayDateMonth = todayDate.toLocaleDateString("en-US", {
+      month: "short",
+    });
+    if (
+      parseInt(dateNumber) < parseInt(todayDateNumber) &&
+      dateMonth == todayDateMonth
+    ) {
+      return todayFormattedDate;
     } else if (dateMonth != todayDateMonth) {
-    return formattedDate;
-    } else
-    return formattedDate;
-  }
+      return formattedDate;
+    } else return formattedDate;
+  };
 
   const getNumberFixedDate = (date) => {
     const todayDate = new Date();
-    const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
-    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
-    const todayDateNumber = todayDate.toLocaleDateString("en-US", { day: 'numeric' });
-    const todayDateMonth = todayDate.toLocaleDateString("en-US", {month: 'short'});
-    if(parseInt(dateNumber)<parseInt(todayDateNumber) && dateMonth == todayDateMonth){
-    return todayDateNumber;    
+    const dateNumber = date.toLocaleDateString("en-US", { day: "numeric" });
+    const dateMonth = date.toLocaleDateString("en-US", { month: "short" });
+    const todayDateNumber = todayDate.toLocaleDateString("en-US", {
+      day: "numeric",
+    });
+    const todayDateMonth = todayDate.toLocaleDateString("en-US", {
+      month: "short",
+    });
+    if (
+      parseInt(dateNumber) < parseInt(todayDateNumber) &&
+      dateMonth == todayDateMonth
+    ) {
+      return todayDateNumber;
     } else if (dateMonth != todayDateMonth) {
-    return dateNumber;
-    } else
-    return dateNumber;
-  }
+      return dateNumber;
+    } else return dateNumber;
+  };
 
   const getMonthFixedDate = (date) => {
-    const dateMonth = date.toLocaleDateString("en-US", { month: 'short' });
+    const dateMonth = date.toLocaleDateString("en-US", { month: "short" });
     return dateMonth;
-  }
+  };
 
   const getMonthNumberFixedDate = (date) => {
     const monthNumber = date.getMonth() + 1;
     return monthNumber;
-  }
+  };
 
   const calculateDaysLeftPercentage = () => {
     if (!endDateDay) {
       return 100;
-    } if (monthNumberDate) {
+    }
+    if (monthNumberDate) {
       const totalDays = monthNumberDate - startDateDay + 1;
       const daysLeftPercentage = (1 / totalDays) * 100;
       return daysLeftPercentage;
@@ -92,7 +111,6 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
   }
 
   const showCalendarElementClass = "taskListTimeLineCalendar";
-
 
   const handleStatusUpdate = async (id, updateTimeLine) => {
     try {
@@ -135,7 +153,10 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
           let endDateDay = getNumberFixedDate(stat.endDate);
           let endDateMonth = getMonthFixedDate(stat.endDate);
           let endDateMonthNumber = getMonthNumberFixedDate(stat.endDate);
-          if (parseInt(endDateDay) < parseInt(startDateDay) && startDateMonth == endDateMonth) {
+          if (
+            parseInt(endDateDay) < parseInt(startDateDay) &&
+            startDateMonth == endDateMonth
+          ) {
             endDate = startDate;
             endDateDay = startDateDay;
           }
@@ -184,14 +205,22 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
     if (id) {
       handleStatusUpdate(id, selectedTimeLine);
     }
-  }, [id, selectedTimeLine])
-
+  }, [id, selectedTimeLine]);
 
   return (
     <>
       <OutsideClickHandler onOutsideClick={() => setShowCalendar(false)}>
-        <button className={theme == "light" ? taskListTimeLineButton : taskListTimeLineButtonDark} type='button'>
-          <ProgressBar now={calculateDaysLeftPercentage()}
+        <button
+          className={
+            theme == "light"
+              ? taskListTimeLineButton
+              : taskListTimeLineButtonDark
+          }
+          type="button"
+ 
+        >
+          <ProgressBar
+            now={calculateDaysLeftPercentage()}
             label={calendarDay}
             onClick={handleShowCalendar}
             className={timeLineState}/>
@@ -199,7 +228,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
         <div className={showCalendar ? showCalendarElementClass : "hidden"}>
           <DateRange
             editableDateInputs={true}
-            onChange={item => setDateSelection([item.selection])}
+            onChange={(item) => setDateSelection([item.selection])}
             moveRangeOnFirstSelection={false}
             ranges={dateSelection}
             className={taskListProgressBarRange}
@@ -207,7 +236,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, taskTimeline, selectedTime
         </div>
       </OutsideClickHandler>
     </>
-  )
+  );
 }
 
 export default TaskListTableTimeLine;

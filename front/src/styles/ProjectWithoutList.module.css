@@ -132,6 +132,9 @@ img.chartIcon {
   font-weight: 400;
 }
 
+.createFirstProjectButtonDark:hover {
+  background-color: #235586;
+}
 
 @media screen and (min-width: 768px) {
   .projectListHeader {

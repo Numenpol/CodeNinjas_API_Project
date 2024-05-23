@@ -119,16 +119,15 @@
 
 .projectListTasksDark {
     color: #FFFFFF;
-    font-size: 0.869rem;
-    font-style: normal;
-    font-weight: 600;
+    background-color: #121212;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 0.875rem;
     line-height: normal;
     text-align: start;
     padding-top: 0.5rem;
     padding-left: 1.3rem;
     padding-bottom: 0.5rem;
-    background-color: #121212;
-    font-family: var(--montserrat);
 }
 
 .tableBoxDark {
@@ -192,6 +191,10 @@
 
     .projectListNameDark {
         padding-left: 1.7rem;
+    }
+
+    .projectListTasksDark {
+        padding-right: 0.5rem;
     }
 }
 

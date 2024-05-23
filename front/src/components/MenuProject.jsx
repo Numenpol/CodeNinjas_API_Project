@@ -22,6 +22,7 @@ import stylesForm from "../styles/CreateProjectForm.module.css";
 import xIcon from "../assets/xIcon.svg";
 import rocketPic from "../assets/rocket.svg";
 import { useTheme } from "../utils/ThemeContext";
+import OutsideClickHandler from 'react-outside-click-handler';
 
 function MenuProject({ project }) {
   const { setprojectId, setShowMenu, selectedIcon, setIcon } =
@@ -122,10 +123,12 @@ function MenuProject({ project }) {
 
   const {
     menuProjectList,
+    menuProjectListDark,
     menuProjectIcon,
     menuProjectName,
     menuProjectProject,
     editIcon,
+    editIconDark,
     menuProjectEditDelete,
     menuProjectModalBackDrop,
     menuEdit,
@@ -182,9 +185,9 @@ function MenuProject({ project }) {
 
   return (
     <>
-      <div className={menuProjectList}>
+      <div className={theme === "light" ? menuProjectList : menuProjectListDark}>
         <div
-          className={menuProjectList}
+          className={theme === "light" ? menuProjectList : menuProjectListDark}
           onClick={() => {
             projectClickHandler(project);
           }}
@@ -198,7 +201,7 @@ function MenuProject({ project }) {
         </div>
         <div className={`Thing ${menuProjectProject}`}>
           <div>
-            <ThreeDots className={editIcon} onClick={handleShow} />
+            <ThreeDots className={theme === "light" ? editIcon : editIconDark} onClick={handleShow} />
           </div>
           {show && (
             <Modal
@@ -326,7 +329,7 @@ function MenuProject({ project }) {
                   </Form.Group>
                 </div>
                 <div className={createButtons}>
-                  <Button   className={theme == "light" ? cancelBtn : cancelBtnDark} variant="primary">
+                  <Button className={theme == "light" ? cancelBtn : cancelBtnDark} variant="primary">
                     <div onClick={handleSmClose} className={cancelBtnContent}>
                       Cancel
                     </div>
@@ -350,7 +353,6 @@ function MenuProject({ project }) {
             </div>
           </div>
         </Modal>
-
         <Modal
           className="myDeleteModal"
           show={delShow}
@@ -359,27 +361,29 @@ function MenuProject({ project }) {
           backdrop="true"
           contentClassName={theme == "light" ? "" : "modal-content-dark"}
         >
-          <Modal.Body>
-            <div className={theme == "light" ? TextThing12 : TextThing12Dark}>
-              Are You sure, you want to delete &quot;{projectName}&quot;?
-            </div>
-            <button className={theme == "light" ? xIconButton1 : xIconButton1Dark} onClick={handleDelClose}>
-              <img src={xIcon} alt="xIcon" />
-            </button>
-            <div className={buttonsStupid}>
-              <Button className={theme == "light" ? cancelBtnProject : cancelBtnProjectDark} onClick={handleDelClose}>
-                <div className={theme == "light" ? cancelBtnContent : cancelBtnContentDark}>Cancel</div>
-              </Button>
-              <Button
-                className={theme == "light" ? createBtnProject : createBtnProjectDark}
-                onClick={() => handleDelete(project._id)}
-              >
-                Delete
-              </Button>
-            </div>
-          </Modal.Body>
+          <OutsideClickHandler onOutsideClick={() => setShow(false)}>
+            <Modal.Body>
+              <div className={theme == "light" ? TextThing12 : TextThing12Dark}>
+                Are You sure, you want to delete &quot;{projectName}&quot;?
+              </div>
+              <button className={theme == "light" ? xIconButton1 : xIconButton1Dark} onClick={handleDelClose}>
+                <img src={xIcon} alt="xIcon" />
+              </button>
+              <div className={buttonsStupid}>
+                <Button className={theme == "light" ? cancelBtnProject : cancelBtnProjectDark} onClick={handleDelClose}>
+                  <div className={theme == "light" ? cancelBtnContent : cancelBtnContentDark}>Cancel</div>
+                </Button>
+                <Button
+                  className={theme == "light" ? createBtnProject : createBtnProjectDark}
+                  onClick={() => handleDelete(project._id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            </Modal.Body>
+          </OutsideClickHandler>
         </Modal>
-      </div>
+      </div >
     </>
   );
 }

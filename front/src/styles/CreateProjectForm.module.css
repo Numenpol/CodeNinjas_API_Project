@@ -314,11 +314,14 @@
 }
 
 .cancelBtnDark {
-  border-radius: 0.3125rem !important;
   border: 0.2px solid #565656 !important;
   background: #1E1E1E !important;
-  margin-right: 1rem;
-  padding: 0.625rem 1rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center ;
+  width: 4.9375rem;
+  height: 2rem;
+  margin-top: 0.1rem;
 }
 
 .TextThing12Dark{
@@ -364,6 +367,22 @@
   top: 0.1rem;
   right: 0.2rem;
 }
+
+.cancelBtnDark:hover {
+  background-color: #292929 !important;
+ }
+ 
+ .createBtnDark:hover {
+   background-color: #235586 !important;
+ }
+ 
+ .cancelBtnProjectDark:hover {
+   background-color: #292929 !important;
+ }
+ 
+ .createBtnProjectDark:hover {
+   background-color: #235586 !important;
+ }
 
 @media screen and (min-width: 768px) {
   .modalDialog {
@@ -475,10 +494,4 @@
   .xIconButtonDark {
     padding-bottom: 29rem;
   }
-
-  .cancelBtnDark {
-    width: 4.75rem;
-    height: 2.375rem;
-  }
-  
 }
