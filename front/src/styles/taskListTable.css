@@ -6,8 +6,9 @@
     width: 19.3rem;
 }
 .AddMemberPopUpModal .modal-dialog{
-    position: relative;
+    position: fixed;
     top: 11rem;
+    right:0.1rem;
 }
 
 .showTaskExecutionForm {
@@ -64,8 +65,8 @@
         width: 22rem;
     }
     .AddMemberPopUpModal .modal-dialog{
-        top: 8rem;
-        left: 18rem;
+        top: 9rem;
+        right: 1rem;
     }
 }
 
@@ -81,7 +82,6 @@
         width: 9rem;
     }
     .AddMemberPopUpModal .modal-dialog{
-        left: -10rem;
 
     }
 }

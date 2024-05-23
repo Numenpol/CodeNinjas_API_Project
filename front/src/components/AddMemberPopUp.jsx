@@ -6,7 +6,8 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from "../styles/AddMemberPopUp.module.css";
-import { login } from "../utils/auth/authenticate";
+import "../styles/taskListTable.css";
+import xIcon from "../assets/xIcon.svg";
 import { useTheme } from "../utils/ThemeContext";
 
 function AddMemberPopUp({ handleClose, showAddMember }) {
