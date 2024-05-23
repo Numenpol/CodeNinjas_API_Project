@@ -7,14 +7,16 @@
     /* min-width: 360px; */
 
 }
+.offcanvasBody{
+    width: 20rem;
+}
 
 .projectPopUp {
-    min-width: 22.5rem;
     display: flex;
     flex-direction: column;
-    min-height: 15rem;
-    height: 80vh;
-    margin-top: 27px;
+    margin-top: 26px;
+    margin-left: -1rem;
+    min-width: 21rem;
 }
 
 .projectPopUp .modal-dialog {
@@ -32,8 +34,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.12rem;
-    margin-left: -1rem;
-    padding-left: 1rem;
+    margin-left: 0rem;
+    padding-left: -1rem;
     margin-top: -1rem;
     /* width: 100%; */
 }
@@ -59,7 +61,8 @@
     color: #7A7E81;
     font-size: 1rem;
     font-weight: 400;
-    padding-left: 1rem;
+    margin-left: 0rem;
+    padding-left: -1rem;
     border: none;
     background-color: #fff;
     text-decoration: none;
@@ -68,9 +71,9 @@
 .closeButton {
     border: none;
     background: none;
-    margin-top: -3rem;
+    margin-top: -2rem;
     color: #565656;
-    margin-right: 0.2rem;
+    margin-right: 1rem;
 }
 
 .searchThing {
@@ -127,9 +130,9 @@
     min-width: 22.5rem;
     display: flex;
     flex-direction: column;
-    min-height: 15rem;
-    height: 80vh;
-    margin-top: 27px;
+    margin-top: 26px;
+    margin-left: -1rem;
+    min-width: 21rem;
     background-color: #1E1E1E;
 }
 
@@ -158,7 +161,10 @@
 @media screen and (min-width: 768px) {
     .projectPopUp {
         min-height: 20rem;
-        min-width: 22.5rem;
+        min-width: 22rem;
+    }
+    .offcanvasBody{
+        width: 22rem;
     }
 
     /* Dark theme css */
@@ -178,5 +184,11 @@
 @media screen and (min-width: 1440px) {
     .closeButton {
         display: none;
+    }
+    .projectPopUp{
+        padding-left: 1rem;
+    }
+    .projectPopUpDark{
+        padding-left: 1rem;
     }
 }

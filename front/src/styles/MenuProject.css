@@ -4,6 +4,13 @@
 .MenuPopUpBody {
   margin-left: -1rem;
 }
+div[class="mt-5 mb-5 rounded-3 shadow border-0"]{
+  width: 10rem;
+}
+.offcanvas.show:not(.hiding){
+  width: 20.5rem;
+
+}
 
 ._menuProjectList_1pt6d_9 {
   display: flex;
@@ -141,6 +148,9 @@ div[class="fade myTaskDeleteModal modal show"] {
     width: 22.875rem !important;
     left: -2rem;
   }
+  .offcanvas.show:not(.hiding){
+    width: 22rem;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -152,5 +162,8 @@ div[class="fade myTaskDeleteModal modal show"] {
     top: 1rem;
     left: -20%;
 
+  }
+  .offcanvas.show:not(.hiding){
+    width: 22rem;
   }
 }
