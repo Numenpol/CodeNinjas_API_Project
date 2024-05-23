@@ -8,9 +8,9 @@ import styles from "../styles/TaskListTableTimeLine.module.css"
 import { updateDataTask } from '../services/update';
 import { StateContext } from "../utils/StateContext";
 import { useTheme } from "../utils/ThemeContext";
+import OutsideClickHandler from 'react-outside-click-handler';
 
-
-function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id}) {
+function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id }) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDateDay, setStartDateDay] = useState(0);
   const [endDateDay, setEndDateDay] = useState(0);
@@ -29,7 +29,7 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
   const { theme } = useTheme();
 
 
-  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton, taskListTimeLineButtonDark} = styles;
+  const { taskListProgressBar, taskListProgressBarRange, taskListTimeLineButton, taskListTimeLineButtonDark } = styles;
 
   const handleShowCalendar = () => {
     setShowCalendar(showCalendar => !showCalendar);
@@ -42,11 +42,11 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
 
   const getNumberFixedDate = (date) => {
     const dateNumber = date.toLocaleDateString("en-US", { day: 'numeric' });
-    return dateNumber; 
+    return dateNumber;
   }
 
   const getMonthFixedDate = (date) => {
-    const dateMonth = date.toLocaleDateString("en-US", {month: 'short'});
+    const dateMonth = date.toLocaleDateString("en-US", { month: 'short' });
     return dateMonth;
   }
 
@@ -58,13 +58,13 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
   const calculateDaysLeftPercentage = () => {
     if (!endDateDay) {
       return 100;
-    } if(monthNumberDate) {
+    } if (monthNumberDate) {
       const totalDays = monthNumberDate - startDateDay + 1;
       const daysLeftPercentage = (1 / totalDays) * 100;
-      return daysLeftPercentage;    
+      return daysLeftPercentage;
     }
-      const totalDays = endDateDay - startDateDay + 1;
-      const daysLeftPercentage = (1 / totalDays) * 100;
+    const totalDays = endDateDay - startDateDay + 1;
+    const daysLeftPercentage = (1 / totalDays) * 100;
     return daysLeftPercentage;
   }
 
@@ -75,16 +75,16 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
     ) {
       setShowCalendar(false);
     }
-  }; 
-   
+  };
+
   const showCalendarElementClass = "taskListTimeLineCalendar";
 
 
   const handleStatusUpdate = async (id, updateTimeLine) => {
     try {
-      const data = { 
+      const data = {
         timeline: updateTimeLine,
-       };
+      };
       await updateDataTask(id, data);
       setUpdate((update) => update + 1);
       // setIsOpen(false);
@@ -108,26 +108,26 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
           let endDateDay = getNumberFixedDate(stat.endDate);
           let endDateMonth = getMonthFixedDate(stat.endDate);
           let endDateMonthNumber = getMonthNumberFixedDate(stat.endDate);
-          if (parseInt(endDateDay)<parseInt(startDateDay) && startDateMonth == endDateMonth) {
-            endDate=startDate;
-            endDateDay=startDateDay;
+          if (parseInt(endDateDay) < parseInt(startDateDay) && startDateMonth == endDateMonth) {
+            endDate = startDate;
+            endDateDay = startDateDay;
           }
-          if(startDateMonth != endDateMonth){
-            if(startDateMonthNumber<endDateMonthNumber){
-            let MonthNumberCount = endDateMonthNumber - startDateMonthNumber;
-            MonthNumberCount = MonthNumberCount * 30;
-            setMonthNumberDate(MonthNumberCount);
+          if (startDateMonth != endDateMonth) {
+            if (startDateMonthNumber < endDateMonthNumber) {
+              let MonthNumberCount = endDateMonthNumber - startDateMonthNumber;
+              MonthNumberCount = MonthNumberCount * 30;
+              setMonthNumberDate(MonthNumberCount);
             } else {
-            let MonthNumberCount = startDateMonthNumber - endDateMonthNumber;
-            MonthNumberCount = MonthNumberCount * 30;
-            setMonthNumberDate(MonthNumberCount);
+              let MonthNumberCount = startDateMonthNumber - endDateMonthNumber;
+              MonthNumberCount = MonthNumberCount * 30;
+              setMonthNumberDate(MonthNumberCount);
             }
           }
           setStartDateDay(startDateDay);
           setEndDateDay(endDateDay);
           setCalendarDay(`${startDate}-${endDate}`);
           setSelectedTimeLine(calendarDay);
-        } 
+        }
       } else {
         const dateNumbers = task.match(/\d+/g);
         const dateMonths = task.match(/[A-Za-z]+/g);
@@ -136,13 +136,13 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
         const endDateDay = dateNumbers[1];
         const startDateMonth = dateMonths[0];
         const endDateMonth = dateMonths[1];
-        if(startDateMonth != endDateMonth){
-          if (parseInt(endDateDay)>parseInt(startDateDay)) {
-          let MonthNumberCount = endDateDay+startDateDay;            
-          setMonthNumberDate(MonthNumberCount);   
-          } else{
-          let MonthNumberCount = endDateDay+30;           
-          setMonthNumberDate(MonthNumberCount);   
+        if (startDateMonth != endDateMonth) {
+          if (parseInt(endDateDay) > parseInt(startDateDay)) {
+            let MonthNumberCount = endDateDay + startDateDay;
+            setMonthNumberDate(MonthNumberCount);
+          } else {
+            let MonthNumberCount = endDateDay + 30;
+            setMonthNumberDate(MonthNumberCount);
           }
         }
         setStartDateDay(startDateDay);
@@ -150,38 +150,39 @@ function TaskListTableTimeLine({ setSelectedTimeLine, task, selectedTimeLine, id
         setCalendarDay(task);
       }
       document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
     })
       , []
   });
 
   useEffect(() => {
     if (id) {
-    handleStatusUpdate(id, selectedTimeLine);      
+      handleStatusUpdate(id, selectedTimeLine);
     }
   }, [id, selectedTimeLine])
 
 
   return (
     <>
-      <button className={theme == "light"  ? taskListTimeLineButton : taskListTimeLineButtonDark} type='button'>
-        <ProgressBar now={calculateDaysLeftPercentage()}
-        label={calendarDay}
-        onClick={handleShowCalendar}
-        className={taskListProgressBar} />
-      </button>
-      <div className={showCalendar ? showCalendarElementClass : "hidden"}>
-        <DateRange
-          editableDateInputs={true}
-          onChange={item => setDateSelection([item.selection])}
-          moveRangeOnFirstSelection={false}
-          ranges={dateSelection}
-          className={taskListProgressBarRange}
-        />
-      </div>
-
+      <OutsideClickHandler onOutsideClick={() => setShowCalendar(false)}>
+        <button className={theme == "light" ? taskListTimeLineButton : taskListTimeLineButtonDark} type='button'>
+          <ProgressBar now={calculateDaysLeftPercentage()}
+            label={calendarDay}
+            onClick={handleShowCalendar}
+            className={taskListProgressBar} />
+        </button>
+        <div className={showCalendar ? showCalendarElementClass : "hidden"}>
+          <DateRange
+            editableDateInputs={true}
+            onChange={item => setDateSelection([item.selection])}
+            moveRangeOnFirstSelection={false}
+            ranges={dateSelection}
+            className={taskListProgressBarRange}
+          />
+        </div>
+      </OutsideClickHandler>
     </>
   )
 }

@@ -297,8 +297,6 @@ padding-bottom: 0.4rem;
         height: 5rem;
     }
 
-
-
     .taskListProjectIcon {
         margin-bottom: 0.9rem;
     }
@@ -311,7 +309,6 @@ padding-bottom: 0.4rem;
         font-weight: 500;
         line-height: normal;
     }
-
 
     .taskListNameIcon {
         order: 1;
@@ -422,6 +419,11 @@ padding-bottom: 0.4rem;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+    }
+    
+    .taskListStatusDisplay {
+        justify-content: start;
+        grid-column: 6/10;
     }
 
     /* Dark theme css */
