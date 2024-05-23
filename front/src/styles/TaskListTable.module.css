@@ -317,6 +317,14 @@
     color: #FFF;
 }
 
+.cancelBtnDark:hover {
+    background-color: #292929 !important;
+}
+
+.createBtnDark:hover {
+    background-color: #235586 !important;
+}
+
 @media screen and (min-width: 768px) {
     .allTaskList {
         max-width: 100%;
