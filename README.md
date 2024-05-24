@@ -9,7 +9,10 @@
 
 ## Info
 
-A project management tool webpage.  
+A project management tool webpage.
+
+This is our testers github repository:
+https://github.com/katzeydds/CodeNinjaTester
 
 ## Technologies
 
