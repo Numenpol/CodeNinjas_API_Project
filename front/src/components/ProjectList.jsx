@@ -24,7 +24,7 @@ function ProjectList() {
     projectListTasks,
     tableBodyBox,
     projectListList,
-    cornerGapsDark,
+    cornerGapsDark
   } = styles;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +43,7 @@ function ProjectList() {
       <Pagination.First key="first" onClick={() => paginate(1)} disabled={currentPage === 1} />
     );
     items.push(
-      <Pagination.Prev key="prev" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} />
+      <Pagination.Prev key="prev" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}/>
     );
     for (let i = 1; i <= totalPages; i++) {
       items.push(
@@ -86,7 +86,7 @@ function ProjectList() {
           ))}
         </tbody>
       </table>
-      <Pagination>{renderPaginationItems()}</Pagination>
+      <Pagination bsPrefix={theme === "light" ? "pagination" : "paginationDark"}>{renderPaginationItems()}</Pagination>
     </div>
   );
 }

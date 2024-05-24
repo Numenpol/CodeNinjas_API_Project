@@ -8,10 +8,10 @@ import { useTheme } from "../utils/ThemeContext";
 import OutsideClickHandler from 'react-outside-click-handler';
 
 function TaskListSearchBar() {
-    const [smShow, setSmShow] = useState(false);
-    const [checked, setChecked] = useState({ task: false, status: false, priority: false });
-    const [value, setValue] = useState("");
-    const { setTasksById } = useContext(StateContext);
+  const [smShow, setSmShow] = useState(false);
+  const [checked, setChecked] = useState({ task: false, status: false, priority: false });
+  const [value, setValue] = useState("");
+  const { setTasksById } = useContext(StateContext);
 
   const debounce = (func, delay) => {
     let timeoutId;
@@ -68,23 +68,23 @@ function TaskListSearchBar() {
     }
   };
 
-    const buttonRef = useRef(null);
+  const buttonRef = useRef(null);
 
 
-    const handleCheck = (name) => {
-        setChecked((prevState) => {
-            const newState = { task: false, status: false, priority: false };
-            newState[name] = !prevState[name];
-            return newState;
-        });
-        setSmShow(false);
+  const handleCheck = (name) => {
+    setChecked((prevState) => {
+      const newState = { task: false, status: false, priority: false };
+      newState[name] = !prevState[name];
+      return newState;
+    });
+    setSmShow(false);
 
-        debounceSearch(
-            value,
-            name === "priority" ? !checked.priority : false,
-            name === "status" ? (!checked.status ? 'active' : '') : ''
-        );
-    };
+    debounceSearch(
+      value,
+      name === "priority" ? !checked.priority : false,
+      name === "status" ? (!checked.status ? 'active' : '') : ''
+    );
+  };
 
   const {
     searchbar,
